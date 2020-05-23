@@ -1,0 +1,24 @@
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #222225;
+        --font-color: #e8e9ed;
+        --invert-font-color: #222225;
+        --secondary-color: #a3abba;
+        --tertiary-color: #a3abba;
+        --primary-color: #62c4ff;
+        --error-color: #ff3c74;
+        --progress-bar-background: #3f3f44;
+        --progress-bar-fill: #62c4ff;
+        --code-bg-color: #3f3f44;
+    }
+}
+
+.inverse-video {
+    color: var(--invert-font-color);
+    background-color: var(--font-color);
+}
+
+.modeline {
+    margin-top: 6ch;
+    margin-bottom: 2ch;
+}
