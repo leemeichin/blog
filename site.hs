@@ -1,66 +1,91 @@
 --------------------------------------------------------------------------------
-{-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
-import           Hakyll
 
+{-# LANGUAGE OverloadedStrings #-}
+
+import           Hakyll
+import qualified Data.Text                     as T
+import           System.Environment             ( lookupEnv )
+import           Data.Function                  ( on )
+--------------------------------------------------------------------------------
+
+(//) :: Int -> Int -> Float
+(//) = (/) `on` fromIntegral
+
+ertField :: String -> Snapshot -> Context String
+ertField name snapshot = field name $ \item -> do
+  body <- itemBody <$> loadSnapshot (itemIdentifier item) snapshot
+  let words = length (T.words . T.pack $ body)
+  return $ show $ words // 300
+
+postCtx :: Context String
+postCtx =
+  field "size" (return . show . (1024 `div`) . length . itemBody)
+    <> ertField "ert" "posts-content"
+    <> dateField "date" "%B %e, %Y"
+    <> defaultContext
 
 --------------------------------------------------------------------------------
+
 main :: IO ()
-main = hakyll $ do
+main = do
+  compilerEnv <- lookupEnv "HAKYLL_ENV"
+  let isDevelopment = compilerEnv == Just "development"
+
+  hakyllWith defaultConfiguration $ do
+
     match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+      route idRoute
+      compile copyFileCompiler
 
     match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
+      route idRoute
+      compile compressCssCompiler
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+      route $ setExtension "html"
+      compile
+        $   pandocCompiler
+        >>= loadAndApplyTemplate "templates/default.html" defaultContext
+        >>= relativizeUrls
 
-    match "posts/*" $ do
-        route $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+    matchMetadata
+        "posts/**.md"
+        (\m -> isDevelopment || lookupString "status" m == Just "published")
+      $ do
+          route $ setExtension "html"
+          compile
+            $   pandocCompiler
+            >>= saveSnapshot "posts-content"
+            >>= loadAndApplyTemplate "templates/post.html" postCtx
+            >>= saveSnapshot "posts-rendered"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
     create ["archive.html"] $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
-                    defaultContext
+      route idRoute
+      compile $ do
+        posts <- recentFirst =<< loadAll "posts/*"
+        let archiveCtx =
+              listField "posts" postCtx (return posts)
+                `mappend` constField "title" "Archives"
+                `mappend` defaultContext
 
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
+        makeItem ""
+          >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+          >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+          >>= relativizeUrls
 
 
     match "index.html" $ do
-        route idRoute
-        compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
+      route idRoute
+      compile $ do
+        posts <- recentFirst =<< loadAll "posts/*"
+        let indexCtx =
+              listField "posts" postCtx (return posts) `mappend` defaultContext
 
-            getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                >>= relativizeUrls
+        getResourceBody
+          >>= applyAsTemplate indexCtx
+          >>= loadAndApplyTemplate "templates/default.html" indexCtx
+          >>= relativizeUrls
 
     match "templates/*" $ compile templateBodyCompiler
-
-
---------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
-    defaultContext

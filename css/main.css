@@ -13,6 +13,38 @@
     }
 }
 
+table {
+    border: none;
+}
+
+/* table tr {
+    border: none;
+}
+*/
+table td { 
+    border: none;
+}
+
+td.file-permission {
+    width: 12ch;
+}
+
+td.user {
+    width: 6ch;
+}
+
+td.group {
+    width: 5ch;
+}
+
+td.size {
+
+}
+
+td.date {
+    width: 16ch;
+}
+
 .inverse-video {
     color: var(--invert-font-color);
     background-color: var(--font-color);

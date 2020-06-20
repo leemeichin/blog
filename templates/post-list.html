@@ -1,7 +1,14 @@
-<ul>
-    $for(posts)$
-        <li>
-            <a href="$url$">$title$</a> - $date$
-        </li>
-    $endfor$
-</ul>
+<table>
+    <tbody>
+        $for(posts)$
+            <tr>
+                <td class="file-permission">-rw-r--r--</td>
+                <td class="user">mrlee</td>
+                <td class="group">www</td>
+                <td class="size">$size$</td>
+                <td class="date">$date$</td>
+                <td><a href="$url$">$title$</a></td>
+            </tr>
+        $endfor$
+    </tbody>
+</table>
