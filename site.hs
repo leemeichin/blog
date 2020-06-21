@@ -55,12 +55,9 @@ dropIndexHtml key = mapContext transform (urlField key) where
 
 --------------------------------------------------------------------------------
 
-
---------------------------------------------------------------------------------  
-
 postCtx :: Context String
 postCtx =
-  field "size" (return . show . (1024 `div`) . length . itemBody)
+  field "size" (return . show . length . itemBody)
     <> ertField "ert" "posts-content"
     <> dateField "date" "%B %e, %Y"
     <> dropIndexHtml "url"
@@ -93,7 +90,7 @@ main = do
         >>= relativizeUrls
 
     matchMetadata
-        "posts/**.md"
+        "posts/**"
         (\m -> isDevelopment || lookupString "status" m == Just "published")
       $ do
           route
@@ -109,10 +106,10 @@ main = do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
-    create ["archive.html"] $ do
+    create ["archive/index.html"] $ do
       route idRoute
       compile $ do
-        posts <- recentFirst =<< loadAll "posts/*"
+        posts <- recentFirst =<< loadAll "posts/**"
         let archiveCtx =
               listField "posts" postCtx (return posts)
                 <> constField "title" "Posts"
