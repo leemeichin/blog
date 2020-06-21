@@ -4,10 +4,16 @@
 
 import           Hakyll
 import qualified GHC.IO.Encoding               as E
-import qualified Data.Text                     as T
-import           System.Environment             ( lookupEnv )
+import           Data.Char                      ( isSpace )
 import           Data.Function                  ( on )
+import           Data.List                      ( dropWhileEnd )
+import           Data.List.Split                ( splitOn )
+import qualified Data.Text                     as T
 import           Data.Maybe                     ( fromMaybe )
+import           Data.String                    ( fromString )
+import           System.Environment             ( lookupEnv )
+import           System.Process                 ( readProcessWithExitCode )
+import           System.Exit                    ( ExitCode(..) )
 import           System.FilePath.Posix          ( (</>)
                                                 , (<.>)
                                                 , splitExtension
@@ -52,6 +58,44 @@ dropIndexHtml key = mapContext transform (urlField key) where
   transform url = case splitFileName url of
     (p, "index.html") -> takeDirectory p
     _                 -> url
+
+--------------------------------------------------------------------------------
+
+data GitLog = Hash | Commit | Full
+  deriving (Eq, Read)
+
+instance Show GitLog where
+  show content = case content of
+    Hash   -> "%h"
+    Commit -> "%h: %s"
+    Full   -> "%h: %s (%ai)"
+
+getGitLog :: GitLog -> Integer -> FilePath -> IO [String]
+getGitLog content limit path = do
+  (status, stdout, _) <- readProcessWithExitCode
+    "git"
+    [ "log"
+    , "--format=" ++ show content
+    , "--max-count=" ++ show limit
+    , "--"
+    , path
+    ]
+    ""
+
+  return $ case status of
+    ExitSuccess -> splitOn "\n" (trim stdout)
+    _           -> [""]
+  where trim = dropWhileEnd isSpace
+
+logListField :: String -> String -> GitLog -> Integer -> Context String
+logListField pluralName singularName style limit =
+  listField pluralName ctx $ unsafeCompiler $ do
+    logs <- getGitLog style limit "."
+    return $ map logItem logs
+ where
+  ctx = field singularName (return . show . itemBody)
+  logItem log = Item (fromString $ "log/" ++ log) log
+
 
 --------------------------------------------------------------------------------
 
@@ -126,8 +170,11 @@ main = do
       route idRoute
       compile $ do
         posts <- recentFirst =<< loadAll "posts/*"
+
         let indexCtx =
-              listField "posts" postCtx (return posts) <> defaultContext
+              listField "posts" postCtx (return posts)
+                <> logListField "logs" "log" Full 10
+                <> defaultContext
 
         getResourceBody
           >>= applyAsTemplate indexCtx
