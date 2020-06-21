@@ -7,6 +7,7 @@ executable site
   main-is:          site.hs
   build-depends:    base == 4.*
                   , text == 1.2.3.*
+                  , filepath == 1.4.2.*
                   , hakyll == 4.13.*
                   , pandoc == 2.7.*
                   , pandoc-types == 1.17.6.*

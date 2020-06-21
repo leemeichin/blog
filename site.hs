@@ -3,9 +3,18 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import           Hakyll
+import qualified GHC.IO.Encoding               as E
 import qualified Data.Text                     as T
 import           System.Environment             ( lookupEnv )
 import           Data.Function                  ( on )
+import           Data.Maybe                     ( fromMaybe )
+import           System.FilePath.Posix          ( (</>)
+                                                , (<.>)
+                                                , splitExtension
+                                                , splitFileName
+                                                , takeDirectory
+                                                )
+
 --------------------------------------------------------------------------------
 
 (//) :: Int -> Int -> Float
@@ -15,19 +24,54 @@ ertField :: String -> Snapshot -> Context String
 ertField name snapshot = field name $ \item -> do
   body <- itemBody <$> loadSnapshot (itemIdentifier item) snapshot
   let words = length (T.words . T.pack $ body)
-  return $ show $ words // 300
+  return $ show $ round $ words // 300
+
+--------------------------------------------------------------------------------
+
+dateFolders :: Routes
+dateFolders =
+  gsubRoute "/[0-9]{4}-[0-9]{2}-[0-9]{2}-" $ replaceAll "-" (const "/")
+
+appendIndex :: Routes
+appendIndex =
+  customRoute $ (\(p, e) -> p </> "index" <.> e) . splitExtension . toFilePath
+
+dropPostsPrefix :: Routes
+dropPostsPrefix = gsubRoute "posts/" $ const ""
+
+prependCategory :: Routes
+prependCategory = metadataRoute $ \md ->
+  customRoute
+    $ let mbCategory = lookupString "category" md
+          category =
+            fromMaybe (error "Posts: Post without category") mbCategory
+      in  (category </>) . toFilePath
+
+dropIndexHtml :: String -> Context a
+dropIndexHtml key = mapContext transform (urlField key) where
+  transform url = case splitFileName url of
+    (p, "index.html") -> takeDirectory p
+    _                 -> url
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------  
 
 postCtx :: Context String
 postCtx =
   field "size" (return . show . (1024 `div`) . length . itemBody)
     <> ertField "ert" "posts-content"
     <> dateField "date" "%B %e, %Y"
+    <> dropIndexHtml "url"
     <> defaultContext
 
 --------------------------------------------------------------------------------
 
 main :: IO ()
 main = do
+  E.setLocaleEncoding E.utf8
+
   compilerEnv <- lookupEnv "HAKYLL_ENV"
   let isDevelopment = compilerEnv == Just "development"
 
@@ -52,12 +96,16 @@ main = do
         "posts/**.md"
         (\m -> isDevelopment || lookupString "status" m == Just "published")
       $ do
-          route $ setExtension "html"
+          route
+            $               setExtension "html"
+            `composeRoutes` dateFolders
+            `composeRoutes` dropPostsPrefix
+            `composeRoutes` prependCategory
+            `composeRoutes` appendIndex
           compile
             $   pandocCompiler
             >>= saveSnapshot "posts-content"
-            >>= loadAndApplyTemplate "templates/post.html" postCtx
-            >>= saveSnapshot "posts-rendered"
+            >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -67,8 +115,9 @@ main = do
         posts <- recentFirst =<< loadAll "posts/*"
         let archiveCtx =
               listField "posts" postCtx (return posts)
-                `mappend` constField "title" "Archives"
-                `mappend` defaultContext
+                <> constField "title" "Posts"
+                <> dropIndexHtml "url"
+                <> defaultContext
 
         makeItem ""
           >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
@@ -81,7 +130,7 @@ main = do
       compile $ do
         posts <- recentFirst =<< loadAll "posts/*"
         let indexCtx =
-              listField "posts" postCtx (return posts) `mappend` defaultContext
+              listField "posts" postCtx (return posts) <> defaultContext
 
         getResourceBody
           >>= applyAsTemplate indexCtx
