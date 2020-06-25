@@ -2,7 +2,7 @@
 title: Setting up with Hakyll
 date: 2020-06-21
 category: programming
-status: published
+status: draft
 ---
 
 I've spent more time than I would care to admit trying out different static site builders. I eventually landed on Hakyll after giving various pre-built things a go with Netlify CMS. Admittedly there was quite a bit of appeal in being able to learn a bit more practical Haskell by virtue of it powering the site generator, and I've already spent a few days learning how to add some custom functionality[^1]^,^[^2]. It's been good fun as I've always had a fondness for the language.
