@@ -1,7 +1,7 @@
 ---
 title: I am here
 date: 2020-06-25
-published: true
+status: published
 category: personal 
 ---
 
