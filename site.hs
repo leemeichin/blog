@@ -75,6 +75,7 @@ getGitLog content limit path = do
   (status, stdout, _) <- readProcessWithExitCode
     "git"
     [ "log"
+    , "--graph"
     , "--format=" ++ show content
     , "--max-count=" ++ show limit
     , "--"
@@ -87,14 +88,15 @@ getGitLog content limit path = do
     _           -> [""]
   where trim = dropWhileEnd isSpace
 
-logListField :: String -> String -> GitLog -> Integer -> Context String
-logListField pluralName singularName style limit =
+logListField
+  :: String -> String -> GitLog -> Integer -> String -> Context String
+logListField pluralName singularName style limit path =
   listField pluralName ctx $ unsafeCompiler $ do
-    logs <- getGitLog style limit "."
+    logs <- getGitLog style limit path
     return $ map logItem logs
  where
   ctx = field singularName (return . show . itemBody)
-  logItem log = Item (fromString $ "log/" ++ log) log
+  logItem log = Item (fromString $ path ++ "/log/" ++ log) log
 
 
 --------------------------------------------------------------------------------
@@ -173,7 +175,7 @@ main = do
 
         let indexCtx =
               listField "posts" postCtx (return posts)
-                <> logListField "logs" "log" Full 10
+                <> logListField "logs" "log" Full 10 "."
                 <> defaultContext
 
         getResourceBody
