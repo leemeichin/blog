@@ -45,14 +45,24 @@
     width: 16ch;
 }
 
+.header {
+    margin-bottom: 2ch;
+}
+
 .title {
     padding-left: 1ch;
     padding-right: 1ch;
+    color: inherit !important;
+    display: inline-block;
+    margin-bottom: 0;
 }
 
 .ert {
-    color: var(--secondary-color);
+    color: var(--error-color);
+    background-color: var(--background-color);
     float: right;
+    padding-right: 1ch;
+    padding-left: 1ch;
 }
 
 .inverse-video {
