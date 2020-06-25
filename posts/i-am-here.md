@@ -31,8 +31,8 @@ This isn't to say all my problems are solved, or I'm finished with my process. T
 
 
 
-[^1]: https://en.wikipedia.org/wiki/Breathwork
-[^2]: https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy
-[^3]: https://en.wikipedia.org/wiki/Somatic_experiencing
-[^4]: https://en.wikipedia.org/wiki/Complex_post-traumatic_stress_disorder
-[^5]: https://en.wikipedia.org/wiki/Posttraumatic_growth
+[^1]: <https://en.wikipedia.org/wiki/Breathwork>
+[^2]: <https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy>
+[^3]: <https://en.wikipedia.org/wiki/Somatic_experiencing>
+[^4]: <https://en.wikipedia.org/wiki/Complex_post-traumatic_stress_disorder>
+[^5]: <https://en.wikipedia.org/wiki/Posttraumatic_growth>
