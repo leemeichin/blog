@@ -65,6 +65,10 @@
     padding-left: 1ch;
 }
 
+[role="doc-endnote"] > p {
+    display: inline;
+}
+
 .inverse-video {
     color: var(--invert-font-color) !important;
     background-color: var(--font-color) !important;
