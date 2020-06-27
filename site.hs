@@ -75,7 +75,6 @@ getGitLog content limit path = do
   (status, stdout, _) <- readProcessWithExitCode
     "git"
     [ "log"
-    , "--graph"
     , "--format=" ++ show content
     , "--max-count=" ++ show limit
     , "--"
