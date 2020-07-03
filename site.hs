@@ -30,7 +30,7 @@ ertField :: String -> Snapshot -> Context String
 ertField name snapshot = field name $ \item -> do
   body <- itemBody <$> loadSnapshot (itemIdentifier item) snapshot
   let words = length (T.words . T.pack $ body)
-  return $ show $ round $ words // 300
+  return $ show $ round $ words // 250
 
 --------------------------------------------------------------------------------
 
