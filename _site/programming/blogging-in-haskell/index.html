@@ -35,7 +35,7 @@
         <article>
     <header class="header inverse-video">
         <h2 class="title">Blogging in Haskell</h2>
-        <span class="ert">~3 min. read</span>
+        <span class="ert">~4 min. read</span>
     </header>
 
     <section>
@@ -45,41 +45,41 @@
 <p>The main difference is that you don’t pull down a <code>hakyll</code> binary and then throw a <code>yaml</code> file together in order to configure a few pre-defined properties; you’re instead given a basic implementation of a generator, using hakyll’s own library, and thus have complete control over routing, page generation, templating, and so on. This generally lives in a <code>site.hs</code> file and it’s not difficult to follow even for relative newbies to Haskell. The structure of everything else is entirely up to you.</p>
 <p>Once you compile this file, you end up with a nice binary, e.g. <code>site</code>, and <em>that</em> is what you use to generate your site. It is beautiful in its elegance and I’m eager to see what I can add to this site while also learning some more Haskell at the same time.</p>
 <p>As an example, on the home page, there is a <code>git log</code> output section. It’s fairly primitive, although I intend to build out the functionality a bit more. Writing the functionality was fairly effortless, with the help of some other authors on the net:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">data</span> <span class="dt">GitLog</span> <span class="ot">=</span> <span class="dt">Hash</span> <span class="op">|</span> <span class="dt">Commit</span> <span class="op">|</span> <span class="dt">Full</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Read</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">GitLog</span> <span class="kw">where</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">show</span> content <span class="ot">=</span> <span class="kw">case</span> content <span class="kw">of</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>    <span class="dt">Hash</span>   <span class="ot">-&gt;</span> <span class="st">&quot;%h&quot;</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>    <span class="dt">Commit</span> <span class="ot">-&gt;</span> <span class="st">&quot;%h: %s&quot;</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>    <span class="dt">Full</span>   <span class="ot">-&gt;</span> <span class="st">&quot;%h: %s (%ai)&quot;</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="ot">getGitLog ::</span> <span class="dt">GitLog</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> [<span class="dt">String</span>]</span>
-<span id="cb1-11"><a href="#cb1-11"></a>getGitLog content limit path <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>  (status, stdout, _) <span class="ot">&lt;-</span> readProcessWithExitCode</span>
-<span id="cb1-13"><a href="#cb1-13"></a>    <span class="st">&quot;git&quot;</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>    [ <span class="st">&quot;log&quot;</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>    , <span class="st">&quot;--format=&quot;</span> <span class="op">++</span> <span class="fu">show</span> content</span>
-<span id="cb1-16"><a href="#cb1-16"></a>    , <span class="st">&quot;--max-count=&quot;</span> <span class="op">++</span> <span class="fu">show</span> limit</span>
-<span id="cb1-17"><a href="#cb1-17"></a>    , <span class="st">&quot;--&quot;</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>    , path</span>
-<span id="cb1-19"><a href="#cb1-19"></a>    ]</span>
-<span id="cb1-20"><a href="#cb1-20"></a>    <span class="st">&quot;&quot;</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a>  <span class="fu">return</span> <span class="op">$</span> <span class="kw">case</span> status <span class="kw">of</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>    <span class="dt">ExitSuccess</span> <span class="ot">-&gt;</span> splitOn <span class="st">&quot;\n&quot;</span> (trim stdout)</span>
-<span id="cb1-24"><a href="#cb1-24"></a>    _           <span class="ot">-&gt;</span> [<span class="st">&quot;&quot;</span>]</span>
-<span id="cb1-25"><a href="#cb1-25"></a>  <span class="kw">where</span> trim <span class="ot">=</span> dropWhileEnd <span class="fu">isSpace</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a>logListField</span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="ot">  ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">GitLog</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Context</span> <span class="dt">String</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a>logListField pluralName singularName style limit path <span class="ot">=</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a>  listField pluralName ctx <span class="op">$</span> unsafeCompiler <span class="op">$</span> <span class="kw">do</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>    logs <span class="ot">&lt;-</span> getGitLog style limit path</span>
-<span id="cb1-32"><a href="#cb1-32"></a>    <span class="fu">return</span> <span class="op">$</span> <span class="fu">map</span> logItem logs</span>
-<span id="cb1-33"><a href="#cb1-33"></a> <span class="kw">where</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a>  ctx <span class="ot">=</span> field singularName (<span class="fu">return</span> <span class="op">.</span> <span class="fu">show</span> <span class="op">.</span> itemBody)</span>
-<span id="cb1-35"><a href="#cb1-35"></a>  logItem <span class="fu">log</span> <span class="ot">=</span> <span class="dt">Item</span> (fromString <span class="op">$</span> path <span class="op">++</span> <span class="st">&quot;/log/&quot;</span> <span class="op">++</span> <span class="fu">log</span>) <span class="fu">log</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">GitLog</span> <span class="ot">=</span> <span class="dt">Hash</span> <span class="op">|</span> <span class="dt">Commit</span> <span class="op">|</span> <span class="dt">Full</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>  <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Read</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">instance</span> <span class="dt">Show</span> <span class="dt">GitLog</span> <span class="kw">where</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>  <span class="fu">show</span> content <span class="ot">=</span> <span class="kw">case</span> content <span class="kw">of</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    <span class="dt">Hash</span>   <span class="ot">-&gt;</span> <span class="st">&quot;%h&quot;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>    <span class="dt">Commit</span> <span class="ot">-&gt;</span> <span class="st">&quot;%h: %s&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="dt">Full</span>   <span class="ot">-&gt;</span> <span class="st">&quot;%h: %s (%ai)&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a><span class="ot">getGitLog ::</span> <span class="dt">GitLog</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> [<span class="dt">String</span>]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>getGitLog content limit path <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>  (status, stdout, _) <span class="ot">&lt;-</span> readProcessWithExitCode</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="st">&quot;git&quot;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    [ <span class="st">&quot;log&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>    , <span class="st">&quot;--format=&quot;</span> <span class="op">++</span> <span class="fu">show</span> content</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>    , <span class="st">&quot;--max-count=&quot;</span> <span class="op">++</span> <span class="fu">show</span> limit</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>    , <span class="st">&quot;--&quot;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>    , path</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>    ]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>    <span class="st">&quot;&quot;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>  <span class="fu">return</span> <span class="op">$</span> <span class="kw">case</span> status <span class="kw">of</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>    <span class="dt">ExitSuccess</span> <span class="ot">-&gt;</span> splitOn <span class="st">&quot;\n&quot;</span> (trim stdout)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>    _           <span class="ot">-&gt;</span> [<span class="st">&quot;&quot;</span>]</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>  <span class="kw">where</span> trim <span class="ot">=</span> dropWhileEnd <span class="fu">isSpace</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a>logListField</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a><span class="ot">  ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">GitLog</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Context</span> <span class="dt">String</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>logListField pluralName singularName style limit path <span class="ot">=</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>  listField pluralName ctx <span class="op">$</span> unsafeCompiler <span class="op">$</span> <span class="kw">do</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>    logs <span class="ot">&lt;-</span> getGitLog style limit path</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>    <span class="fu">return</span> <span class="op">$</span> <span class="fu">map</span> logItem logs</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a> <span class="kw">where</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a>  ctx <span class="ot">=</span> field singularName (<span class="fu">return</span> <span class="op">.</span> <span class="fu">show</span> <span class="op">.</span> itemBody)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a>  logItem <span class="fu">log</span> <span class="ot">=</span> <span class="dt">Item</span> (fromString <span class="op">$</span> path <span class="op">++</span> <span class="st">&quot;/log/&quot;</span> <span class="op">++</span> <span class="fu">log</span>) <span class="fu">log</span></span></code></pre></div>
 <p>The result of adding this code, and then inserting it into the template context, is that I have a new template variable that I can loop over, for each log item. The practical use is fairly limited, but I like it because it adds a certain flavour to the site. Later on I will try to use a parser combinator library to be able to present the different parts of the log with more control.</p>
 <p>In any case, I’ve enjoyed playing around with Haskell in order to deploy this site, and I’m looking forward to seeing what else I can build with the language. It’s truly fascinating.</p>
 <section class="footnotes" role="doc-endnotes">
