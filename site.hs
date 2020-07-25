@@ -100,10 +100,36 @@ logListField pluralName singularName style limit path =
 
 --------------------------------------------------------------------------------
 
+type FeedRenderer
+  =  FeedConfiguration
+  -> Context String
+  -> [Item String]
+  -> Compiler (Item String)
+
+feedConfiguration :: FeedConfiguration
+feedConfiguration = FeedConfiguration
+  { feedTitle       = "mrlee.dev"
+  , feedDescription = "Special topics in calamity software dev"
+  , feedAuthorName  = "Lee Machin"
+  , feedAuthorEmail = "www@mrlee.dev"
+  , feedRoot        = "https://www.mrlee.dev"
+  }
+
+feedCtx :: Context String
+feedCtx = postCtx <> bodyField "description"
+
+feedCompiler renderer =
+  renderer feedConfiguration feedCtx
+    =<< fmap (take 10)
+    .   recentFirst
+    =<< loadAllSnapshots "posts/*" "content"
+
+--------------------------------------------------------------------------------
+
 postCtx :: Context String
 postCtx =
   field "size" (return . show . length . itemBody)
-    <> ertField "ert" "posts-content"
+    <> ertField "ert" "prerendered-content"
     <> dateField "date" "%B %e, %Y"
     <> dropIndexHtml "url"
     <> defaultContext
@@ -127,13 +153,6 @@ main = do
       route idRoute
       compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
-      route $ setExtension "html"
-      compile
-        $   pandocCompiler
-        >>= loadAndApplyTemplate "templates/default.html" defaultContext
-        >>= relativizeUrls
-
     matchMetadata
         "posts/**"
         (\m -> isDevelopment || lookupString "status" m == Just "published")
@@ -146,10 +165,19 @@ main = do
             `composeRoutes` appendIndex
           compile
             $   pandocCompiler
-            >>= saveSnapshot "posts-content"
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= saveSnapshot "prerendered-content"
+            >>= loadAndApplyTemplate "templates/post.html" postCtx
+            >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
+
+    create ["atom.xml"] $ do
+      route idRoute
+      compile $ feedCompiler renderAtom
+
+    create ["rss.xml"] $ do
+      route idRoute
+      compile $ feedCompiler renderRss
 
     create ["archive/index.html"] $ do
       route idRoute
