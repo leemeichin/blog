@@ -23,6 +23,14 @@ import           System.FilePath.Posix          ( (</>)
 
 --------------------------------------------------------------------------------
 
+config :: Configuration
+config = defaultConfiguration
+  { deployCommand = "scp _site/* deploy@nexus.mrlee.dev:/var/www/www.mrlee.dev"
+  }
+
+
+--------------------------------------------------------------------------------
+
 (//) :: Int -> Int -> Float
 (//) = (/) `on` fromIntegral
 
@@ -143,7 +151,7 @@ main = do
   compilerEnv <- lookupEnv "HAKYLL_ENV"
   let isDevelopment = compilerEnv == Just "development"
 
-  hakyllWith defaultConfiguration $ do
+  hakyllWith config $ do
 
     match "images/*" $ do
       route idRoute
