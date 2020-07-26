@@ -1,0 +1,39 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - site.hs
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    mkdir -p ~/.local/bin
+    curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+  displayName: Install Stack
+
+- task: Cache@2
+  inputs:
+    key: 'stack.yaml.lock'
+    path: '.stack-work'
+    restoreKeys: |
+      stack.yaml
+
+- script: |
+    export PATH=$HOME/.local/bin:$PATH
+    stack --no-terminal --install-ghc test --only-dependencies
+  displayName: Build Dependencies
+
+- script: |
+    export PATH=$HOME/.local/bin/$PATH
+    stack install --local-bin-path $(Pipeline.Workspace)
+  displayName: Build Site Executable
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)/site'
+    artifact: 'site'
+    publishLocation: 'pipeline'
