@@ -1,10 +1,10 @@
 trigger:
   branches:
     include:
-      - master
+    - master
   paths:
     include:
-      - site.hs
+    - site.hs
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -17,23 +17,35 @@ steps:
 
 - task: Cache@2
   inputs:
-    key: 'stack.yaml.lock'
-    path: '.stack-work'
-    restoreKeys: |
-      stack.yaml
+    key: 'stack | root'
+    path: .stack/
+    cacheHitVar: 'STACK_SNAPSHOT_RESTORED'
+
+- task: Cache@2
+  inputs:
+    key: 'stack | stack.yaml.lock'
+    path: .stack-work/
+    cacheHitVar: 'STACK_DEPS_RESTORED'
 
 - script: |
     export PATH=$HOME/.local/bin:$PATH
-    stack --no-terminal --install-ghc test --only-dependencies
+    stack --no-terminal --stack-root $(System.DefaultWorkingDirectory)/.stack setup
+  displayName: Build Snapshot
+  condition: ne(variables.STACK_SNAPSHOT_RESTORED, 'true')
+
+- script: |
+    export PATH=$HOME/.local/bin:$PATH
+    stack --no-terminal --stack-root  $(System.DefaultWorkingDirectory)/.stack build
   displayName: Build Dependencies
+  condition: ne(variables.STACK_DEPS_RESTORED, 'true')
 
 - script: |
     export PATH=$HOME/.local/bin/$PATH
-    stack install --local-bin-path $(Pipeline.Workspace)
+    stack --no-terminal --stack-root $(System.DefaultWorkingDirectory)/.stack install --local-bin-path $(Build.ArtifactStagingDirectory)/bin
   displayName: Build Site Executable
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)/site'
+    targetPath: '$(Build.ArtifactStagingDirectory)/bin'
     artifact: 'site'
     publishLocation: 'pipeline'
