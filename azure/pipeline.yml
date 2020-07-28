@@ -12,11 +12,13 @@ jobs:
       curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
     displayName: Install Stack
   - task: Cache@2
+    displayName: Cache Stack/GHC snapshot
     inputs:
       key: 'stack | root'
       path: .stack/
       cacheHitVar: 'STACK_SNAPSHOT_RESTORED'
   - task: Cache@2
+    displayName: Cache local stack deps
     inputs:
       key: 'stack | stack.yaml.lock'
       path: .stack-work/
@@ -37,6 +39,7 @@ jobs:
     displayName: Build Site Executable
     condition: ne(variables.SITE_BIN_RESTORED, 'true')
   - task: PublishBuildArtifacts@1
+    displayName: Save static site binary
     inputs:
       pathToPublish: $(Build.BinariesDirectory)
       artifactName: site
@@ -55,8 +58,9 @@ jobs:
       chmod +x $(System.DefaultWorkingDirectory)/site/site
       export HAKYLL_ENV=development
       site build
-    displayName: Build Static Site
+    displayName: Build with draft posts
   - task: PublishPipelineArtifact@1
+    displayName: Publish draft site artifact
     inputs:
       targetPath: '_site'
       artifact: 'draft'
@@ -75,12 +79,14 @@ jobs:
       export PATH=$(System.DefaultWorkingDirectory)/site:$PATH
       chmod +x $(System.DefaultWorkingDirectory)/site/site
       site build
-    displayName: Build Static Site
+    displayName: Build with published posts
   - task: InstallSSHKey@0
+    displayName: Setup SSH
     inputs:
       knownHostsEntry: 'nexus.mrlee.dev,51.195.169.24 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOpVslp9zKHmQW02IqhM8rNWrFsohWUxLaLpU/aFNhr0B8L4ue0SAvRoKX6sPNbTiFnm7IsqPqR5Hu+Sjd4INqv1DkoMNH7e7idxeDqRInlXEX78XtJOUkXLLmlTgn0hANfXevw6YyMTWp2PWa/gh3Z+sLMMuJA2WorMnQ37uFdR3SbIxxssbio4FpPhbB1Kqf0BgXS+PbBNa7Lw4Fa0QdpGllg+1weEaA+JYA0ySO5lyDiAOXl5F8i82Un0QACywzjV6RlF2YLSDXtio9ma+Qrou85xmP3bG+HsiMu5LyI662NA1sy5/Bu4dVyyyoKbFFkczYxU2w3VNYMnv6+iH/'
       sshKeySecureFile: 'nexus_deploy'
   - task: CopyFilesOverSSH@0
+    displayName: Deploy to prod
     inputs:
       sshEndpoint: 'Nexus'
       sourceFolder: '_site/'
