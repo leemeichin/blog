@@ -44,6 +44,7 @@ steps:
 - script: |
     export PATH=$HOME/.local/bin:$PATH
     stack --no-terminal --stack-root $(System.DefaultWorkingDirectory)/.stack exec site build
+  displayName: Build Static Site
 
 - task: PublishPipelineArtifact@1
   inputs:
