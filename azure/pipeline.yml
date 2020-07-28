@@ -85,6 +85,6 @@ jobs:
       sshEndpoint: 'Nexus'
       sourceFolder: '_site/'
       contents: '**'
-      targetFolder: '/var/www/www.mrlee.dev/'
+      targetFolder: '/var/www/www.mrlee.dev'
       cleanTargetFolder: true
       readyTimeout: '20000'
