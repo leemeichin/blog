@@ -53,6 +53,7 @@ jobs:
   - script: |
       export PATH=$(System.DefaultWorkingDirectory)/site:$PATH
       chmod +x $(System.DefaultWorkingDirectory)/site/site
+      export HAKYLL_ENV=development
       site build
     displayName: Build Static Site
   - task: PublishPipelineArtifact@1
@@ -75,8 +76,11 @@ jobs:
       chmod +x $(System.DefaultWorkingDirectory)/site/site
       site build
     displayName: Build Static Site
-  - task: PublishPipelineArtifact@0
+  - task: CopyFilesOverSSH@0
     inputs:
-      targetPath: '_site'
-      artifact: 'published'
-      publishLocation: 'pipeline'
+      sshEndpoint: 'Nexus'
+      sourceFolder: '_site/'
+      contents: '**'
+      targetFolder: '/var/www/www.mrlee.dev/'
+      cleanTargetFolder: true
+      readyTimeout: '20000'
