@@ -76,7 +76,6 @@ jobs:
       chmod +x $(System.DefaultWorkingDirectory)/site/site
       site build
     displayName: Build Static Site
-
   - task: InstallSSHKey@0
     inputs:
       knownHostsEntry: 'nexus.mrlee.dev,51.195.169.24 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOpVslp9zKHmQW02IqhM8rNWrFsohWUxLaLpU/aFNhr0B8L4ue0SAvRoKX6sPNbTiFnm7IsqPqR5Hu+Sjd4INqv1DkoMNH7e7idxeDqRInlXEX78XtJOUkXLLmlTgn0hANfXevw6YyMTWp2PWa/gh3Z+sLMMuJA2WorMnQ37uFdR3SbIxxssbio4FpPhbB1Kqf0BgXS+PbBNa7Lw4Fa0QdpGllg+1weEaA+JYA0ySO5lyDiAOXl5F8i82Un0QACywzjV6RlF2YLSDXtio9ma+Qrou85xmP3bG+HsiMu5LyI662NA1sy5/Bu4dVyyyoKbFFkczYxU2w3VNYMnv6+iH/'
