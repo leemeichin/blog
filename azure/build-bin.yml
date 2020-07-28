@@ -2,9 +2,6 @@ trigger:
   branches:
     include:
     - master
-  paths:
-    include:
-    - site.hs
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -41,11 +38,14 @@ steps:
 
 - script: |
     export PATH=$HOME/.local/bin/$PATH
-    stack --no-terminal --stack-root $(System.DefaultWorkingDirectory)/.stack install --local-bin-path $(Build.ArtifactStagingDirectory)/bin
+    stack --no-terminal --stack-root $(System.DefaultWorkingDirectory)/.stack install
   displayName: Build Site Executable
+
+- script: |
+    export PATH=$HOME/.local/bin:$PATH
+    stack --no-terminal --stack-root $(System.DefaultWorkingDirectory)/.stack exec site build
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/bin'
-    artifact: 'site'
+    targetPath: '_site'
     publishLocation: 'pipeline'
