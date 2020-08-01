@@ -30,4 +30,4 @@ To bring it back to now: the beauty of listening, the sheer magnificence of it, 
 
 To wrap this up; sometimes the best, most enlightening conversations are the ones where you don't say anything.
 
-[^1]: https://coachingdevelopment.com/
+[^1]: <https://coachingdevelopment.com/>
