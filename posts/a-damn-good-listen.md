@@ -10,6 +10,7 @@ A couple of years ago I enrolled in a coaching course with Coaching Development[
 Out of all of the things I picked up during those five months, one of a few quotes still stands out with me:
 
 > Sometimes all somebody needs is a damn good listening to
+>
 > *Colin Brett, 2018*
 
 To be fair, the first thing I think of whenever I hear "damn good" anything is Special Agent Dale Cooper ordering a cherry pie and a coffee. But I hold Twin Peaks close to my heart; you won't find any other television like it.
@@ -27,3 +28,5 @@ The problem, if you haven't noticed it already, is that kind of approach only se
 To bring it back to now: the beauty of listening, the sheer magnificence of it, is that it helps build a truly priceless amount of trust and depth in your connection to the person sharing with you. It takes a lot to hear someone out without interjecting, but it also means a lot to receive it when you want to share too. Compassion and empathy are in short supply in general, yet they are ultimately powerful and transformative when offered.
 
 To wrap this up; sometimes the best, most enlightening conversations are the ones where you don't say anything.
+
+[^1]: https://coachingdevelopment.com/
