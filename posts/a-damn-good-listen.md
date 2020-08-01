@@ -13,6 +13,7 @@ Out of all of the things I picked up during those five months, one of a few quot
 >
 > *Colin Brett, 2018*
 
+
 To be fair, the first thing I think of whenever I hear "damn good" anything is Special Agent Dale Cooper ordering a cherry pie and a coffee. But I hold Twin Peaks close to my heart; you won't find any other television like it.
 
 Seriously though, I'm the sort of person who genuinely enjoys hearing people out. There are so many ways we as human beings can connect on this mortal coil--we can do it romantically, sexually, as friends or confidantes--and while I'm as fond of romance and carnal pleasures as anyone else is, there are few things more satisfying, more fulfilling, than a damn good listening session. It's essentially a meditation, except that you're clearing your mind of thoughts so that you can make space to to allow the other person's thoughts and feelings in, judgment free.
