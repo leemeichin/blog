@@ -22,6 +22,8 @@ For example, I was first diagnosed as clinically depressed back in 2010 after br
 
 He wasn't listening at all, he just took my extreme vulnerability and swapped it in for his own so he could go on about being a bad father. I must have spent more time listening to him and reassuring him, as if I just announced I had late stage cancer and had a few months to live.
 
+The problem, if you haven't noticed it already, is that kind of approach only serves to push someone away. Why would you share your most intimate feelings or secrets with someone if all they will do is turn it into a problem of their own? As if everything is about them and not about you?
+
 To bring it back to now: the beauty of listening, the sheer magnificence of it, is that it helps build a truly priceless amount of trust and depth in your connection to the person sharing with you. It takes a lot to hear someone out without interjecting, but it also means a lot to receive it when you want to share too. Compassion and empathy are in short supply in general, yet they are ultimately powerful and transformative when offered.
 
 To wrap this up; sometimes the best, most enlightening conversations are the ones where you don't say anything.
