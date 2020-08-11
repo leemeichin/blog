@@ -110,7 +110,7 @@ feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
   { feedTitle       = "mrlee.dev"
   , feedDescription = "Special topics in calamity software dev"
-  , feedAuthorName  = "Lee Machin"
+  , feedAuthorName  = "Lee Meichin"
   , feedAuthorEmail = "www@mrlee.dev"
   , feedRoot        = "https://www.mrlee.dev"
   }
