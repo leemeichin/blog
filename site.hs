@@ -130,7 +130,7 @@ postCtx :: Context String
 postCtx =
   field "size" (return . show . length . itemBody)
     <> ertField "ert" "prerendered-content"
-    <> dateField "date" "%B %e, %Y"
+    <> dateField "date" "%b %d, %Y"
     <> dropIndexHtml "url"
     <> defaultContext
 
