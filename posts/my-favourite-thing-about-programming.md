@@ -46,7 +46,7 @@ Moving on, there's Lisp. My familiarity with Lisp comes from customising my emac
 
 With emacs in particular, it made it trivially easy for me to launch a Rails console inside a deployed Kubernetes pod.
 
-```emacs-lisp
+```elisp
 (defun inf-ruby-console-k8s (env)
   (interactive (list (completing-read "Environment: "
                                       '("dev" "staging" "preprod") nil t)))
