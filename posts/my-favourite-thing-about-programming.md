@@ -64,4 +64,4 @@ One thing I've noticed while writing this is that each language selected has lit
 
 For as long as that remains true I think I'll always have new toys to play with.
 
-[0]: <http://raytracerchallenge.com/>
+[^0]: <http://raytracerchallenge.com/>
