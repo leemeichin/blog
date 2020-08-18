@@ -79,3 +79,6 @@
     margin-bottom: 2ch;
 }
 
+pre {
+    overflow-x: scroll;
+}
