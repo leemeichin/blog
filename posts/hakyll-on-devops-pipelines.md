@@ -133,11 +133,11 @@ The key to this step is the condition. This will run only if the `build` job was
 Time to put that binary I compiled to good use. It downloads it into the main working directory and I'll call it directly in a later step. The executable is self-contained (or otherwise dynamically links stuff the image already has), so I don't need to pull down Stack/GHC stuff again.
 
 ```yaml
- - script: |
+- script: |
       export PATH=$(System.DefaultWorkingDirectory)/site:$PATH
       chmod +x $(System.DefaultWorkingDirectory)/site/site
       site build
-    displayName: Build with published posts
+  displayName: Build with published posts
 ```
 
 This is the same as running `stack exec site build` on my local machine. It compiles the static site, so finally I'll have a new version to upload.
