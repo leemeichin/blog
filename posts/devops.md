@@ -5,7 +5,7 @@ status: published
 category: programming
 ---
 
-I recently left a healthcare company called Bablyon a few weeks back. Of all the things I enjoyed there, and the things that made it unique, one has to be how it has managed to dance across the line between startup and enterprise. I don't mean to say 'enterprise' in a perjorative sense; it's more that you can't really avoid that when you're working in a heavily regulated and audited sector. Mistakes can be literally life or death, and the data collected over time includes people's medical information and health records. There really isn't any room for fucking about, but that doesn't mean that other business functions have to be so serious.
+I recently left a healthcare company called Babylon a few weeks back. Of all the things I enjoyed there, and the things that made it unique, one has to be how it has managed to dance across the line between startup and enterprise. I don't mean to say 'enterprise' in a perjorative sense; it's more that you can't really avoid that when you're working in a heavily regulated and audited sector. Mistakes can be literally life or death, and the data collected over time includes people's medical information and health records. There really isn't any room for fucking about, but that doesn't mean that other business functions have to be so serious.
 
 Enterprise might not be the best word, but it's the only one I have right now, and nevertheless I took a few valuable lessons away from the experience that I now find it quite strange to be without.
 
