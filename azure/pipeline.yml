@@ -62,6 +62,7 @@ jobs:
     displayName: Setup SSH
     inputs:
       knownHostsEntry: '$(NexusKnownHost)'
+      sshPublicKey: '$(NexusPublicKey)'
       sshKeySecureFile: 'nexus_deploy'
   - task: CopyFilesOverSSH@0
     displayName: Deploy to prod
