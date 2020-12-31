@@ -11,32 +11,31 @@ I presume you've seen this kind of puzzle before: there is a lock that requires 
 
 ---
 
-<pre style="text-align:center>
-
+<div style="text-align: center">
 **CAN YOU CRACK THE CODE?**
 
-🔐 _ _ _ _        
+🔐 \_ \_ \_ \_
 
-__9__ __2__ __8__ __5__  
+**9** **2** **8** **5**  
 One number is correct, but in the wrong place.
 
-__1__ __9__ __3__ __7__  
-Two numbers are correct, but in the wrong place.
-                  
-__5__ __2__ __0__ __1__  
-One number is correct, and is in the right place.
-                  
-__6__ __5__ __0__ __7__  
-None of the numbers are correct, in any place.
-                  
-__8__ __5__ __0__ __4__  
+**1** **9** **3** **7**  
 Two numbers are correct, but in the wrong place.
 
-</pre>
+**5** **2** **0** **1**  
+One number is correct, and is in the right place.
+
+**6** **5** **0** **7**  
+None of the numbers are correct, in any place.
+
+**8** **5** **0** **4**  
+Two numbers are correct, but in the wrong place.
+
+</div>
 
 ---
 
-### A brief introduction
+## A brief introduction
 
 If you're unaware of Prolog, it's a _logical progamming_ language that, in its most simplest terms, takes a bunch of facts and rules and then gives you the tools to query them to get the outcome you want. In more complicated terms, a cursory search on the intertubes will lead you to a vast collection of academic papers that explain more. This is not the kind of language that is casually blogged about by the masses, as with more mainstream ones like CSS, HTML, or ColdFusion.
 
@@ -44,7 +43,7 @@ If you're unaware of Prolog, it's a _logical progamming_ language that, in its m
 >
 > Dennis Merritt, _Adventure in Prolog_, 2017[^0].
 
-Mr Merritt is, to put it professionally, damn right. Here's a valid Prolog program:
+Mr Merritt is, to put it professionally, **god damn right**. Here's a valid Prolog program:
 
 ```prolog
 % https://swish.swi-prolog.org/p/KfdGtcJr.swinb
@@ -95,34 +94,33 @@ president(X), person(X). % trump, obama.
 
 This is more or less the essence of Prolog, and your program is essentially a database of facts and rules, and then you use the program by querying those facts and rules. You'll make a query by providing what you _do_ know, and then placing a variable (or a placeholder) in the spots where you don't know the answer. You don't tell Prolog how exactly to compute that answer. And with that explained, I think we can try and crack this code.
 
-### Doing some l33t haxx0ring
+## Doing some l33t haxx0ring
 
 Here's the puzzle again, for reference:
 
 ---
 
-<pre style="text-align:center>
-
+<div style="text-align: center">
 **CAN YOU CRACK THE CODE?**
 
-🔐 _ _ _ _        
+🔐 \_ \_ \_ \_
 
-__9__ __2__ __8__ __5__  
+**9** **2** **8** **5**  
 One number is correct, but in the wrong place.
 
-__1__ __9__ __3__ __7__  
-Two numbers are correct, but in the wrong place.
-                  
-__5__ __2__ __0__ __1__  
-One number is correct, and is in the right place.
-                  
-__6__ __5__ __0__ __7__  
-None of the numbers are correct, in any place.
-                  
-__8__ __5__ __0__ __4__  
+**1** **9** **3** **7**  
 Two numbers are correct, but in the wrong place.
 
-</pre>
+**5** **2** **0** **1**  
+One number is correct, and is in the right place.
+
+**6** **5** **0** **7**  
+None of the numbers are correct, in any place.
+
+**8** **5** **0** **4**  
+Two numbers are correct, but in the wrong place.
+
+</div>
 
 ---
 
@@ -266,16 +264,15 @@ write('The fourth number is: '), write(D), write('\n').
 
 The exercise of writing that in a less brute-force manner is left to you, my beloved reader.
 
----
-
-# The grand finale
+## The grand finale
 
 So ends 2020, so ends this post. Did your brain-grown answer match the one this Prolog program gave you? What do you think about logic programming in general now you've seen some of it? Why not share it with your friends or whoever, if they're interested, and see what they think?
 
-Mad propz to the Prolog community on Reddit also, whose example solutions helped point me in the right direction [^4].
+Mad propz to the Prolog community on Reddit also, whose example solutions helped point me in the right direction [^5].
 
 [^0]: <https://amzi.com/AdventureInProlog/a1start.php> (buy the book, srlsy...)
 [^1]: <https://swish.swi-prolog.org/p/KfdGtcJr.swinb>
 [^2]: <https://mitpress.mit.edu/books/art-prolog-second-edition>
 [^3]: <https://www.swi-prolog.org/man/clpfd.html>
-[^4]: <https://www.reddit.com/r/prolog/comments/fzww7m/cracking_this_puzzle_with_prolog/>
+[^4]: <https://swish.swi-prolog.org/p/MgtEUnSv.swinb>
+[^5]: <https://www.reddit.com/r/prolog/comments/fzww7m/cracking_this_puzzle_with_prolog/>
