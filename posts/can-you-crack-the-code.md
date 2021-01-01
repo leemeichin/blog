@@ -58,9 +58,9 @@ person(trump).
 person(obama).
 ```
 
-What we have here are some facts, both true and technically true. It's a fact that Obama is a president, as is Trump. It's also a fact that there is a brand of cheese in the UK called President. This is quite ambiguous as a result so some extra facts are supplied, namely that bbrie is a cheese as much as it is a President Brie, and that Wensleydale is also a cheese. It goes without saying that Trump and Obama are people, so with those facts we should be able to do some querying.
+What we have here are some facts, both true and technically true. It's a fact that Obama is a president, as is Trump. It's also a fact that there is a brand of cheese in the UK called President. This is quite ambiguous as a result so some extra facts are supplied, namely that brie is a cheese as much as it is a President-brand cheese, and that Wensleydale is also a cheese. It goes without saying that Trump and Obama are people, so with those facts we should be able to do some querying.
 
-If you're doing this on your own machine, you can save those facts into a file (say, `example.pl`) and then importing it thus: `[example].` inside a console. Otherwise, you can load up the Swish notebook[^1] and follow along using an online console, no installation needed!
+If you're doing this on your own machine, you can save those facts into a file (say, `example.pl`) and then importing it inside a console, like so: `[example].`. Otherwise, you can load up the Swish notebook[^1] and follow along using an online console, no installation needed!
 
 Let's do some querying then, which will show you how Prolog might seem a bit back to front compared to what you're used to.
 
@@ -124,8 +124,6 @@ Two numbers are correct, but in the wrong place.
 
 ---
 
-Try and solve it yourself first, so you've got an answer to check against. You can either use the same notebook from the intro for this, or make a new one yourself. What we're going to do now is write the rules and facts that will lead us to a solution to this puzzle.
-
 According to Leon Sterling and Ehud Shapiro in _The Art of Prolog_[^2], this type of problem falls quite neatly under the umbrella of non-deterministic programming. This is because we're essentially going to build an algorithm that will use what they describe as a `generate and test` solution. We're going to write something that will take our clues and run through all the possible answers until it lands on the only one that fits. We're not aiming for beautiful optimisation here so this good enough, although the code we write will be tightly coupled to the exact puzzle provided.
 
 So, let's begin with our set of rules:
@@ -140,7 +138,7 @@ clue_4([6, 5, 0, 7]). % none of the numbers are correct, anywhere
 clue_5([8, 5, 2, 4]). % two numbers are correct, but in the wrong place
 ```
 
-<small>If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on _Constraint Logic Programming over Finite Domains_[^3].</small>
+<small>If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on <em>Constraint Logic Programming over Finite Domains</em>[^3].</small>
 
 These clues don't really mean anything by themselves, they're simple facts in Prolog terms, so we need to add a bit more to give these some meaning. All of this will go into the same file, as we're not ready to query yet.
 
