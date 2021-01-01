@@ -108,7 +108,7 @@ type FeedRenderer
 
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
-  { feedTitle       = "kamelasa.dev"
+  { feedTitle       = "kamelåså"
   , feedDescription = "Special topics in calamity something or other"
   , feedAuthorName  = "Lee Meichin"
   , feedAuthorEmail = "www@mrlee.dev"
