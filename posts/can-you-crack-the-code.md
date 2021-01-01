@@ -70,11 +70,11 @@ president(trump). % true.
 
 So far, so boring. We stated `president(trump)` as a fact in our first prolog file, so this is basically confirming that we did so. Let's spice it up a little.
 
-<small>(With the online editor you can click 'Next' to see all of the results, and in the console you can type `;`. This can be done repeatedly until the input ends with `.`, which says there are no more facts that fit the query.)</small>
-
 ```prolog
 president(X). % trump; obama; brie.
 ```
+
+<aside>With the online editor you can click 'Next' to see all of the results, and in the console you can type `;`. This can be done repeatedly until the input ends with `.`, which says there are no more facts that fit the query)</aside>
 
 The fuck? What is `X`?
 
@@ -138,7 +138,7 @@ clue_4([6, 5, 0, 7]). % none of the numbers are correct, anywhere
 clue_5([8, 5, 2, 4]). % two numbers are correct, but in the wrong place
 ```
 
-<small>If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on <em>Constraint Logic Programming over Finite Domains</em>[^3].</small>
+<aside>If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on <em>Constraint Logic Programming over Finite Domains</em>[^3].</aside>
 
 These clues don't really mean anything by themselves, they're simple facts in Prolog terms, so we need to add a bit more to give these some meaning. All of this will go into the same file, as we're not ready to query yet.
 
@@ -156,7 +156,7 @@ wrong(Digit, [D|Ds]) :- Digit #\= D, wrong(Digit, Ds).
 
 I'll leave the in-depth explanation of these rules to another post for the sake of brevity, and also because I'm not that much of a Prolog expert. These are all used to add meaning to the facts, as with these rules we can now define logic such as _one number is correct but in the wrong position_, and _none of the numbers are correct_. We just have to painstakingly mix and match them.
 
-The next bit is quite long, but this query is where we make the sausage. Commentary will be written inline for ease of copy and paste, until I come back and edit this post with a more digestible version. <small>(Note to self: do this)</small>.
+The next bit is quite long, but this query is where we make the sausage. Commentary will be written inline for ease of copy and paste, until I come back and edit this post with a more digestible version.
 
 ```prolog
 crack_code(Code) :-

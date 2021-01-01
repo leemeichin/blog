@@ -1,84 +1,117 @@
 @media screen and (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #222225;
-        --font-color: #e8e9ed;
-        --invert-font-color: #222225;
-        --secondary-color: #a3abba;
-        --tertiary-color: #a3abba;
-        --primary-color: #62c4ff;
-        --error-color: #ff3c74;
-        --progress-bar-background: #3f3f44;
-        --progress-bar-fill: #62c4ff;
-        --code-bg-color: #3f3f44;
-    }
+  :root {
+    --background-color: #222225;
+    --font-color: #e8e9ed;
+    --invert-font-color: #222225;
+    --secondary-color: #a3abba;
+    --tertiary-color: #a3abba;
+    --primary-color: #62c4ff;
+    --error-color: #ff3c74;
+    --progress-bar-background: #3f3f44;
+    --progress-bar-fill: #62c4ff;
+    --code-bg-color: #3f3f44;
+  }
+}
+
+@font-face {
+  font-family: Cascadia Code, monospace;
+  src: url(fonts/cascadia-code.woff2) format("woff2");
+  font-display: optional;
+}
+
+:root {
+  --font-stack: Cascadia Code, monospace;
+  --mono-font-stack: Cascadia Code, monospace;
 }
 
 .borderless {
-    border: none !important;
+  border: none !important;
 }
 
 .borderless tr {
-    border: none;
+  border: none;
 }
 
-.borderless td { 
-    border: none;
+.borderless td {
+  border: none;
 }
 
 .borderless .file-permission {
-    width: 12ch;
+  width: 12ch;
 }
 
 .borderless .user {
-    width: 6ch;
+  width: 6ch;
 }
 
 .borderless .group {
-    width: 5ch;
+  width: 5ch;
 }
 
 .borderless .size {
-    width: 5ch;
+  width: 5ch;
 }
 
 .borderless .date {
-    width: 16ch;
+  width: 16ch;
 }
 
 .header {
-    margin-bottom: 2ch;
+  margin-bottom: 2ch;
 }
 
 .title {
-    padding-left: 1ch;
-    padding-right: 1ch;
-    color: inherit !important;
-    display: inline-block;
-    margin-bottom: 0;
+  padding-left: 1ch;
+  padding-right: 1ch;
+  color: inherit !important;
+  display: inline-block;
+  margin-bottom: 0;
 }
 
 .ert {
-    color: var(--error-color);
-    background-color: var(--background-color);
-    float: right;
-    padding-right: 1ch;
-    padding-left: 1ch;
+  color: var(--error-color);
+  background-color: var(--background-color);
+  float: right;
+  padding-right: 1ch;
+  padding-left: 1ch;
 }
 
 [role="doc-endnote"] > p {
-    display: inline;
+  display: inline;
 }
 
 .inverse-video {
-    color: var(--invert-font-color) !important;
-    background-color: var(--font-color) !important;
+  color: var(--invert-font-color) !important;
+  background-color: var(--font-color) !important;
 }
 
 .modeline {
-    margin-top: 6ch;
-    margin-bottom: 2ch;
+  margin-top: 6ch;
+  margin-bottom: 2ch;
+}
+
+aside {
+  color: var(--tertiary-color);
+  font-style: italic;
+  font-size: 85%;
+  margin-bottom: 2ch;
+  opacity: 0.5;
+}
+
+aside em {
+  font-style: normal;
+  font-weight: inherit;
+}
+
+aside:hover {
+  opacity: 1;
+}
+
+aside::before {
+  content: "💡";
+  font-style: normal;
 }
 
 pre {
-    overflow-x: scroll;
+  overflow-x: scroll;
 }
