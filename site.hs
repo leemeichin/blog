@@ -108,11 +108,11 @@ type FeedRenderer
 
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
-  { feedTitle       = "mrlee.dev"
-  , feedDescription = "Special topics in calamity software dev"
+  { feedTitle       = "kamelasa.dev"
+  , feedDescription = "Special topics in calamity something or other"
   , feedAuthorName  = "Lee Meichin"
   , feedAuthorEmail = "www@mrlee.dev"
-  , feedRoot        = "https://www.mrlee.dev"
+  , feedRoot        = "https://www.kamelasa.dev"
   }
 
 feedCtx :: Context String
@@ -136,6 +136,14 @@ postCtx =
 
 --------------------------------------------------------------------------------
 
+config :: Configuration
+config = defaultConfiguration
+  { destinationDirectory = "www"
+  , inMemoryCache = True
+  }
+
+--------------------------------------------------------------------------------
+
 main :: IO ()
 main = do
   E.setLocaleEncoding E.utf8
@@ -143,7 +151,7 @@ main = do
   compilerEnv <- lookupEnv "HAKYLL_ENV"
   let isDevelopment = compilerEnv == Just "development"
 
-  hakyllWith defaultConfiguration $ do
+  hakyllWith config $ do
 
     match "images/*" $ do
       route idRoute
