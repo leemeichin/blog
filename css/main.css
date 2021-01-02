@@ -14,14 +14,14 @@
 }
 
 @font-face {
-  font-family: Cascadia Code, monospace;
-  src: url(fonts/cascadia-code.woff2) format("woff2");
+  font-family: "Cascadia Code", monospace;
+  src: url(/fonts/cascadia.woff2) format("woff2");
   font-display: optional;
 }
 
 :root {
-  --font-stack: Cascadia Code, monospace;
-  --mono-font-stack: Cascadia Code, monospace;
+  --font-stack: "Cascadia Code", monospace;
+  --mono-font-stack: "Cascadia Code", monospace;
 }
 
 .borderless {
