@@ -14,9 +14,12 @@
 }
 
 @font-face {
-  font-family: "Cascadia Code", monospace;
-  src: url(/fonts/cascadia.woff2) format("woff2");
-  font-display: optional;
+  font-family: "Cascadia Code";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/cascadia.woff2) format("woff2"),
+    url(/fonts/cascadia.woff) format("woff");
+  font-display: swap;
 }
 
 :root {
