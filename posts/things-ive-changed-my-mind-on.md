@@ -37,7 +37,7 @@ This will probably come across as a bunch of hot takes that work better on Twitt
 
 - Not every people problem can be solved with technology.
 
-  _Automate everything away and you strip away the humanity._
+  _Automate everything away and you have no humanity left._
 
 - My greatest learning moments came from maintenance programming and working with legacy code, rather than building new features.
 
@@ -49,7 +49,7 @@ This will probably come across as a bunch of hot takes that work better on Twitt
 
 - Technology isn't invalidated by its age, it is strengthened by it.
 
-  _I occasionally here people saying things like people don't use Rails any more because it's old and serverless or some shit is the hype. Don't use hype as the foundation for your business, use stability._
+  _I occasionally hear people saying things like people don't use Rails any more because it's old and serverless or some shit is the hype. Don't use hype as the foundation for your business, use stability._
 
 - You can write much better code if you don't micro-manage the structure of it; be judicious with your linters and formatters.
 
@@ -60,6 +60,7 @@ This will probably come across as a bunch of hot takes that work better on Twitt
   _The sort of feedback you can give in a pull request is not of the same quality you can get with a conversation held before committing code._
 
 - It's better when I'm not sentimental about the code I write or the ideas I present.
+
   _Rejection isn't always so easy to handle, but there's always another time and a 'no' is still better than not being acknowledged at all. It's a great opportunity for constructive feedback and learning._
 
 It feels a bit weird to write out a series of arbitrary maxims the way I just have, so I'll aim to explore each one in more depth throughout this year. With that said, it was an interesting exercise if ultimately a rather shallow one. Watch this space for more details.
