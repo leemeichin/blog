@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@cycle/dom": "^22.8.0",
-    "@cycle/http": "^15.4.0",
-    "@cycle/run": "^5.5.0",
-    "xstream": "^11.14.0"
-  }
-}
