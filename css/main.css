@@ -17,8 +17,7 @@
   font-family: "Cascadia Code";
   font-style: normal;
   font-weight: 400;
-  src: local('Cascadia Code'), 
-    url(/fonts/cascadia.woff2) format("woff2"),
+  src: local("Cascadia Code"), url(/fonts/cascadia.woff2) format("woff2"),
     url(/fonts/cascadia.woff) format("woff");
   font-display: swap;
 }
@@ -28,8 +27,13 @@
   --mono-font-stack: "Cascadia Code", monospace;
 }
 
-.github-link {
+.github-link,
+.analytics-link {
   height: 24px !important;
+}
+
+.analytics-logo {
+  stroke: var(--font-color);
 }
 
 .github-logo {
