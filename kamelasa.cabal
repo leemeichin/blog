@@ -4,7 +4,7 @@ build-type:         Simple
 cabal-version:      >= 1.10
 
 executable kamelasa
-  main-is:          site.hs
+  main-is:          kamelasa.hs
   build-depends:    base == 4.*
                   , hakyll == 4.13.*
                   , filepath == 1.4.*
