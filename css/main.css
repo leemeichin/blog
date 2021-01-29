@@ -27,17 +27,14 @@
   --mono-font-stack: "Cascadia Code", monospace;
 }
 
-.github-link,
-.analytics-link {
-  height: 24px !important;
+.icon-link {
+  height: 18px !important;
 }
 
-.analytics-logo {
+.icon-img {
   stroke: var(--font-color);
-}
-
-.github-logo {
-  fill: var(--font-color);
+  width: 18px;
+  height: 18px;
 }
 
 .borderless {
