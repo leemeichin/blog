@@ -1,0 +1,5 @@
+image: alpine/edge
+sources:
+  - https://git.sr.ht/~mrlee/www.kamelasa.dev
+packages:
+  - rsync

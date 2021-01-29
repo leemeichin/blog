@@ -1,3 +1,10 @@
 .stack-work
 _cache
 www
+
+debian/files
+debian/debhelper-build-stamp
+debian/kamelasa.debhelper.log
+debian/kamelasa.substvars
+debian/kamelasa
+debian/.debhelper

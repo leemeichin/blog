@@ -1,9 +1,9 @@
-name:               www-mrlee-dev
-version:            0.1.0.0
+name:               kamelasa
+version:            0.1.0
 build-type:         Simple
 cabal-version:      >= 1.10
 
-executable site
+executable kamelasa
   main-is:          site.hs
   build-depends:    base == 4.*
                   , hakyll == 4.13.*
