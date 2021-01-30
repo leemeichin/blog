@@ -1,0 +1,14 @@
+image: debian/buster
+sources:
+  - https://git.sr.ht/~mrlee/www.kamelasa.dev
+repositories:
+  pkg.kamelasa.dev: https://pkg.kamelasa.dev stable main AF64D0CACF52D41C
+packages:
+  - kamelasa
+secrets:
+  - f74304b4-9735-47a4-9d23-6d9fd7c47f1a
+tasks:
+  - publish: |
+      cd www.kamelasa.dev
+      kamelasa build
+      scp -r www/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev/
