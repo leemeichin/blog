@@ -11,4 +11,4 @@ tasks:
   - publish: |
       cd www.kamelasa.dev
       kamelasa build
-      scp -r www/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev/
+      scp -o StrictHostKeyChecking=no -r www/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev
