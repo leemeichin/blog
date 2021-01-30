@@ -2,7 +2,7 @@ image: debian/buster
 sources:
   - https://git.sr.ht/~mrlee/www.kamelasa.dev
 repositories:
-  pkg.kamelasa.dev: https://pkg.kamelasa.dev stable main AF64D0CACF52D41C
+  pkg.kamelasa.dev: https://pkg.kamelasa.dev unstable main AF64D0CACF52D41C
 packages:
   - kamelasa
 secrets:
