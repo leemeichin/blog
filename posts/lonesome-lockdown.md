@@ -2,7 +2,7 @@
 title: Lonesome lockdown
 category: personal
 date: 2021-02-19
-status: published
+status: draft
 ---
 
 As I write this, I'm thirty-three years old and the last twelve months of my life, like _many_ others, has been spent in some form of quarantine thanks to COVID-19. This isn't a woeful tale about life in the pandemic, though, and it's not a feel-good story about coming together in hard times. It's about intimacy, connection, and love.
