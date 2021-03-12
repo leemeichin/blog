@@ -1,5 +1,9 @@
 <ul>
     $for(logs)$
-    <li>$log$</li>
+    <li class="git-log">
+      <a href="https://git.sr.ht/~mrlee/www.kamelasa.dev/commit/$commit$">$commit$</a>
+      <span class="commit-msg">$message$</span>
+      <time class="commit-time" datetime="$date$">($date$)</time>
+    </li>
     $endfor$
 </ul>

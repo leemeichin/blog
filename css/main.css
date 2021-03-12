@@ -128,3 +128,15 @@ aside::before {
 pre {
   overflow-x: scroll;
 }
+
+.git-log {
+  display: flex;
+}
+
+.commit-msg {
+  margin-left: 1ch;
+}
+
+.commit-time {
+  margin-left: auto;
+}
