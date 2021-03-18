@@ -1,10 +1,15 @@
 <article>
-    <header class="header inverse-video">
-        <h2 class="title">$title$</h2>
-        <span class="ert">~$ert$ min. read</span>
-    </header>
+  <header class="header inverse-video">
+    <h2 class="title">$title$</h2>
+    <span class="ert">~$ert$ min. read</span>
+  </header>
 
-    <section>
-        $body$
-    </section>
+  <section>$body$</section>
+
+  <hr />
+
+  <section>
+    <h3>Changelog</h3>
+    $partial("templates/git-log.html")$
+  </section>
 </article>
