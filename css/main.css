@@ -13,18 +13,11 @@
   }
 }
 
-@font-face {
-  font-family: "Cascadia Code";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Cascadia Code"), url(/fonts/cascadia.woff2) format("woff2"),
-    url(/fonts/cascadia.woff) format("woff");
-  font-display: swap;
-}
-
 :root {
-  --font-stack: "Cascadia Code", monospace;
-  --mono-font-stack: "Cascadia Code", monospace;
+  --font-stack: ui-monospace, "Cascadia Mono", "Segoe UI Mono",
+    "Liberation Mono", Menlo, Monaco, Consolas, monospace;
+  --mono-font-stack: ui-monospace, "Cascadia Mono", "Segoe UI Mono",
+    "Liberation Mono", Menlo, Monaco, Consolas, monospace;
 }
 
 .icon-link {
