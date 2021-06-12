@@ -82,6 +82,12 @@
   padding-left: 1ch;
 }
 
+.post-date {
+  float: right;
+  padding-right: 1ch;
+  padding-left: 1ch;
+}
+
 [role="doc-endnote"] > p {
   display: inline;
 }
@@ -118,10 +124,6 @@ aside::before {
   font-style: normal;
 }
 
-pre {
-  overflow-x: scroll;
-}
-
 .git-log {
   display: flex;
 }
@@ -132,4 +134,13 @@ pre {
 
 .commit-time {
   margin-left: auto;
+}
+
+pre {
+  display: block;
+}
+
+:target {
+  font-weight: bold;
+  text-decoration: underline;
 }

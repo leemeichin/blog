@@ -1,0 +1,87 @@
+#lang pollen
+
+◊define-meta[title]{To simpler times}
+◊define-meta[date]{2021-01-30}
+◊define-meta[published #t]
+◊define-meta[category]{programming}
+
+I previously wrote about how this site was built◊^[1] and then deployed◊^[2]. I'm quite happy experimenting with how I set up this whole shebang because I can learn a lot from it and the worst that happens is that the site goes down for half an hour. The stakes are low.
+
+You might tell from the design that I'm trying to keep things basic. The most outrageous things on the entire site are two SVG icons, a CSS animation, an embedded font, and poor mobile responsiveness. Oh, and one added script for site stats that you are able to look at yourself◊^[3] (I just want to see which posts get more traction than others, is all).
+
+The thing about the build and deploy process, and I was well aware of it at the time, is that it is wildly overcomplicated. In fact, I imagine a lot of our new processes are more complicated than they need to be, as cloud providers and SaaS compete for developer mindshare and hook people into various novel solutions to highly specific problems.
+
+I've tripped up on this a few times lately because I was locked into a certain way of thinking that all of these various YAML-powered workflows and automated pipelines force you into. They're barely declarative solutions, but about as close to 'no code' as you can get for a seasoned engineer who should be able to find their way around a shell script or two.
+
+The first issue was how this site is built. Hakyll is a library for building a static site generator (SSG), so you build your own program using Hakyll's functions, add in whatever else you want because it's a simple Haskell program, and then use the resulting binary to convert your markdowns and org-modes and LaTeXes (LaTiCeS?) into beautiful HTML.
+
+Naturally I had to keep this binary stored somewhere because re-running a 30+ minute build is a little bit wasteful (Hakyll pulls in pretty much ◊em{all} of Pandoc). At first, I gravitated towards using build caches in CI or temporary artifact stores, and so long as they didn't expire I wouldn't trigger a rebuild. Then there was some exploration around binary caches in Haskell, or using a service like bintray to host the file.
+
+Even though it worked it all felt a bit... manky. It's clearly not the way software has been distributed for a long time, and the idea of hopping from one SaaS to another on their free or open source accounts is just not a good one. But alas, that's where we find ourselves these days.
+
+I threw all of that out at one point and moved back over to GitHub Pages, because that's where my repo was. The last few posts here were published in a manner not so dissimilar to this:
+
+◊codeblock['bash]{
+  emacs posts/my-new-post.md &
+  # write the damn post
+  git add posts/my-new-post.md
+  git commit -m 'add post...'
+  git push
+  stack exec site build # dumps output into www
+  mv www ../blah2
+  git co deploy
+  cp -r ../blah2/* .
+  git add .
+  git commit -m 'deploy'
+  git push
+  git co main
+  # find typo
+  git add .
+  git commit --amend --no-edit
+  git push -f
+  stack exec site build
+  #.........
+}
+
+It's not the worst thing ever, except that if I switch to a different computer, like my laptop, I have to do a lot of setup to be able to write and deploy. I'd rather focus on my writing and automate the rest of it away, which brings us back to CI and complication.
+
+So, back to basics!
+
+The site has moved once again, back to a VPS hosted somewhere in the UK. Caddy◊^[4] is doing the hard work as an elegant alternative to nginx or apache and for simple setups you can't really go wrong with it if you just want a server with HTTPS by default. Here's how I configured this site:
+
+◊codeblock['caddy]{
+  kamelasa.dev {
+    redir https://www.kamelasa.dev{uri}
+  }
+
+  www.kamelasa.dev {
+    root * /var/www/kamelasa.dev
+    file_server
+  }
+}
+
+Deploying to this server is a case of firing off a couple of ◊code{ssh}, ◊code{scp} or ◊code{rsync} requests using a separate user with its own SSH key, and as soon as the command is finished running the changes are visible online.◊^[5]
+
+This leads me to the final bit. Modern tech feels more complicated as it tends towards distributed solutions: put thing ◊em{x} here, deploy service ◊em{y} there, sync them up with webhooks, and hope the network holds up to the task. Earlier tech feels more complicated because the documentation is intricate and detailed and requires some fidgeting around with.
+
+It took me just about a day to figure out how to host my own ◊code{apt} repository for Debian◊^[6], compiling information from various manuals, blog posts and examples. It was mostly a case of creating a GPG key and setting up a correct directory structure for ◊code{apt-ftparchive}◊^[7] to do its business, with a little bit of extra config. I'll go into detail about that another time, but let it be said it does the job tremendously in any Debian-based CI pipeline.
+
+◊codeblock['bash]{
+cd www.kamelasa.dev
+sudo apt install kamelasa
+kamelasa build
+}
+
+◊hr{}
+
+On another note, this site now also left GitHub for Sourcehut◊^[8] and, at risk of being a bit narcissistic, a comments section lives on a mailing list there◊^[9]. Should you feel that the stuff I post is worth talking about, of course. You don't need a Sourcehut account to get involved, although you'll need to join the list (without signing up for Sourcehut) if you want more than read-only access.
+
+◊^[1]{◊<>["https://www.kamelasa.dev/programming/blogging-in-haskell"]}
+◊^[2]{◊<>["https://www.kamelasa.dev/programming/hakyll-on-devops-pipelines"]}
+◊^[3]{◊<>["https://plausible.io/kamelasa.dev"]}
+◊^[4]{◊<>["https://caddyserver.com/v2"]}
+◊^[5]{◊<>["I should probably sort out proper HTTP caching though..."]}
+◊^[6]{◊<>["https://pkg.kamelasa.dev"]}
+◊^[7]{◊<>["https://manpages.debian.org/buster/apt-utils/apt-ftparchive.1.en.html"]}
+◊^[8]{◊<>["https://sourcehut.org"]}
+◊^[9]{◊<>["https://lists.sr.ht/~mrlee/kamelasa.dev-discuss"]}
