@@ -1,14 +1,15 @@
-image: debian/buster
+image: debian/bullseye
 sources:
   - https://git.sr.ht/~mrlee/www.kamelasa.dev
-repositories:
-  pkg.kamelasa.dev: https://pkg.kamelasa.dev unstable main AF64D0CACF52D41C
 packages:
-  - kamelasa
+  - racket
+  - python3-pygments
 secrets:
   - f74304b4-9735-47a4-9d23-6d9fd7c47f1a
 tasks:
   - publish: |
       cd www.kamelasa.dev
-      kamelasa build
-      scp -o StrictHostKeyChecking=no -r www/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev
+      raco pkg install --auto --batch --no-docs pollen
+      raco pollen render
+      raco pollen publish . ../www
+      scp -o StrictHostKeyChecking=no -r ../www/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev
