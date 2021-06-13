@@ -11,10 +11,10 @@
   (define poly-targets '(html)))
 
 (define (root . elements)
-  (add-footnotes (decode (txexpr 'root empty elements)
+  (decode (txexpr 'root empty elements)
     #:txexpr-elements-proc smart-paragraphs
     #:string-proc (compose1 smart-ellipses smart-quotes smart-dashes)
-    #:exclude-tags '(pre code))))
+    #:exclude-tags '(pre code)))
 
 (define (smart-paragraphs elements)
   (decode-paragraphs elements
@@ -46,7 +46,7 @@
 (define (post->history [post null])
     (when (empty? posthistory)
       (let ([gitlog (string-split (with-output-to-string 
-                                  (λ () (system (format "git log --format='~a' --max-count=~a -- ~a"
+                                  (λ () (system (format "git log --format='~a' --max-count=~a --follow -- ~a"
                                                         "%h;%s;%ai"
                                                         10
                                                         (if (null? post) "." (post->path post))))))

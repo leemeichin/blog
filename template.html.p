@@ -120,7 +120,7 @@
     <footer class="container">
       <header>
         <p class="modeline inverse-video">
-          -UUU:----F1&nbsp;&nbsp;◊|page-title|&nbsp;&nbsp;&nbsp;&nbsp;Bot
+          -UUU:----F1&nbsp;&nbsp;◊post->title[here]&nbsp;&nbsp;&nbsp;&nbsp;Bot
           L100%&nbsp;&nbsp;Git:main&nbsp;&nbsp;(HTML+) ----------
         </p>
       </header>
