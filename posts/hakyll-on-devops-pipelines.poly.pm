@@ -176,15 +176,10 @@ To solve the issue I first mentioned, ◊code{cleanTargetFolder} makes sure to d
 
 To see the pipeline in full, you can check out the full YAML file◊^[5]. I've been using it with success for the past couple of weeks now.
 
-◊^[1]{◊<>["https://docs.haskellstack.org/en/stable/README"]}
-◊^[2]{◊<>["https://hackage.haskell.org"]}
-◊^[3]{◊<>["https://dev.azure.com"]}
-◊^[4]{◊<>["https://github.com/features/actions"]}
-◊^[5]{◊<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/9decaf4732dc7bc4510fcf23979af8657bdb01bd/item/azure/pipeline.yml"]}
-
-[^1]: </> 
-[^2]: </>
-[^3]: </>
-[^4]: <>
-[^5]: <>
-[^6]: <>
+◊footnotes{
+  ◊^[1]{◊<>["https://docs.haskellstack.org/en/stable/README"]}
+  ◊^[2]{◊<>["https://hackage.haskell.org"]}
+  ◊^[3]{◊<>["https://dev.azure.com"]}
+  ◊^[4]{◊<>["https://github.com/features/actions"]}
+  ◊^[5]{◊<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/9decaf4732dc7bc4510fcf23979af8657bdb01bd/item/azure/pipeline.yml"]}
+}

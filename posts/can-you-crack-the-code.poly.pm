@@ -270,10 +270,11 @@ So ends 2020, so ends this post. Did your brain-grown answer match the one this 
 
 Mad propz to the Prolog community on Reddit also, whose example solutions helped point me in the right direction◊^[6].
 
-
-◊^[1]{◊<>["https://amzi.com/AdventureInProlog/a1start.php"] - (buy the book, srlsy...)}
-◊^[2]{◊<>["https://swish.swi-prolog.org/p/KfdGtcJr.swinb"]}
-◊^[3]{◊<>["https://uk.bookshop.org/books/the-art-of-prolog-advanced-programming-techniques/9780262691635"]}
-◊^[4]{◊<>["https://www.swi-prolog.org/man/clpfd.html"]}
-◊^[5]{◊<>["https://swish.swi-prolog.org/p/MgtEUnSv.swinb"]}
-◊^[6]{◊<>["https://www.reddit.com/r/prolog/comments/fzww7m/cracking_this_puzzle_with_prolog/"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://amzi.com/AdventureInProlog/a1start.php"] - (buy the book, srlsy...)}
+  ◊^[2]{◊<>["https://swish.swi-prolog.org/p/KfdGtcJr.swinb"]}
+  ◊^[3]{◊<>["https://uk.bookshop.org/books/the-art-of-prolog-advanced-programming-techniques/9780262691635"]}
+  ◊^[4]{◊<>["https://www.swi-prolog.org/man/clpfd.html"]}
+  ◊^[5]{◊<>["https://swish.swi-prolog.org/p/MgtEUnSv.swinb"]}
+  ◊^[6]{◊<>["https://www.reddit.com/r/prolog/comments/fzww7m/cracking_this_puzzle_with_prolog/"]}
+}

@@ -200,8 +200,8 @@ Wow, actual Zig code! The formatting may look a little odd because that's what �
 The recurring theme in all of these new functions is that the entire basis of their existence is to create an array of two bytes, and then write them to file descriptor we opened right at the start. The data structure looks something like this:
 
 ◊codeblock['c]{
-buf[0] = 0x00; // the register to be written to
-buf[1] = 0x??; // the value to assign to that register
+  buf[0] = 0x00; // the register to be written to
+  buf[1] = 0x??; // the value to assign to that register
 }
 
 The file opened in ◊code{main} isn't a traditional file as you know it, but it points to all of the devices connected to your GPIO header on the Pi. Therefore, if you know enough about the hardware at a low enough level, you can control all of them by writing the right bytes to the right register, at the right address.
@@ -266,19 +266,21 @@ Once you're done, rebuild the binary and ◊code{scp} it over, like you did the 
 
 Hopefully that worked, but if it didn't, get in touch with your feedback at wtf@mrlee.dev and help contribute to this post being a better, more informative read. After all, ◊em{works on my machine!} can only go so far.
 
-◊^[1]{◊<>["https://ziglang.org"]}
-◊^[2]{◊<>["https://thepihut.com/products/raspberry-pi-zero-w"]}
-◊^[3]{◊<>["https://thepihut.com/products/adafruit-pioled-128x32-monochrome-oled-add-on-for-raspberry-pi-ada3527"]}
-◊^[4]{◊<>["https://thepihut.com/products/gpio-hammer-header-solderless"]}
-◊^[5]{◊<>["http://wiringpi.com"]}
-◊^[6]{◊<>["https://www.kernel.org/doc/Documentation/i2c/dev-interface"]}
-◊^[7]{◊<>["https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c"]}
-◊^[8]{◊<>["https://github.com/mrleedev/stardust"]}
-◊^[9]{◊<>["https://musl.libc.org"]}
-◊^[10]{◊<>["https://github.com/ziglang/zig/issues/4875"]}
-◊^[11]{◊<>["https://knowyourmeme.com/memes/how-to-draw-an-owl"]}
-◊^[12]{◊<>["https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf"]}
-◊^[13]{◊<>["https://github.com/owenosborn/SSD1306-OLED-WiringPi/blob/master/ssd1306.h"]}
-◊^[14]{Possibly exaggerated for effect. Possibly.}
-◊^[15]{◊<>["https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/adafruit_ssd1306.py"]}
-◊^[16]{◊<>["https://kristoff.it/blog/what-is-zig-comptime/"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://ziglang.org"]}
+  ◊^[2]{◊<>["https://thepihut.com/products/raspberry-pi-zero-w"]}
+  ◊^[3]{◊<>["https://thepihut.com/products/adafruit-pioled-128x32-monochrome-oled-add-on-for-raspberry-pi-ada3527"]}
+  ◊^[4]{◊<>["https://thepihut.com/products/gpio-hammer-header-solderless"]}
+  ◊^[5]{◊<>["http://wiringpi.com"]}
+  ◊^[6]{◊<>["https://www.kernel.org/doc/Documentation/i2c/dev-interface"]}
+  ◊^[7]{◊<>["https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c"]}
+  ◊^[8]{◊<>["https://github.com/mrleedev/stardust"]}
+  ◊^[9]{◊<>["https://musl.libc.org"]}
+  ◊^[10]{◊<>["https://github.com/ziglang/zig/issues/4875"]}
+  ◊^[11]{◊<>["https://knowyourmeme.com/memes/how-to-draw-an-owl"]}
+  ◊^[12]{◊<>["https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf"]}
+  ◊^[13]{◊<>["https://github.com/owenosborn/SSD1306-OLED-WiringPi/blob/master/ssd1306.h"]}
+  ◊^[14]{Possibly exaggerated for effect. Possibly.}
+  ◊^[15]{◊<>["https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/adafruit_ssd1306.py"]}
+  ◊^[16]{◊<>["https://kristoff.it/blog/what-is-zig-comptime/"]}
+}

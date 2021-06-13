@@ -29,8 +29,10 @@ To bring this back to the start, I would not change a thing as my place in this 
 
 This isn't to say all my problems are solved, or I'm finished with my process. That's ◊strong{pure BS} as this stuff lasts an entire lifetime as you learn, grow and adapt to new situations. But the track record I have must be pretty good if I'm ◊em{here}, right?
 
-◊^[1]{◊<>["https://en.wikipedia.org/wiki/Breathwork"]}
-◊^[2]{◊<>["https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy"]}
-◊^[3]{◊<>["https://en.wikipedia.org/wiki/Somatic_experiencing"]}
-◊^[4]{◊<>["https://en.wikipedia.org/wiki/Complex_post-traumatic_stress_disorder"]}
-◊^[5]{◊<>["https://en.wikipedia.org/wiki/Posttraumatic_growth"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://en.wikipedia.org/wiki/Breathwork"]}
+  ◊^[2]{◊<>["https://en.wikipedia.org/wiki/Cognitive_behavioral_therapy"]}
+  ◊^[3]{◊<>["https://en.wikipedia.org/wiki/Somatic_experiencing"]}
+  ◊^[4]{◊<>["https://en.wikipedia.org/wiki/Complex_post-traumatic_stress_disorder"]}
+  ◊^[5]{◊<>["https://en.wikipedia.org/wiki/Posttraumatic_growth"]}
+}

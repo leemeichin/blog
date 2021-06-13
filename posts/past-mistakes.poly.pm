@@ -44,5 +44,3 @@ These days I tell myself that it looks intimidating, but take it easy.
 ◊hr{}
 
 Four is the magic number, so I'll leave it there. I'm not sure how sincere I felt when writing this to begin with, but it's all been part of the experience. I think next time I'll single one or two things out and go into more depth.
-
-◊hr{}

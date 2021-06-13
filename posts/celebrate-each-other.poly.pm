@@ -27,8 +27,10 @@ What I'm saying in a pretty long-winded way is that we people make the success w
 
 Celebrate each other, celebrate yourselves. 🥳
 
-◊^[1]{◊<>["https://www.typeform.com"]}
-◊^[2]{◊<>["https://bonus.ly"]}
-◊^[3]{◊<>["https://en.wikipedia.org/wiki/HipChat"]}
-◊^[4]{◊<>["https://www.kamelasa.dev/images/tc.jpg"]}
-◊^[5]{◊<>["https://www.babylonhealth.com"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://www.typeform.com"]}
+  ◊^[2]{◊<>["https://bonus.ly"]}
+  ◊^[3]{◊<>["https://en.wikipedia.org/wiki/HipChat"]}
+  ◊^[4]{◊<>["https://www.kamelasa.dev/images/tc.jpg"]}
+  ◊^[5]{◊<>["https://www.babylonhealth.com"]}
+}

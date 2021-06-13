@@ -19,8 +19,10 @@ Anyway, every page here is served with the ◊code{Permissions-Policy: interest-
 
 If you're curious, you can also check out the Security Headers report for this site◊^[5].
 
-◊^[1]{◊<>["https://plausible.io/kamelasa.dev"]}
-◊^[2]{◊<>["https://plausible.io/blog/google-floc"]}
-◊^[3]{◊<>["https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"]}
-◊^[4]{◊<>["https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT"]}
-◊^[5]{◊<>["https://securityheaders.com/?q=www.kamelasa.dev&followRedirects=on"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://plausible.io/kamelasa.dev"]}
+  ◊^[2]{◊<>["https://plausible.io/blog/google-floc"]}
+  ◊^[3]{◊<>["https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"]}
+  ◊^[4]{◊<>["https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT"]}
+  ◊^[5]{◊<>["https://securityheaders.com/?q=www.kamelasa.dev&followRedirects=on"]}
+}

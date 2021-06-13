@@ -55,4 +55,6 @@ Am I enough? Certainly!
 
 Do I behave like I am? Not at all.
 
-◊^[1]{◊<>["https://en.wikipedia.org/wiki/Politician%27s_syllogism"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://en.wikipedia.org/wiki/Politician%27s_syllogism"]}
+}

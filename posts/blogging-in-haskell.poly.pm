@@ -59,10 +59,11 @@ The result of adding this code, and then inserting it into the template context,
 
 In any case, I've enjoyed playing around with Haskell in order to deploy this site, and I'm looking forward to seeing what else I can build with the language. It's truly fascinating.
 
-
-◊^[1]{◊<>["https://gohugo.io"]}
-◊^[2]{◊<>["https://www.gatsbyjs.org"]}
-◊^[3]{◊<>["https://www.netlifycms.org"]}
-◊^[4]{◊<>["https://jaspervdj.be/hakyll"]}
-◊^[5]{◊<>["https://www.getzola.org"]}
-◊^[6]{◊<>["https://terminalcss.xyz"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://gohugo.io"]}
+  ◊^[2]{◊<>["https://www.gatsbyjs.org"]}
+  ◊^[3]{◊<>["https://www.netlifycms.org"]}
+  ◊^[4]{◊<>["https://jaspervdj.be/hakyll"]}
+  ◊^[5]{◊<>["https://www.getzola.org"]}
+  ◊^[6]{◊<>["https://terminalcss.xyz"]}
+}

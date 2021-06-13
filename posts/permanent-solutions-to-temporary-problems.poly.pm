@@ -57,6 +57,8 @@ I'm aware that these options are very specific to the UK and you might not have 
 
 Take care of yourself.
 
-◊^[1]{◊<>["https://www.samaritans.org"]}
-◊^[2]{◊<>["https://giveusashout.org"]}
-◊^[3]{◊<>["https://www.papyrus-uk.org"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://www.samaritans.org"]}
+  ◊^[2]{◊<>["https://giveusashout.org"]}
+  ◊^[3]{◊<>["https://www.papyrus-uk.org"]}
+}

@@ -88,6 +88,8 @@ How would you fix it? Well, now we've found out that we ◊code{can} write Ruby 
 
 Until then, I'll see you further into the abyss.
 
-◊^[1]{◊<>["https://github.com/ffi/ffi"]}
-◊^[2]{◊code{`gem install ffi -- --enable-system-libffi`}}
-◊^[3]{◊<>["https://ruby-doc.org/core-2.7.0/doc/extension_rdoc.html"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://github.com/ffi/ffi"]}
+  ◊^[2]{◊code{`gem install ffi -- --enable-system-libffi`}}
+  ◊^[3]{◊<>["https://ruby-doc.org/core-2.7.0/doc/extension_rdoc.html"]}
+}

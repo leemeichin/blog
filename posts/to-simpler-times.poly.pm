@@ -76,12 +76,14 @@ kamelasa build
 
 On another note, this site now also left GitHub for Sourcehut◊^[8] and, at risk of being a bit narcissistic, a comments section lives on a mailing list there◊^[9]. Should you feel that the stuff I post is worth talking about, of course. You don't need a Sourcehut account to get involved, although you'll need to join the list (without signing up for Sourcehut) if you want more than read-only access.
 
-◊^[1]{◊<>["https://www.kamelasa.dev/programming/blogging-in-haskell"]}
-◊^[2]{◊<>["https://www.kamelasa.dev/programming/hakyll-on-devops-pipelines"]}
-◊^[3]{◊<>["https://plausible.io/kamelasa.dev"]}
-◊^[4]{◊<>["https://caddyserver.com/v2"]}
-◊^[5]{◊<>["I should probably sort out proper HTTP caching though..."]}
-◊^[6]{◊<>["https://pkg.kamelasa.dev"]}
-◊^[7]{◊<>["https://manpages.debian.org/buster/apt-utils/apt-ftparchive.1.en.html"]}
-◊^[8]{◊<>["https://sourcehut.org"]}
-◊^[9]{◊<>["https://lists.sr.ht/~mrlee/kamelasa.dev-discuss"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://www.kamelasa.dev/programming/blogging-in-haskell"]}
+  ◊^[2]{◊<>["https://www.kamelasa.dev/programming/hakyll-on-devops-pipelines"]}
+  ◊^[3]{◊<>["https://plausible.io/kamelasa.dev"]}
+  ◊^[4]{◊<>["https://caddyserver.com/v2"]}
+  ◊^[5]{◊<>["I should probably sort out proper HTTP caching though..."]}
+  ◊^[6]{◊<>["https://pkg.kamelasa.dev"]}
+  ◊^[7]{◊<>["https://manpages.debian.org/buster/apt-utils/apt-ftparchive.1.en.html"]}
+  ◊^[8]{◊<>["https://sourcehut.org"]}
+  ◊^[9]{◊<>["https://lists.sr.ht/~mrlee/kamelasa.dev-discuss"]}
+}

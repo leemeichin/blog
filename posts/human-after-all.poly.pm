@@ -45,6 +45,8 @@ Of course, it doesn't work out for everyone. It's not about protecting people or
 
 Just, no reason to be so needlessly unkind to each other. We're all human, after all.
 
-◊^[1]{◊<>["https://twentytentalent.com/8-types-of-toxic-managers/"]}
-◊^[2]{◊<>["https://getvoip.com/blog/2015/02/24/toxic-employees/"]}
-◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9781849010986"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://twentytentalent.com/8-types-of-toxic-managers/"]}
+  ◊^[2]{◊<>["https://getvoip.com/blog/2015/02/24/toxic-employees/"]}
+  ◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9781849010986"]}
+}

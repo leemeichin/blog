@@ -48,9 +48,10 @@ Fuck that noise, just put the agile lipstick on your pig instead! Throw in a dai
 
 Now ◊em{that} is easy.
 
-
-◊^[1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is ◊em{so} worth it.}
-◊^[2]{◊<>["https://en.wikipedia.org/wiki/Eternal_September"]}
-◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9780321934116"]}
-◊^[4]{◊<>["https://uk.bookshop.org/a/6865/9781118127308"]}
-◊^[5]{◊<>["https://agilemanifesto.org/"]}
+◊footnotes{
+  ◊^[1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is ◊em{so} worth it.}
+  ◊^[2]{◊<>["https://en.wikipedia.org/wiki/Eternal_September"]}
+  ◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9780321934116"]}
+  ◊^[4]{◊<>["https://uk.bookshop.org/a/6865/9781118127308"]}
+  ◊^[5]{◊<>["https://agilemanifesto.org/"]}
+}
