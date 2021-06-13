@@ -68,34 +68,23 @@
 (define (<> url) `(a ((href ,url)) ,url))
 (define tag-time (default-tag-function 'time))
 
-(define footnotes '())
-
-(define (add-footnotes tx) 
-  (txexpr (get-tag tx) (get-attrs tx) 
-    `(,@(get-elements tx)
-        (hr)
-        (section ((class "footnotes"))
-          (ol ,(for/splice ([footnote (in-list footnotes)])
-                  `(li ((id ,(format "fn~a" (car footnote)))) 
-                       ,@(second footnote)
-                       (a ((class "footnote-back")
-                           (role "doc-backlink")
-                           (href ,(format "#fnref~a" (car footnote))))
-                            "↩︎"))))))))
+(define (footnotes . refs)
+  `(section [(class "footnotes") (role "doc-endnotes")]
+    (ol ,@refs)))
 
 (define (^ ref-num . footnote)
-  (if (empty? footnote) 
-    `(a ((class "footnote-ref") 
-        (role "doc-noteref") 
-        (id ,(format "fnref~a" ref-num))
-        (href ,(format "#fn~a" ref-num)))
-        (sup ,(number->string ref-num)))
-      (set! footnotes (append footnotes (list (list ref-num footnote))))))
-
-(define-syntax (for/s stx)
-  (syntax-case stx ()
-    [(_ thing listofthings result-expr ...)
-     #'(for/splice ([thing (in-list listofthings)]) result-expr ...)]))
+  (if (empty? footnote)
+      `(a [(class "footnote-ref") 
+          (role "doc-noteref") 
+          (id ,(format "fnref~a" ref-num))
+          (href ,(format "#fn~a" ref-num))]
+          (sup ,(number->string ref-num)))
+    `(li [(id ,(format "fn~a" ref-num)) (role "doc-endnote")]
+      ,@footnote
+      (a [(class "footnote-back")
+          (role "doc-backlink")
+          (href ,(format "#fnref~a" ref-num))]
+          "↩︎"))))
 
 (define (page-url pagenode)
   (string-replace (symbol->string pagenode) "\\" "/"))
