@@ -5,7 +5,7 @@
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}
 
-I was browsing HN over my coffee this morning and came across an interesting thread◊^[1] linking to a post titled ◊em{WHen Buddhism Goes Bad}◊[2]. That wasn't actually the title I read, as on HN the more neutral subtitle -- ◊em{How My Mindfulness Practice Led Me To Meltdown} -- was chosen instead.
+I was browsing HN over my coffee this morning and came across an interesting thread◊^[1] linking to a post titled ◊em{When Buddhism Goes Bad}◊^[2]. That wasn't actually the title I read, as on HN the more neutral subtitle -- ◊em{How My Mindfulness Practice Led Me To Meltdown} -- was chosen instead.
 
 This is one of those posts I can relate to, at least in part, because of the experiences I've had myself. The thread on HN was itself interesting too, although ironically quite judgmental for a conversation about buddhism, meditation, and mindfulness. I'm not going to talk about those though--you can read those for yourself after all. Instead I'm going to offer my own perspective, now I can safely look back on the whole several-year long ◊del{ordeal}journey.
 
@@ -15,7 +15,7 @@ Let's get one thing out of the way before I continue: yes, there are people out 
 
 ◊hr{}
 
- For some reason I was reminded of an Osho story◊[3] that was told at one of the retreats I went to. It was probably in one of the Osho books I read too but I couldn't tell you which one. It adapted the riddle of the goose in the bottle and turned it into an allegory of sorts.
+ For some reason I was reminded of an Osho story◊^[3] that was told at one of the retreats I went to. It was probably in one of the Osho books I read too but I couldn't tell you which one. It adapted the riddle of the goose in the bottle and turned it into an allegory of sorts.
 
 ◊blockquote{
   If a man puts a gosling into a bottle and feeds him until it is fully grown, how can the man get the goose out without killing it or breaking the bottle?
@@ -27,17 +27,17 @@ But that's not ◊em{really} it, not for me anyway. Taking a grown-ass goose out
 
 My journey took me through several therapists who specialised in the kind of approaches you won't find through the NHS. There was Reichian Breathwork◊^[4] at first, but then I mostly found specialists in Somatic Experiencing◊^[5]. At the same time I went on a few retreats that built their foundation on tantric practices◊^[6]. In a nutshell, basically a combination of meditative practice and therapy.
 
-Had I not had the support of a therapist, and a remarkably close friend, I would be another person writing about how meditation fucked me up--How Tantra Went Tits Up. I ended up in an absolutely ◊em{terrible} state: depression out of control, suicidal, self-harming, and barely functional without breaking down or spending hours soaking my pillow with my face.
+Had I not had the support of a therapist, a remarkably close friend, and all of my other closest frients, I would be another person writing about how meditation fucked me up--How Tantra Went Tits Up. I ended up in an absolutely ◊em{terrible} state: depression out of control, suicidal, self-harming, and barely functional without breaking down or spending hours soaking my pillow with my face.
 
 Basically, the years of therapy, and the intertwining meditative practices, were revealing so much stuff--◊em{repressed} stuff--from my past and I just didn't have the resource or the faculty to cope with the onslaught of realisation. My coping mechanisms weren't that great in the first place, which is why I had my therapist.
 
 A different goose was out, and there was no chance of putting it back in. You can't just take a realisation you don't like and re-repress it into the farthest reaches of your mind again, you have to deal.
 
-That's not really _it_ though. It's a significant part, but the other bit is the unhealthy attachment to the process. You've past the point where the process is useful, and it no longer serves a purpose, but it has become comfortable in and of itself. For that to work, you need to keep your trauma kicking around, you need to keep digging into it to pull out more things to work with. It's not like it's intentional, it's just what you've got used to expecting to do. 
+That's not really _it_ though. It's a significant part, but the other bit is the unhealthy attachment to the process. You've passed the point where the process is useful, and it no longer serves a purpose, but it has become comfortable in and of itself. For that to work, you need to keep your trauma kicking around, you need to keep digging into it to pull out more things to work with. It's not like it's intentional, it's just what you think is expected of you to keep things going. 
 
 In other words, the goose is out and you've formed a co-dependent relationship with it.
 
-There's a lot of detail missing in this post so far, I've only focussed on the difficult bits and left out the many beautiful moments that were truly astonishing, and the other bajillion moments that were all different kinds of positive and memorable. As the original post that spurred this one stated, people don't often talk about the difficult bits, you just get the glossy brochure promising bliss, abundant light, and inner peace.
+There's a lot of detail missing in this post so far, I've only focussed on the difficult bits and left out the many beautiful moments that were truly astonishing, and the other bajillion moments that were all different kinds of positive and memorable. As the original post that spurred this one stated, people don't often talk about the difficult bits, you just get the glossy brochure promising bliss, abundant light, and inner peace. And you get plenty of others looking for somewhere to place the blame.
 
 Honestly, I didn't really get out of that therapy trap I dug for myself until I went on medication and spent around 18 months just taking each day as it came. That gave me enough time and space to integrate all of the stuff I'd learned, dealt with, and realised over the previous six years, without trying to ◊em{do more}. That's really all I needed to let everything properly digest and I certainly feel more resilient for it now.
 
