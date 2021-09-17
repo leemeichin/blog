@@ -152,7 +152,6 @@ Building on the poker example, maybe it's valid to play the Joker, but only if t
     end
   end
 
-  # After 23:00
   valid_call?(PlayingCard.new(value: :Joker, colour: nil, suit: nil))
   # => joker allowed
   # => true
