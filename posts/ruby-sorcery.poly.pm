@@ -74,14 +74,14 @@ You can deeply match any object in Ruby so long as you define a method to repres
 This ◊code{PlayingCard} class is now capable of pattern matching.
 
 ◊codeblock['ruby]{
-  def is_face?(playing_card)
+  def face_card?(playing_card)
     case playing_card
     in { value: 'K' | 'Q' | 'J' } then true
     else false
     end
   end
 
-  is_face?(PlayingCard.new(value: 3, colour: :red, suit: :spades))
+  face_card?(PlayingCard.new(value: 3, colour: :red, suit: :spades))
   #=> false
 }
 
