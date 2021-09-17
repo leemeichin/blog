@@ -108,13 +108,16 @@ Now that a hand of cards is represented, it should be possible to use pattern ma
 This particular solution depends on the hand being ordered, but that's fine, a lot of computational problems become simpler if you sort them first. For the sake of example, assume that has already happened.
 
 ◊codeblock['ruby]{
-  def is_royal_flush?(hand)
+  def royal_flush?(hand)
     case hand
     in [[1, c, s], ['K', ^c, ^s], ['Q', ^c, ^s], ['J', ^c, ^s], [10, ^c, ^s]]
       true
     else false
     end
   end
+
+  # alternatively, if golfing in Ruby 3:
+  # def royal_flush?(hand) = !!(hand in [[1, c, s], ['K', ^c, ^s], ['Q', ^c, ^s], ['J', ^c, ^s], [10, ^c, ^s]] rescue false)
 
 
   my_hand = PokerHand.new(cards: [
@@ -125,7 +128,7 @@ This particular solution depends on the hand being ordered, but that's fine, a l
     PlayingCard.new(value: 10, colour: :black, suit: :hearts),
   ])
 
-  is_royal_flush?(my_hand)
+  royal_flush?(my_hand)
   # => true
 }
 
