@@ -168,10 +168,10 @@ You also have to be absolutely sure you're matching the right thing.
 ◊codeblock['ruby]{
   card = PlayingCard.new(value: 7, suit: :diamonds, colour: :red)
 
-  card in { value: (1..10), suit: :diamonds }
+  card in { value: (1..10) => v, suit: :diamonds  => s}
 
-  # value => 7
-  # suit: :diamonds
+  # v => 7
+  # s: :diamonds
 
   begin
     card in { value: String, suit: Symbol }
