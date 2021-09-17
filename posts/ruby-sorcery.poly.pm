@@ -81,7 +81,7 @@ This ◊code{PlayingCard} class is now capable of pattern matching.
     end
   end
 
-  face_card?(PlayingCard.new(value: 3, colour: :red, suit: :spades))
+  face_card?(PlayingCard.new(value: '3', colour: :red, suit: :spades))
   #=> false
 }
 
@@ -110,19 +110,19 @@ This particular solution depends on the hand being ordered, but that's fine, a l
 ◊codeblock['ruby]{
   def royal_flush?(hand)
     case hand
-    in [[1, c, s], [10, ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]]
+    in [['1', c, s], ['10', ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]]
       true
     else false
     end
   end
 
   # alternatively, if golfing in Ruby 3:
-  # def royal_flush?(hand) = !!(hand in [[1, c, s], [10, ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]] rescue false)
+  # def royal_flush?(hand) = !!(hand in [['1', c, s], ['10', ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]] rescue false)
 
 
   my_hand = PokerHand.new(cards: [
-    PlayingCard.new(value: 1, colour: :black, suit: :hearts),
-    PlayingCard.new(value: 10, colour: :black, suit: :hearts),
+    PlayingCard.new(value: '1', colour: :black, suit: :hearts),
+    PlayingCard.new(value: '10', colour: :black, suit: :hearts),
     PlayingCard.new(value: 'J', colour: :black, suit: :hearts),
     PlayingCard.new(value: 'Q', colour: :black, suit: :hearts),
     PlayingCard.new(value: 'K', colour: :black, suit: :hearts),
@@ -168,11 +168,11 @@ In fact, this method also allows you to use pattern matching while destructuring
 You also have to be absolutely sure you're matching the right thing.
 
 ◊codeblock['ruby]{
-  card = PlayingCard.new(value: 7, suit: :diamonds, colour: :red)
+  card = PlayingCard.new(value: '7', suit: :diamonds, colour: :red)
 
-  card in { value: (1..10) => v, suit: :diamonds  => s}
+  card in { value: ('1'..'10') => v, suit: :diamonds  => s}
 
-  # v => 7
+  # v => '7'
   # s: :diamonds
 
   begin
