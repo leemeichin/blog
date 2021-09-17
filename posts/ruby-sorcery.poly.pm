@@ -15,6 +15,10 @@ The first part of this series of posts is all about ◊em{Pattern Matching}.
 Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more powerful than you may expect. All you need is to replace ◊code{when} with ◊code{in} and your ◊code{case} statements become capable of matching against ◊em{anything}.
 
 ◊codeblock['ruby]{
+  require 'base64'
+  
+  class ParsedJson; end;
+  
   def handle_response(response)
     case response
     in { code: (300..399) }
@@ -137,15 +141,18 @@ Building on the poker example, maybe it's valid to play the Joker, but only if t
   end
     
   def valid_call?(card)
-    case in card
-    in [:Joker] if dealer_allows_joker? then true
+    case card
+    in [:Joker] if joker_allowed?
+      puts 'joker allowed'
+      true
     else true
     end
   end
 
   # After 23:00
   valid_call?(PlayingCard.new(value: :Joker, colour: nil, suit: nil))
-  #=> true
+  # => joker allowed
+  # => true
 }
 
 ◊h2{Destructuring assignment without ◊code{case}}
