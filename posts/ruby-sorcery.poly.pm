@@ -132,6 +132,8 @@ This particular solution depends on the hand being ordered, but that's fine, a l
   # => true
 }
 
+The clever bit here is that the first part of the match (◊code{[1, c, s]}) is used to constrain the rest of the pattern. So if ◊code{c} is ◊code{:red}, then ◊code{^c} also has to be ◊code{:red} in order to match.
+
 ◊h2{Pattern guards}
 
 You'll see this a lot if you're familiar with Elixir or other languages that do pattern matching well. Essentially, you can add conditional logic to your patterns so that a match is only possible if a separate condition is met.
