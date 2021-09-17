@@ -33,7 +33,7 @@ Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more
   end
     
       
-  handle_response({ code: 200, text: 'aGVsbG8gd29ybGQ=', content_type: 'application/base64' })
+  handle_response({ code: 200, body: 'aGVsbG8gd29ybGQ=', content_type: 'application/base64' })
   #=> 'hello world'
 
   handle_response({ code: 301 })
@@ -103,7 +103,7 @@ That's fairly basic, what about pattern matching poker? Matching one card is eas
   end
 }
 
-Now that a hand of cards is represented, it should be possible to use pattern matching to find a winning play, say... a Royal Flush. For this to work, ◊em{variable pinning} is required, a Royal Flush requires the colour and suit to be the same for each card.
+Now that a hand of cards is represented, it should be possible to use pattern matching to find a winning play, say... a Royal Flush. For this to work, ◊em{variable pinning} is required, because a Royal Flush requires the colour and suit to be the same for each card.
 
 This particular solution depends on the hand being ordered, but that's fine, a lot of computational problems become simpler if you sort them first. For the sake of example, assume that has already happened.
 
