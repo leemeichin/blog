@@ -110,22 +110,22 @@ This particular solution depends on the hand being ordered, but that's fine, a l
 ◊codeblock['ruby]{
   def royal_flush?(hand)
     case hand
-    in [[1, c, s], ['K', ^c, ^s], ['Q', ^c, ^s], ['J', ^c, ^s], [10, ^c, ^s]]
+    in [[1, c, s], [10, ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]]
       true
     else false
     end
   end
 
   # alternatively, if golfing in Ruby 3:
-  # def royal_flush?(hand) = !!(hand in [[1, c, s], ['K', ^c, ^s], ['Q', ^c, ^s], ['J', ^c, ^s], [10, ^c, ^s]] rescue false)
+  # def royal_flush?(hand) = !!(hand in [[1, c, s], [10, ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]] rescue false)
 
 
   my_hand = PokerHand.new(cards: [
     PlayingCard.new(value: 1, colour: :black, suit: :hearts),
-    PlayingCard.new(value: 'K', colour: :black, suit: :hearts),
-    PlayingCard.new(value: 'Q', colour: :black, suit: :hearts),
-    PlayingCard.new(value: 'J', colour: :black, suit: :hearts),
     PlayingCard.new(value: 10, colour: :black, suit: :hearts),
+    PlayingCard.new(value: 'J', colour: :black, suit: :hearts),
+    PlayingCard.new(value: 'Q', colour: :black, suit: :hearts),
+    PlayingCard.new(value: 'K', colour: :black, suit: :hearts),
   ])
 
   royal_flush?(my_hand)
