@@ -137,12 +137,12 @@ Building on the poker example, maybe it's valid to play the Joker, but only if t
 
 ◊codeblock['ruby]{
   def joker_allowed?
-    Time.now.hour == 23
+    true
   end
     
   def valid_call?(card)
     case card
-    in [:Joker] if joker_allowed?
+    in [:Joker, *] if joker_allowed?
       puts 'joker allowed'
       true
     else true
