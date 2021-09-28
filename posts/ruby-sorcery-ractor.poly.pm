@@ -7,7 +7,7 @@
 
 This is part two of a series of posts about Ruby and its more experimental features. The first part is about pattern matching.◊^[1]
 
-Ractor is a new addition to Ruby's standard library, and it is essentially an implementation of the Actor model. More importantly, it offers a more lightweight approach to concurrency that might feel more at home to those familiar with Go's channels. Note that this isn't a wholesale replacement of Ruby's existing multithreading implementations, namely ◊code{Thread}◊^[2] and ◊code{Fiber}◊^[3], and is still highly experimental. As such, there is no guarantee that it would remain stable across future Ruby versions.
+Ractor is a new addition to Ruby's core library, and it is essentially an implementation of the Actor model. More importantly, it offers a more lightweight approach to concurrency that might feel more at home to those familiar with Go's channels. Note that this isn't a wholesale replacement of Ruby's existing multithreading implementations, namely ◊code{Thread}◊^[2] and ◊code{Fiber}◊^[3], and is still highly experimental. As such, there is no guarantee that it would remain stable across future Ruby versions.
 
 ◊aside{Speaking of ◊code{Fiber}s, they've received some upgrades in Ruby 3 too. You can now create non-blocking fibers and provide your own scheduler to run them automatically.}
 
