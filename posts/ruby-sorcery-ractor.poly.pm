@@ -13,7 +13,7 @@ Ractor is a new addition to Ruby's core library, and it is essentially an implem
 
 ◊h1{The actor model}
 
-Before we look at Ruby's implementation of it, it's useful to understand what the actor model is, at least in simple enough terms that you can then use to explore the topic in more depth.
+Before looking at Ruby's implementation of it, it's useful to understand what the actor model is, at least in simple enough terms that you can then use to explore the topic in more depth.
 
 In a nutshell, it's a way of handling concurrent communication. If, in OOP, everything is computed in terms of passing messages between objects, then the singular rule of the actor model is that everything is an actor. So, what's an actor?
 
@@ -105,7 +105,7 @@ Try it for yourself by running that code in an IRB console, and then open up ◊
   }
 }
 
-The problem with this code is that it's too simple: it shows how one Ractor can spawn other ractors, but it's not taking advantage of the communication channels they have and how objects are shared between Ractors. Keep an eye out for the next part of Ruby Sorcery, where we'll dive much deeper into Ractor's capabilities.
+The problem with this code is that it's too simple: it shows how one Ractor can spawn other ractors, but it's not taking advantage of the communication channels they have and how objects are shared between Ractors. Keep an eye out for the next part of Ruby Sorcery, where there'll be a much deeper dive into Ractor's capabilities.
 
 ◊footnotes{
   ◊^[1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery.html"]}
