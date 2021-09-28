@@ -44,7 +44,7 @@ You can consider technologies like Kubernetes◊^[7], Kafka◊^[8], and Web Work
 
 For example, in Kubernetes (K8S), the orchestrator is an actor that behaves as a supervisor. It is responsible for monitoring all of the other services that are deployed in the cluster and ensuring that they're kept alive. If a service goes down, it will attempt to reboot it. The service is also an actor, as it can talk to other services. It can change its own state (e.g. in-memory or with a database), but it cannot (or should not) reach into other services to do the same.
 
-Kafka offers three concepts of an actor: a producer, which is an actor that can only send messages; a consumer, which is an actor that can only receive messages ◊em{but also} create a producer to send messages; and a broker, which acts as a storage layer as well as a supervisor of sorts.
+Kafka offers three concepts of an actor: a producer, which is an actor that can only send messages; a consumer, which is an actor that can only receive messages ◊em{but also} create more producers to send messages; and a broker, which acts as a storage layer as well as a supervisor of sorts.
 
 Similarly, an email inbox is another application of the pattern. Your email inbox is attached to one or more email addresses (or aliases), and messages that are meant for you are sent to your address (or many at once). Eventually, they will arrive in your inbox and you can then read the email and decide to archive it, delete it, report it as spam, and so on. This is also the case for a mailing list, where messages sent to the mailing list's address will eventually be distributed to every subscriber's address.
 
