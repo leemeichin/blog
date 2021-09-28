@@ -11,13 +11,6 @@
     <link rel="stylesheet" href="/css/terminal.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/syntax.css" />
-
-    <script
-      async
-      defer
-      data-domain="kamelasa.dev"
-      src="https://plausible.io/js/plausible.js"
-    ></script>
   </head>
 
   <body class="terminal">
