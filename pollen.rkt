@@ -69,7 +69,8 @@
 (define tag-time (default-tag-function 'time))
 
 (define (footnotes . refs)
-  `(hr 
+  `(hr
+    (h3 "References")
     (section [(class "footnotes")]
       (ol [(role "doc-endnotes")] ,@refs))))
 
