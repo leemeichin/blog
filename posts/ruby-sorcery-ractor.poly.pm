@@ -52,7 +52,7 @@ Ruby 3.0 introduces Ractor to the general community, however it is still marked 
 
 First things first, quick recap on Actors:
 
-◊ol{
+◊ul{
   ◊li{An actor can send messages to another actor}
   ◊li{An actor can create more actors}
   ◊li{An actor can mutate its own state but not another actor's state}
