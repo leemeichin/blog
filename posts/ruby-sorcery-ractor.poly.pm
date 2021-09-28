@@ -19,7 +19,7 @@ In a nutshell, it's a way of handling concurrent communication. If, in OOP, ever
 
 An actor is something that has one or more addresses, and receives messages; but for anything useful to happen, it also has to do something with those messages.
 
-◊aside{Imagine a ◊code{no-reply} email inbox, where every cry for help sent to it is routinely ignored. That is a version of an actor model that has an address, can receive messages, but do nothing else.}
+◊aside{Imagine a ◊code{no-reply} email inbox, where every cry for help sent to it is routinely ignored. That is a version of an actor model that has an address, can receive messages, but can do nothing else.}
 
 In addition to receiving messages, then, an actor can also send messages to another actor. On top of that, it can also create new actors as children of itself.
 
