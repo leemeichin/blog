@@ -201,9 +201,11 @@ Let's see it in action!
 
 It's gonna take a little bit more work to turn this into a workable HTTP server, but let's recap:
 
-- The TCP server now knows about HTTP, even if it's just a little bit
-- There is a parser for HTTP requests which can learn how to parse more of the protocol in future
-- It primarily uses Ractors for communication
+◊ul{
+  ◊li{The TCP server now knows about HTTP, even if it's just a little bit}
+  ◊li{There is a parser for HTTP requests which can learn how to parse more of the protocol in future}
+  ◊li{It primarily uses Ractors for communication}
+}
 
 ◊footnotes{
   ◊^[1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery-ractor.html"]}
