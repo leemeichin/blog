@@ -45,7 +45,7 @@ There is, of course, a lot more to serving HTTP than this. For a start, there's 
 
 The anatomy of an HTTP request is divided, essentially, into three parts:
 
-◊codeblock['text']{
+◊codeblock['text]{
   GET /hello-world HTTP/1.1        | 1. Method, location/target, HTTP version
   Host: localhost:1337             | 2. Headers (host, content-type, accept,
   Content-Type: application/json       caching, user-agent, etc.)
