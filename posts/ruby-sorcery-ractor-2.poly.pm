@@ -132,7 +132,7 @@ The TCP server now requires an upgrade: it's going to read input but it can no l
   end
 }
 
-The most significant change, here, is that the innnermost Ractor sends input over to the new HttpRequestParser Ractor. It then immediately waits for a response.
+The most significant change, here, is that the innnermost Ractor sends input over to the new HttpRequestParser Ractor. It then immediately waits for a response. That seems a bit weird - why not just do it inline? - but that's only because the job of the HTTP Parser is pretty basic right now, whereas in future a whole bunch of things can happen in between the TCP layer reading in some data, and the TCP layer sending back a bunch of HTML or JSON or some such.
 
 ◊aside{This works for basic requests with no body element, but consider why it fails if a body is also supplied. Would the connection not have already closed?}
 
