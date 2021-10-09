@@ -2,7 +2,7 @@
 
 ◊define-meta[title]{Ruby Sorcery Part 2: Ractor, Chapter 2}
 ◊define-meta[date]{2021-10-09}
-◊define-meta[published #f]
+◊define-meta[published #t]
 ◊define-meta[category]{ruby}
 
 In the previous chapter of this excurusion into Ractor◊^[1], the concept of the actor model was introduced and a toy TCP server was created. It was a naive implementation that created new Ractors for every TCP connection made to the server, and it looked like this:
@@ -37,10 +37,9 @@ So, it sounds like a good time to turn this toy TCP server into a basic HTTP ser
 ◊codeblock['text]{
   GET /hello-world HTTP/1.1
   Host: localhost:1337
-
 }
 
-There is, of course, a lot more to serving HTTP than this. For a start, there's no HTTP response! That will be covered in the following chapter.
+There is, of course, a lot more to serving HTTP than this. For a start, there's no HTTP response! And then there are the other HTTP methods. Much of that will be covered in the following chapters.
 
 ◊h2{Parsing the request}
 
@@ -63,17 +62,17 @@ What follows is a list of headers, which are key/value pairs used to provide ext
 
 Finally, there is a place for the body of the request. This is optional, but it must have an empty line both before and afterwards if it is present. A typical request body may contain URLEncoded form data, which is how your typical HTML forms work, but there is not much of a restriction provided that the ◊code{Content Type} header describes the format of the payload, e.g if it's JSON, XML, or perhaps even something like an image or a video.
 
-Since the purpose of the post is to demonstrate Ractor, and because in the Actor model, everything is an actor... the thing that parses the request will be an Actor too.
+In this chapter, the main focus is on the first section, and some of the second. And since the purpose of the post is to demonstrate Ractor, and because in the Actor model, everything is an actor... the thing that parses the request will be an Actor too.
 
 ◊aside{This is also a good time to use some of that pattern matching knowledge from the first part of this series.◊^[3]}
 
-Something like this should do the trick. Keep in mind that the goal is to mess around with Ractors and Ruby, for the sake of example.
+Something like this should do the trick, and provide a foundation to build on.
 
 ◊codeblock['ruby]{
   require 'strscan'
 
   HttpRequest = Struct.new(
-    :method, :location, :version, :host, :content_type, :headers, :body,
+    :method, :location, :version, :host, :content_type,
     keyword_init: true
   )
   
@@ -88,8 +87,7 @@ Something like this should do the trick. Keep in mind that the goal is to mess a
         http_req.version = http_version
       end
 
-      http_req.headers = raw_req.scan_until(/^$/).split("\n").map(&:strip)
-      http_req.headers.each do |header|
+      raw_req.scan_until(/(\r\n){2}/).split("\n").map(&:strip).each do |header|
         case header.split(": ")
         in "Content-Type", content_type
           http_req.content_type = content_type
@@ -99,8 +97,6 @@ Something like this should do the trick. Keep in mind that the goal is to mess a
           next
         end
       end
-
-      http_req.body = raw_req.rest.strip
 
       # `move` the object as this Ractor no longer needs ownership
       # the Ractor that calls `take` will... take... ownership
@@ -119,7 +115,32 @@ In any case, once the ◊code{HttpRequest} object is constructed, it is yielded 
 
 Going back to the functionality at hand; this basically shunts the parsing of HTTP requests into another thread, which means that the Ractors responsible for managing the TCP layer can stay responsible for that, and hand over the application-layer responsibilities to other actors/processes/Ractors.
 
-It's a good time to integrate this parser with the TCP server, then.
+The TCP server now requires an upgrade: it's going to read input but it can no longer work on a line-by-line basis, because a HTTP message takes up many lines. The only thing we can really depend on is that it always ends with ◊em{two} carriage returns (CR-LF characters, or '\r\n' in a string).
+
+◊codeblock['ruby]{
+  Ractor.new do
+    tcp_server = TCPServer.new(1337)
+
+    loop do
+      Ractor.new(tcp_server.accept) do |client|
+        HttpRequestParser.send(client.gets("\r\n\r\n"))
+        request = HttpRequestParser.take
+        client.puts("requested: #{request.location}")
+        client.close
+      end
+    end
+  end
+}
+
+The most significant change, here, is that the innnermost Ractor sends input over to the new HttpRequestParser Ractor. It then immediately waits for a response.
+
+◊aside{This works for basic requests with no body element, but consider why it fails if a body is also supplied. Would the connection not have already closed?}
+
+In our toy examples, this works fine, but try this with many clients at once and you will experience chaos. This is because we're using a single global ractor to parse input from any number of connections. Perhaps it shouldn't be a ractor at all, or it should work a little differently. This will be addressed in another chapter, as it becomes clear that building a concurrent HTTP server isn't as simple as it looks.
+
+Note that this won't work with ◊code{curl} yet, because the server isn't returning an appropriate response.
+
+With that said, it's a good time to combine these two things, to make a functioning server:
 
 ◊codeblock['ruby]{
   require 'socket'
@@ -130,39 +151,34 @@ It's a good time to integrate this parser with the TCP server, then.
     keyword_init: true
   )
 
-  HttpRequestParser = -> do
-    Ractor.new do
-      while raw_req = StringScanner.new(receive)
-        http_req = HttpRequest.new
+  HttpRequestParser = Ractor.new do
+    while raw_req = StringScanner.new(receive)
+      http_req = HttpRequest.new
 
-        case raw_req.scan_until(/\n/).strip.split(" ")
-        in "GET" => method, location, "HTTP/1.1" => http_version
-          http_req.method = method
-          http_req.location = location
-          http_req.version = http_version
-        end
-
-        http_req.headers = raw_req.scan_until(/^$/).split("\n").map(&:strip)
-        http_req.headers.each do |header|
-          case header.split(": ")
-          in "Content-Type", content_type
-            http_req.content_type = content_type
-          in "Host", host
-            http_req.host = host
-          else
-            next
-          end
-        end
-
-        http_req.body = raw_req.rest.strip
-
-        # `move` the object as this Ractor no longer needs ownership
-        # the Ractor that calls `take` will... take... ownership
-        Ractor.yield(http_req, move: true)
+      case raw_req.scan_until(/$/).strip.split(" ")
+      in "GET" => method, location, "HTTP/1.1" => http_version
+        http_req.method = method
+        http_req.location = location
+        http_req.version = http_version
       end
-    ensure
-      raw_req.terminate
+
+      raw_req.scan_until(/(\r\n){2}/).split("\n").map(&:strip).each do |header|
+        case header.split(": ")
+        in "Content-Type", content_type
+          http_req.content_type = content_type
+        in "Host", host
+          http_req.host = host
+        else
+          next
+        end
+      end
+
+      # `move` the object as this Ractor no longer needs ownership
+      # the Ractor that calls `take` will... take... ownership
+      Ractor.yield(http_req, move: true)
     end
+  ensure
+    raw_req.terminate
   end
   
   Ractor.new do
@@ -170,15 +186,24 @@ It's a good time to integrate this parser with the TCP server, then.
 
     loop do
       Ractor.new(tcp_server.accept) do |client|
-        loop do
-          HttpRequestParser.send(client.gets)
-          req = HttpRequestParser.take
-          client.puts(req.body.upcase)
-        end
+        HttpRequestParser.send(client.gets("\r\n\r\n"))
+        request = HttpRequestParser.take
+        client.puts("requested: #{request.location}")
+        client.close
       end
     end
   end
 }
+
+Let's see it in action!
+
+◊script[#:id "asciicast-qsU8HUdrJBIR7S2BUqpdk6KFU" #:src "https://asciinema.org/a/qsU8HUdrJBIR7S2BUqpdk6KFU.js" #:async "true" #:data-cols "190"]{}
+
+It's gonna take a little bit more work to turn this into a workable HTTP server, but let's recap:
+
+- The TCP server now knows about HTTP, even if it's just a little bit
+- There is a parser for HTTP requests which can learn how to parse more of the protocol in future
+- It primarily uses Ractors for communication
 
 ◊footnotes{
   ◊^[1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery-ractor.html"]}
