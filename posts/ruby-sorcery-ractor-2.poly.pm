@@ -136,7 +136,7 @@ The most significant change, here, is that the innnermost Ractor sends input ove
 
 ◊aside{This works for basic requests with no body element, but consider why it fails if a body is also supplied. Would the connection not have already closed?}
 
-In our toy examples, this works fine, but try this with many clients at once and you will experience chaos. This is because we're using a single global ractor to parse input from any number of connections. Perhaps it shouldn't be a ractor at all, or it should work a little differently. This will be addressed in another chapter, as it becomes clear that building a concurrent HTTP server isn't as simple as it looks.
+In our toy examples, this works fine, but try this with many clients at once and you will experience chaos. This is because we're using a single global ractor to parse input from any number of connections. Perhaps it shouldn't be a ractor at all, or it should work a little differently. This will be addressed in another chapter, as it becomes clear that building a concurrent HTTP server isn't as simple as it looks even when your concurrency primitives are threadsafe.
 
 Note that this won't work with ◊code{curl} yet, because the server isn't returning an appropriate response.
 
@@ -206,6 +206,8 @@ It's gonna take a little bit more work to turn this into a workable HTTP server,
   ◊li{There is a parser for HTTP requests which can learn how to parse more of the protocol in future}
   ◊li{It primarily uses Ractors for communication}
 }
+
+The next chapter will focus on creating a valid request, something that ◊code{curl} will like. Keep in mind that the primarily goal is to get something that works, warts and all, and later on it will be revisited, having learned more.
 
 ◊footnotes{
   ◊^[1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery-ractor.html"]}
