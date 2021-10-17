@@ -207,7 +207,7 @@ It's gonna take a little bit more work to turn this into a workable HTTP server,
   ◊li{It primarily uses Ractors for communication}
 }
 
-The next chapter will focus on creating a valid request, something that ◊code{curl} will like. Keep in mind that the primarily goal is to get something that works, warts and all, and later on it will be revisited, having learned more.
+The next chapter will focus on creating a valid response, something that ◊code{curl} will like. Keep in mind that the primarily goal is to get something that works, warts and all, and later on it will be revisited, having learned more.
 
 ◊footnotes{
   ◊^[1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery-ractor.html"]}
