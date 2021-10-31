@@ -1,3 +1,5 @@
+#lang pollen
+
 ◊define-meta[title]{Ruby Sorcery Part 2: Ractor, Chapter 3}
 ◊define-meta[date]{2021-10-17}
 ◊define-meta[published #f]
@@ -91,10 +93,6 @@ It's also unclear what the length of the content will be, exactly, until the req
 Of course, this will be done in another Ractor, but we'll also address the problem introduced by the Ractor that parses requests: if a single Ractor is used to globally process requests, and another is used to globally process responses, then how does the server know which response belongs to which request? When that's done, the fix for the request parser will also become apparent.
 
 ◊aside{This is important to keep in mind, especially when dealing with sensitive data and user accounts, as users may start receiving account information relating to other people.}
-
-◊codeblock['ruby]{
- 
-}
 
 
 ◊footnotes{

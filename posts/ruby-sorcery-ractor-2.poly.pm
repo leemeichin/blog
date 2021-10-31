@@ -2,7 +2,7 @@
 
 ◊define-meta[title]{Ruby Sorcery Part 2: Ractor, Chapter 2}
 ◊define-meta[date]{2021-10-09}
-◊define-meta[published #t]
+◊define-meta[published #f]
 ◊define-meta[category]{ruby}
 
 In the previous chapter of this excurusion into Ractor◊^[1], the concept of the actor model was introduced and a toy TCP server was created. It was a naive implementation that created new Ractors for every TCP connection made to the server, and it looked like this:
