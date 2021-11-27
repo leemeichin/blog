@@ -13,23 +13,23 @@ I presume you've seen this kind of puzzle before: there is a lock that requires 
 ◊hr{}
 
 ◊div[#:style "text-align: center"]{
-  ◊strong{CAN YOU CRACK THE CODE?}
+  *CAN YOU CRACK THE CODE?*
 
   🔐 _ _ _ _
 
-  ◊b{9} ◊b{2} ◊b{8} ◊b{5}  
+  *9* *2* *8* *5*  
   ◊p{One number is correct, but in the wrong place.}
 
-  ◊b{1} ◊b{9} ◊b{3} ◊b{7}  
+  *1* *9* *3* *7*  
   ◊p{Two numbers are correct, but in the wrong place.}
 
-  ◊b{5} ◊b{2} ◊b{0} ◊b{1}  
+  *5* *2* *0* *1*  
   ◊p{One number is correct, and is in the right place.}
 
-  ◊b{6} ◊b{5} ◊b{0} ◊b{7}
+  *6* *5* *0* *7*
   ◊p{None of the numbers are correct, in any place.}
 
-  ◊b{8} ◊b{5} ◊b{0} ◊b{4}  
+  *8* *5* *0* *4*  
   ◊p{Two numbers are correct, but in the wrong place.}
 }
 
@@ -43,7 +43,7 @@ If you're unaware of Prolog, it's a /logical progamming/ language that, in its m
   Programming in Prolog is significantly different from conventional procedural programming and requires a readjustment in the way one things about programming. Logical relationships are asserted, and Prolog is used to determine whether or not certain statements are true, and if true, what variable bindings make them true. This leads to a very declarative style of programming.◊^[1]
 }
 
-Mr Merritt is, to put it professionally, ◊strong{god damn right}. Here's a valid Prolog program:
+Mr Merritt is, to put it professionally, *god damn right*. Here's a valid Prolog program:
 
 ◊codeblock['prolog]{
   % https://swish.swi-prolog.org/p/KfdGtcJr.swinb
@@ -103,23 +103,23 @@ Here's the puzzle again, for reference:
 ◊hr{}
 
 ◊div[#:style "text-align: center"]{
-  ◊strong{CAN YOU CRACK THE CODE?}
+  *CAN YOU CRACK THE CODE?*
 
   🔐 _ _ _ _
 
-  ◊b{9} ◊b{2} ◊b{8} ◊b{5}  
+  *9* *2* *8* *5*  
   ◊p{One number is correct, but in the wrong place.}
 
-  ◊b{1} ◊b{9} ◊b{3} ◊b{7}  
+  *1* *9* *3* *7*  
   ◊p{Two numbers are correct, but in the wrong place.}
 
-  ◊b{5} ◊b{2} ◊b{0} ◊b{1}  
+  *5* *2* *0* *1*  
   ◊p{One number is correct, and is in the right place.}
 
-  ◊b{6} ◊b{5} ◊b{0} ◊b{7}
+  *6* *5* *0* *7*
   ◊p{None of the numbers are correct, in any place.}
 
-  ◊b{8} ◊b{5} ◊b{0} ◊b{4}  
+  *8* *5* *0* *4*  
   ◊p{Two numbers are correct, but in the wrong place.}
 }
 
