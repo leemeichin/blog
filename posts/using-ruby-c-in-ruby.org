@@ -44,7 +44,7 @@ Let's take it from the top and talk through this ungodly incantation. Go ahead a
 Once you're done, you can save some keystrokes by importing that module.
 
 #+begin_src ruby
-  include LibRub
+  include LibRuby
 #+end_src
 
 In order to call ~puts~ in Ruby through the C API, we'll need to get a reference to the module it's defined in (~Kernel~), and also get the method name as a symbol (like you might normally do with ~.to_sym~).
@@ -65,7 +65,7 @@ get a pointer to a ~String~ instance (or in internal Ruby lingo, one of those ~V
 
 #+begin_src ruby
   str = rb_str_new_cstr('welcome, mortals')
-}
+#+end_src
 
 Now we have all of the ingredients to make the actual call, which syntactically and aesthetically blows idiomatic Ruby out of the water. Delicately paste this into your console and you should see the string printed out. You'll also get a return value like ~#<FFI::Pointer address=0x0000000000000008>~, which will refer to ~Qnil~. ~Qnil~ is a pointer to Ruby's ~nil~ object.
 
@@ -75,7 +75,7 @@ Now we have all of the ingredients to make the actual call, which syntactically 
 
 Run it again a few times, and with different strings. If you're feeling experimental, attach more functions in ~LibRuby~ and see what else you can print out! Ruby's extension documentation should be a good place to start[fn:3].
 
-*** So, why disable the GC?
+*So, why disable the GC?*
 
 For every step in this post up to creating a ~String~ object, we've been using function bindings and global variables. Global variables and constants won't be garbage collected, because the global scope will always maintain a reference to them; besides which, it would be quite bad if your classes and modules suddenly disappeared after a GC pass.
 
