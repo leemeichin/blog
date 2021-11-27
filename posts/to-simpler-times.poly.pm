@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{To simpler times}
+* To simpler times
 ◊define-meta[date]{2021-01-30}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

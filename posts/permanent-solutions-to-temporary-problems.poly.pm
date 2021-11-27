@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Permanent solutions to temporary problems}
+* Permanent solutions to temporary problems
 ◊define-meta[date]{2021-02-01}
 ◊define-meta[published #t]
 ◊define-meta[category]{mental-health}

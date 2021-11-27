@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Past mistakes}
+* Past mistakes
 ◊define-meta[date]{2021-04-24}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

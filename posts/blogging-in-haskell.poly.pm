@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Blogging in Haskell}
+* Blogging in Haskell
 ◊define-meta[date]{2020-06-27}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

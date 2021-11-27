@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Gettin' Ziggy With It On The Pi Zero}
+* Gettin' Ziggy With It On The Pi Zero
 ◊define-meta[date]{2021-01-05}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

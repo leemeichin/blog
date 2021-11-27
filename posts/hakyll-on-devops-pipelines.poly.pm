@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Hakyll on DevOps Pipelines}
+* Hakyll on DevOps Pipelines
 ◊define-meta[date]{2020-08-18}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

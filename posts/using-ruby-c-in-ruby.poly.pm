@@ -1,6 +1,4 @@
-#lang pollen
-
-◊define-meta[title]{Using Ruby's C API inside Ruby}
+* Using Ruby's C API inside Ruby
 ◊define-meta[date]{2021-01-18}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

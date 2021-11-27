@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{I am here}
+* I am here
 ◊define-meta[date]{2020-06-25}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

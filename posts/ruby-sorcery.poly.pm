@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Ruby Sorcery Part 1: Pattern Matching}
+* Ruby Sorcery Part 1: Pattern Matching
 ◊define-meta[date]{2021-09-17}
 ◊define-meta[published #t]
 ◊define-meta[category]{ruby}

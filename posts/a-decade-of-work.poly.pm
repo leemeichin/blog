@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{A decade of work}
+* A decade of work
 ◊define-meta[date]{2020-07-20}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Things I've learned after 10 years in the industry}
+* Things I've learned after 10 years in the industry
 ◊define-meta[date]{2021-01-24}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

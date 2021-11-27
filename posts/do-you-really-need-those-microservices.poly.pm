@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Do you really need those microservices?}
+* Do you really need those microservices?
 ◊define-meta[date]{2020-07-21}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

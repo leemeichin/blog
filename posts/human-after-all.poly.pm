@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Human after all}
+* Human after all
 ◊define-meta[date]{2021-02-20}
 ◊define-meta[published #t]
 ◊define-meta[category]{culture}

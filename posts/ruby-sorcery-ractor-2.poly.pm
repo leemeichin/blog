@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Ruby Sorcery Part 2: Ractor, Chapter 2}
+* Ruby Sorcery Part 2: Ractor, Chapter 2
 ◊define-meta[date]{2021-10-09}
 ◊define-meta[published #f]
 ◊define-meta[category]{ruby}

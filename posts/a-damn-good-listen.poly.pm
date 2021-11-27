@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{A damn good listen}
+* A damn good listen
 ◊define-meta[date]{2020-08-01}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

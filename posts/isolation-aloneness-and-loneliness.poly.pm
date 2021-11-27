@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Isolation, aloneness and loneliness}
+* Isolation, aloneness and loneliness
 ◊define-meta[date]{2020-07-07}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

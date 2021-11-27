@@ -1,6 +1,6 @@
 #lang pollen
 
-◊define-meta[title]{Can you crack the code?}
+* Can you crack the code?
 ◊define-meta[date]{2020-12-31}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}
