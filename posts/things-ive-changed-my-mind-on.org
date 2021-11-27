@@ -1,4 +1,4 @@
-* Things I've learned after 10 years in the industry
+#+TITLE: Things I've learned after 10 years in the industry
 
 :PROPERTIES:
 :CREATED: [2021-01-24]

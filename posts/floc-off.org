@@ -1,4 +1,4 @@
-* FLoC Off
+#+TITLE: FLoC Off
 
 :PROPERTIES:
 :CREATED: [2021-04-16]

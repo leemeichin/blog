@@ -1,4 +1,4 @@
-* Permanent solutions to temporary problems
+#+TITLE: Permanent solutions to temporary problems
 
 :PROPERTIES:
 :CREATED: [2021-02-01]

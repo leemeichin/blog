@@ -1,4 +1,4 @@
-* On working remotely
+#+TITLE: On working remotely
 
 :PROPERTIES:
 :CREATED: [2020-06-26]

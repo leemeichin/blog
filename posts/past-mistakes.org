@@ -1,4 +1,4 @@
-* Past mistakes
+#+TITLE: Past mistakes
 
 :PROPERTIES:
 :CREATED: [2021-04-24]

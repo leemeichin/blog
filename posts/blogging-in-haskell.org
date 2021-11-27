@@ -1,4 +1,4 @@
-* Blogging in Haskell
+#+TITLE: Blogging in Haskell
 
 :PROPERTIES:
 :CREATED: [2020-06-27]

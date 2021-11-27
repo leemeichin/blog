@@ -1,4 +1,4 @@
-* Ruby Sorcery Part 1: Pattern Matching
+#+TITLE: Ruby Sorcery Part 1: Pattern Matching
 
 :PROPERTIES:
 :CREATED: [2021-09-17]

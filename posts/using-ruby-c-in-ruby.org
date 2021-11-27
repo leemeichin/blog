@@ -1,4 +1,4 @@
-* Using Ruby's C API inside Ruby
+#+TITLE: Using Ruby's C API inside Ruby
 
 :PROPERTIES:
 :CREATED: [2021-01-18]

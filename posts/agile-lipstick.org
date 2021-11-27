@@ -1,4 +1,4 @@
-* Agile lipstick 💄
+#+TITLE: Agile lipstick 💄
 
 :PROPERTIES:
 :CREATED: [2021-03-22]

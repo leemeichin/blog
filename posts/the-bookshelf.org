@@ -1,4 +1,4 @@
-* The Bookshelf
+#+TITLE: The Bookshelf
 
 :PROPERTIES:
 :CREATED: [2021-08-28]

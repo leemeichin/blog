@@ -1,4 +1,4 @@
-* Celebrate each other
+#+TITLE: Celebrate each other
 
 :PROPERTIES:
 :CREATED: [2020-08-03]

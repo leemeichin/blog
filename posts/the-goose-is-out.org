@@ -1,4 +1,4 @@
-* The goose is out
+#+TITLE: The goose is out
 
 :PROPERTIES:
 :CREATED: [2021-07-20]

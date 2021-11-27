@@ -1,4 +1,4 @@
-* Gettin' Ziggy With It On The Pi Zero
+#+TITLE: Gettin' Ziggy With It On The Pi Zero
 
 :PROPERTIES:
 :CREATED: [2021-01-05]

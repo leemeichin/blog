@@ -1,4 +1,4 @@
-* A decade of work
+#+TITLE: A decade of work
 
 :PROPERTIES:
 :CREATED: [2020-07-20]

@@ -1,4 +1,4 @@
-* To simpler times
+#+TITLE: To simpler times
 
 :PROPERTIES:
 :CREATED: [2021-01-30]

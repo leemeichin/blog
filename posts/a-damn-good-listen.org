@@ -1,4 +1,4 @@
-* A damn good listen
+#+TITLE: A damn good listen
 
 :PROPERTIES:
 :CREATED: [2020-08-01]

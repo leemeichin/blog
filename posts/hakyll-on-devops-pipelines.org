@@ -1,4 +1,4 @@
-* Hakyll on DevOps Pipelines
+#+TITLE: Hakyll on DevOps Pipelines
 
 :PROPERTIES:
 :CREATED: [2020-08-18]

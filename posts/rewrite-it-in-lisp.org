@@ -1,4 +1,4 @@
-* Rewrite it in Lisp?
+#+TITLE: Rewrite it in Lisp?
 
 :PROPERTIES:
 :CREATED: [2021-06-15]
