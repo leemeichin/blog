@@ -1,6 +1,6 @@
 #+TITLE: archive
-- [[file:using-ruby-c-in-ruby.org][Using Ruby's C API inside Ruby]]
 
+- [[file:using-ruby-c-in-ruby.org][Using Ruby's C API inside Ruby]]
 - [[file:the-goose-is-out.org][The goose is out]]
 - [[file:ruby-sorcery.org][Ruby Sorcery Part 1: Pattern Matching]]
 - [[file:hakyll-on-devops-pipelines.org][Hakyll on DevOps Pipelines]]
