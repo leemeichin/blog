@@ -1,4 +1,5 @@
 * Permanent solutions to temporary problems
+
 :PROPERTIES:
 :CREATED: [2021-02-01]
 :PUBLISHED: t
