@@ -10,7 +10,7 @@ I'm sure everybody goes through the 'angry programmer' phase at some point in th
 
 What I've just done is create an archetype of a person that reduces them to a few simplistic characteristics that might sound amusing if you relate to it, but can just as easily be used as a label to diminish your opinion of someone.
 
-The internet is full of articles that treat interpersonal dynamics at work like a game of Dungeons and Dragons; and the goal of the campaign is for you and your colleages to seek out and destroy the toxic elements in your team. God forbid you identify The Two-Face◊^[1], or The Sociopath◊^[2].
+The internet is full of articles that treat interpersonal dynamics at work like a game of Dungeons and Dragons; and the goal of the campaign is for you and your colleages to seek out and destroy the toxic elements in your team. God forbid you identify The Two-Face[fn:1], or The Sociopath[fn:2].
 
 You might say that these shouldn't be taken so seriously, and to an extent you'd be correct. They're just puff pieces, after all, right? And you can have a self-deprecating chuckle about if you feel like you identify with the archetypes described.
 
@@ -30,7 +30,7 @@ Whew, better bring this back to the topic I had in mind before I go off on anoth
 
 *Compassion*.
 
-I like compassion. Actually no, I /love/ it. It's an amazing word that can mean many things to many people, but I like to think it's what gives this world the soul it has; it's certainly responsible for a lot of good. The Compassionate Mind◊^[3] dedicates over 500 pages and thousands upon thousands of words to this, and this is what the blurb has to say about it:
+I like compassion. Actually no, I /love/ it. It's an amazing word that can mean many things to many people, but I like to think it's what gives this world the soul it has; it's certainly responsible for a lot of good. The Compassionate Mind[fn:3] dedicates over 500 pages and thousands upon thousands of words to this, and this is what the blurb has to say about it:
 
 > Not only does compassion help to soothe distressing emotions, it actually increases feelings of contentment and well-being.
 
@@ -47,7 +47,7 @@ Of course, it doesn't work out for everyone. It's not about protecting people or
 Just, no reason to be so needlessly unkind to each other. We're all human, after all.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://twentytentalent.com/8-types-of-toxic-managers/"]}
-  ◊^[2]{◊<>["https://getvoip.com/blog/2015/02/24/toxic-employees/"]}
-  ◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9781849010986"]}
+  [fn:1]{◊<>["https://twentytentalent.com/8-types-of-toxic-managers/"]}
+  [fn:2]{◊<>["https://getvoip.com/blog/2015/02/24/toxic-employees/"]}
+  [fn:3]{◊<>["https://uk.bookshop.org/a/6865/9781849010986"]}
 }

@@ -6,9 +6,9 @@
 :CATEGORY: ruby
 :END:
 
-This is part two of a series of posts about Ruby and its more experimental features. The first part is about pattern matching.◊^[1]
+This is part two of a series of posts about Ruby and its more experimental features. The first part is about pattern matching.[fn:1]
 
-Ractor is a new addition to Ruby's core library, and it is essentially an implementation of the Actor model. More importantly, it offers a more lightweight approach to concurrency that might feel more at home to those familiar with Go's channels, or have perhaps worked with Elixir. Note that this isn't a wholesale replacement of Ruby's existing multithreading implementations, namely ~Thread~◊^[2] and ~Fiber~◊^[3], and is still highly experimental. As such, there is no guarantee that it would remain stable across future Ruby versions.
+Ractor is a new addition to Ruby's core library, and it is essentially an implementation of the Actor model. More importantly, it offers a more lightweight approach to concurrency that might feel more at home to those familiar with Go's channels, or have perhaps worked with Elixir. Note that this isn't a wholesale replacement of Ruby's existing multithreading implementations, namely ~Thread~[fn:2] and ~Fiber~[fn:3], and is still highly experimental. As such, there is no guarantee that it would remain stable across future Ruby versions.
 
 ◊aside{Speaking of ~Fiber~s, they've received some upgrades in Ruby 3 too. You can now create non-blocking fibers and provide your own scheduler to run them automatically.}
 
@@ -31,9 +31,9 @@ How does it fit together? An actor can have multiple addresses, and many actors 
 
 ** Actor languages
 
-If you've used Erlang◊^[4] or Elixir◊^[5] to any degree, you have already built something around this model and, perhaps, were not aware of it. This is because the actor model is an intuitive aspect of those languages that makes them what they are, and therefore everything is implemented in terms of it.
+If you've used Erlang[fn:4] or Elixir[fn:5] to any degree, you have already built something around this model and, perhaps, were not aware of it. This is because the actor model is an intuitive aspect of those languages that makes them what they are, and therefore everything is implemented in terms of it.
 
-◊aside{Pony◊^[6] is a another more recent language that is designed around the actor model.}
+◊aside{Pony[fn:6] is a another more recent language that is designed around the actor model.}
 
 In Erlang/Elixir, one key feature is that programs are designed to be fault-tolerant by being able to crash. If a crash happens, a new actor will be spun up in its place and processing will continue as normal. This is handled by another actor, known as a supervisor, which has the sole responsibility of doing something when other actors crash.
 
@@ -41,7 +41,7 @@ In Erlang/Elixir, one key feature is that programs are designed to be fault-tole
 
 ** Actors in the wild
 
-You can consider technologies like Kubernetes◊^[7], Kafka◊^[8], and Web Workers◊^[9] in the browser to each be an application of the actor model in some form. This doesn't necessarily mean they were built with that in mind, just that you can find that they share many characteristics in common.
+You can consider technologies like Kubernetes[fn:7], Kafka[fn:8], and Web Workers[fn:9] in the browser to each be an application of the actor model in some form. This doesn't necessarily mean they were built with that in mind, just that you can find that they share many characteristics in common.
 
 For example, in Kubernetes (K8S), the orchestrator is an actor that behaves as a supervisor. It is responsible for monitoring all of the other services that are deployed in the cluster and ensuring that they're kept alive. If a service goes down, it will attempt to reboot it. The service is also an actor, as it can talk to other services. It can change its own state (e.g. in-memory or with a database), but it cannot (or should not) reach into other services to do the same.
 
@@ -53,7 +53,7 @@ Similarly, an email inbox is another application of the pattern. Your email inbo
 
 Ruby's implementation of the actor model is called Ractor. There's a little bit of history here: it was originally called Guilds, and it's been in the making for a good few years now.
 
-Ruby 3.0 introduces Ractor to the general community, however it is still marked as experimental. This means that the API may change in later versions, or behaviours may change based on feedback, and while you might be fine to run Ractors in production...well... /caveat emptor/◊^[10].
+Ruby 3.0 introduces Ractor to the general community, however it is still marked as experimental. This means that the API may change in later versions, or behaviours may change based on feedback, and while you might be fine to run Ractors in production...well... /caveat emptor/[fn:10].
 
 First things first, quick recap on Actors:
 
@@ -65,7 +65,7 @@ First things first, quick recap on Actors:
 
 In order to guarantee thread-safety, some aspects of the language have had to change. Most objects in Ruby are unshareable by default, which is different to how a ~Thread~ behaves, and this means that code inside a ractor essentially cannot read /anything/ outside of its own scope, which includes global variables and constants.
 
-Rather than rewording the Ruby manual on Ractors◊^[11], let's dig into a practical example and build a basic echo server over TCP.
+Rather than rewording the Ruby manual on Ractors[fn:11], let's dig into a practical example and build a basic echo server over TCP.
 
 ◊aside{If you're following along, make sure you're using Ruby 3!}
 
@@ -113,15 +113,15 @@ Try it for yourself by running that code in an IRB console, and then open up ~te
 The problem with this code is that it's too simple: it shows how one Ractor can spawn other ractors, but it's not taking advantage of the communication channels they have and how objects are shared between Ractors. Keep an eye out for the next part of Ruby Sorcery, where there'll be a much deeper dive into Ractor's capabilities.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery.html"]}
-  ◊^[2]{◊<>["https://ruby-doc.org/core-3.0.2/Thread.html"]}
-  ◊^[3]{◊<>["https://ruby-doc.org/core-3.0.2/Fiber.html"]}
-  ◊^[4]{◊<>["https://www.erlang.org"]}
-  ◊^[5]{◊<>["https://elixir-lang.org"]}
-  ◊^[6]{◊<>["https://www.ponylang.io"]}
-  ◊^[7]{◊<>["https://kubernetes.io"]}
-  ◊^[8]{◊<>["https://kafka.apache.org"]}
-  ◊^[9]{◊<>["https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"]}
-  ◊^[10]{Let the buyer beware.}
-  ◊^[11]{◊<>["https://docs.ruby-lang.org/en/master/doc/ractor_md.html"]}
+  [fn:1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery.html"]}
+  [fn:2]{◊<>["https://ruby-doc.org/core-3.0.2/Thread.html"]}
+  [fn:3]{◊<>["https://ruby-doc.org/core-3.0.2/Fiber.html"]}
+  [fn:4]{◊<>["https://www.erlang.org"]}
+  [fn:5]{◊<>["https://elixir-lang.org"]}
+  [fn:6]{◊<>["https://www.ponylang.io"]}
+  [fn:7]{◊<>["https://kubernetes.io"]}
+  [fn:8]{◊<>["https://kafka.apache.org"]}
+  [fn:9]{◊<>["https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"]}
+  [fn:10]{Let the buyer beware.}
+  [fn:11]{◊<>["https://docs.ruby-lang.org/en/master/doc/ractor_md.html"]}
 }

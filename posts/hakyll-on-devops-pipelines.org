@@ -15,11 +15,11 @@ In a way, this is total overkill for a static site. If I have the repo cloned on
 
 It's flawed compared to using ~rsync~, as it won't remove existing files, but it does the job in less than a second or two.
 
-The thing is, this isn't so quick if I want to publish a post from a different computer that doesn't have any programming tools installed. I would have to install ~stack~ ◊^[1], which is a build tool for Haskell, and then I would have to run ~stack build~. This can take at least half an hour as the command will pull down the correct version of ~GHC~ and a 'snapshot' (basically a huge collection of all the Hackage◊^[2] libraries available for that build) before it even /thinks/ about compiling my ~site.hs~ file. It also means to committing a few gigs of storage space for all of that.
+The thing is, this isn't so quick if I want to publish a post from a different computer that doesn't have any programming tools installed. I would have to install ~stack~ [fn:1], which is a build tool for Haskell, and then I would have to run ~stack build~. This can take at least half an hour as the command will pull down the correct version of ~GHC~ and a 'snapshot' (basically a huge collection of all the Hackage[fn:2] libraries available for that build) before it even /thinks/ about compiling my ~site.hs~ file. It also means to committing a few gigs of storage space for all of that.
 
-I like to write from my little Surface Pro when I'm out and about, so I'd rather not do a full-blown compilation on that for the sake of my battery. Enter Azure DevOps Pipelines◊^[3].
+I like to write from my little Surface Pro when I'm out and about, so I'd rather not do a full-blown compilation on that for the sake of my battery. Enter Azure DevOps Pipelines[fn:3].
 
-I've been keen on playing with these pipelines for a while, and much like any dev-tool, it has a free tier for open source repos. So does Github Actions◊^[4], which actually shares some of the underlying architecture of DevOps Pipelines, but I wanted to play with something different.
+I've been keen on playing with these pipelines for a while, and much like any dev-tool, it has a free tier for open source repos. So does Github Actions[fn:4], which actually shares some of the underlying architecture of DevOps Pipelines, but I wanted to play with something different.
 
 Let's do a step-by-step walk through my setup.
 
@@ -175,12 +175,12 @@ This is similar to running ~rsync~ to deploy, except that it knows where to get 
 
 To solve the issue I first mentioned, ~cleanTargetFolder~ makes sure to delete the previous deployment before copying the new one over. Problem solved!
 
-To see the pipeline in full, you can check out the full YAML file◊^[5]. I've been using it with success for the past couple of weeks now.
+To see the pipeline in full, you can check out the full YAML file[fn:5]. I've been using it with success for the past couple of weeks now.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://docs.haskellstack.org/en/stable/README"]}
-  ◊^[2]{◊<>["https://hackage.haskell.org"]}
-  ◊^[3]{◊<>["https://dev.azure.com"]}
-  ◊^[4]{◊<>["https://github.com/features/actions"]}
-  ◊^[5]{◊<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/9decaf4732dc7bc4510fcf23979af8657bdb01bd/item/azure/pipeline.yml"]}
+  [fn:1]{◊<>["https://docs.haskellstack.org/en/stable/README"]}
+  [fn:2]{◊<>["https://hackage.haskell.org"]}
+  [fn:3]{◊<>["https://dev.azure.com"]}
+  [fn:4]{◊<>["https://github.com/features/actions"]}
+  [fn:5]{◊<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/9decaf4732dc7bc4510fcf23979af8657bdb01bd/item/azure/pipeline.yml"]}
 }

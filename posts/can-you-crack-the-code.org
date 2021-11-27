@@ -40,7 +40,7 @@ I presume you've seen this kind of puzzle before: there is a lock that requires 
 If you're unaware of Prolog, it's a /logical progamming/ language that, in its most simplest terms, takes a bunch of facts and rules and then gives you the tools to query them to get the outcome you want. In more complicated terms, a cursory search on the intertubes will lead you to a vast collection of academic papers that explain more. This is not the kind of language that is casually blogged about by the masses, as with more mainstream ones like CSS, HTML, or ColdFusion.
 
 ◊q["Dennis Merritt" 2017]{
-  Programming in Prolog is significantly different from conventional procedural programming and requires a readjustment in the way one things about programming. Logical relationships are asserted, and Prolog is used to determine whether or not certain statements are true, and if true, what variable bindings make them true. This leads to a very declarative style of programming.◊^[1]
+  Programming in Prolog is significantly different from conventional procedural programming and requires a readjustment in the way one things about programming. Logical relationships are asserted, and Prolog is used to determine whether or not certain statements are true, and if true, what variable bindings make them true. This leads to a very declarative style of programming.[fn:1]
 }
 
 Mr Merritt is, to put it professionally, *god damn right*. Here's a valid Prolog program:
@@ -60,7 +60,7 @@ Mr Merritt is, to put it professionally, *god damn right*. Here's a valid Prolog
 
 What we have here are some facts, both true and technically true. It's a fact that Obama is a president, as is Trump. It's also a fact that there is a brand of cheese in the UK called President. This is quite ambiguous as a result so some extra facts are supplied, namely that brie is a cheese as much as it is a President-brand cheese, and that Wensleydale is also a cheese. It goes without saying that Trump and Obama are people, so with those facts we should be able to do some querying.
 
-If you're doing this on your own machine, you can save those facts into a file (say, ~example.pl~) and then importing it inside a console, like so: ~[example].~. Otherwise, you can load up the Swish notebook◊^[2] and follow along using an online console, no installation needed!
+If you're doing this on your own machine, you can save those facts into a file (say, ~example.pl~) and then importing it inside a console, like so: ~[example].~. Otherwise, you can load up the Swish notebook[fn:2] and follow along using an online console, no installation needed!
 
 Let's do some querying then, which will show you how Prolog might seem a bit back to front compared to what you're used to.
 
@@ -125,7 +125,7 @@ Here's the puzzle again, for reference:
 
 -----
 
-According to Leon Sterling and Ehud Shapiro in /The Art of Prolog/ ◊^[3], this type of problem falls quite neatly under the umbrella of non-deterministic programming. This is because we're essentially going to build an algorithm that will use what they describe as a ~generate and test~ solution. We're going to write something that will take our clues and run through all the possible answers until it lands on the only one that fits. We're not aiming for beautiful optimisation here so this good enough, although the code we write will be tightly coupled to the exact puzzle provided.
+According to Leon Sterling and Ehud Shapiro in /The Art of Prolog/ [fn:3], this type of problem falls quite neatly under the umbrella of non-deterministic programming. This is because we're essentially going to build an algorithm that will use what they describe as a ~generate and test~ solution. We're going to write something that will take our clues and run through all the possible answers until it lands on the only one that fits. We're not aiming for beautiful optimisation here so this good enough, although the code we write will be tightly coupled to the exact puzzle provided.
 
 So, let's begin with our set of rules:
 
@@ -140,7 +140,7 @@ So, let's begin with our set of rules:
 #+end_src
 
 ◊aside{
-  If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on /Constraint Logic Programming over Finite Domains/.◊^[4]
+  If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on /Constraint Logic Programming over Finite Domains/.[fn:4]
 }
 
 These clues don't really mean anything by themselves, they're simple facts in Prolog terms, so we need to add a bit more to give these some meaning. All of this will go into the same file, as we're not ready to query yet.
@@ -253,7 +253,7 @@ The next bit is quite long, but this query is where we make the sausage. Comment
     Code = [A, B, C, D].
 #+end_src
 
-Did you solve the puzzle yourself? Do you remember the answer? If you don't care to copy and paste all of that, you can open up this ready made notebook◊^[5], and then run the following:
+Did you solve the puzzle yourself? Do you remember the answer? If you don't care to copy and paste all of that, you can open up this ready made notebook[fn:5], and then run the following:
 
 #+begin_src prolog
   crack_code([A, B, C, D]),
@@ -269,13 +269,13 @@ The exercise of writing that in a less brute-force manner is left to you, my bel
 
 So ends 2020, so ends this post. Did your brain-grown answer match the one this Prolog program gave you? What do you think about logic programming in general now you've seen some of it? Why not share it with your friends or whoever, if they're interested, and see what they think?
 
-Mad propz to the Prolog community on Reddit also, whose example solutions helped point me in the right direction◊^[6].
+Mad propz to the Prolog community on Reddit also, whose example solutions helped point me in the right direction[fn:6].
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://amzi.com/AdventureInProlog/a1start.php"] - (buy the book, srlsy...)}
-  ◊^[2]{◊<>["https://swish.swi-prolog.org/p/KfdGtcJr.swinb"]}
-  ◊^[3]{◊<>["https://uk.bookshop.org/books/the-art-of-prolog-advanced-programming-techniques/9780262691635"]}
-  ◊^[4]{◊<>["https://www.swi-prolog.org/man/clpfd.html"]}
-  ◊^[5]{◊<>["https://swish.swi-prolog.org/p/MgtEUnSv.swinb"]}
-  ◊^[6]{◊<>["https://www.reddit.com/r/prolog/comments/fzww7m/cracking_this_puzzle_with_prolog/"]}
+  [fn:1]{◊<>["https://amzi.com/AdventureInProlog/a1start.php"] - (buy the book, srlsy...)}
+  [fn:2]{◊<>["https://swish.swi-prolog.org/p/KfdGtcJr.swinb"]}
+  [fn:3]{◊<>["https://uk.bookshop.org/books/the-art-of-prolog-advanced-programming-techniques/9780262691635"]}
+  [fn:4]{◊<>["https://www.swi-prolog.org/man/clpfd.html"]}
+  [fn:5]{◊<>["https://swish.swi-prolog.org/p/MgtEUnSv.swinb"]}
+  [fn:6]{◊<>["https://www.reddit.com/r/prolog/comments/fzww7m/cracking_this_puzzle_with_prolog/"]}
 }

@@ -17,13 +17,13 @@ Programming books are almost disappointingly over-represented as they're possibl
 I added a few new books to the collection this year, and have been reading them as they arrive. Here's a quick run-through of what 2021 has looked like for me:
 
 
-** The Phoenix Project◊^[1]
+** The Phoenix Project[fn:1]
 
 As far as Corporate Thrillers for Business Analysts go, The Phoenix Project easy enough to read and has some entertainment value. The cast is awash with wholly unsympathetic characters, the corporate setting oozes with toxicity, and it's impossible to turn a page without /someone/ being an asshole.
 
 I didn't rate it and if its follow up /The Unicorn Project/ is any similar, then I think I'll give that one a pass. The Devops Handbook is still on my list, though.
 
-** Extreme Ownership◊^[2]
+** Extreme Ownership[fn:2]
 
 I had to keep an open mind when starting this one, but eventually I gave up because I could no longer ignore what I was really feeling while reading this. Extreme Ownership glorifies the war in Iraq and the US's role in it and uses those experiences to teach you about accountability. 
 
@@ -33,13 +33,13 @@ Let's be fair, the advice is sound if you can put the chest beating and the hoo-
 
 This one just wasn't for me.
 
-** Metro 2033◊^[3]
+** Metro 2033[fn:3]
 
 Like many people, my first intro to Metro 2033 was the game that was released a decade ago, and I've greatly enjoyed Artyom's journey from then up until the release of Metro Exodus. The post-apocalyptic setting is remarkable and I was sucked into the world in a way that Fallout could never manage. The stories feel more grounded in humanity and they're not quite as distracted by commentary about the excesses of capitalism.
 
 I decided to revisit the world again this year, except this time by reading the books. I haven't finished this yet, as I've wanted to take my time with it. 
 
-** Crucial Conversations◊^[4]
+** Crucial Conversations[fn:4]
 
 I revisit this book every now and then, although it has the dual purpose of selling consultation along with offering a taste of advice. Once you get used to the relentless sales pitch for Crucial Conversations™ you can actually take away a great deal of learning from this.
 
@@ -50,8 +50,8 @@ It's the kind of book I'm happy to lend to someone without an expectation of the
 Beyond these, I have both Dune and Systemic Coaching & Constellations on the backburner. I'm looking forward to getting stuck into both.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://uk.bookshop.org/a/6865/9781942788294"]}
-  ◊^[2]{◊<>["https://uk.bookshop.org/a/6865/9781250183866"]}
-  ◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9780575086258"]}
-  ◊^[4]{◊<>["https://uk.bookshop.org/a/6865/9780071771320"]}
+  [fn:1]{◊<>["https://uk.bookshop.org/a/6865/9781942788294"]}
+  [fn:2]{◊<>["https://uk.bookshop.org/a/6865/9781250183866"]}
+  [fn:3]{◊<>["https://uk.bookshop.org/a/6865/9780575086258"]}
+  [fn:4]{◊<>["https://uk.bookshop.org/a/6865/9780071771320"]}
 }

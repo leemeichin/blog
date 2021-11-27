@@ -6,7 +6,7 @@
 :CATEGORY: ruby
 :END:
 
-In chapter 2 of this exploration, a basic Ractor-based TCP server was refactored into a partly-functional HTTP server.◊^[1] It can handle super-basic requests, but it doesn't send back a valid HTTP response. That means that it's difficult to use tools like ~curl~ to interact with the server and, thanks to that, previous demonstrations have depended on hand-crafting requests inside a ~telnet~ session.
+In chapter 2 of this exploration, a basic Ractor-based TCP server was refactored into a partly-functional HTTP server.[fn:1] It can handle super-basic requests, but it doesn't send back a valid HTTP response. That means that it's difficult to use tools like ~curl~ to interact with the server and, thanks to that, previous demonstrations have depended on hand-crafting requests inside a ~telnet~ session.
 
 This chapter is therefore going to focus on constructing a valid HTTP response. As with the previous chapter, it won't cover 100% of the spec, but it will lay down some decent foundations.
 
@@ -68,14 +68,14 @@ For the sake of simplicity, the server will handle only the simple case for now:
 
 ** Building an HTTP Response in Ractor
 
-This is the example HTTP request from the previous chapter◊^[1].
+This is the example HTTP request from the previous chapter[fn:1].
 
 ◊codeblock['text]{
   GET /hello-world HTTP/1.1
   Host: localhost:1337
 }
 
-It doesn't do very much, and the server can respond with whatever it likes. At a higher level of abstraction, this is typically the part where you define your 'routes' and then add controllers or handlers to perform some action, and then the underlying framework will convert all of that into something that can be sent back over the wire to the browser. In Ruby, Rack◊^[2] is a popular library that does achieves the same thing.
+It doesn't do very much, and the server can respond with whatever it likes. At a higher level of abstraction, this is typically the part where you define your 'routes' and then add controllers or handlers to perform some action, and then the underlying framework will convert all of that into something that can be sent back over the wire to the browser. In Ruby, Rack[fn:2] is a popular library that does achieves the same thing.
 
 For our sake, the server will just take the location provided in the request and then echo it back in an HTML document, perhaps something like this:
 
@@ -97,6 +97,6 @@ Of course, this will be done in another Ractor, but we'll also address the probl
 
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery-ractor-2.html"]}
-  ◊^[2]{◊<>["https://github.com/rack/rack"]}
+  [fn:1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery-ractor-2.html"]}
+  [fn:2]{◊<>["https://github.com/rack/rack"]}
 }

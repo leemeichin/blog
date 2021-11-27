@@ -16,7 +16,7 @@ It's not as healthy as stepping back and getting back into it the next day. The 
 
 And... it's the classic case of doing less with more. The prospect of doing something instead of nothing is a seductive one.
 
-I'm reminded of the Politician's Syllogism◊^[1], which in this case would sound like this:
+I'm reminded of the Politician's Syllogism[fn:1], which in this case would sound like this:
 
 #+begin_quote
   To be productive, I must do something
@@ -61,5 +61,5 @@ Am I enough? Certainly!
 Do I behave like I am? Not at all.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://en.wikipedia.org/wiki/Politician%27s_syllogism"]}
+  [fn:1]{◊<>["https://en.wikipedia.org/wiki/Politician%27s_syllogism"]}
 }

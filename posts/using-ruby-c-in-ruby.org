@@ -8,7 +8,7 @@
 
 A thought occurred to me in my mask-wearing, lockdown-addled brain last night: why the hell did I choose /now/ to stop drinking? It's for my own good, I told myself, and so my thoughts shifted further into the absurd with nary a mind-altering substance in sight to stop them.
 
-One of those thoughts stuck out in particular, because of how ridiculous it sounded: could you optimise your Ruby code by using FFI with Ruby's C bindings? I'm not talking about making a native extension in pure C, I'm talking about making Ruby talk to itself through a foreign function interface using the ffi gem◊^[1].
+One of those thoughts stuck out in particular, because of how ridiculous it sounded: could you optimise your Ruby code by using FFI with Ruby's C bindings? I'm not talking about making a native extension in pure C, I'm talking about making Ruby talk to itself through a foreign function interface using the ffi gem[fn:1].
 
 Let's apply some method to this madness and set up some bindings, otherwise we're dead in the water. Let's be descriptive and call our FFI module ~LibRuby~. No naming conflicts at all there, /no sirree/!
 
@@ -41,7 +41,7 @@ Anyway this boilerplate should give us enough to do a hello world using Ruby's C
   It should go without saying that at this point, you're not just playing with fire, you're inviting it to burn down your house. Be careful lest the `segfault`s creep up on you.
 }
 
-Let's take it from the top and talk through this ungodly incantation. Go ahead and copy that little module into your console! If it fails, make sure you've got the ~ffi~ gem installed◊^[2].
+Let's take it from the top and talk through this ungodly incantation. Go ahead and copy that little module into your console! If it fails, make sure you've got the ~ffi~ gem installed[fn:2].
 
 Once you're done, you can save some keystrokes by importing that module.
 
@@ -75,7 +75,7 @@ Now we have all of the ingredients to make the actual call, which syntactically 
   rb_funcall(kernel, puts_method, 1, :value, str)
 #+end_src
 
-Run it again a few times, and with different strings. If you're feeling experimental, attach more functions in ~LibRuby~ and see what else you can print out! Ruby's extension documentation should be a good place to start◊^[3].
+Run it again a few times, and with different strings. If you're feeling experimental, attach more functions in ~LibRuby~ and see what else you can print out! Ruby's extension documentation should be a good place to start[fn:3].
 
 *** So, why disable the GC?
 
@@ -90,7 +90,7 @@ How would you fix it? Well, now we've found out that we ~can~ write Ruby with it
 Until then, I'll see you further into the abyss.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://github.com/ffi/ffi"]}
-  ◊^[2]{~gem install ffi -- --enable-system-libffi~}
-  ◊^[3]{◊<>["https://ruby-doc.org/core-2.7.0/doc/extension_rdoc.html"]}
+  [fn:1]{◊<>["https://github.com/ffi/ffi"]}
+  [fn:2]{~gem install ffi -- --enable-system-libffi~}
+  [fn:3]{◊<>["https://ruby-doc.org/core-2.7.0/doc/extension_rdoc.html"]}
 }

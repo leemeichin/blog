@@ -199,12 +199,12 @@ If you recall earlier examples, I defined ~destructure_keys(*)~, which meant tha
 
 -----
 
-Well, this doesn't cover the entirety of Ruby's pattern matching fun, but it should at least show you the various things you're now able to do with the feature. If in doubt, RTFM◊^[1]; Ruby's documentation is absolutely fantastic.
+Well, this doesn't cover the entirety of Ruby's pattern matching fun, but it should at least show you the various things you're now able to do with the feature. If in doubt, RTFM[fn:1]; Ruby's documentation is absolutely fantastic.
 
 ◊aside{Specifying 'rubydoc' in your Google searches should reveal Ruby's official documentation and not the SEO spam that is ApiDock.}
 
 Check in soon to see another deep-dive into Ruby Sorcery.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://docs.ruby-lang.org/en/3.0.0/doc/syntax/pattern_matching_rdoc.html"]}
+  [fn:1]{◊<>["https://docs.ruby-lang.org/en/3.0.0/doc/syntax/pattern_matching_rdoc.html"]}
 }

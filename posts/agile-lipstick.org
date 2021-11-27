@@ -6,15 +6,15 @@
 :CATEGORY: programming
 :END:
 
-Over the past decade of my wondrous career I've rather haphazardly stumbled in and out of the realm of agile leadership. I've been a scrum master and an agile coach, even got the PSM1 certification which is nice but not really worth the PDF it's written on these days. My best investment was in a coaching course◊^[1] where I learned experientially all of the things I didn't learn as part of my job: active listening, rapport, acknowledgment and recognition, transactional anaylisis, I'm Ok/You're Ok, etc.
+Over the past decade of my wondrous career I've rather haphazardly stumbled in and out of the realm of agile leadership. I've been a scrum master and an agile coach, even got the PSM1 certification which is nice but not really worth the PDF it's written on these days. My best investment was in a coaching course[fn:1] where I learned experientially all of the things I didn't learn as part of my job: active listening, rapport, acknowledgment and recognition, transactional anaylisis, I'm Ok/You're Ok, etc.
 
-In the old-days of the internet, and the world wide web, there was a period of time known as Eternal September◊^[2]. Basically, the shadow-of-its-former-self that is AOL used to be an ISP that gave its browser away on free CDs. You'd find them _everywhere_. So many adverts at the time would give you an 'AOL keyword' to look for to get to their site, and there was an instant messenger and essentially a predecessor to the walled gardens you see so often today with Facebook, Google, Apple, and so on. They made Usenet accessible to the masses and so the existing Usenet users at the time had to basically deal with onboarding a constant influx of new users, many of whom didn't understand the rules or etiquette of the groups they found themselves joining.
+In the old-days of the internet, and the world wide web, there was a period of time known as Eternal September[fn:2]. Basically, the shadow-of-its-former-self that is AOL used to be an ISP that gave its browser away on free CDs. You'd find them _everywhere_. So many adverts at the time would give you an 'AOL keyword' to look for to get to their site, and there was an instant messenger and essentially a predecessor to the walled gardens you see so often today with Facebook, Google, Apple, and so on. They made Usenet accessible to the masses and so the existing Usenet users at the time had to basically deal with onboarding a constant influx of new users, many of whom didn't understand the rules or etiquette of the groups they found themselves joining.
 
-I think agile, or perhaps scrum more specifically, has something of an Eternal September itself. The crux of it is that 'agile development' has become increasingly popular, practically a buzzword, and therefore the discourse has never really evolved beyond the experience of that introduction. Either it works for you after an initial period and you stick with it, or you become one of the legion who writes it off. I think this is the same reason why books like Peopleware◊^[3] and The Five Dysfunctions of a Team◊^[4] still feel prophetic: forty years and the world has still not caught up with them.
+I think agile, or perhaps scrum more specifically, has something of an Eternal September itself. The crux of it is that 'agile development' has become increasingly popular, practically a buzzword, and therefore the discourse has never really evolved beyond the experience of that introduction. Either it works for you after an initial period and you stick with it, or you become one of the legion who writes it off. I think this is the same reason why books like Peopleware[fn:3] and The Five Dysfunctions of a Team[fn:4] still feel prophetic: forty years and the world has still not caught up with them.
 
 To be agile, in my mind, is to reject mediocrity and foster a mindset that encourages excellency; actually being excellent with each other and not just writing excellent software. This comes in many forms and the exact manifestation will change from one organisation to another, one culture to another, one team to another.
 
-The subject of this topic, the Agile Manifesto◊^[5], was penned in 2001, twenty years ago, and has remained frozen in time since. Let's take a look in more detail.
+The subject of this topic, the Agile Manifesto[fn:5], was penned in 2001, twenty years ago, and has remained frozen in time since. Let's take a look in more detail.
 
 The first line of the manifesto is this:
 
@@ -53,9 +53,9 @@ Fuck that noise, just put the agile lipstick on your pig instead! Throw in a dai
 Now /that/ is easy.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is /so/ worth it./
-  ◊^[2]{◊<>["https://en.wikipedia.org/wiki/Eternal_September"]}
-  ◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9780321934116"]}
-  ◊^[4]{◊<>["https://uk.bookshop.org/a/6865/9781118127308"]}
-  ◊^[5]{◊<>["https://agilemanifesto.org/"]}
+  [fn:1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is /so/ worth it./
+  [fn:2]{◊<>["https://en.wikipedia.org/wiki/Eternal_September"]}
+  [fn:3]{◊<>["https://uk.bookshop.org/a/6865/9780321934116"]}
+  [fn:4]{◊<>["https://uk.bookshop.org/a/6865/9781118127308"]}
+  [fn:5]{◊<>["https://agilemanifesto.org/"]}
 }
