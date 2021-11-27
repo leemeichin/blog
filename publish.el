@@ -1,3 +1,23 @@
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+	(url-retrieve-synchronously "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+				    'silent
+				    'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(defalias 'sup 'straight-use-package)
+
+(sup 'org)
+(sup 'htmlize)
+
+(require 'ox-publish)
+
 (defun expand-relative-path (path)
   "Expand relative PATH from current buffer or file to a full path"
   (concat
@@ -49,6 +69,3 @@
          :publishing-directory ,(expand-relative-path "publish/")
          :publishing-function org-publish-attachment)
         ("www.kamelasa.dev" :components ("pages" "posts" "static"))))
-
-(require 'org)
-(require 'ox-publish)
