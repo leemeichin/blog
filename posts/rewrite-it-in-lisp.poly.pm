@@ -1,4 +1,5 @@
 * Rewrite it in Lisp?
+:PROPERTIES:
 ◊define-meta[date]{2021-06-15}
 ◊define-meta[category]{programming}
 ◊define-meta[published #t]

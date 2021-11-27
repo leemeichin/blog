@@ -1,4 +1,5 @@
 * The goose is out
+:PROPERTIES:
 ◊define-meta[date]{2021-07-20}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

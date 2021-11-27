@@ -1,4 +1,5 @@
 * Enough
+:PROPERTIES:
 ◊define-meta[date]{2021-03-06}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

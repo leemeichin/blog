@@ -1,4 +1,5 @@
 * Permanent solutions to temporary problems
+:PROPERTIES:
 ◊define-meta[date]{2021-02-01}
 ◊define-meta[published #t]
 ◊define-meta[category]{mental-health}

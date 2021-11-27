@@ -1,4 +1,5 @@
 * Agile lipstick 💄
+:PROPERTIES:
 ◊define-meta[date]{2021-03-22}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

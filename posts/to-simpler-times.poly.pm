@@ -1,4 +1,5 @@
 * To simpler times
+:PROPERTIES:
 ◊define-meta[date]{2021-01-30}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

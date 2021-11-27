@@ -1,4 +1,5 @@
 * The Bookshelf
+:PROPERTIES:
 ◊define-meta[date]{2021-08-28}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

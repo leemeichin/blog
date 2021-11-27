@@ -1,4 +1,5 @@
 * Blogging in Haskell
+:PROPERTIES:
 ◊define-meta[date]{2020-06-27}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}

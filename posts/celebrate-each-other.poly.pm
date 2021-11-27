@@ -1,4 +1,5 @@
 * Celebrate each other
+:PROPERTIES:
 ◊define-meta[date]{2020-08-03}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

@@ -1,4 +1,5 @@
 * Growing up
+:PROPERTIES:
 ◊define-meta[date]{2021-05-17}
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}

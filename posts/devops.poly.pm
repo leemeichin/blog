@@ -1,4 +1,5 @@
 * Devops
+:PROPERTIES:
 ◊define-meta[date]{2020-09-18}
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}
