@@ -18,15 +18,19 @@ And... it's the classic case of doing less with more. The prospect of doing some
 
 I'm reminded of the Politician's Syllogism◊^[1], which in this case would sound like this:
 
-◊blockquote{
-  ◊p{To be productive, I must do something}
-  ◊p{I am doing something}
-  ◊p{Therefore, I am being productive}
-}
+#+begin_quote
+  To be productive, I must do something
+  
+  I am doing something
+  
+  Therefore, I am being productive
+#+end_quote
 
 It's a circular definition and it also makes me think of the first time an agile team tries to write a user story:
 
-◊blockquote{So that I can log in / As a user / I need a log in system}
+#+begin_quote
+So that I can log in / As a user / I need a log in system
+#+end_quote
 
 The problem with defining a problem in terms of itself is that it looks like you're doing something for the sake of it. No one really benefits from anything done for the sake of it, but it'll feel good and it'll likely come with a cost.
 

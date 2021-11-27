@@ -18,24 +18,27 @@ The subject of this topic, the Agile Manifesto◊^[5], was penned in 2001, twent
 
 The first line of the manifesto is this:
 
-◊blockquote{
+#+begin_quote
   We are uncovering better ways of developing software by doing it and helping others do it.
-}
+#+end_quote
 
 The manifesto, at that point in time, was conceived via the process of introspection and adaptation. I actually think this is the most important part of the manifesto because it tells you how they came to the conclusion they did. By extension, do the same and you may yourself find things that you value over others.
 
-◊blockquote{
+#+begin_quote
   Through this work we have come to value:
-}
+#+end_quote
 
-/This work} is their iterative process. As if to reinforce the previous understanding, they discovered a pattern throughout and realised that things they valued ◊em{more/ when developing software were:
+/This work/ is their iterative process. As if to reinforce the previous understanding, they discovered a pattern throughout and realised that things they valued /more/ when developing software were:
 
-◊blockquote{
-  ◊p{Individuals and interactions}
-  ◊p{Working software}
-  ◊p{Customer collaboration}
-  ◊p{Responding to change}
-}
+#+begin_quote
+  Individuals and interactions
+  
+  Working software
+  
+  Customer collaboration
+  
+  Responding to change
+#+end_quote
 
 It bothers me just how easily such valuable things as change, collaboration and interaction are discarded in favour of rigid process and other varied forms of control-freakery, trying to change the future through a cascading sequence of futile interventions instead of changing the way you do things or the way you are.
 
@@ -50,7 +53,7 @@ Fuck that noise, just put the agile lipstick on your pig instead! Throw in a dai
 Now /that/ is easy.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is /so} worth it./
+  ◊^[1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is /so/ worth it./
   ◊^[2]{◊<>["https://en.wikipedia.org/wiki/Eternal_September"]}
   ◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9780321934116"]}
   ◊^[4]{◊<>["https://uk.bookshop.org/a/6865/9781118127308"]}

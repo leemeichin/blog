@@ -16,11 +16,11 @@ Let's get one thing out of the way before I continue: yes, there are people out 
 
 ◊hr{}
 
- For some reason I was reminded of an Osho story◊^[3] that was told at one of the retreats I went to. It was probably in one of the Osho books I read too but I couldn't tell you which one. It adapted the riddle of the goose in the bottle and turned it into an allegory of sorts.
+For some reason I was reminded of an Osho story◊^[3] that was told at one of the retreats I went to. It was probably in one of the Osho books I read too but I couldn't tell you which one. It adapted the riddle of the goose in the bottle and turned it into an allegory of sorts.
 
-◊blockquote{
-  If a man puts a gosling into a bottle and feeds him until it is fully grown, how can the man get the goose out without killing it or breaking the bottle?
-}
+#+begin_quote
+If a man puts a gosling into a bottle and feeds him until it is fully grown, how can the man get the goose out without killing it or breaking the bottle?
+#+end_quote
 
 The story describes the obvious paradox of the situation: you can either break the bottle and keep the goose, or you can kill the goose and keep the bottle. You can't have both though. Ultimately, you are the goose and the bottle is your ego and the act of meditation allows you to become aware of your ego, outside of it, without breaking it.
 
