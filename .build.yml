@@ -2,8 +2,7 @@ image: debian/bullseye
 sources:
   - https://git.sr.ht/~mrlee/www.kamelasa.dev
 packages:
-  - racket
-  - python3-pygments
+  - emacs
 secrets:
   - f74304b4-9735-47a4-9d23-6d9fd7c47f1a
 tasks:
@@ -14,7 +13,5 @@ tasks:
       fi
   - publish: |
       cd www.kamelasa.dev
-      raco pkg install --auto --batch --no-docs pollen
-      raco pollen render
-      raco pollen publish . ../www
+      emacs --batch --load publish.el --funcall org-publish-all
       scp -o StrictHostKeyChecking=no -r ../www/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev

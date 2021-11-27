@@ -1,5 +1,3 @@
-(require 'ox-publish)
-
 (defun expand-relative-path (path)
   "Expand relative PATH from current buffer or file to a full path"
   (concat
@@ -43,3 +41,6 @@
          :publishing-directory ,(expand-relative-path "publish/")
          :publishing-function org-publish-attachment)
         ("www.kamelasa.dev" :components ("pages" "posts" "static"))))
+
+(require 'org)
+(require 'ox-publish)
