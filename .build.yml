@@ -13,5 +13,5 @@ tasks:
       fi
   - publish: |
       cd www.kamelasa.dev
-      emacs --batch --load publish.el --funcall org-publish-all
-      scp -o StrictHostKeyChecking=no -r ../www/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev
+      emacs --batch --no-init --load publish.el --funcall org-publish-all
+      scp -o StrictHostKeyChecking=no -r publish/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev
