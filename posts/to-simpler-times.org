@@ -73,7 +73,7 @@ sudo apt install kamelasa
 kamelasa build
 }
 
-◊hr{}
+-----
 
 On another note, this site now also left GitHub for Sourcehut◊^[8] and, at risk of being a bit narcissistic, a comments section lives on a mailing list there◊^[9]. Should you feel that the stuff I post is worth talking about, of course. You don't need a Sourcehut account to get involved, although you'll need to join the list (without signing up for Sourcehut) if you want more than read-only access.
 

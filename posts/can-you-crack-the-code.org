@@ -10,7 +10,7 @@ What better way to spend the final moments of 2020, locked down in London, than 
 
 I presume you've seen this kind of puzzle before: there is a lock that requires a three or four digit code in order for it to open. You don't know what the code is, of course, but you're given a series of clues that will test your powers of deduction and lead you to the right answer. I've actually got such a puzzle here:
 
-◊hr{}
+-----
 
 ◊div[#:style "text-align: center"]{
   *CAN YOU CRACK THE CODE?*
@@ -33,7 +33,7 @@ I presume you've seen this kind of puzzle before: there is a lock that requires 
   ◊p{Two numbers are correct, but in the wrong place.}
 }
 
-◊hr{}
+-----
 
 ◊h2{A brief introduction}
 
@@ -100,7 +100,7 @@ This is more or less the essence of Prolog, and your program is essentially a da
 
 Here's the puzzle again, for reference:
 
-◊hr{}
+-----
 
 ◊div[#:style "text-align: center"]{
   *CAN YOU CRACK THE CODE?*
@@ -123,7 +123,7 @@ Here's the puzzle again, for reference:
   ◊p{Two numbers are correct, but in the wrong place.}
 }
 
-◊hr{}
+-----
 
 According to Leon Sterling and Ehud Shapiro in /The Art of Prolog}◊^[3], this type of problem falls quite neatly under the umbrella of non-deterministic programming. This is because we're essentially going to build an algorithm that will use what they describe as a ◊code{generate and test/ solution. We're going to write something that will take our clues and run through all the possible answers until it lands on the only one that fits. We're not aiming for beautiful optimisation here so this good enough, although the code we write will be tightly coupled to the exact puzzle provided.
 

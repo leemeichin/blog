@@ -20,7 +20,7 @@ Ready to... get Ziggy with it? Oh, I bet you are. 😋 If you want to skip to th
 
 🥁
 
-◊hr{}
+-----
 
 ◊h2{Hello, Pi.}
 
@@ -81,7 +81,7 @@ What we've actually done, however, is open the device file ~/dev/i2c-1~, and the
 
 We're at a good point now to try and compile this thing and then run it on the Pi. If we get the message 'Init successful.' then we're golden.
 
-◊hr{}
+-----
 
 ◊h2{Build and Push}
 
@@ -117,7 +117,7 @@ SSH into your Pi after that, and try and run it! Does it return successfully? I 
 
 Let's move on and make this kitten purr. Meow 🐈.
 
-◊hr{}
+-----
 
 ◊h2{Getting this show on the road}
 
@@ -222,7 +222,7 @@ The rest of the code, e.g. ~reset_cursor~, resets the state of the display in su
 
 This ~fill~ function will (rather quickly) turn the display solid white, updating each pixel one at a time. Before we continue though, let's go through some more Zig specifics; namely, ~inline~.
 
-◊hr{}
+-----
 
 ◊h2{A zig-a-Zig aaaahhhh...}
 
@@ -232,7 +232,7 @@ This ~fill~ function will (rather quickly) turn the display solid white, updatin
 
 Zig has some nice language features intended to replace and improve upon C/C++ preprocessor macros. The ~inline~ keyword is one such thing, and when applied to a ~for~ or ~while~ loop it'll unroll it at compile time. A simple optimisation but a useful one. We don't use it, but you also have ~comptime~, which is powerful enough to be able to implement generics, if you so desire. We're not going to go into that here though, and you can read more about it from a certain Loris Cro◊^[16].
 
-◊hr{}
+-----
 
 This post is getting pretty long-winded, and all I wanted to do was show how to set some pixels on a tiny display. Let's wrap this up then, since we're almost ready to recompile. Just one finishing touch, which is to call the functions we defined. Update ~main~ to look like this:
 
@@ -263,7 +263,7 @@ This post is getting pretty long-winded, and all I wanted to do was show how to 
 
 Once you're done, rebuild the binary and ~scp~ it over, like you did the first time. SSH into your Pi and run it again (i.e ~./stardust~), and see your display light up! 🥳
 
-◊hr{}
+-----
 
 Hopefully that worked, but if it didn't, get in touch with your feedback at wtf@mrlee.dev and help contribute to this post being a better, more informative read. After all, /works on my machine!/ can only go so far.
 

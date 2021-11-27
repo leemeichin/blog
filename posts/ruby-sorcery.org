@@ -197,7 +197,7 @@ If you recall earlier examples, I defined ~destructure_keys(*)~, which meant tha
   end
 }
 
-◊hr{}
+-----
 
 Well, this doesn't cover the entirety of Ruby's pattern matching fun, but it should at least show you the various things you're now able to do with the feature. If in doubt, RTFM◊^[1]; Ruby's documentation is absolutely fantastic.
 

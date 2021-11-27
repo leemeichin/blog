@@ -23,7 +23,7 @@ I've been keen on playing with these pipelines for a while, and much like any de
 
 Let's do a step-by-step walk through my setup.
 
-◊hr{}
+-----
 
 ◊codeblock['yaml]{
   trigger:

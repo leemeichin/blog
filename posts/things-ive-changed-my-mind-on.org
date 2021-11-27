@@ -64,7 +64,7 @@ The sort of feedback you can give in a pull request is not of the same quality y
 
 Rejection isn't always so easy to handle, but there's always another time and a 'no' is still better than not being acknowledged at all. It's a great opportunity for constructive feedback and learning.
 
-◊hr{}
+-----
 
 It feels a bit weird to write out a series of arbitrary maxims the way I just have, so I'll aim to explore each one in more depth throughout this year. With that said, it was an interesting exercise if ultimately a rather shallow one. Watch this space for more details.
 
