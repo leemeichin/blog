@@ -1,6 +1,6 @@
 * On working remotely
 :PROPERTIES:
-◊define-meta[date]{2020-06-26}
+:CREATED: [2020-06-26]
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}
 

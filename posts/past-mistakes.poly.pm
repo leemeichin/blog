@@ -1,6 +1,6 @@
 * Past mistakes
 :PROPERTIES:
-◊define-meta[date]{2021-04-24}
+:CREATED: [2021-04-24]
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}
 

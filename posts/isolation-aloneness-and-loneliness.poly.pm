@@ -1,6 +1,6 @@
 * Isolation, aloneness and loneliness
 :PROPERTIES:
-◊define-meta[date]{2020-07-07}
+:CREATED: [2020-07-07]
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}
 

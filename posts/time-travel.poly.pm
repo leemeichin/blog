@@ -1,6 +1,6 @@
 * Time travel
 :PROPERTIES:
-◊define-meta[date]{2021-01-24}
+:CREATED: [2021-01-24]
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}
 

@@ -1,6 +1,6 @@
 * Human after all
 :PROPERTIES:
-◊define-meta[date]{2021-02-20}
+:CREATED: [2021-02-20]
 ◊define-meta[published #t]
 ◊define-meta[category]{culture}
 

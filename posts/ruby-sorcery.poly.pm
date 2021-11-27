@@ -1,6 +1,6 @@
 * Ruby Sorcery Part 1: Pattern Matching
 :PROPERTIES:
-◊define-meta[date]{2021-09-17}
+:CREATED: [2021-09-17]
 ◊define-meta[published #t]
 ◊define-meta[category]{ruby}
 

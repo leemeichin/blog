@@ -1,6 +1,6 @@
 * Hakyll on DevOps Pipelines
 :PROPERTIES:
-◊define-meta[date]{2020-08-18}
+:CREATED: [2020-08-18]
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}
 

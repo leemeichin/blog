@@ -1,6 +1,6 @@
 * FLoC Off
 :PROPERTIES:
-◊define-meta[date]{2021-04-16}
+:CREATED: [2021-04-16]
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}
 

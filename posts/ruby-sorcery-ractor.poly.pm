@@ -1,6 +1,6 @@
 * Ruby Sorcery Part 2: Ractor, Chapter 1
 :PROPERTIES:
-◊define-meta[date]{2021-09-28}
+:CREATED: [2021-09-28]
 ◊define-meta[published #f]
 ◊define-meta[category]{ruby}
 

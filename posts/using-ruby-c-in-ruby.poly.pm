@@ -1,6 +1,6 @@
 * Using Ruby's C API inside Ruby
 :PROPERTIES:
-◊define-meta[date]{2021-01-18}
+:CREATED: [2021-01-18]
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}
 

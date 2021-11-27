@@ -1,6 +1,6 @@
 * A damn good listen
 :PROPERTIES:
-◊define-meta[date]{2020-08-01}
+:CREATED: [2020-08-01]
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}
 

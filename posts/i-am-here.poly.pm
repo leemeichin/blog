@@ -1,6 +1,6 @@
 * I am here
 :PROPERTIES:
-◊define-meta[date]{2020-06-25}
+:CREATED: [2020-06-25]
 ◊define-meta[published #t]
 ◊define-meta[category]{personal}
 

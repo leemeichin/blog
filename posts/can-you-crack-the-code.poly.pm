@@ -1,6 +1,6 @@
 * Can you crack the code?
 :PROPERTIES:
-◊define-meta[date]{2020-12-31}
+:CREATED: [2020-12-31]
 ◊define-meta[published #t]
 ◊define-meta[category]{programming}
 
