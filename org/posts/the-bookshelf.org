@@ -1,6 +1,6 @@
 #+TITLE: The Bookshelf
+#+DATE: <2021-08-28>
 :PROPERTIES:
-:CREATED: [2021-08-28]
 :CATEGORY: personal
 :END:
 

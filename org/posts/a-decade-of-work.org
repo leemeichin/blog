@@ -1,6 +1,6 @@
 #+TITLE: A decade of work
+#+DATE: <2020-07-20>
 :PROPERTIES:
-:CREATED: [2020-07-20]
 :CATEGORY: personal
 :END:
 

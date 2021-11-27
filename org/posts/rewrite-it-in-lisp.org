@@ -1,6 +1,6 @@
 #+TITLE: Rewrite it in Lisp?
+#+DATE: <2021-06-15>
 :PROPERTIES:
-:CREATED: [2021-06-15]
 :CATEGORY: programming
 :END:
 

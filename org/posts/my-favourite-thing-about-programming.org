@@ -1,6 +1,6 @@
 #+TITLE: My favourite thing about programming
+#+DATE: <2020-08-15>
 :PROPERTIES:
-:CREATED: [2020-08-15]
 :CATEGORY: programming
 :END:
 

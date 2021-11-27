@@ -1,6 +1,6 @@
 #+TITLE: Gettin' Ziggy With It On The Pi Zero
+#+DATE: <2021-01-05>
 :PROPERTIES:
-:CREATED: [2021-01-05]
 :CATEGORY: programming
 :END:
 

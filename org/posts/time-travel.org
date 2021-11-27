@@ -1,6 +1,6 @@
 #+TITLE: Time travel
+#+DATE: <2021-01-24>
 :PROPERTIES:
-:CREATED: [2021-01-24]
 :CATEGORY: personal
 :END:
 

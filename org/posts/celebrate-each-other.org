@@ -1,6 +1,6 @@
 #+TITLE: Celebrate each other
+#+DATE: <2020-08-03>
 :PROPERTIES:
-:CREATED: [2020-08-03]
 :CATEGORY: personal
 :END:
 

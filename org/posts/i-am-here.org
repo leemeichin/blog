@@ -1,6 +1,6 @@
 #+TITLE: I am here
+#+DATE: <2020-06-25>
 :PROPERTIES:
-:CREATED: [2020-06-25]
 :CATEGORY: personal
 :END:
 

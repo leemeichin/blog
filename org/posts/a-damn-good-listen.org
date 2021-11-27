@@ -1,6 +1,6 @@
 #+TITLE: A damn good listen
+#+DATE: <2020-08-01>
 :PROPERTIES:
-:CREATED: [2020-08-01]
 :CATEGORY: personal
 :END:
 

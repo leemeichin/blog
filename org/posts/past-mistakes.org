@@ -1,6 +1,6 @@
 #+TITLE: Past mistakes
+#+DATE: <2021-04-24>
 :PROPERTIES:
-:CREATED: [2021-04-24]
 :CATEGORY: programming
 :END:
 

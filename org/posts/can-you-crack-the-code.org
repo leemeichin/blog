@@ -1,6 +1,6 @@
 #+TITLE: Can you crack the code?
+#+DATE: <2020-12-31>
 :PROPERTIES:
-:CREATED: [2020-12-31]
 :CATEGORY: programming
 :END:
 

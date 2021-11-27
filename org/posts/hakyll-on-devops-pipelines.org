@@ -1,6 +1,6 @@
 #+TITLE: Hakyll on DevOps Pipelines
+#+DATE: <2020-08-18>
 :PROPERTIES:
-:CREATED: [2020-08-18]
 :CATEGORY: programming
 :END:
 

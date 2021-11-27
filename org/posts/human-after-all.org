@@ -1,6 +1,6 @@
 #+TITLE: Human after all
+#+DATE: <2021-02-20>
 :PROPERTIES:
-:CREATED: [2021-02-20]
 :CATEGORY: culture
 :END:
 

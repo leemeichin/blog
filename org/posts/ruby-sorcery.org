@@ -1,6 +1,6 @@
 #+TITLE: Ruby Sorcery Part 1: Pattern Matching
+#+DATE: <2021-09-17>
 :PROPERTIES:
-:CREATED: [2021-09-17]
 :CATEGORY: ruby
 :END:
 

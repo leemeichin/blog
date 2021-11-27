@@ -1,6 +1,6 @@
 #+TITLE: Growing up
+#+DATE: <2021-05-17>
 :PROPERTIES:
-:CREATED: [2021-05-17]
 :CATEGORY: personal
 :END:
 

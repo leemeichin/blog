@@ -1,6 +1,6 @@
 #+TITLE: To simpler times
+#+DATE: <2021-01-30>
 :PROPERTIES:
-:CREATED: [2021-01-30]
 :CATEGORY: programming
 :END:
 

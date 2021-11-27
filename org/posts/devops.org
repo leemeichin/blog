@@ -1,6 +1,6 @@
 #+TITLE: Devops
+#+DATE: <2020-09-18>
 :PROPERTIES:
-:CREATED: [2020-09-18]
 :CATEGORY: programming
 :END:
 

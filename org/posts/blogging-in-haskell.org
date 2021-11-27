@@ -1,6 +1,6 @@
 #+TITLE: Blogging in Haskell
+#+DATE: <2020-06-27>
 :PROPERTIES:
-:CREATED: [2020-06-27]
 :CATEGORY: programming
 :END:
 

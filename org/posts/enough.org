@@ -1,6 +1,6 @@
 #+TITLE: Enough
+#+DATE: <2021-03-06>
 :PROPERTIES:
-:CREATED: [2021-03-06]
 :CATEGORY: personal
 :END:
 

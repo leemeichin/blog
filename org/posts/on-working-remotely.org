@@ -1,6 +1,6 @@
 #+TITLE: On working remotely
+#+DATE: <2020-06-26>
 :PROPERTIES:
-:CREATED: [2020-06-26]
 :CATEGORY: personal
 :END:
 

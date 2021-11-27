@@ -1,6 +1,6 @@
 #+TITLE: Using Ruby's C API inside Ruby
+#+DATE: <2021-01-18>
 :PROPERTIES:
-:CREATED: [2021-01-18]
 :CATEGORY: programming
 :END:
 

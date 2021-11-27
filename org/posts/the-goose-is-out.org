@@ -1,6 +1,6 @@
 #+TITLE: The goose is out
+#+DATE: <2021-07-20>
 :PROPERTIES:
-:CREATED: [2021-07-20]
 :CATEGORY: personal
 :END:
 
