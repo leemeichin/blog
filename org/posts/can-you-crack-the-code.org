@@ -72,9 +72,9 @@ So far, so boring. We stated `president(trump)` as a fact in our first prolog fi
   president(X). % trump; obama; brie.
 #+end_src
 
-◊aside{
+#+begin_aside
   With the online editor you can click 'Next' to see all of the results, and in the console you can type ~;~. This can be done repeatedly until the input ends with ~.~, which says there are no more facts that fit the query)
-}
+#+end_aside
 
 The fuck? What is ~X~?
 
@@ -137,9 +137,9 @@ So, let's begin with our set of rules:
   clue_5([8, 5, 2, 4]). % two numbers are correct, but in the wrong place
 #+end_src
 
-◊aside{
+#+begin_aside
   If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on /Constraint Logic Programming over Finite Domains/.[fn:4]
-}
+#+end_aside
 
 These clues don't really mean anything by themselves, they're simple facts in Prolog terms, so we need to add a bit more to give these some meaning. All of this will go into the same file, as we're not ready to query yet.
 

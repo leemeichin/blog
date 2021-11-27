@@ -35,9 +35,9 @@ Ruby's built in modules and classes are already defined globally with a naming s
 
 Anyway this boilerplate should give us enough to do a hello world using Ruby's C API but at runtime, in Ruby, so it's time to fire up ~irb~.
 
-◊aside{
+#+begin_aside
   It should go without saying that at this point, you're not just playing with fire, you're inviting it to burn down your house. Be careful lest the `segfault`s creep up on you.
-}
+#+end_aside
 
 Let's take it from the top and talk through this ungodly incantation. Go ahead and copy that little module into your console! If it fails, make sure you've got the ~ffi~ gem installed[fn:2].
 

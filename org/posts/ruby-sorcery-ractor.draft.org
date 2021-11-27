@@ -8,7 +8,9 @@ This is part two of a series of posts about Ruby and its more experimental featu
 
 Ractor is a new addition to Ruby's core library, and it is essentially an implementation of the Actor model. More importantly, it offers a more lightweight approach to concurrency that might feel more at home to those familiar with Go's channels, or have perhaps worked with Elixir. Note that this isn't a wholesale replacement of Ruby's existing multithreading implementations, namely ~Thread~[fn:2] and ~Fiber~[fn:3], and is still highly experimental. As such, there is no guarantee that it would remain stable across future Ruby versions.
 
-◊aside{Speaking of ~Fiber~s, they've received some upgrades in Ruby 3 too. You can now create non-blocking fibers and provide your own scheduler to run them automatically.}
+#+begin_aside
+Speaking of ~Fiber~s, they've received some upgrades in Ruby 3 too. You can now create non-blocking fibers and provide your own scheduler to run them automatically.
+#+end_aside
 
 ◊h1{The actor model}
 
@@ -18,7 +20,9 @@ In a nutshell, it's a way of handling concurrent communication. If, in OOP, ever
 
 An actor is something that has one or more addresses, and receives messages; but for anything useful to happen, it also has to do something with those messages.
 
-◊aside{Imagine a ~no-reply~ email inbox, where every cry for help sent to it is routinely ignored. That is a version of an actor model that has an address, can receive messages, but can do nothing else.}
+#+begin_aside
+Imagine a ~no-reply~ email inbox, where every cry for help sent to it is routinely ignored. That is a version of an actor model that has an address, can receive messages, but can do nothing else.
+#+end_aside
 
 In addition to receiving messages, then, an actor can also send messages to another actor. On top of that, it can also create new actors as children of itself.
 
@@ -31,11 +35,15 @@ How does it fit together? An actor can have multiple addresses, and many actors 
 
 If you've used Erlang[fn:4] or Elixir[fn:5] to any degree, you have already built something around this model and, perhaps, were not aware of it. This is because the actor model is an intuitive aspect of those languages that makes them what they are, and therefore everything is implemented in terms of it.
 
-◊aside{Pony[fn:6] is a another more recent language that is designed around the actor model.}
+#+begin_aside
+Pony[fn:6] is a another more recent language that is designed around the actor model.
+#+end_aside
 
 In Erlang/Elixir, one key feature is that programs are designed to be fault-tolerant by being able to crash. If a crash happens, a new actor will be spun up in its place and processing will continue as normal. This is handled by another actor, known as a supervisor, which has the sole responsibility of doing something when other actors crash.
 
-◊aside{WhatsApp, Discord use Erlang/Elixir in their operations. It also powers telephone exchanges and 3G networks across the world.}
+#+begin_aside
+WhatsApp, Discord use Erlang/Elixir in their operations. It also powers telephone exchanges and 3G networks across the world.
+#+end_aside
 
 ** Actors in the wild
 
@@ -65,7 +73,9 @@ In order to guarantee thread-safety, some aspects of the language have had to ch
 
 Rather than rewording the Ruby manual on Ractors[fn:11], let's dig into a practical example and build a basic echo server over TCP.
 
-◊aside{If you're following along, make sure you're using Ruby 3!}
+#+begin_aside
+If you're following along, make sure you're using Ruby 3!
+#+end_aside
 
 
 ◊codeblock['ruby]{

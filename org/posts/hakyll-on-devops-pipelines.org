@@ -151,9 +151,9 @@ This is the same as running ~stack exec site build~ on my local machine. It comp
 
 I host this blog on my own little VPS, which means that the server needs to know that the CI is authorised to connect to it with its SSH key. This is the same as having a deploy key on GitHub, and requires generating a keypair to be stored in CI, with the public key being added to your ~authorized_keys~ file of the appropriate user on the server.
 
-◊aside{
+#+begin_aside
   At this point I'll say that if you're doing this yourself, make sure to properly harden your server. I'll describe this more in a follow-up post.
-}
+#+end_aside
 
 There's only step left now, and that's to deploy!
 

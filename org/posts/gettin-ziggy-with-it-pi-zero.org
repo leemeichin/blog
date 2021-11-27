@@ -73,9 +73,9 @@ What we've actually done, however, is open the device file ~/dev/i2c-1~, and the
   70: -- -- -- -- -- -- -- --
 #+end_src
 
-◊aside{
+#+begin_aside
   In my case, the device can be accessed at address ~0x3C~, which is how I defined ~i2c_addr~ above.
-}
+#+end_aside
 
 We're at a good point now to try and compile this thing and then run it on the Pi. If we get the message 'Init successful.' then we're golden.
 
@@ -107,9 +107,9 @@ Once the build finishes, you should find a shiny new executable called ~stardust
   scp stardust pi@raspberrypi:~/stardust
 #+end_src
 
-◊aside{
+#+begin_aside
   You will need to change ~pi@raspberrypi~ to whatever else you've configured if you've changed the defaults.
-}
+#+end_aside
 
 SSH into your Pi after that, and try and run it! Does it return successfully? I hope so!
 
@@ -224,9 +224,9 @@ This ~fill~ function will (rather quickly) turn the display solid white, updatin
 
 ** A zig-a-Zig aaaahhhh...
 
-◊aside{
+#+begin_aside
   Reach out to me at pleasemakeitstop@mrlee.dev if this is too much for you.
-}
+#+end_aside
 
 Zig has some nice language features intended to replace and improve upon C/C++ preprocessor macros. The ~inline~ keyword is one such thing, and when applied to a ~for~ or ~while~ loop it'll unroll it at compile time. A simple optimisation but a useful one. We don't use it, but you also have ~comptime~, which is powerful enough to be able to implement generics, if you so desire. We're not going to go into that here though, and you can read more about it from a certain Loris Cro[fn:16].
 

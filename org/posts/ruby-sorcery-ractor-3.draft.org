@@ -54,7 +54,9 @@ A response has a similar structure to a request, comprising a status line, an ar
   <h1>Hello world!</h1>                 | 3. Body
 }
 
-◊aside{Most responses will contain a body, but there are certain status codes where it wouldn't make sense to provide one, e.g. with ~3xx~ codes for temporary and permanent redirects, and the ~201 No Content~ response.}
+#+begin_aside
+Most responses will contain a body, but there are certain status codes where it wouldn't make sense to provide one, e.g. with ~3xx~ codes for temporary and permanent redirects, and the ~201 No Content~ response.
+#+end_aside
 
 Most responses, and in particular the ones being handled by this basic Ractor server, will be sent all at once. But how does the client know when it's received all of the response from the server? This is important to know, because it won't be possile to render HTML or parse JSON until the client knows that it has all of the data. It can't rely on two consecutive carriage-returns, as with a request, because the response itself may legitimately contain those characters. Neither can it rely on the server closing the TCP connection, because that can happen for many other reasons.
 
@@ -91,7 +93,9 @@ It's also unclear what the length of the content will be, exactly, until the req
 
 Of course, this will be done in another Ractor, but we'll also address the problem introduced by the Ractor that parses requests: if a single Ractor is used to globally process requests, and another is used to globally process responses, then how does the server know which response belongs to which request? When that's done, the fix for the request parser will also become apparent.
 
-◊aside{This is important to keep in mind, especially when dealing with sensitive data and user accounts, as users may start receiving account information relating to other people.}
+#+begin_aside
+This is important to keep in mind, especially when dealing with sensitive data and user accounts, as users may start receiving account information relating to other people.
+#+end_aside
 
 
 ◊footnotes{

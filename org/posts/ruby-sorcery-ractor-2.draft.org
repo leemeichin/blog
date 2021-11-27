@@ -25,7 +25,9 @@ In the previous chapter of this excurusion into Ractor[fn:1], the concept of the
 
 While simple, this isn't something you'd call 'production ready'. There is at least one notable shortcoming: see if you can guess what it is, it will be addressed in a later chapter. Meanwhile, it's a good time to turn this toy example into something more serious.
 
-◊aside{Hint: what does or does not happen when the client's connection is lost or terminated?}
+#+begin_aside
+Hint: what does or does not happen when the client's connection is lost or terminated?
+#+end_aside
 
 ** Building an HTTP server with Ractor
 
@@ -55,7 +57,9 @@ The anatomy of an HTTP request is divided, essentially, into three parts:
 
 The first line states the request method (i.e. ~GET~, ~POST~, etc.) and the target of the request, which will often be a relative path on the server but can also be a full URL.
 
-◊aside{Note that there is also a concept of HTTP 'trailers', which are headers that appear /after} the body[fn:2]. These are only used for certain kinds of chunked requests and are way out of scope for this post./
+#+begin_aside
+Note that there is also a concept of HTTP 'trailers', which are headers that appear /after/ the body[fn:2]. These are only used for certain kinds of chunked requests and are way out of scope for this post.
+#+end_aside
 
 What follows is a list of headers, which are key/value pairs used to provide extra information about the request. For the sake of simplicity, most of these will be ignored, and there are /many/ of them.
 
@@ -63,7 +67,9 @@ Finally, there is a place for the body of the request. This is optional, but it 
 
 In this chapter, the main focus is on the first section, and some of the second. And since the purpose of the post is to demonstrate Ractor, and because in the Actor model, everything is an actor... the thing that parses the request will be an Actor too.
 
-◊aside{This is also a good time to use some of that pattern matching knowledge from the first part of this series.[fn:3]}
+#+begin_aside
+This is also a good time to use some of that pattern matching knowledge from the first part of this series.[fn:3]
+#+end_aside
 
 Something like this should do the trick, and provide a foundation to build on.
 
@@ -106,7 +112,9 @@ Something like this should do the trick, and provide a foundation to build on.
   end
 }
 
-◊aside{Why all the ~loop~s and ~while~ loops? Ractors behave a bit like Enumerators[fn:5], which means that if they stop yielding values or actually return a value, the Ractors close and can no longer be used.}
+#+begin_aside
+Why all the ~loop~s and ~while~ loops? Ractors behave a bit like Enumerators[fn:5], which means that if they stop yielding values or actually return a value, the Ractors close and can no longer be used.
+#+end_aside
 
 What we have here is a Ractor that waits for incoming HTTP request messages, and then parses them into something that the server can more easily work with by pulling out important info like the request location, the HTTP method, the content type, and the body. In this example, Ruby's pattern matching features are liberally employed to handle the parsing in some places; this is more for the sake of demonstration to show that it /can} be done, not necessarily that it always ◊em{should/ be.
 
@@ -133,7 +141,9 @@ The TCP server now requires an upgrade: it's going to read input but it can no l
 
 The most significant change, here, is that the innnermost Ractor sends input over to the new ~HttpRequestParser~ Ractor. It then immediately waits for a response. That seems a bit weird - why not just do it inline? - but that's only because the job of the HTTP Parser is pretty basic right now, whereas in future a whole bunch of things can happen in between the TCP layer reading in some data, and the TCP layer sending back a bunch of HTML or JSON or some such.
 
-◊aside{This works for basic requests with no body element, but consider why it fails if a body is also supplied. Would the connection not have already closed?}
+#+begin_aside
+This works for basic requests with no body element, but consider why it fails if a body is also supplied. Would the connection not have already closed?
+#+end_aside
 
 In our toy examples, this works fine, but try this with many clients at once and you will experience chaos. This is because we're using a single global ractor to parse input from any number of connections. Perhaps it shouldn't be a ractor at all, or it should work a little differently. This will be addressed in another chapter, as it becomes clear that building a concurrent HTTP server isn't as simple as it looks even when your concurrency primitives are threadsafe.
 
