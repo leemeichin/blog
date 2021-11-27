@@ -1,7 +1,7 @@
 * My favourite thing about programming
 :PROPERTIES:
 :CREATED: [2020-08-15]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{programming}
 
 In a word: languages.

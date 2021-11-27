@@ -1,7 +1,7 @@
 * A decade of work
 :PROPERTIES:
 :CREATED: [2020-07-20]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{personal}
 
 I first 'got into' programming back in 2003, or 2004. I can't remember the exact time, but it was at the point where Geocities and AngelFire were still a thing, as was Myspace. The in-thing was to host your own phpBB forum and, much like people will do with forks on github, branch off existing communities into your own ad-riddled alternative. I remember being involved in a few and, actually, a small number of them turned out to be quite successful.

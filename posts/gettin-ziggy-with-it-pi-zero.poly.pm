@@ -1,7 +1,7 @@
 * Gettin' Ziggy With It On The Pi Zero
 :PROPERTIES:
 :CREATED: [2021-01-05]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{programming}
 
 Alright, you can read the article first and shoot me later for a title like that, and what will inevitably become a series of Zig-based puns.

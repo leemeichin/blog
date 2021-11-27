@@ -1,7 +1,7 @@
 * Time travel
 :PROPERTIES:
 :CREATED: [2021-01-24]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{personal}
 
 Once upon a time, a ◊em{golden oldie} referred to a song released in the 50s, 60s or 70s, and modern music doesn't really go much further back than that.

@@ -1,7 +1,7 @@
 * Do you really need those microservices?
 :PROPERTIES:
 :CREATED: [2020-07-21]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{programming}
 
 I've been through half a dozen rounds of interviewing over the past couple of months, with different companies. Naturally, when you say you've had experience working with microservices, you're practically begging the question. What do you think about them?

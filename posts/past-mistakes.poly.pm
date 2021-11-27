@@ -1,7 +1,7 @@
 * Past mistakes
 :PROPERTIES:
 :CREATED: [2021-04-24]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{programming}
 
 I think everyone needs at least one blog post under their belt that describes mistakes they've previously made in their careers. Now is the time for me.

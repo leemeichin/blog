@@ -1,7 +1,7 @@
 * Agile lipstick 💄
 :PROPERTIES:
 :CREATED: [2021-03-22]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{programming}
 
 Over the past decade of my wondrous career I've rather haphazardly stumbled in and out of the realm of agile leadership. I've been a scrum master and an agile coach, even got the PSM1 certification which is nice but not really worth the PDF it's written on these days. My best investment was in a coaching course◊^[1] where I learned experientially all of the things I didn't learn as part of my job: active listening, rapport, acknowledgment and recognition, transactional anaylisis, I'm Ok/You're Ok, etc.

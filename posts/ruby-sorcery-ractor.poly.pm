@@ -1,7 +1,7 @@
 * Ruby Sorcery Part 2: Ractor, Chapter 1
 :PROPERTIES:
 :CREATED: [2021-09-28]
-◊define-meta[published #f]
+:PUBLISHED: f
 ◊define-meta[category]{ruby}
 
 This is part two of a series of posts about Ruby and its more experimental features. The first part is about pattern matching.◊^[1]

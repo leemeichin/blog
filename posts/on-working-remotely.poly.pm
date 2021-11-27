@@ -1,7 +1,7 @@
 * On working remotely
 :PROPERTIES:
 :CREATED: [2020-06-26]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{personal}
 
 I imagine that working from home for extended periods is quite new to a lot of people, thanks to the COVID-19 lockdown. I enjoyed a solid year of it back when I worked remotely from Latvia. For me, it was both liberating and isolating at the same time, and while I really loved this semi-digital-nomadic lifestyle at the start, it wasn't long before I grew an appetite for collaborating in person again.

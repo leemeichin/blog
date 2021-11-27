@@ -1,7 +1,7 @@
 * To simpler times
 :PROPERTIES:
 :CREATED: [2021-01-30]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{programming}
 
 I previously wrote about how this site was built◊^[1] and then deployed◊^[2]. I'm quite happy experimenting with how I set up this whole shebang because I can learn a lot from it and the worst that happens is that the site goes down for half an hour. The stakes are low.

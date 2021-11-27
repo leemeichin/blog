@@ -1,7 +1,7 @@
 * I am here
 :PROPERTIES:
 :CREATED: [2020-06-25]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{personal}
 
 I've been no stranger to depression and burnout. The former is more or less something I've grown to become friends with, as bizarre as it sounds. And as dark and troubling as those times have been, at their worst, they're equally the reason where I find myself where I am now, having experienced all that I have. I wish Trump didn't abuse the words 'tremendous' and 'beautiful' so much, because there can be great beauty in these harrowing experiences once you can look back on them and see how you've grown, changed, since.

@@ -1,7 +1,7 @@
 * FLoC Off
 :PROPERTIES:
 :CREATED: [2021-04-16]
-◊define-meta[published #t]
+:PUBLISHED: t
 ◊define-meta[category]{programming}
 
 FLoC (Federated Learning of Cohorts) is Google's answer to the diminishing utility of third party cookies.
