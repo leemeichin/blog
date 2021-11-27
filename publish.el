@@ -46,9 +46,9 @@
          :html-head-include-scripts nil
          :html-head-include-default-style nil
          :html-validation-link nil
-         :html-head ,(read-template-file "head")
-         :html-preamble ,(read-template-file "page-header")
-         :html-postamble ,(read-template-file "page-footer")
+         :html-head ,(read-template "head")
+         :html-preamble ,(read-template "page-header")
+         :html-postamble ,(read-template "page-footer")
          :publishing-directory ,(expand-relative-path "publish/")
          :publish-function org-html-publish-to-html
          )
@@ -69,9 +69,9 @@
          :sitemap-title "archive"
          :sitemap-filename "index.org"
          :sitemap-sort-files anti-chronologically
-         :html-head ,(read-template-file "head")
-         :html-preamble ,(read-template-file "post-header")
-         :html-postamble ,(read-template-file "post-footer")
+         :html-head ,(read-template "head")
+         :html-preamble ,(read-template "post-header")
+         :html-postamble ,(read-template "post-footer")
          :publishing-directory ,(expand-relative-path "publish/posts/")
          :publish-function org-html-publish-to-html)
         ("static"
