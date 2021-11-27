@@ -7,6 +7,11 @@ packages:
 secrets:
   - f74304b4-9735-47a4-9d23-6d9fd7c47f1a
 tasks:
+  - check-branch: |
+      cd www.kamelasa.dev
+      if [ "$(git rev-parse main)" != "$(git rev-parse HEAD)" ]; then
+        complete-build;
+      fi
   - publish: |
       cd www.kamelasa.dev
       raco pkg install --auto --batch --no-docs pollen
