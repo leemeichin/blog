@@ -1,7 +1,0 @@
-#lang pollen
-
-index.html
-
-◊posts{
-  ◊this-pagetree["posts"]
-}
