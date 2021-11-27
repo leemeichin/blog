@@ -1,8 +1,6 @@
 #+TITLE: My favourite thing about programming
 #+DATE: <2020-08-15>
-:PROPERTIES:
-:CATEGORY: programming
-:END:
+#+CATEGORY: programming
 
 In a word: languages.
 

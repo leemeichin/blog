@@ -1,8 +1,6 @@
 #+TITLE: FLoC Off
 #+DATE: <2021-04-16>
-:PROPERTIES:
-:CATEGORY: programming
-:END:
+#+CATEGORY: programming
 
 FLoC (Federated Learning of Cohorts) is Google's answer to the diminishing utility of third party cookies.
 

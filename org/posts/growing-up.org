@@ -1,8 +1,6 @@
 #+TITLE: Growing up
 #+DATE: <2021-05-17>
-:PROPERTIES:
-:CATEGORY: personal
-:END:
+#+CATEGORY: personal
 
 Way back in 2002, or perhaps 2003, I'd acquired a copy of Macromedia Dreamweaver and started playing about with HTML. The timeline is a bit blurry, considering that it's almost twenty years ago. CSS wasn't really a thing yet, though, and IE6 was still the main browser of choice. Eventually CSS became a thing and one of my first real 'projects' was to create a user style that hid all the ads on the Gamesradar forum I used to spend time on. You had to switch to Firefox and then dump the CSS in your 'profile' folder; it was a total hack and there was more documentation than code.
 

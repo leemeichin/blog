@@ -1,8 +1,6 @@
 #+TITLE: Ruby Sorcery Part 2: Ractor, Chapter 3
 #+DATE: <2021-10-17>
-:PROPERTIES:
-:CATEGORY: ruby
-:END:
+#+CATEGORY: ruby
 
 In chapter 2 of this exploration, a basic Ractor-based TCP server was refactored into a partly-functional HTTP server.[fn:1] It can handle super-basic requests, but it doesn't send back a valid HTTP response. That means that it's difficult to use tools like ~curl~ to interact with the server and, thanks to that, previous demonstrations have depended on hand-crafting requests inside a ~telnet~ session.
 

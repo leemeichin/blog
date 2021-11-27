@@ -1,8 +1,6 @@
 #+TITLE: The goose is out
 #+DATE: <2021-07-20>
-:PROPERTIES:
-:CATEGORY: personal
-:END:
+#+CATEGORY: personal
 
 I was browsing HN over my coffee this morning and came across an interesting thread[fn:1] linking to a post titled /When Buddhism Goes Bad}[fn:2]. That wasn't actually the title I read, as on HN the more neutral subtitle -- ◊em{How My Mindfulness Practice Led Me To Meltdown/ -- was chosen instead.
 

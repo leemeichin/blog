@@ -1,8 +1,6 @@
 #+TITLE: A damn good listen
 #+DATE: <2020-08-01>
-:PROPERTIES:
-:CATEGORY: personal
-:END:
+#+CATEGORY: personal
 
 A couple of years ago I enrolled in a coaching course with Coaching Development[fn:1]. It cost a fair whack and, even though I was unable to complete the course due to the severe decline in my mental health at the time, I still maintain that it's the best money I've ever spent, and what I learned has stuck with me and essentially guided me towards a different path through life that I would otherwise never have taken. The lack of credential means I can't practice as a coach, but the skills acquired are a great benefit to any communication driven profession, especially ones where conflict can easily brew up.
 

@@ -1,8 +1,6 @@
 #+TITLE: Ruby Sorcery Part 2: Ractor, Chapter 1
 #+DATE: <2021-09-28>
-:PROPERTIES:
-:CATEGORY: ruby
-:END:
+#+CATEGORY: ruby
 
 This is part two of a series of posts about Ruby and its more experimental features. The first part is about pattern matching.[fn:1]
 
