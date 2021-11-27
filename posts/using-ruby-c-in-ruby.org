@@ -12,7 +12,7 @@ One of those thoughts stuck out in particular, because of how ridiculous it soun
 
 Let's apply some method to this madness and set up some bindings, otherwise we're dead in the water. Let's be descriptive and call our FFI module ~LibRuby~. No naming conflicts at all there, /no sirree/!
 
-◊codeblock['ruby]{
+#+begin_src ruby
   require 'ffi'
 
   module LibRuby
@@ -29,7 +29,7 @@ Let's apply some method to this madness and set up some bindings, otherwise we'r
     attach_function :rb_funcall, [:value, :id, :int, :varargs], :value
     attach_function :rb_str_new_cstr, [:string], :value
   end
-}
+#+end_src
 
 If you look at the code in this module, you'll notice that I used ~attach_variable~ to get access to the Kernel module, and ~attach_function~ for the method calls. The ~:id~ and ~:value~ types are just aliases for ~:pointer~, because ~VALUE~ and ~ID~ in the C API are themselves pointers. It's for the sake of documentation, so it's clearer what order you pass arguments in.
 
@@ -45,35 +45,35 @@ Let's take it from the top and talk through this ungodly incantation. Go ahead a
 
 Once you're done, you can save some keystrokes by importing that module.
 
-◊codeblock['ruby]{
-  include LibRuby
-}
+#+begin_src ruby
+  include LibRub
+#+end_src
 
 In order to call ~puts~ in Ruby through the C API, we'll need to get a reference to the module it's defined in (~Kernel~), and also get the method name as a symbol (like you might normally do with ~.to_sym~).
 
-◊codeblock['ruby]{
+#+begin_src ruby
   kernel = LibRuby.rb_mKernel
   puts_method = rb_intern('puts')
-}
+#+end_src
 
 Oh, before we continue, better disable the garbage collector. This is a simple way to stop the oscillating turbine from splattering unpleasant substances around the room. (More on that later, but see if you can guess why.)
 
-◊codeblock['ruby]{
+#+begin_src ruby
   GC.disable
-}
+#+end_src
 
 We can't just pass in a normal string to ~puts~ without things going 💥, as everything is an object in Ruby and therefore we need to
 get a pointer to a ~String~ instance (or in internal Ruby lingo, one of those ~VALUE~s).
 
-◊codeblock['ruby]{
+#+begin_src ruby
   str = rb_str_new_cstr('welcome, mortals')
 }
 
 Now we have all of the ingredients to make the actual call, which syntactically and aesthetically blows idiomatic Ruby out of the water. Delicately paste this into your console and you should see the string printed out. You'll also get a return value like ~#<FFI::Pointer address=0x0000000000000008>~, which will refer to ~Qnil~. ~Qnil~ is a pointer to Ruby's ~nil~ object.
 
-◊codeblock['ruby]{
+#+begin_src ruby
   rb_funcall(kernel, puts_method, 1, :value, str)
-}
+#+end_src
 
 Run it again a few times, and with different strings. If you're feeling experimental, attach more functions in ~LibRuby~ and see what else you can print out! Ruby's extension documentation should be a good place to start◊^[3].
 
@@ -91,6 +91,6 @@ Until then, I'll see you further into the abyss.
 
 ◊footnotes{
   ◊^[1]{◊<>["https://github.com/ffi/ffi"]}
-  ◊^[2]{~`gem install ffi -- --enable-system-libffi`~}
+  ◊^[2]{~gem install ffi -- --enable-system-libffi~}
   ◊^[3]{◊<>["https://ruby-doc.org/core-2.7.0/doc/extension_rdoc.html"]}
 }

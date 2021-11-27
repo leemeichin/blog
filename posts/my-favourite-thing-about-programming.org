@@ -20,24 +20,24 @@ Currently I'm playing with Haskell and also taking it a bit more seriously, to s
 
 For example, this is the function I have for generating the estimated reading time you see at the top of every post here:
 
-◊codeblock['haskell]{
+#+begin_src haskell
   ertField :: String -> Snapshot -> Context String
   ertField name snapshot = field name $ \item -> do
     body <- itemBody <$> loadSnapshot (itemIdentifier item) snapshot
     let words = length (T.words . T.pack $ body)
     return $ show $ round $ words // 250
-}
+#+end_src
 
 That's a lot of symbols doing a lot of legwork! And while this is difficult to understand for an untrained eye, it would become more familiar after understanding some of the basic 'rules' of Haskell and the 'styles' of programming you can use. Of course, you can always take it too far:
 
-◊codeblock['haskell]{
+#+begin_src haskell
   (👏) = ($)
 
   ertField name snapshot = field name 👏 \item -> do
     body <- itemBody <$> loadSnapshot (itemIdentifier item) snapshot
     let words = length (T.words . T.pack 👏 body)
     return 👏 show 👏 round 👏 words // 250
-}
+#+end_src
 
 That should go down well with the Twitter crowd.
 
@@ -47,13 +47,13 @@ Moving on, there's Lisp. My familiarity with Lisp comes from customising my emac
 
 With emacs in particular, it made it trivially easy for me to launch a Rails console inside a deployed Kubernetes pod.
 
-◊codeblock['commonlisp]{
+#+begin_src commonlisp
   (defun inf-ruby-console-k8s (env)
     (interactive (list (completing-read "Environment: "
                                         '("dev" "staging" "preprod") nil t)))
     (shell-command (concat "kubectl config use-context " env))
     (inf-ruby-console-run "kubectl exec -it ruby-app -- rails c" (concat "k8s-ruby-" env)))
-}
+#+end_src
 
 I mapped it to a certain keybinding and a panel would open to the side within a second, ready for me to use. I don't think I'd have the patience to try and reproduce that in, say, VS Code, without using a task runner. Emacs itself is entirely programmable so you don't need to worry about setting up extension boilerplate to make minor modifications.
 
