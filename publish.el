@@ -44,7 +44,7 @@
          :html-doctype "html5"
          :html-html5-fancy t
          :html-head-include-scripts nil
-         :html-head-include-default-style t
+         :html-head-include-default-style nil
          :html-validation-link nil
          :html-head ,(read-template-file "head")
          :html-preamble ,(read-template-file "page-header")
@@ -63,7 +63,7 @@
          :html-doctype "html5"
          :html-html5-fancy t
          :html-head-include-scripts nil
-         :html-head-include-default-style t
+         :html-head-include-default-style nil
          :html-validation-link nil
          :auto-sitemap t
          :sitemap-title "archive"
