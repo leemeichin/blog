@@ -28,7 +28,7 @@ The manifesto, at that point in time, was conceived via the process of introspec
   Through this work we have come to value:
 }
 
-◊em{This work} is their iterative process. As if to reinforce the previous understanding, they discovered a pattern throughout and realised that things they valued ◊em{more} when developing software were:
+/This work} is their iterative process. As if to reinforce the previous understanding, they discovered a pattern throughout and realised that things they valued ◊em{more/ when developing software were:
 
 ◊blockquote{
   ◊p{Individuals and interactions}
@@ -47,10 +47,10 @@ And you can't just let the business fall back into old habits just because somet
 
 Fuck that noise, just put the agile lipstick on your pig instead! Throw in a daily standup, run a retrospective, rationalise the legitimate issues away, and use sprints and estimates to track performance. Write a few blogs about it when you're done, and move onto to superficially changing the next unwitting client.
 
-Now ◊em{that} is easy.
+Now /that/ is easy.
 
 ◊footnotes{
-  ◊^[1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is ◊em{so} worth it.}
+  ◊^[1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is /so} worth it./
   ◊^[2]{◊<>["https://en.wikipedia.org/wiki/Eternal_September"]}
   ◊^[3]{◊<>["https://uk.bookshop.org/a/6865/9780321934116"]}
   ◊^[4]{◊<>["https://uk.bookshop.org/a/6865/9781118127308"]}

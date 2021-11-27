@@ -37,7 +37,7 @@ I presume you've seen this kind of puzzle before: there is a lock that requires 
 
 ◊h2{A brief introduction}
 
-If you're unaware of Prolog, it's a ◊em{logical progamming} language that, in its most simplest terms, takes a bunch of facts and rules and then gives you the tools to query them to get the outcome you want. In more complicated terms, a cursory search on the intertubes will lead you to a vast collection of academic papers that explain more. This is not the kind of language that is casually blogged about by the masses, as with more mainstream ones like CSS, HTML, or ColdFusion.
+If you're unaware of Prolog, it's a /logical progamming/ language that, in its most simplest terms, takes a bunch of facts and rules and then gives you the tools to query them to get the outcome you want. In more complicated terms, a cursory search on the intertubes will lead you to a vast collection of academic papers that explain more. This is not the kind of language that is casually blogged about by the masses, as with more mainstream ones like CSS, HTML, or ColdFusion.
 
 ◊q["Dennis Merritt" 2017]{
   Programming in Prolog is significantly different from conventional procedural programming and requires a readjustment in the way one things about programming. Logical relationships are asserted, and Prolog is used to determine whether or not certain statements are true, and if true, what variable bindings make them true. This leads to a very declarative style of programming.◊^[1]
@@ -80,7 +80,7 @@ So far, so boring. We stated `president(trump)` as a fact in our first prolog fi
 
 The fuck? What is ◊code{X}?
 
-◊code{X} is a variable, or a placeholder if you like. Any word starting with a capital letter is a variable, and when you pass one in a query Prolog will supply the results of the query to those variables. In this case, we're essentially saying ◊em{"who are all the presidents? I don't know their names so put them all in ◊code{X} for me"}.
+◊code{X} is a variable, or a placeholder if you like. Any word starting with a capital letter is a variable, and when you pass one in a query Prolog will supply the results of the query to those variables. In this case, we're essentially saying /"who are all the presidents? I don't know their names so put them all in ◊code{X} for me"/.
 
 Let's try one more thing, which should explain enough about Prolog to be dangerous.
 
@@ -88,7 +88,7 @@ Let's try one more thing, which should explain enough about Prolog to be dangero
   president(X), cheese(X). % brie.
 }
 
-◊em{Now we're cookin' wi' gas!} as we'd say back up north. A lot of what you do in prolog is chain little sentences like this together (using the comma operator ◊code{,}, which means ◊code{and}), and in this instance we're asking Prolog to get all the presidents, put them in ◊code{X}, and then show me only the presidents that are also a cheese. The ◊code{.} finishes the sentence, or the query. Let's do a similar query to wrap this intro up, and you can see if your guess at the answer is the same as what this produces.
+/Now we're cookin' wi' gas!} as we'd say back up north. A lot of what you do in prolog is chain little sentences like this together (using the comma operator ◊code{,}, which means ◊code{and}), and in this instance we're asking Prolog to get all the presidents, put them in ◊code{X}, and then show me only the presidents that are also a cheese. The ◊code{./ finishes the sentence, or the query. Let's do a similar query to wrap this intro up, and you can see if your guess at the answer is the same as what this produces.
 
 ◊codeblock['prolog]{
   president(X), person(X). % trump, obama.
@@ -125,7 +125,7 @@ Here's the puzzle again, for reference:
 
 ◊hr{}
 
-According to Leon Sterling and Ehud Shapiro in ◊em{The Art of Prolog}◊^[3], this type of problem falls quite neatly under the umbrella of non-deterministic programming. This is because we're essentially going to build an algorithm that will use what they describe as a ◊code{generate and test} solution. We're going to write something that will take our clues and run through all the possible answers until it lands on the only one that fits. We're not aiming for beautiful optimisation here so this good enough, although the code we write will be tightly coupled to the exact puzzle provided.
+According to Leon Sterling and Ehud Shapiro in /The Art of Prolog}◊^[3], this type of problem falls quite neatly under the umbrella of non-deterministic programming. This is because we're essentially going to build an algorithm that will use what they describe as a ◊code{generate and test/ solution. We're going to write something that will take our clues and run through all the possible answers until it lands on the only one that fits. We're not aiming for beautiful optimisation here so this good enough, although the code we write will be tightly coupled to the exact puzzle provided.
 
 So, let's begin with our set of rules:
 
@@ -140,7 +140,7 @@ So, let's begin with our set of rules:
 }
 
 ◊aside{
-  If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on ◊em{Constraint Logic Programming over Finite Domains}.◊^[4]
+  If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on /Constraint Logic Programming over Finite Domains/.◊^[4]
 }
 
 These clues don't really mean anything by themselves, they're simple facts in Prolog terms, so we need to add a bit more to give these some meaning. All of this will go into the same file, as we're not ready to query yet.
@@ -157,7 +157,7 @@ These clues don't really mean anything by themselves, they're simple facts in Pr
   wrong(Digit, [D|Ds]) :- Digit #\= D, wrong(Digit, Ds).
 }
 
-I'll leave the in-depth explanation of these rules to another post for the sake of brevity, and also because I'm not that much of a Prolog expert. These are all used to add meaning to the facts, as with these rules we can now define logic such as ◊em{one number is correct but in the wrong position}, and ◊em{none of the numbers are correct}. We just have to painstakingly mix and match them.
+I'll leave the in-depth explanation of these rules to another post for the sake of brevity, and also because I'm not that much of a Prolog expert. These are all used to add meaning to the facts, as with these rules we can now define logic such as /one number is correct but in the wrong position}, and ◊em{none of the numbers are correct/. We just have to painstakingly mix and match them.
 
 The next bit is quite long, but this query is where we make the sausage. Commentary will be written inline for ease of copy and paste, until I come back and edit this post with a more digestible version.
 

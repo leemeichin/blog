@@ -6,7 +6,7 @@
 :CATEGORY: personal
 :END:
 
-They say you can learn a lot about a person by the contents of their bookshelf. If you were to look at mine you'd see the beginnings of a hoarding mentality. Not unlike my Steam library, there are some books on my shelf that I will probably never read. But at least I can be pretentious and say I have them, so long as I can bullshit my way through any conversation about them. Yes, I'm talking about you, ◊em{Structure and Interpretation of Computer Programs}.
+They say you can learn a lot about a person by the contents of their bookshelf. If you were to look at mine you'd see the beginnings of a hoarding mentality. Not unlike my Steam library, there are some books on my shelf that I will probably never read. But at least I can be pretentious and say I have them, so long as I can bullshit my way through any conversation about them. Yes, I'm talking about you, /Structure and Interpretation of Computer Programs/.
 
 There's quite an eclectic mix, all things considered, although many of the books are more useful as references rather than things I'd read cover-to-cover. I've got a few books about Complex PTSD--which is something about my mental health that I have to deal with--and a bunch of books relating to coaching, which has been one of my ways of dealing with it. The same can be said for the few books I have relating to Tantra, Sanskrit and spirituality in general.
 
@@ -19,9 +19,9 @@ I added a few new books to the collection this year, and have been reading them 
 
 ◊h2{The Phoenix Project}◊^[1]
 
-As far as Corporate Thrillers for Business Analysts go, The Phoenix Project easy enough to read and has some entertainment value. The cast is awash with wholly unsympathetic characters, the corporate setting oozes with toxicity, and it's impossible to turn a page without ◊em{someone} being an asshole.
+As far as Corporate Thrillers for Business Analysts go, The Phoenix Project easy enough to read and has some entertainment value. The cast is awash with wholly unsympathetic characters, the corporate setting oozes with toxicity, and it's impossible to turn a page without /someone/ being an asshole.
 
-I didn't rate it and if its follow up ◊em{The Unicorn Project} is any similar, then I think I'll give that one a pass. The Devops Handbook is still on my list, though.
+I didn't rate it and if its follow up /The Unicorn Project/ is any similar, then I think I'll give that one a pass. The Devops Handbook is still on my list, though.
 
 ◊h2{Extreme Ownership}◊^[2]
 
@@ -29,7 +29,7 @@ I had to keep an open mind when starting this one, but eventually I gave up beca
 
 The book mostly follows a pattern of telling a war story (each one accompanied by a considerable body count) and then relating that experience to corporate leadership. As if the death of a few dozen Iraqis is comparable to a VP of Finance owning up to their failures to run a project.
 
-Let's be fair, the advice is sound if you can put the chest beating and the hoo-rah to one side and focus purely on the advice. And the advice, taken outside of that context, ◊em{is} sound. But it's also shallow and, in essence, a vehicle for the authors to sell consulting and coaching services to business executives.
+Let's be fair, the advice is sound if you can put the chest beating and the hoo-rah to one side and focus purely on the advice. And the advice, taken outside of that context, /is/ sound. But it's also shallow and, in essence, a vehicle for the authors to sell consulting and coaching services to business executives.
 
 This one just wasn't for me.
 

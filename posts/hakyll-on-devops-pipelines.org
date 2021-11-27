@@ -15,7 +15,7 @@ In a way, this is total overkill for a static site. If I have the repo cloned on
 
 It's flawed compared to using ◊code{rsync}, as it won't remove existing files, but it does the job in less than a second or two.
 
-The thing is, this isn't so quick if I want to publish a post from a different computer that doesn't have any programming tools installed. I would have to install ◊code{stack}◊^[1], which is a build tool for Haskell, and then I would have to run ◊code{stack build}. This can take at least half an hour as the command will pull down the correct version of ◊code{GHC} and a 'snapshot' (basically a huge collection of all the Hackage◊^[2] libraries available for that build) before it even ◊em{thinks} about compiling my ◊code{site.hs} file. It also means to committing a few gigs of storage space for all of that.
+The thing is, this isn't so quick if I want to publish a post from a different computer that doesn't have any programming tools installed. I would have to install ◊code{stack}◊^[1], which is a build tool for Haskell, and then I would have to run ◊code{stack build}. This can take at least half an hour as the command will pull down the correct version of ◊code{GHC} and a 'snapshot' (basically a huge collection of all the Hackage◊^[2] libraries available for that build) before it even /thinks} about compiling my ◊code{site.hs/ file. It also means to committing a few gigs of storage space for all of that.
 
 I like to write from my little Surface Pro when I'm out and about, so I'd rather not do a full-blown compilation on that for the sake of my battery. Enter Azure DevOps Pipelines◊^[3].
 
@@ -121,7 +121,7 @@ So, that's the first step done, but what about actually publishing a post? I hav
     steps: ...
 }
 
-The key to this step is the condition. This will run only if the ◊code{build} job was successful, ◊em{and} the branch being built is the master branch. Practically, this only runs if I push straight to master or merge a PR. The staging version runs only on PRs.
+The key to this step is the condition. This will run only if the ◊code{build} job was successful, /and/ the branch being built is the master branch. Practically, this only runs if I push straight to master or merge a PR. The staging version runs only on PRs.
 
 ◊codeblock['yaml]{
   - task: DownloadBuildArtifacts@0

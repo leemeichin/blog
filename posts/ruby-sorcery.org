@@ -9,11 +9,11 @@
 
 I recently realised that despite many new additions to the Ruby language and ecosystem, I've never really had an opportunity to take advantage of many of them. Of course, some new language features are more useful than others, particularly when it comes to maintaining code as a team, but what is also interesting is that they also support less conventional, or immediately-apparent, use-cases.
 
-The first part of this series of posts is all about ◊em{Pattern Matching}.
+The first part of this series of posts is all about /Pattern Matching/.
 
 ◊h2{Pattern matching}
 
-Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more powerful than you may expect. All you need is to replace ◊code{when} with ◊code{in} and your ◊code{case} statements become capable of matching against ◊em{anything}.
+Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more powerful than you may expect. All you need is to replace ◊code{when} with ◊code{in} and your ◊code{case} statements become capable of matching against /anything/.
 
 ◊codeblock['ruby]{
   require 'base64'
@@ -104,7 +104,7 @@ That's fairly basic, what about pattern matching poker? Matching one card is eas
   end
 }
 
-Now that a hand of cards is represented, it should be possible to use pattern matching to find a winning play, say... a Royal Flush. For this to work, ◊em{variable pinning} is required, because a Royal Flush requires the colour and suit to be the same for each card.
+Now that a hand of cards is represented, it should be possible to use pattern matching to find a winning play, say... a Royal Flush. For this to work, /variable pinning/ is required, because a Royal Flush requires the colour and suit to be the same for each card.
 
 This particular solution depends on the hand being ordered, but that's fine, a lot of computational problems become simpler if you sort them first. For the sake of example, assume that has already happened.
 

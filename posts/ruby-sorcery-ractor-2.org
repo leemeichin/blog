@@ -57,9 +57,9 @@ The anatomy of an HTTP request is divided, essentially, into three parts:
 
 The first line states the request method (i.e. ◊code{GET}, ◊code{POST}, etc.) and the target of the request, which will often be a relative path on the server but can also be a full URL.
 
-◊aside{Note that there is also a concept of HTTP 'trailers', which are headers that appear ◊em{after} the body◊^[2]. These are only used for certain kinds of chunked requests and are way out of scope for this post.}
+◊aside{Note that there is also a concept of HTTP 'trailers', which are headers that appear /after} the body◊^[2]. These are only used for certain kinds of chunked requests and are way out of scope for this post./
 
-What follows is a list of headers, which are key/value pairs used to provide extra information about the request. For the sake of simplicity, most of these will be ignored, and there are ◊em{many} of them.
+What follows is a list of headers, which are key/value pairs used to provide extra information about the request. For the sake of simplicity, most of these will be ignored, and there are /many/ of them.
 
 Finally, there is a place for the body of the request. This is optional, but it must have an empty line both before and afterwards if it is present. A typical request body may contain URLEncoded form data, which is how your typical HTML forms work, but there is not much of a restriction provided that the ◊code{Content Type} header describes the format of the payload, e.g if it's JSON, XML, or perhaps even something like an image or a video.
 
@@ -110,13 +110,13 @@ Something like this should do the trick, and provide a foundation to build on.
 
 ◊aside{Why all the ◊code{loop}s and ◊code{while} loops? Ractors behave a bit like Enumerators◊^[5], which means that if they stop yielding values or actually return a value, the Ractors close and can no longer be used.}
 
-What we have here is a Ractor that waits for incoming HTTP request messages, and then parses them into something that the server can more easily work with by pulling out important info like the request location, the HTTP method, the content type, and the body. In this example, Ruby's pattern matching features are liberally employed to handle the parsing in some places; this is more for the sake of demonstration to show that it ◊em{can} be done, not necessarily that it always ◊em{should} be.
+What we have here is a Ractor that waits for incoming HTTP request messages, and then parses them into something that the server can more easily work with by pulling out important info like the request location, the HTTP method, the content type, and the body. In this example, Ruby's pattern matching features are liberally employed to handle the parsing in some places; this is more for the sake of demonstration to show that it /can} be done, not necessarily that it always ◊em{should/ be.
 
 In any case, once the ◊code{HttpRequest} object is constructed, it is yielded so that another Ractor can use the object, and therefore it will sit in a queue (or a mailbox, in actor model parlance) until it is taken from it. As a final housekeeping step, the string scanner instance used to parse the request is terminated. It's always a good idea to clean up after yourself if the language provides you the mechanism to do so.
 
 Going back to the functionality at hand; this basically shunts the parsing of HTTP requests into another thread, which means that the Ractors responsible for managing the TCP layer can stay responsible for that, and hand over the application-layer responsibilities to other actors/processes/Ractors.
 
-The TCP server now requires an upgrade: it's going to read input but it can no longer work on a line-by-line basis, because a HTTP message takes up many lines. The only thing we can really depend on is that it always ends with ◊em{two} carriage returns (CR-LF characters, or '\r\n' in a string).
+The TCP server now requires an upgrade: it's going to read input but it can no longer work on a line-by-line basis, because a HTTP message takes up many lines. The only thing we can really depend on is that it always ends with /two/ carriage returns (CR-LF characters, or '\r\n' in a string).
 
 ◊codeblock['ruby]{
   Ractor.new do

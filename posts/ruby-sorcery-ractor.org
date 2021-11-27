@@ -24,7 +24,7 @@ An actor is something that has one or more addresses, and receives messages; but
 
 In addition to receiving messages, then, an actor can also send messages to another actor. On top of that, it can also create new actors as children of itself.
 
-The final missing piece is that an actor can hold internal state, or in other words, store data. This is inaccessible to any other actor and therefore the ◊em{only} way to manipulate data inside an actor is to send it a message that it understands.
+The final missing piece is that an actor can hold internal state, or in other words, store data. This is inaccessible to any other actor and therefore the /only/ way to manipulate data inside an actor is to send it a message that it understands.
 
 How does it fit together? An actor can have multiple addresses, and many actors can share the same address. This means that you can achieve scaling by having more actors listen on an address, effectively load-balancing incoming messages, and you can create more powerful actors that perform different tasks based on those same messages.
 
@@ -45,7 +45,7 @@ You can consider technologies like Kubernetes◊^[7], Kafka◊^[8], and Web Work
 
 For example, in Kubernetes (K8S), the orchestrator is an actor that behaves as a supervisor. It is responsible for monitoring all of the other services that are deployed in the cluster and ensuring that they're kept alive. If a service goes down, it will attempt to reboot it. The service is also an actor, as it can talk to other services. It can change its own state (e.g. in-memory or with a database), but it cannot (or should not) reach into other services to do the same.
 
-Kafka offers three concepts of an actor: a producer, which is an actor that can only send messages; a consumer, which is an actor that can only receive messages ◊em{but also} create more producers to send messages; and a broker, which acts as a storage layer as well as a supervisor of sorts.
+Kafka offers three concepts of an actor: a producer, which is an actor that can only send messages; a consumer, which is an actor that can only receive messages /but also/ create more producers to send messages; and a broker, which acts as a storage layer as well as a supervisor of sorts.
 
 Similarly, an email inbox is another application of the pattern. Your email inbox is attached to one or more email addresses (or aliases), and messages that are meant for you are sent to your address (or many at once). Eventually, they will arrive in your inbox and you can then read the email and decide to archive it, delete it, report it as spam, and so on. This is also the case for a mailing list, where messages sent to the mailing list's address will eventually be distributed to every subscriber's address.
 
@@ -53,7 +53,7 @@ Similarly, an email inbox is another application of the pattern. Your email inbo
 
 Ruby's implementation of the actor model is called Ractor. There's a little bit of history here: it was originally called Guilds, and it's been in the making for a good few years now.
 
-Ruby 3.0 introduces Ractor to the general community, however it is still marked as experimental. This means that the API may change in later versions, or behaviours may change based on feedback, and while you might be fine to run Ractors in production...well... ◊em{caveat emptor}◊^[10].
+Ruby 3.0 introduces Ractor to the general community, however it is still marked as experimental. This means that the API may change in later versions, or behaviours may change based on feedback, and while you might be fine to run Ractors in production...well... /caveat emptor/◊^[10].
 
 First things first, quick recap on Actors:
 
@@ -63,7 +63,7 @@ First things first, quick recap on Actors:
   ◊li{An actor can mutate its own state but not another actor's state}
 }
 
-In order to guarantee thread-safety, some aspects of the language have had to change. Most objects in Ruby are unshareable by default, which is different to how a ◊code{Thread} behaves, and this means that code inside a ractor essentially cannot read ◊em{anything} outside of its own scope, which includes global variables and constants.
+In order to guarantee thread-safety, some aspects of the language have had to change. Most objects in Ruby are unshareable by default, which is different to how a ◊code{Thread} behaves, and this means that code inside a ractor essentially cannot read /anything/ outside of its own scope, which includes global variables and constants.
 
 Rather than rewording the Ruby manual on Ractors◊^[11], let's dig into a practical example and build a basic echo server over TCP.
 

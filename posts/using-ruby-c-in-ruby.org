@@ -6,11 +6,11 @@
 :CATEGORY: programming
 :END:
 
-A thought occurred to me in my mask-wearing, lockdown-addled brain last night: why the hell did I choose ◊em{now} to stop drinking? It's for my own good, I told myself, and so my thoughts shifted further into the absurd with nary a mind-altering substance in sight to stop them.
+A thought occurred to me in my mask-wearing, lockdown-addled brain last night: why the hell did I choose /now/ to stop drinking? It's for my own good, I told myself, and so my thoughts shifted further into the absurd with nary a mind-altering substance in sight to stop them.
 
 One of those thoughts stuck out in particular, because of how ridiculous it sounded: could you optimise your Ruby code by using FFI with Ruby's C bindings? I'm not talking about making a native extension in pure C, I'm talking about making Ruby talk to itself through a foreign function interface using the ffi gem◊^[1].
 
-Let's apply some method to this madness and set up some bindings, otherwise we're dead in the water. Let's be descriptive and call our FFI module ◊code{LibRuby}. No naming conflicts at all there, ◊em{no sirree}!
+Let's apply some method to this madness and set up some bindings, otherwise we're dead in the water. Let's be descriptive and call our FFI module ◊code{LibRuby}. No naming conflicts at all there, /no sirree/!
 
 ◊codeblock['ruby]{
   require 'ffi'
@@ -83,7 +83,7 @@ For every step in this post up to creating a ◊code{String} object, we've been 
 
 The string object is different, however, as on the C side of things Ruby is taking a pointer to a C string (a ◊code{const char *}), allocating memory, and giving back a pointer to the new object. Eventually the GC will run and free up the memory at the pointer's address, and the string will no longer exist. You'll probably find something else at that address instead, or just garbage.
 
-Disabling the GC in this instance is a ◊strong{shitty hack} because it's a direct admission that the code is ◊em{not memory safe}. Hopefully you didn't need me to tell you that, though, and the quality of the code in this post was self-evident.
+Disabling the GC in this instance is a ◊strong{shitty hack} because it's a direct admission that the code is /not memory safe/. Hopefully you didn't need me to tell you that, though, and the quality of the code in this post was self-evident.
 
 How would you fix it? Well, now we've found out that we ◊code{can} write Ruby with itself we'll explore that next time. And there'll be benchmarks, too.
 

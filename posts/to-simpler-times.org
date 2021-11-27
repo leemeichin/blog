@@ -16,7 +16,7 @@ I've tripped up on this a few times lately because I was locked into a certain w
 
 The first issue was how this site is built. Hakyll is a library for building a static site generator (SSG), so you build your own program using Hakyll's functions, add in whatever else you want because it's a simple Haskell program, and then use the resulting binary to convert your markdowns and org-modes and LaTeXes (LaTiCeS?) into beautiful HTML.
 
-Naturally I had to keep this binary stored somewhere because re-running a 30+ minute build is a little bit wasteful (Hakyll pulls in pretty much ◊em{all} of Pandoc). At first, I gravitated towards using build caches in CI or temporary artifact stores, and so long as they didn't expire I wouldn't trigger a rebuild. Then there was some exploration around binary caches in Haskell, or using a service like bintray to host the file.
+Naturally I had to keep this binary stored somewhere because re-running a 30+ minute build is a little bit wasteful (Hakyll pulls in pretty much /all/ of Pandoc). At first, I gravitated towards using build caches in CI or temporary artifact stores, and so long as they didn't expire I wouldn't trigger a rebuild. Then there was some exploration around binary caches in Haskell, or using a service like bintray to host the file.
 
 Even though it worked it all felt a bit... manky. It's clearly not the way software has been distributed for a long time, and the idea of hopping from one SaaS to another on their free or open source accounts is just not a good one. But alas, that's where we find ourselves these days.
 
@@ -63,7 +63,7 @@ The site has moved once again, back to a VPS hosted somewhere in the UK. Caddy�
 
 Deploying to this server is a case of firing off a couple of ◊code{ssh}, ◊code{scp} or ◊code{rsync} requests using a separate user with its own SSH key, and as soon as the command is finished running the changes are visible online.◊^[5]
 
-This leads me to the final bit. Modern tech feels more complicated as it tends towards distributed solutions: put thing ◊em{x} here, deploy service ◊em{y} there, sync them up with webhooks, and hope the network holds up to the task. Earlier tech feels more complicated because the documentation is intricate and detailed and requires some fidgeting around with.
+This leads me to the final bit. Modern tech feels more complicated as it tends towards distributed solutions: put thing /x} here, deploy service ◊em{y/ there, sync them up with webhooks, and hope the network holds up to the task. Earlier tech feels more complicated because the documentation is intricate and detailed and requires some fidgeting around with.
 
 It took me just about a day to figure out how to host my own ◊code{apt} repository for Debian◊^[6], compiling information from various manuals, blog posts and examples. It was mostly a case of creating a GPG key and setting up a correct directory structure for ◊code{apt-ftparchive}◊^[7] to do its business, with a little bit of extra config. I'll go into detail about that another time, but let it be said it does the job tremendously in any Debian-based CI pipeline.
 

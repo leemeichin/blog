@@ -8,7 +8,7 @@
 
 Alright, you can read the article first and shoot me later for a title like that, and what will inevitably become a series of Zig-based puns.
 
-Zig, for the unaware, is a fancy language that looks to be to C what Rust is to C++. Honestly, I recommend you read the summary on the main page◊^[1] to find out more yourself, as the best I can do is to just parrot what has already been written. However, you can see it as a valid ◊em{alternative} to C and Zig itself has claimed that it wants to be a better version of C than C itself. An ambitious challenge, for sure. To that end, Zig itself ships its own C compiler.
+Zig, for the unaware, is a fancy language that looks to be to C what Rust is to C++. Honestly, I recommend you read the summary on the main page◊^[1] to find out more yourself, as the best I can do is to just parrot what has already been written. However, you can see it as a valid /alternative/ to C and Zig itself has claimed that it wants to be a better version of C than C itself. An ambitious challenge, for sure. To that end, Zig itself ships its own C compiler.
 
 I've been interested in giving Zig a spin for quite a while, and once my Raspberry Pi Zero W◊^[2] and OLED display◊^[3] arrived in the post, I decided that this would be my best opportunity to try it out. I'm not really going to cover the process of wiring up the hardware, suffice to say that once you've got your Pi Zero you'll need to be able to SSH into it, and that you'll need a [solderless] GPIO header◊^[4] to plug the OLED display into. I recommend the Zero ◊b{W} because the W means 'WiFi', which means that if you connect it to your network you can SSH in without faffing around with USB cables and what not. It's not a requirement, though.
 
@@ -16,7 +16,7 @@ With that out of the way, let's see if we can write something in Zig to power th
 
 Instead, we will be directly using the i◊sup{2}c dev interface◊^[6]. If you're using Debian and/or Ubuntu on your Pi and your own machine, you can grab these libraries with a simple ◊code{sudo apt install i2c-dev}. You will need to enable i◊sup{2}c on your Pi separately though, through ◊code{sudo raspi-config}◊^[7].
 
-Ready to... get Ziggy with it? Oh, I bet you are. 😋 If you want to skip to the end and just grab the code, though, you can find this all on GitHub◊^[8]. I called it Stardust, like ◊em{Zig}gy Stardust. Get it?
+Ready to... get Ziggy with it? Oh, I bet you are. 😋 If you want to skip to the end and just grab the code, though, you can find this all on GitHub◊^[8]. I called it Stardust, like /Zig/gy Stardust. Get it?
 
 🥁
 
@@ -54,9 +54,9 @@ The next step is to define a ◊code{main} function that grabs a file descriptor
   }
 }
 
-You might have noticed something odd: we're not really writing much Zig here, it's practically 95% interop with C. The beauty of Zig is that this interop is so simple and intuitive that it's the ◊em{easiest} way to get started if you're going to be linking against existing C libraries. Get the software working first, abstract it later, as they say, and you might already start to get an idea of what we could convert into idiomatic Zig libraries in future.
+You might have noticed something odd: we're not really writing much Zig here, it's practically 95% interop with C. The beauty of Zig is that this interop is so simple and intuitive that it's the /easiest/ way to get started if you're going to be linking against existing C libraries. Get the software working first, abstract it later, as they say, and you might already start to get an idea of what we could convert into idiomatic Zig libraries in future.
 
-The actual Zig code you see though, is quite different to the C stuff. That ◊code{defer fd.close()}, for example, ◊em{ensures} that the file descriptor we opened up will be closed when we're done. If we don't do that, then it'll stay open and there'll be a leak.
+The actual Zig code you see though, is quite different to the C stuff. That ◊code{defer fd.close()}, for example, /ensures/ that the file descriptor we opened up will be closed when we're done. If we don't do that, then it'll stay open and there'll be a leak.
 
 There's also the ◊code{try} macro, used in combination with the ◊code{!void} return type, which will be super familiar if you've written some Rust and have dealt with option types. It's short hand for executing the code and catching/dealing with the error, with ◊code{!void} being another shorthand for ◊code{anyerror!void}, namely: this function returns either nothing, or an error if there is one.
 
@@ -121,7 +121,7 @@ Let's move on and make this kitten purr. Meow 🐈.
 
 ◊h2{Getting this show on the road}
 
-In true ◊em{draw the rest of the fucking owl} fashion◊^[11], what follows is a bit of a code-dump since the primary method of communicating with your OLED display is to, literally, write a few bytes to a file. The registers available and what can be written to them are often described in a meticulously detailed datasheet◊^[12], but they're not exactly light reading and we can save a bit of time by grabbing the info from elsewhere. A lot of the constants that follow are gracefully derived from those listed in a certain ◊code{owenosborn}'s wiringPi-based driver.◊^[13]. Credit where credit's due, eh.
+In true /draw the rest of the fucking owl} fashion◊^[11], what follows is a bit of a code-dump since the primary method of communicating with your OLED display is to, literally, write a few bytes to a file. The registers available and what can be written to them are often described in a meticulously detailed datasheet◊^[12], but they're not exactly light reading and we can save a bit of time by grabbing the info from elsewhere. A lot of the constants that follow are gracefully derived from those listed in a certain ◊code{owenosborn/'s wiringPi-based driver.◊^[13]. Credit where credit's due, eh.
 
 ◊codeblock['zig]{
   const SET_CONTRAST = 0x81;
@@ -265,7 +265,7 @@ Once you're done, rebuild the binary and ◊code{scp} it over, like you did the 
 
 ◊hr{}
 
-Hopefully that worked, but if it didn't, get in touch with your feedback at wtf@mrlee.dev and help contribute to this post being a better, more informative read. After all, ◊em{works on my machine!} can only go so far.
+Hopefully that worked, but if it didn't, get in touch with your feedback at wtf@mrlee.dev and help contribute to this post being a better, more informative read. After all, /works on my machine!/ can only go so far.
 
 ◊footnotes{
   ◊^[1]{◊<>["https://ziglang.org"]}
