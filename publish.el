@@ -25,6 +25,12 @@
      default-directory)
    path))
 
+(defun read-template (template-name)
+  "Read HTML template file TEMPLATE-NAME into string"
+  (with-temp-buffer
+    (insert-file-contents (expand-relative-path (concat "tpl/" template-name ".html")))
+    (buffer-string)))
+
 (setq org-html-htmlize-output-type 'css)
 
 (setq org-publish-project-alist
@@ -40,6 +46,9 @@
          :html-head-include-scripts nil
          :html-head-include-default-style t
          :html-validation-link nil
+         :html-head ,(read-template-file "head")
+         :html-preamble ,(read-template-file "page-header")
+         :html-postamble ,(read-template-file "page-footer")
          :publishing-directory ,(expand-relative-path "publish/")
          :publish-function org-html-publish-to-html
          )
@@ -60,6 +69,9 @@
          :sitemap-title "archive"
          :sitemap-filename "index.org"
          :sitemap-sort-files anti-chronologically
+         :html-head ,(read-template-file "head")
+         :html-preamble ,(read-template-file "post-header")
+         :html-postamble ,(read-template-file "post-footer")
          :publishing-directory ,(expand-relative-path "publish/posts/")
          :publish-function org-html-publish-to-html)
         ("static"
