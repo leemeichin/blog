@@ -1,5 +1,3 @@
-#lang pollen
-
 * Permanent solutions to temporary problems
 ◊define-meta[date]{2021-02-01}
 ◊define-meta[published #t]

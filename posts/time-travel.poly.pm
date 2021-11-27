@@ -1,5 +1,3 @@
-#lang pollen
-
 * Time travel
 ◊define-meta[date]{2021-01-24}
 ◊define-meta[published #t]

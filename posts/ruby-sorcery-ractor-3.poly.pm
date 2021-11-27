@@ -1,5 +1,3 @@
-#lang pollen
-
 * Ruby Sorcery Part 2: Ractor, Chapter 3
 ◊define-meta[date]{2021-10-17}
 ◊define-meta[published #f]

@@ -1,5 +1,3 @@
-#lang pollen
-
 * Past mistakes
 ◊define-meta[date]{2021-04-24}
 ◊define-meta[published #t]

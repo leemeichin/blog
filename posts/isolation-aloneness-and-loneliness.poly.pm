@@ -1,5 +1,3 @@
-#lang pollen
-
 * Isolation, aloneness and loneliness
 ◊define-meta[date]{2020-07-07}
 ◊define-meta[published #t]

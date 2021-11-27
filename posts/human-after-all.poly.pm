@@ -1,5 +1,3 @@
-#lang pollen
-
 * Human after all
 ◊define-meta[date]{2021-02-20}
 ◊define-meta[published #t]

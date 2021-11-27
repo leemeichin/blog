@@ -1,5 +1,3 @@
-#lang pollen
-
 * FLoC Off
 ◊define-meta[date]{2021-04-16}
 ◊define-meta[published #t]

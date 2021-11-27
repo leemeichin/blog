@@ -1,5 +1,3 @@
-#lang pollen
-
 * The goose is out
 ◊define-meta[date]{2021-07-20}
 ◊define-meta[published #t]

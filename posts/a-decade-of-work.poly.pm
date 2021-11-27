@@ -1,5 +1,3 @@
-#lang pollen
-
 * A decade of work
 ◊define-meta[date]{2020-07-20}
 ◊define-meta[published #t]

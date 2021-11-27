@@ -1,5 +1,3 @@
-#lang pollen
-
 * Celebrate each other
 ◊define-meta[date]{2020-08-03}
 ◊define-meta[published #t]

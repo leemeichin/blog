@@ -1,5 +1,3 @@
-#lang pollen
-
 * Do you really need those microservices?
 ◊define-meta[date]{2020-07-21}
 ◊define-meta[published #t]

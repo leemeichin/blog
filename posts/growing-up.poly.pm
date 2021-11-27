@@ -1,5 +1,3 @@
-#lang pollen
-
 * Growing up
 ◊define-meta[date]{2021-05-17}
 ◊define-meta[published #t]

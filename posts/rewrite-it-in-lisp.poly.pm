@@ -1,5 +1,3 @@
-#lang pollen
-
 * Rewrite it in Lisp?
 ◊define-meta[date]{2021-06-15}
 ◊define-meta[category]{programming}

@@ -1,5 +1,3 @@
-#lang pollen
-
 * On working remotely
 ◊define-meta[date]{2020-06-26}
 ◊define-meta[published #t]

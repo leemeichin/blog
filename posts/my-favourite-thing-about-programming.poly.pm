@@ -1,5 +1,3 @@
-#lang pollen
-
 * My favourite thing about programming
 ◊define-meta[date]{2020-08-15}
 ◊define-meta[published #t]

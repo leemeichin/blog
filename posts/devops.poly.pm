@@ -1,5 +1,3 @@
-#lang pollen
-
 * Devops
 ◊define-meta[date]{2020-09-18}
 ◊define-meta[published #t]

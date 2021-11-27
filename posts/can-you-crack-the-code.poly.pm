@@ -1,5 +1,3 @@
-#lang pollen
-
 * Can you crack the code?
 ◊define-meta[date]{2020-12-31}
 ◊define-meta[published #t]
