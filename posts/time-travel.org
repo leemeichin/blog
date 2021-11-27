@@ -1,5 +1,4 @@
 #+TITLE: Time travel
-
 :PROPERTIES:
 :CREATED: [2021-01-24]
 :CATEGORY: personal

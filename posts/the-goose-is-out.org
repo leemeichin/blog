@@ -1,5 +1,4 @@
 #+TITLE: The goose is out
-
 :PROPERTIES:
 :CREATED: [2021-07-20]
 :CATEGORY: personal

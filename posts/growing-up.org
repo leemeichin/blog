@@ -1,5 +1,4 @@
 #+TITLE: Growing up
-
 :PROPERTIES:
 :CREATED: [2021-05-17]
 :CATEGORY: personal

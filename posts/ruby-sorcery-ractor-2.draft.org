@@ -1,5 +1,4 @@
 #+TITLE: Ruby Sorcery Part 2: Ractor, Chapter 2
-
 :PROPERTIES:
 :CREATED: [2021-10-09]
 :CATEGORY: ruby

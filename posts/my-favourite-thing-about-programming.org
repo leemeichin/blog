@@ -1,5 +1,4 @@
 #+TITLE: My favourite thing about programming
-
 :PROPERTIES:
 :CREATED: [2020-08-15]
 :CATEGORY: programming

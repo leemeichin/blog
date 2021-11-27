@@ -1,5 +1,4 @@
 #+TITLE: Human after all
-
 :PROPERTIES:
 :CREATED: [2021-02-20]
 :CATEGORY: culture

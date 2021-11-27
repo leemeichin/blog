@@ -1,5 +1,4 @@
 #+TITLE: Agile lipstick 💄
-
 :PROPERTIES:
 :CREATED: [2021-03-22]
 :CATEGORY: programming

@@ -1,5 +1,4 @@
 #+TITLE: Enough
-
 :PROPERTIES:
 :CREATED: [2021-03-06]
 :CATEGORY: personal

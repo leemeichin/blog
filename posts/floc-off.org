@@ -1,5 +1,4 @@
 #+TITLE: FLoC Off
-
 :PROPERTIES:
 :CREATED: [2021-04-16]
 :CATEGORY: programming
