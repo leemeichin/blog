@@ -3,6 +3,7 @@
 :CREATED: [2021-09-28]
 :PUBLISHED: f
 :CATEGORY: ruby
+:END:
 
 This is part two of a series of posts about Ruby and its more experimental features. The first part is about pattern matching.◊^[1]
 

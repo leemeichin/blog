@@ -3,6 +3,7 @@
 :CREATED: [2021-01-24]
 :PUBLISHED: t
 :CATEGORY: programming
+:END:
 
 Earlier today I read a blog post titled ◊em{Software development topics I've changed my mind on after 6 years in the industry}◊^[1] and it made me reflect on how my own thinking has (hopefully) evolved over my decade long career. I'm not going to discuss the content of the linked post, except to say that as much as I empathise with the author and have been an angry programmer myself, the overly aggressive tone that occasionally slips out isn't really my cup of tea.
 

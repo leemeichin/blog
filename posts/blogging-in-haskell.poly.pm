@@ -3,6 +3,7 @@
 :CREATED: [2020-06-27]
 :PUBLISHED: t
 :CATEGORY: programming
+:END:
 
 It's taken me quite a while to settle on a particular look and feel for this blog. Rather than just having an outlet for writing, I wanted the creation of it to be a learning experience too. Hugo◊^[1], Gatsby◊^[2] and Zola◊^[3], with Netlify CMS◊^[4] as a fancy interface for writing posts on top of it all. Each attempt left me feeling less inspired than the last.
 

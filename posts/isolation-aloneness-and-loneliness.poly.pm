@@ -3,6 +3,7 @@
 :CREATED: [2020-07-07]
 :PUBLISHED: t
 :CATEGORY: personal
+:END:
 
 I don't doubt that the COVID-19 situation this year has forced many of us to confront aspects of ourselves we were previously able to hide behind a mask. In some ways, this has been tragic and, unfortutely, traumatic as well. That isolatation has deprived partners from space away from their abusers at home, making a bad situation even worse for them. In other cases, it has made domestic violence much more apparent as people reveal an uglier side to themselves, frustrated by the prolonged contact. It's truly devastating and it can be hard to comprehend the sort of horror that takes place in the home unless you've been unfortunate enough to suffer from it yourself. I suffered it myself, at the hands of my sister's abusive boyfriend, and it was enough for me to contemplate life without any of my family in it. Took me a few years to follow up with that and come to terms with it, but I'm glad I did.
 

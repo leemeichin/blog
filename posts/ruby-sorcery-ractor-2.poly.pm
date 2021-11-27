@@ -3,6 +3,7 @@
 :CREATED: [2021-10-09]
 :PUBLISHED: f
 :CATEGORY: ruby
+:END:
 
 In the previous chapter of this excurusion into Ractor◊^[1], the concept of the actor model was introduced and a toy TCP server was created. It was a naive implementation that created new Ractors for every TCP connection made to the server, and it looked like this:
 

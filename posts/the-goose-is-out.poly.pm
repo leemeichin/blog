@@ -3,6 +3,7 @@
 :CREATED: [2021-07-20]
 :PUBLISHED: t
 :CATEGORY: personal
+:END:
 
 I was browsing HN over my coffee this morning and came across an interesting thread◊^[1] linking to a post titled ◊em{When Buddhism Goes Bad}◊^[2]. That wasn't actually the title I read, as on HN the more neutral subtitle -- ◊em{How My Mindfulness Practice Led Me To Meltdown} -- was chosen instead.
 

@@ -3,6 +3,7 @@
 :CREATED: [2021-03-06]
 :PUBLISHED: t
 :CATEGORY: personal
+:END:
 
 I'm driven by ambition, as are many of us. I don't think that you need to be ambitious to be successful, though, unless you reframe your perception of it. You can be enough; no more, no less.
 

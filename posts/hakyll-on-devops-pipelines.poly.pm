@@ -3,6 +3,7 @@
 :CREATED: [2020-08-18]
 :PUBLISHED: t
 :CATEGORY: programming
+:END:
 
 In a way, this is total overkill for a static site. If I have the repo cloned on my machine and I want to publish a new post, I can do it in two commands:
 

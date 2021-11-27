@@ -3,6 +3,7 @@
 :CREATED: [2021-02-01]
 :PUBLISHED: t
 :CATEGORY: mental-health
+:END:
 
 Depression fucking sucks. It sucks to suffer from it; it sucks to see others suffer from it.
 

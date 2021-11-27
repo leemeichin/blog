@@ -3,6 +3,7 @@
 :CREATED: [2021-04-24]
 :PUBLISHED: t
 :CATEGORY: programming
+:END:
 
 I think everyone needs at least one blog post under their belt that describes mistakes they've previously made in their careers. Now is the time for me.
 

@@ -3,6 +3,7 @@
 :CREATED: [2021-10-17]
 :PUBLISHED: f
 :CATEGORY: ruby
+:END:
 
 In chapter 2 of this exploration, a basic Ractor-based TCP server was refactored into a partly-functional HTTP server.◊^[1] It can handle super-basic requests, but it doesn't send back a valid HTTP response. That means that it's difficult to use tools like ◊code{curl} to interact with the server and, thanks to that, previous demonstrations have depended on hand-crafting requests inside a ◊code{telnet} session.
 

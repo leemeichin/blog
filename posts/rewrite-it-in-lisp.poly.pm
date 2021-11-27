@@ -2,6 +2,7 @@
 :PROPERTIES:
 :CREATED: [2021-06-15]
 :CATEGORY: programming
+:END:
 :PUBLISHED: t
 
 I finally got around to paying some money for ◊em{Beautiful Racket}◊^[1], a fantastic online-only book that introduces you to Racket by guiding you through building a few language implementations. In that sense it's not unlike ◊em{Write Yourself a Scheme in 48 Hours}◊^[2], except that book focusses on Haskell and (through no fault of its own) lacks the wonderful presentation of Beautiful Racket.

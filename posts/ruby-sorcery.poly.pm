@@ -3,6 +3,7 @@
 :CREATED: [2021-09-17]
 :PUBLISHED: t
 :CATEGORY: ruby
+:END:
 
 
 I recently realised that despite many new additions to the Ruby language and ecosystem, I've never really had an opportunity to take advantage of many of them. Of course, some new language features are more useful than others, particularly when it comes to maintaining code as a team, but what is also interesting is that they also support less conventional, or immediately-apparent, use-cases.
