@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2021-01-05]
 :PUBLISHED: t
-◊define-meta[category]{programming}
+:CATEGORY: programming
 
 Alright, you can read the article first and shoot me later for a title like that, and what will inevitably become a series of Zig-based puns.
 

@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2020-08-03]
 :PUBLISHED: t
-◊define-meta[category]{personal}
+:CATEGORY: personal
 
 Back when I worked at Typeform◊^[1], it really surprised me that they casually used a system of extrinsic motivation to reward good work, and to appreciate and recognise others. That's a long-handed way of saying that they used a service called Bonusly◊^[2] and integrated it with the company chat app, which at the time was HipChat◊^[3] (hands up if you remember *not* using Slack?). We had an internal currency called Typecoin (TC)◊^[4] and you had a budget of 250 a month to offer to your fellow colleagues as an extra way of saying thanks, or shouting out. Those coins actually converted to cash or Amazon gift vouchers, it was actually pretty cool. Most of the time I'd cash out, go to the Mercadona by the beach at La Vila Olimpica (which was around the corner from our office), and buy around 10€ worth of Haribo sweets for the whole office to enjoy. It was usually either a 'ThursYAY' or 'TuesYAY' depending on what mood I was in.
 

@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2021-02-20]
 :PUBLISHED: t
-◊define-meta[category]{culture}
+:CATEGORY: culture
 
 I'm sure everybody goes through the 'angry programmer' phase at some point in their career. I'm sure that some people enter it and never leave. The angry programmer looks at code and wonders what kind of dumbass would write something so stupid. The angry programmer assumes a codebase to be a load of shit by default.
 

@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2021-08-28]
 :PUBLISHED: t
-◊define-meta[category]{personal}
+:CATEGORY: personal
 
 They say you can learn a lot about a person by the contents of their bookshelf. If you were to look at mine you'd see the beginnings of a hoarding mentality. Not unlike my Steam library, there are some books on my shelf that I will probably never read. But at least I can be pretentious and say I have them, so long as I can bullshit my way through any conversation about them. Yes, I'm talking about you, ◊em{Structure and Interpretation of Computer Programs}.
 

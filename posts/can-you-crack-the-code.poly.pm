@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2020-12-31]
 :PUBLISHED: t
-◊define-meta[category]{programming}
+:CATEGORY: programming
 
 What better way to spend the final moments of 2020, locked down in London, than with a logic puzzle and a computer that can, well, do logic? Join me for a few minutes on this auspicious eve, and learn how you can spend an order of magnitude more time computing a solution than what it would take if you used your noggin instead.
 

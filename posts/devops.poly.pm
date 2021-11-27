@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2020-09-18]
 :PUBLISHED: t
-◊define-meta[category]{programming}
+:CATEGORY: programming
 
 I recently left a healthcare company called Babylon a few weeks back. Of all the things I enjoyed there, and the things that made it unique, one has to be how it has managed to dance across the line between startup and enterprise. I don't mean to say 'enterprise' in a perjorative sense; it's more that you can't really avoid that when you're working in a heavily regulated and audited sector. Mistakes can be literally life or death, and the data collected over time includes people's medical information and health records. There really isn't any room for fucking about, but that doesn't mean that other business functions have to be so serious.
 

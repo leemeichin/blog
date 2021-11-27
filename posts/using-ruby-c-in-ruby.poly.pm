@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2021-01-18]
 :PUBLISHED: t
-◊define-meta[category]{programming}
+:CATEGORY: programming
 
 A thought occurred to me in my mask-wearing, lockdown-addled brain last night: why the hell did I choose ◊em{now} to stop drinking? It's for my own good, I told myself, and so my thoughts shifted further into the absurd with nary a mind-altering substance in sight to stop them.
 

@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2020-08-15]
 :PUBLISHED: t
-◊define-meta[category]{programming}
+:CATEGORY: programming
 
 In a word: languages.
 

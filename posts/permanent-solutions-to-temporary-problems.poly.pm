@@ -2,7 +2,7 @@
 :PROPERTIES:
 :CREATED: [2021-02-01]
 :PUBLISHED: t
-◊define-meta[category]{mental-health}
+:CATEGORY: mental-health
 
 Depression fucking sucks. It sucks to suffer from it; it sucks to see others suffer from it.
 
