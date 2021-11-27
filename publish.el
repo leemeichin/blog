@@ -12,6 +12,14 @@
          :base-directory ,(expand-relative-path "org/")
          :base-extension "org"
          :recursive nil
+         :with-toc nil
+         :with-properties nil
+         :section-numbers nil
+         :html-doctype "html5"
+         :html-html5-fancy t
+         :html-head-include-scripts nil
+         :html-head-include-default-style t
+         :html-validation-link nil
          :publishing-directory ,(expand-relative-path "publish/")
          :publish-function org-html-publish-to-html
          )
