@@ -1,1 +1,1 @@
-#+INCLUDE: posts/index.org :lines "3-13"
+#+INCLUDE: posts/index.org :lines "2-13"
