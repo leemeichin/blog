@@ -20,10 +20,8 @@ Anyway, every page here is served with the ~Permissions-Policy: interest-cohort=
 
 If you're curious, you can also check out the Security Headers report for this site[fn:5].
 
-◊footnotes{
-  [fn:1]{◊<>["https://plausible.io/kamelasa.dev"]}
-  [fn:2]{◊<>["https://plausible.io/blog/google-floc"]}
-  [fn:3]{◊<>["https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"]}
-  [fn:4]{◊<>["https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT"]}
-  [fn:5]{◊<>["https://securityheaders.com/?q=www.kamelasa.dev&followRedirects=on"]}
-}
+[fn:1] https://plausible.io/kamelasa.dev
+[fn:2] https://plausible.io/blog/google-floc
+[fn:3] https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+[fn:4] https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT
+[fn:5] https://securityheaders.com/?q=www.kamelasa.dev&followRedirects=on

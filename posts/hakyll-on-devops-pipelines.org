@@ -177,10 +177,10 @@ To solve the issue I first mentioned, ~cleanTargetFolder~ makes sure to delete t
 
 To see the pipeline in full, you can check out the full YAML file[fn:5]. I've been using it with success for the past couple of weeks now.
 
-◊footnotes{
-  [fn:1]{◊<>["https://docs.haskellstack.org/en/stable/README"]}
-  [fn:2]{◊<>["https://hackage.haskell.org"]}
-  [fn:3]{◊<>["https://dev.azure.com"]}
-  [fn:4]{◊<>["https://github.com/features/actions"]}
-  [fn:5]{◊<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/9decaf4732dc7bc4510fcf23979af8657bdb01bd/item/azure/pipeline.yml"]}
-}
+
+[fn:1] https://docs.haskellstack.org/en/stable/README
+[fn:2] https://hackage.haskell.org
+[fn:3] https://dev.azure.com
+[fn:4] https://github.com/features/actions
+[fn:5] https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/9decaf4732dc7bc4510fcf23979af8657bdb01bd/item/azure/pipeline.yml
+

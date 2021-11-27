@@ -89,8 +89,7 @@ How would you fix it? Well, now we've found out that we ~can~ write Ruby with it
 
 Until then, I'll see you further into the abyss.
 
-◊footnotes{
-  [fn:1]{◊<>["https://github.com/ffi/ffi"]}
-  [fn:2]{~gem install ffi -- --enable-system-libffi~}
-  [fn:3]{◊<>["https://ruby-doc.org/core-2.7.0/doc/extension_rdoc.html"]}
-}
+[fn:1] https://github.com/ffi/ffi
+[fn:2] ~gem install ffi -- --enable-system-libffi~
+[fn:3] https://ruby-doc.org/core-2.7.0/doc/extension_rdoc.html
+

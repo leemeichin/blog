@@ -47,7 +47,7 @@ Moving on, there's Lisp. My familiarity with Lisp comes from customising my emac
 
 With emacs in particular, it made it trivially easy for me to launch a Rails console inside a deployed Kubernetes pod.
 
-#+begin_src commonlisp
+#+begin_src elisp
   (defun inf-ruby-console-k8s (env)
     (interactive (list (completing-read "Environment: "
                                         '("dev" "staging" "preprod") nil t)))
@@ -65,6 +65,5 @@ One thing I've noticed while writing this is that each language selected has lit
 
 For as long as that remains true I think I'll always have new toys to play with.
 
-◊footnotes{
-  [fn:1]{◊<>["http://raytracerchallenge.com"]}
-}
+
+[fn:1] http://raytracerchallenge.com

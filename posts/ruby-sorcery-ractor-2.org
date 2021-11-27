@@ -211,8 +211,8 @@ It's gonna take a little bit more work to turn this into a workable HTTP server,
 The next chapter will focus on creating a valid response, something that ~curl~ will like. Keep in mind that the primarily goal is to get something that works, warts and all, and later on it will be revisited, having learned more.
 
 ◊footnotes{
-  [fn:1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery-ractor.html"]}
-  [fn:2]{◊<>["https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Trailer"]}
-  [fn:3]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery.html"]}
-  [fn:4]{◊<>["https://ruby-doc.com/core-3.0.0/Enumerator.html"]}
+  [fn:1] https://www.kamelasa.dev/posts/ruby-sorcery-ractor.html
+  [fn:2] https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Trailer
+  [fn:3] https://www.kamelasa.dev/posts/ruby-sorcery.html
+  [fn:4] https://ruby-doc.com/core-3.0.0/Enumerator.html
 }

@@ -97,6 +97,6 @@ Of course, this will be done in another Ractor, but we'll also address the probl
 
 
 ◊footnotes{
-  [fn:1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery-ractor-2.html"]}
-  [fn:2]{◊<>["https://github.com/rack/rack"]}
+  [fn:1] https://www.kamelasa.dev/posts/ruby-sorcery-ractor-2.html
+  [fn:2] https://github.com/rack/rack
 }

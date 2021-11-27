@@ -85,10 +85,9 @@ In the end, the only thing I traded-off was the post category in the URL itself.
 
 Overall, I'm happy with the change. It doesn't take 45 minutes to re-compile my Hakyll build if I add new functionality, and I don't have to host my own Debian repo to install the compiled binary through ~apt~. Rendering the site and publishing it is still completed in a matter of seconds. And, now I've gone through the effort of deploying it for this site, I'm a lot more confident about using Pollen again for other projects.
 
-◊footnotes{
-  [fn:1]{◊<>["https://beautifulracket.com/"]}
-  [fn:2]{◊<>["https://en.m.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours"]}
-  [fn:3]{◊<>["https://docs.racket-lang.org/pollen"]}
-  [fn:4]{◊<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/pollen.rkt"]}
-  [fn:5]{◊<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/redirs.caddy"]}
-}
+[fn:1] https://beautifulracket.com/
+[fn:2] https://en.m.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
+[fn:3] https://docs.racket-lang.org/pollen
+[fn:4] https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/pollen.rkt
+[fn:5] https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/redirs.caddy
+

@@ -52,10 +52,9 @@ Fuck that noise, just put the agile lipstick on your pig instead! Throw in a dai
 
 Now /that/ is easy.
 
-◊footnotes{
-  [fn:1]{◊<>["https://www.coachingdevelopment.com/"] - if you're based in London or Ireland this is /so/ worth it./
-  [fn:2]{◊<>["https://en.wikipedia.org/wiki/Eternal_September"]}
-  [fn:3]{◊<>["https://uk.bookshop.org/a/6865/9780321934116"]}
-  [fn:4]{◊<>["https://uk.bookshop.org/a/6865/9781118127308"]}
-  [fn:5]{◊<>["https://agilemanifesto.org/"]}
-}
+[fn:1] https://www.coachingdevelopment.com/ - if you're based in London or Ireland this is /so/ worth it.
+[fn:2] https://en.wikipedia.org/wiki/Eternal_September
+[fn:3] https://uk.bookshop.org/a/6865/9780321934116
+[fn:4] https://uk.bookshop.org/a/6865/9781118127308
+[fn:5] https://agilemanifesto.org/
+

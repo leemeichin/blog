@@ -30,8 +30,7 @@ I believe that's a lot easier to do when you start early, but if you come to it 
 
 If I was to offer anybody advice about how to make all of this happen successfully, I'd say to stop thinking in terms of the existing monolith, and instead look at what individual products you could separate or extract, or even spin-off into their own businesses if the idea was unique enough to sell individually. And don't jump to solutions like Kubernetes until you're dealing with enough of these services that your existing deployment setup is too hard to manage.
 
-◊footnotes{
-  [fn:1]{◊<>["https://en.wikipedia.org/wiki/Conway%27s_law"]}
-  [fn:2]{◊<>["https://en.wikipedia.org/wiki/Service-oriented_architecture"]}
-  [fn:3]{◊<>["https://en.wikipedia.org/wiki/Domain-driven_design"]}
-}
+
+[fn:1] https://en.wikipedia.org/wiki/Conway%27s_law
+[fn:2] https://en.wikipedia.org/wiki/Service-oriented_architecture
+[fn:3] https://en.wikipedia.org/wiki/Domain-driven_design

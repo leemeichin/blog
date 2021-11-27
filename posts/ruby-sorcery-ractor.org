@@ -113,15 +113,15 @@ Try it for yourself by running that code in an IRB console, and then open up ~te
 The problem with this code is that it's too simple: it shows how one Ractor can spawn other ractors, but it's not taking advantage of the communication channels they have and how objects are shared between Ractors. Keep an eye out for the next part of Ruby Sorcery, where there'll be a much deeper dive into Ractor's capabilities.
 
 ◊footnotes{
-  [fn:1]{◊<>["https://www.kamelasa.dev/posts/ruby-sorcery.html"]}
-  [fn:2]{◊<>["https://ruby-doc.org/core-3.0.2/Thread.html"]}
-  [fn:3]{◊<>["https://ruby-doc.org/core-3.0.2/Fiber.html"]}
-  [fn:4]{◊<>["https://www.erlang.org"]}
-  [fn:5]{◊<>["https://elixir-lang.org"]}
-  [fn:6]{◊<>["https://www.ponylang.io"]}
-  [fn:7]{◊<>["https://kubernetes.io"]}
-  [fn:8]{◊<>["https://kafka.apache.org"]}
-  [fn:9]{◊<>["https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"]}
+  [fn:1] https://www.kamelasa.dev/posts/ruby-sorcery.html
+  [fn:2] https://ruby-doc.org/core-3.0.2/Thread.html
+  [fn:3] https://ruby-doc.org/core-3.0.2/Fiber.html
+  [fn:4] https://www.erlang.org
+  [fn:5] https://elixir-lang.org
+  [fn:6] https://www.ponylang.io
+  [fn:7] https://kubernetes.io
+  [fn:8] https://kafka.apache.org
+  [fn:9] https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
   [fn:10]{Let the buyer beware.}
-  [fn:11]{◊<>["https://docs.ruby-lang.org/en/master/doc/ractor_md.html"]}
+  [fn:11] https://docs.ruby-lang.org/en/master/doc/ractor_md.html
 }

@@ -205,6 +205,5 @@ Well, this doesn't cover the entirety of Ruby's pattern matching fun, but it sho
 
 Check in soon to see another deep-dive into Ruby Sorcery.
 
-◊footnotes{
-  [fn:1]{◊<>["https://docs.ruby-lang.org/en/3.0.0/doc/syntax/pattern_matching_rdoc.html"]}
-}
+
+[fn:1] https://docs.ruby-lang.org/en/3.0.0/doc/syntax/pattern_matching_rdoc.html

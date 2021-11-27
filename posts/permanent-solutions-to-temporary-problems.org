@@ -58,8 +58,6 @@ I'm aware that these options are very specific to the UK and you might not have 
 
 Take care of yourself.
 
-◊footnotes{
-  [fn:1]{◊<>["https://www.samaritans.org"]}
-  [fn:2]{◊<>["https://giveusashout.org"]}
-  [fn:3]{◊<>["https://www.papyrus-uk.org"]}
-}
+[fn:1] https://www.samaritans.org
+[fn:2] https://giveusashout.org
+[fn:3] https://www.papyrus-uk.org

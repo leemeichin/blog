@@ -30,6 +30,5 @@ Before I proselytise too much, I think this is really important because you can 
 
 And if I had one suggestion for any budding project finding itself in the hands of real life users in production, consider what you want your devops culture to be like and, if you can, see how early you can encourage your team without depending on offering wide-scale production access. And maybe even consider what kind of internal tooling you can build to improve the productivity and efficacy of your engineers.
 
-◊footnotes{
-  [fn:1]{◊<>["https://github.com/babylonhealth/shipcat"]}
-}
+
+[fn:1] https://github.com/babylonhealth/shipcat

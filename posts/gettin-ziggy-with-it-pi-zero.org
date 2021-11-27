@@ -267,21 +267,20 @@ Once you're done, rebuild the binary and ~scp~ it over, like you did the first t
 
 Hopefully that worked, but if it didn't, get in touch with your feedback at wtf@mrlee.dev and help contribute to this post being a better, more informative read. After all, /works on my machine!/ can only go so far.
 
-◊footnotes{
-  [fn:1]{◊<>["https://ziglang.org"]}
-  [fn:2]{◊<>["https://thepihut.com/products/raspberry-pi-zero-w"]}
-  [fn:3]{◊<>["https://thepihut.com/products/adafruit-pioled-128x32-monochrome-oled-add-on-for-raspberry-pi-ada3527"]}
-  [fn:4]{◊<>["https://thepihut.com/products/gpio-hammer-header-solderless"]}
-  [fn:5]{◊<>["http://wiringpi.com"]}
-  [fn:6]{◊<>["https://www.kernel.org/doc/Documentation/i2c/dev-interface"]}
-  [fn:7]{◊<>["https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c"]}
-  [fn:8]{◊<>["https://github.com/mrleedev/stardust"]}
-  [fn:9]{◊<>["https://musl.libc.org"]}
-  [fn:10]{◊<>["https://github.com/ziglang/zig/issues/4875"]}
-  [fn:11]{◊<>["https://knowyourmeme.com/memes/how-to-draw-an-owl"]}
-  [fn:12]{◊<>["https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf"]}
-  [fn:13]{◊<>["https://github.com/owenosborn/SSD1306-OLED-WiringPi/blob/master/ssd1306.h"]}
-  [fn:14]{Possibly exaggerated for effect. Possibly.}
-  [fn:15]{◊<>["https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/adafruit_ssd1306.py"]}
-  [fn:16]{◊<>["https://kristoff.it/blog/what-is-zig-comptime/"]}
-}
+[fn:1] https://ziglang.org
+[fn:2] https://thepihut.com/products/raspberry-pi-zero-w
+[fn:3] https://thepihut.com/products/adafruit-pioled-128x32-monochrome-oled-add-on-for-raspberry-pi-ada3527
+[fn:4] https://thepihut.com/products/gpio-hammer-header-solderless
+[fn:5] http://wiringpi.com
+[fn:6] https://www.kernel.org/doc/Documentation/i2c/dev-interface
+[fn:7] https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
+[fn:8] https://github.com/mrleedev/stardust
+[fn:9] https://musl.libc.org
+[fn:10] https://github.com/ziglang/zig/issues/4875
+[fn:11] https://knowyourmeme.com/memes/how-to-draw-an-owl
+[fn:12] https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf
+[fn:13] https://github.com/owenosborn/SSD1306-OLED-WiringPi/blob/master/ssd1306.h
+[fn:14] Possibly exaggerated for effect. Possibly.
+[fn:15] https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/adafruit_ssd1306.py
+[fn:16] https://kristoff.it/blog/what-is-zig-comptime/
+

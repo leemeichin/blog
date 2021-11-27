@@ -77,14 +77,14 @@ It took me just about a day to figure out how to host my own ~apt~ repository fo
 
 On another note, this site now also left GitHub for Sourcehut[fn:8] and, at risk of being a bit narcissistic, a comments section lives on a mailing list there[fn:9]. Should you feel that the stuff I post is worth talking about, of course. You don't need a Sourcehut account to get involved, although you'll need to join the list (without signing up for Sourcehut) if you want more than read-only access.
 
-◊footnotes{
-  [fn:1]{◊<>["https://www.kamelasa.dev/programming/blogging-in-haskell"]}
-  [fn:2]{◊<>["https://www.kamelasa.dev/programming/hakyll-on-devops-pipelines"]}
-  [fn:3]{◊<>["https://plausible.io/kamelasa.dev"]}
-  [fn:4]{◊<>["https://caddyserver.com/v2"]}
-  [fn:5]{◊<>["I should probably sort out proper HTTP caching though..."]}
-  [fn:6]{◊<>["https://pkg.kamelasa.dev"]}
-  [fn:7]{◊<>["https://manpages.debian.org/buster/apt-utils/apt-ftparchive.1.en.html"]}
-  [fn:8]{◊<>["https://sourcehut.org"]}
-  [fn:9]{◊<>["https://lists.sr.ht/~mrlee/kamelasa.dev-discuss"]}
-}
+
+[fn:1] https://www.kamelasa.dev/programming/blogging-in-haskell
+[fn:2] https://www.kamelasa.dev/programming/hakyll-on-devops-pipelines
+[fn:3] https://plausible.io/kamelasa.dev
+[fn:4] https://caddyserver.com/v2
+[fn:5] I should probably sort out proper HTTP caching though...
+[fn:6] https://pkg.kamelasa.dev
+[fn:7] https://manpages.debian.org/buster/apt-utils/apt-ftparchive.1.en.html
+[fn:8] https://sourcehut.org
+[fn:9] https://lists.sr.ht/~mrlee/kamelasa.dev-discuss
+

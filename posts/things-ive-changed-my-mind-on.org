@@ -68,7 +68,5 @@ Rejection isn't always so easy to handle, but there's always another time and a 
 
 It feels a bit weird to write out a series of arbitrary maxims the way I just have, so I'll aim to explore each one in more depth throughout this year. With that said, it was an interesting exercise if ultimately a rather shallow one. Watch this space for more details.
 
-◊footnotes{
-  [fn:1]{◊<>["https://chriskiehl.com/article/thoughts-after-6-years"]}
-  [fn:2]{◊<>["https://mcfunley.com/choose-boring-technology"]}
-}
+[fn:1] https://chriskiehl.com/article/thoughts-after-6-years
+[fn:2] https://mcfunley.com/choose-boring-technology

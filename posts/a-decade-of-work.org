@@ -38,9 +38,8 @@ Now it's 2020, and not much has changed except that I enjoy the programming side
 
 The world has changed /a lot/ in all that time, and I now find myself in my thirties. Not once in my life did I ever think or believe I would be doing this kind of thing as a career, and I've grown to love it. If I were to tell my teenage self anything, knowing all of this... I would keep my mouth shut. He managed to figure it out just fine.
 
-◊footnotes{
-  [fn:1]{◊<>["https://en.wikipedia.org/wiki/Dynamic_HTML"]}
-  [fn:2]{◊<>["https://www.albinoblacksheep.com/archive/"]}
-  [fn:3]{◊<>["https://www.youtube.com/watch?v=3AoNKGwBB74"]}
-  [fn:4]{◊<>["https://capistranorb.com/"]}
-}
+
+[fn:1] https://en.wikipedia.org/wiki/Dynamic_HTML
+[fn:2] https://www.albinoblacksheep.com/archive/
+[fn:3] https://www.youtube.com/watch?v=3AoNKGwBB74
+[fn:4] https://capistranorb.com/

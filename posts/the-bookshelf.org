@@ -49,9 +49,8 @@ It's the kind of book I'm happy to lend to someone without an expectation of the
 
 Beyond these, I have both Dune and Systemic Coaching & Constellations on the backburner. I'm looking forward to getting stuck into both.
 
-◊footnotes{
-  [fn:1]{◊<>["https://uk.bookshop.org/a/6865/9781942788294"]}
-  [fn:2]{◊<>["https://uk.bookshop.org/a/6865/9781250183866"]}
-  [fn:3]{◊<>["https://uk.bookshop.org/a/6865/9780575086258"]}
-  [fn:4]{◊<>["https://uk.bookshop.org/a/6865/9780071771320"]}
-}
+
+[fn:1] https://uk.bookshop.org/a/6865/9781942788294
+[fn:2] https://uk.bookshop.org/a/6865/9781250183866
+[fn:3] https://uk.bookshop.org/a/6865/9780575086258
+[fn:4] https://uk.bookshop.org/a/6865/9780071771320
