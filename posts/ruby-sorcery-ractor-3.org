@@ -6,7 +6,7 @@
 :CATEGORY: ruby
 :END:
 
-In chapter 2 of this exploration, a basic Ractor-based TCP server was refactored into a partly-functional HTTP server.◊^[1] It can handle super-basic requests, but it doesn't send back a valid HTTP response. That means that it's difficult to use tools like ◊code{curl} to interact with the server and, thanks to that, previous demonstrations have depended on hand-crafting requests inside a ◊code{telnet} session.
+In chapter 2 of this exploration, a basic Ractor-based TCP server was refactored into a partly-functional HTTP server.◊^[1] It can handle super-basic requests, but it doesn't send back a valid HTTP response. That means that it's difficult to use tools like ~curl~ to interact with the server and, thanks to that, previous demonstrations have depended on hand-crafting requests inside a ~telnet~ session.
 
 This chapter is therefore going to focus on constructing a valid HTTP response. As with the previous chapter, it won't cover 100% of the spec, but it will lay down some decent foundations.
 
@@ -56,15 +56,15 @@ A response has a similar structure to a request, comprising a status line, an ar
   <h1>Hello world!</h1>                 | 3. Body
 }
 
-◊aside{Most responses will contain a body, but there are certain status codes where it wouldn't make sense to provide one, e.g. with ◊code{3xx} codes for temporary and permanent redirects, and the ◊code{201 No Content} response.}
+◊aside{Most responses will contain a body, but there are certain status codes where it wouldn't make sense to provide one, e.g. with ~3xx~ codes for temporary and permanent redirects, and the ~201 No Content~ response.}
 
 Most responses, and in particular the ones being handled by this basic Ractor server, will be sent all at once. But how does the client know when it's received all of the response from the server? This is important to know, because it won't be possile to render HTML or parse JSON until the client knows that it has all of the data. It can't rely on two consecutive carriage-returns, as with a request, because the response itself may legitimately contain those characters. Neither can it rely on the server closing the TCP connection, because that can happen for many other reasons.
 
-The ◊code{Content-Length} header is therefore required for such responses, as it informs the client that a response body will be present and it will be of a certain size in bytes. Given that information, the client can read in the same number of bytes and expect to have received the whole response.
+The ~Content-Length~ header is therefore required for such responses, as it informs the client that a response body will be present and it will be of a certain size in bytes. Given that information, the client can read in the same number of bytes and expect to have received the whole response.
 
 This is not the only way to define a response, as it can also be split up into chunks and delivered in parts: this is generally what happens when downloading large files. The same method can also be used for streaming data where the total length is unknown, but the client is expected to process the response on-the-fly instead of waiting for a completed payload.
 
-For the sake of simplicity, the server will handle only the simple case for now: given a request to the server, it will respond with ◊code{200 OK} and a string of HTML.
+For the sake of simplicity, the server will handle only the simple case for now: given a request to the server, it will respond with ~200 OK~ and a string of HTML.
 
 ◊h2{Building an HTTP Response in Ractor}
 

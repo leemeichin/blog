@@ -12,11 +12,11 @@ Eventually I stumbled across Hakyll◊^[5] and, after finding a CSS 'framework' 
 
 The major appeal so far has been the immense ease of customisation. Hakyll itself isn't a static site generator in the same sense that others are, and as a result it offers a layer of customisation that other generators generally defer to templating languages for.
 
-The main difference is that you don't pull down a ◊code{hakyll} binary and then throw a ◊code{yaml} file together in order to configure a few pre-defined properties; you're instead given a basic implementation of a generator, using hakyll's own library, and thus have complete control over routing, page generation, templating, and so on. This generally lives in a ◊code{site.hs} file and it's not difficult to follow even for relative newbies to Haskell. The structure of everything else is entirely up to you.
+The main difference is that you don't pull down a ~hakyll~ binary and then throw a ~yaml~ file together in order to configure a few pre-defined properties; you're instead given a basic implementation of a generator, using hakyll's own library, and thus have complete control over routing, page generation, templating, and so on. This generally lives in a ~site.hs~ file and it's not difficult to follow even for relative newbies to Haskell. The structure of everything else is entirely up to you.
 
-Once you compile this file, you end up with a nice binary, e.g. ◊code{site}, and /that/ is what you use to generate your site. It is beautiful in its elegance and I'm eager to see what I can add to this site while also learning some more Haskell at the same time.
+Once you compile this file, you end up with a nice binary, e.g. ~site~, and /that/ is what you use to generate your site. It is beautiful in its elegance and I'm eager to see what I can add to this site while also learning some more Haskell at the same time.
 
-As an example, on the home page, there is a ◊code{git log} output section. It's fairly primitive, although I intend to build out the functionality a bit more. Writing the functionality was fairly effortless, with the help of some other authors on the net:
+As an example, on the home page, there is a ~git log~ output section. It's fairly primitive, although I intend to build out the functionality a bit more. Writing the functionality was fairly effortless, with the help of some other authors on the net:
 
 ◊codeblock['haskell]{
   data GitLog = Hash | Commit | Full

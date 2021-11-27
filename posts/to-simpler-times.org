@@ -61,11 +61,11 @@ The site has moved once again, back to a VPS hosted somewhere in the UK. Caddy�
   }
 }
 
-Deploying to this server is a case of firing off a couple of ◊code{ssh}, ◊code{scp} or ◊code{rsync} requests using a separate user with its own SSH key, and as soon as the command is finished running the changes are visible online.◊^[5]
+Deploying to this server is a case of firing off a couple of ~ssh~, ~scp~ or ~rsync~ requests using a separate user with its own SSH key, and as soon as the command is finished running the changes are visible online.◊^[5]
 
 This leads me to the final bit. Modern tech feels more complicated as it tends towards distributed solutions: put thing /x} here, deploy service ◊em{y/ there, sync them up with webhooks, and hope the network holds up to the task. Earlier tech feels more complicated because the documentation is intricate and detailed and requires some fidgeting around with.
 
-It took me just about a day to figure out how to host my own ◊code{apt} repository for Debian◊^[6], compiling information from various manuals, blog posts and examples. It was mostly a case of creating a GPG key and setting up a correct directory structure for ◊code{apt-ftparchive}◊^[7] to do its business, with a little bit of extra config. I'll go into detail about that another time, but let it be said it does the job tremendously in any Debian-based CI pipeline.
+It took me just about a day to figure out how to host my own ~apt~ repository for Debian◊^[6], compiling information from various manuals, blog posts and examples. It was mostly a case of creating a GPG key and setting up a correct directory structure for ~apt-ftparchive~◊^[7] to do its business, with a little bit of extra config. I'll go into detail about that another time, but let it be said it does the job tremendously in any Debian-based CI pipeline.
 
 ◊codeblock['bash]{
 cd www.kamelasa.dev

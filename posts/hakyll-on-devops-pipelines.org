@@ -13,9 +13,9 @@ In a way, this is total overkill for a static site. If I have the repo cloned on
   scp -r _site/ deploy@mrlee.dev:/var/www/www.mrlee.dev/
 }
 
-It's flawed compared to using ◊code{rsync}, as it won't remove existing files, but it does the job in less than a second or two.
+It's flawed compared to using ~rsync~, as it won't remove existing files, but it does the job in less than a second or two.
 
-The thing is, this isn't so quick if I want to publish a post from a different computer that doesn't have any programming tools installed. I would have to install ◊code{stack}◊^[1], which is a build tool for Haskell, and then I would have to run ◊code{stack build}. This can take at least half an hour as the command will pull down the correct version of ◊code{GHC} and a 'snapshot' (basically a huge collection of all the Hackage◊^[2] libraries available for that build) before it even /thinks} about compiling my ◊code{site.hs/ file. It also means to committing a few gigs of storage space for all of that.
+The thing is, this isn't so quick if I want to publish a post from a different computer that doesn't have any programming tools installed. I would have to install ~stack~◊^[1], which is a build tool for Haskell, and then I would have to run ~stack build~. This can take at least half an hour as the command will pull down the correct version of ~GHC~ and a 'snapshot' (basically a huge collection of all the Hackage◊^[2] libraries available for that build) before it even /thinks} about compiling my ◊code{site.hs/ file. It also means to committing a few gigs of storage space for all of that.
 
 I like to write from my little Surface Pro when I'm out and about, so I'd rather not do a full-blown compilation on that for the sake of my battery. Enter Azure DevOps Pipelines◊^[3].
 
@@ -32,7 +32,7 @@ Let's do a step-by-step walk through my setup.
     vmImage: 'ubuntu-latest'
 }
 
-This is pretty much CI boilerplate. The build will run on any PR that targets ◊code{master}, and it uses Ubuntu as the underlying image. I'm not doing any Docker stuff here.
+This is pretty much CI boilerplate. The build will run on any PR that targets ~master~, and it uses Ubuntu as the underlying image. I'm not doing any Docker stuff here.
 
 ◊codeblock['yaml]{
   jobs:
@@ -60,7 +60,7 @@ Won't get far without grabbing the latest stable Stack binary.
       cacheHitVar: 'STACK_SNAPSHOT_RESTORED'
 }
 
-Later on there will be a step that runs ◊code{stack build}, which will take about 40 minutes in CI. It would be a waste to repeatedly download all of that, so I'm caching the root stack folder for good measure. The ◊code{cacheHitVar} is something we will reference later.
+Later on there will be a step that runs ~stack build~, which will take about 40 minutes in CI. It would be a waste to repeatedly download all of that, so I'm caching the root stack folder for good measure. The ~cacheHitVar~ is something we will reference later.
 
 ◊codeblock['yaml]{
   - task: Cache@2
@@ -81,7 +81,7 @@ This is the same as the last step, but it's for the dependencies my static site 
     condition: ne(variables.STACK_SNAPSHOT_RESTORED, 'true')
 }
 
-Notice the ◊code{STACK_SNAPSHOT_RESTORED} condition at the bottom there? This step sets up GHC and the Stack snapshot, but only if one wasn't restored from the cache. If the cache has it, then it will have alread been fetched.
+Notice the ~STACK_SNAPSHOT_RESTORED~ condition at the bottom there? This step sets up GHC and the Stack snapshot, but only if one wasn't restored from the cache. If the cache has it, then it will have alread been fetched.
 
 ◊codeblock['yaml]{
   - script: |
@@ -100,7 +100,7 @@ This is the same as above, but for the project dependencies. So far so good. We'
     displayName: Build Site Executable
 }
 
-Since I've already run ◊code{stack build}, this just copies the binary to a different location, which I use to store it as a build artifact. ◊code{Build.BinariesDirectory} is a special place on the VM to store compiled build artifacts. It doesn't matter where specifically that is, only that it's the same across steps.
+Since I've already run ~stack build~, this just copies the binary to a different location, which I use to store it as a build artifact. ~Build.BinariesDirectory~ is a special place on the VM to store compiled build artifacts. It doesn't matter where specifically that is, only that it's the same across steps.
 
 ◊codeblock['yaml]{
   - task: PublishBuildArtifacts@1
@@ -121,7 +121,7 @@ So, that's the first step done, but what about actually publishing a post? I hav
     steps: ...
 }
 
-The key to this step is the condition. This will run only if the ◊code{build} job was successful, /and/ the branch being built is the master branch. Practically, this only runs if I push straight to master or merge a PR. The staging version runs only on PRs.
+The key to this step is the condition. This will run only if the ~build~ job was successful, /and/ the branch being built is the master branch. Practically, this only runs if I push straight to master or merge a PR. The staging version runs only on PRs.
 
 ◊codeblock['yaml]{
   - task: DownloadBuildArtifacts@0
@@ -141,7 +141,7 @@ Time to put that binary I compiled to good use. It downloads it into the main wo
     displayName: Build with published posts
 }
 
-This is the same as running ◊code{stack exec site build} on my local machine. It compiles the static site, so finally I'll have a new version to upload.
+This is the same as running ~stack exec site build~ on my local machine. It compiles the static site, so finally I'll have a new version to upload.
 
 ◊codeblock['yaml]{
   - task: InstallSSHKey@0
@@ -151,7 +151,7 @@ This is the same as running ◊code{stack exec site build} on my local machine. 
       sshKeySecureFile: 'nexus_deploy'
 }
 
-I host this blog on my own little VPS, which means that the server needs to know that the CI is authorised to connect to it with its SSH key. This is the same as having a deploy key on GitHub, and requires generating a keypair to be stored in CI, with the public key being added to your ◊code{authorized_keys} file of the appropriate user on the server.
+I host this blog on my own little VPS, which means that the server needs to know that the CI is authorised to connect to it with its SSH key. This is the same as having a deploy key on GitHub, and requires generating a keypair to be stored in CI, with the public key being added to your ~authorized_keys~ file of the appropriate user on the server.
 
 ◊aside{
   At this point I'll say that if you're doing this yourself, make sure to properly harden your server. I'll describe this more in a follow-up post.
@@ -171,9 +171,9 @@ There's only step left now, and that's to deploy!
       readyTimeout: '20000'
 }
 
-This is similar to running ◊code{rsync} to deploy, except that it knows where to get your private key from and where to connect to. This is defined elsewhere in Azure DevOps, through the UI, rather than in the YAML file.
+This is similar to running ~rsync~ to deploy, except that it knows where to get your private key from and where to connect to. This is defined elsewhere in Azure DevOps, through the UI, rather than in the YAML file.
 
-To solve the issue I first mentioned, ◊code{cleanTargetFolder} makes sure to delete the previous deployment before copying the new one over. Problem solved!
+To solve the issue I first mentioned, ~cleanTargetFolder~ makes sure to delete the previous deployment before copying the new one over. Problem solved!
 
 To see the pipeline in full, you can check out the full YAML file◊^[5]. I've been using it with success for the past couple of weeks now.
 

@@ -13,7 +13,7 @@ The first part of this series of posts is all about /Pattern Matching/.
 
 ◊h2{Pattern matching}
 
-Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more powerful than you may expect. All you need is to replace ◊code{when} with ◊code{in} and your ◊code{case} statements become capable of matching against /anything/.
+Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more powerful than you may expect. All you need is to replace ~when~ with ~in~ and your ~case~ statements become capable of matching against /anything/.
 
 ◊codeblock['ruby]{
   require 'base64'
@@ -72,7 +72,7 @@ You can deeply match any object in Ruby so long as you define a method to repres
   end
 }
 
-This ◊code{PlayingCard} class is now capable of pattern matching.
+This ~PlayingCard~ class is now capable of pattern matching.
 
 ◊codeblock['ruby]{
   def face_card?(playing_card)
@@ -133,7 +133,7 @@ This particular solution depends on the hand being ordered, but that's fine, a l
   # => true
 }
 
-The clever bit here is that the first part of the match (◊code{[1, c, s]}) is used to constrain the rest of the pattern. So if ◊code{c} is ◊code{:red}, then ◊code{^c} also has to be ◊code{:red} in order to match.
+The clever bit here is that the first part of the match (~[1, c, s]~) is used to constrain the rest of the pattern. So if ~c~ is ~:red~, then ~^c~ also has to be ~:red~ in order to match.
 
 ◊h2{Pattern guards}
 
@@ -160,7 +160,7 @@ Building on the poker example, maybe it's valid to play the Joker, but only if t
   # => true
 }
 
-◊h2{Destructuring assignment without ◊code{case}}
+◊h2{Destructuring assignment without ~case~}
 
 One of the odd side-effects of this pattern matching functionality is that you get a new kind of assingment. In fact, in Ruby 3 this gets a syntax of its own with the rightward assignment operator, but you can still use something similar in 2.7.
 
@@ -185,7 +185,7 @@ You also have to be absolutely sure you're matching the right thing.
 
 ◊h2{Optimisations}
 
-If you recall earlier examples, I defined ◊code{destructure_keys(*)}, which meant that I was explicitly ignoring the arguments normally passed to the method. This is useful in simple cases, but when dealing with complex objects you might want to be a bit more thoughtful about how you return a value. For example, converting the entire structure of the object into a hash might not be appropriate.
+If you recall earlier examples, I defined ~destructure_keys(*)~, which meant that I was explicitly ignoring the arguments normally passed to the method. This is useful in simple cases, but when dealing with complex objects you might want to be a bit more thoughtful about how you return a value. For example, converting the entire structure of the object into a hash might not be appropriate.
 
 ◊codeblock['ruby]{
   # When used in pattern matching, this class will only destructure into the provided keys

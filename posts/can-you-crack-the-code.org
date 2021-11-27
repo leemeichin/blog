@@ -60,7 +60,7 @@ Mr Merritt is, to put it professionally, *god damn right*. Here's a valid Prolog
 
 What we have here are some facts, both true and technically true. It's a fact that Obama is a president, as is Trump. It's also a fact that there is a brand of cheese in the UK called President. This is quite ambiguous as a result so some extra facts are supplied, namely that brie is a cheese as much as it is a President-brand cheese, and that Wensleydale is also a cheese. It goes without saying that Trump and Obama are people, so with those facts we should be able to do some querying.
 
-If you're doing this on your own machine, you can save those facts into a file (say, ◊code{example.pl}) and then importing it inside a console, like so: ◊code{[example].}. Otherwise, you can load up the Swish notebook◊^[2] and follow along using an online console, no installation needed!
+If you're doing this on your own machine, you can save those facts into a file (say, ~example.pl~) and then importing it inside a console, like so: ~[example].~. Otherwise, you can load up the Swish notebook◊^[2] and follow along using an online console, no installation needed!
 
 Let's do some querying then, which will show you how Prolog might seem a bit back to front compared to what you're used to.
 
@@ -75,12 +75,12 @@ So far, so boring. We stated `president(trump)` as a fact in our first prolog fi
 }
 
 ◊aside{
-  With the online editor you can click 'Next' to see all of the results, and in the console you can type ◊code{;}. This can be done repeatedly until the input ends with ◊code{.}, which says there are no more facts that fit the query)
+  With the online editor you can click 'Next' to see all of the results, and in the console you can type ~;~. This can be done repeatedly until the input ends with ~.~, which says there are no more facts that fit the query)
 }
 
-The fuck? What is ◊code{X}?
+The fuck? What is ~X~?
 
-◊code{X} is a variable, or a placeholder if you like. Any word starting with a capital letter is a variable, and when you pass one in a query Prolog will supply the results of the query to those variables. In this case, we're essentially saying /"who are all the presidents? I don't know their names so put them all in ◊code{X} for me"/.
+~X~ is a variable, or a placeholder if you like. Any word starting with a capital letter is a variable, and when you pass one in a query Prolog will supply the results of the query to those variables. In this case, we're essentially saying /"who are all the presidents? I don't know their names so put them all in ~X~ for me"/.
 
 Let's try one more thing, which should explain enough about Prolog to be dangerous.
 
@@ -88,7 +88,7 @@ Let's try one more thing, which should explain enough about Prolog to be dangero
   president(X), cheese(X). % brie.
 }
 
-/Now we're cookin' wi' gas!} as we'd say back up north. A lot of what you do in prolog is chain little sentences like this together (using the comma operator ◊code{,}, which means ◊code{and}), and in this instance we're asking Prolog to get all the presidents, put them in ◊code{X}, and then show me only the presidents that are also a cheese. The ◊code{./ finishes the sentence, or the query. Let's do a similar query to wrap this intro up, and you can see if your guess at the answer is the same as what this produces.
+/Now we're cookin' wi' gas!} as we'd say back up north. A lot of what you do in prolog is chain little sentences like this together (using the comma operator ~,~, which means ~and~), and in this instance we're asking Prolog to get all the presidents, put them in ~X~, and then show me only the presidents that are also a cheese. The ◊code{./ finishes the sentence, or the query. Let's do a similar query to wrap this intro up, and you can see if your guess at the answer is the same as what this produces.
 
 ◊codeblock['prolog]{
   president(X), person(X). % trump, obama.

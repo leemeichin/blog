@@ -14,7 +14,7 @@ I've been interested in giving Zig a spin for quite a while, and once my Raspber
 
 With that out of the way, let's see if we can write something in Zig to power this little display. It's going to be a simple program that simply fills the entire screen by turning the pixels from black (off) to white (on). As an extra challenge, we will do this without pulling in dependencies like WiringPi◊^[5], or relying on existing drivers, as lovely as they are.
 
-Instead, we will be directly using the i◊sup{2}c dev interface◊^[6]. If you're using Debian and/or Ubuntu on your Pi and your own machine, you can grab these libraries with a simple ◊code{sudo apt install i2c-dev}. You will need to enable i◊sup{2}c on your Pi separately though, through ◊code{sudo raspi-config}◊^[7].
+Instead, we will be directly using the i◊sup{2}c dev interface◊^[6]. If you're using Debian and/or Ubuntu on your Pi and your own machine, you can grab these libraries with a simple ~sudo apt install i2c-dev~. You will need to enable i◊sup{2}c on your Pi separately though, through ~sudo raspi-config~◊^[7].
 
 Ready to... get Ziggy with it? Oh, I bet you are. 😋 If you want to skip to the end and just grab the code, though, you can find this all on GitHub◊^[8]. I called it Stardust, like /Zig/gy Stardust. Get it?
 
@@ -26,7 +26,7 @@ Ready to... get Ziggy with it? Oh, I bet you are. 😋 If you want to skip to th
 
 The first and most complicated part of any low-level project is the bit where you try and establish a build system of some sorts. We're going to forget about that completely for now and apply some elbow-grease to the situation.
 
-The next step is to define a ◊code{main} function that grabs a file descriptor (or handle) corresponding to our OLED display. According to the aforementioned dev interface docs, we'll need to open a file and check it with ◊code{ioctl}.
+The next step is to define a ~main~ function that grabs a file descriptor (or handle) corresponding to our OLED display. According to the aforementioned dev interface docs, we'll need to open a file and check it with ~ioctl~.
 
 ◊codeblock['zig]{
   const std = @import("std");
@@ -56,11 +56,11 @@ The next step is to define a ◊code{main} function that grabs a file descriptor
 
 You might have noticed something odd: we're not really writing much Zig here, it's practically 95% interop with C. The beauty of Zig is that this interop is so simple and intuitive that it's the /easiest/ way to get started if you're going to be linking against existing C libraries. Get the software working first, abstract it later, as they say, and you might already start to get an idea of what we could convert into idiomatic Zig libraries in future.
 
-The actual Zig code you see though, is quite different to the C stuff. That ◊code{defer fd.close()}, for example, /ensures/ that the file descriptor we opened up will be closed when we're done. If we don't do that, then it'll stay open and there'll be a leak.
+The actual Zig code you see though, is quite different to the C stuff. That ~defer fd.close()~, for example, /ensures/ that the file descriptor we opened up will be closed when we're done. If we don't do that, then it'll stay open and there'll be a leak.
 
-There's also the ◊code{try} macro, used in combination with the ◊code{!void} return type, which will be super familiar if you've written some Rust and have dealt with option types. It's short hand for executing the code and catching/dealing with the error, with ◊code{!void} being another shorthand for ◊code{anyerror!void}, namely: this function returns either nothing, or an error if there is one.
+There's also the ~try~ macro, used in combination with the ~!void~ return type, which will be super familiar if you've written some Rust and have dealt with option types. It's short hand for executing the code and catching/dealing with the error, with ~!void~ being another shorthand for ~anyerror!void~, namely: this function returns either nothing, or an error if there is one.
 
-What we've actually done, however, is open the device file ◊code{/dev/i2c-1}, and then used the ◊code{ioctl} library to specify which device in particular we want to talk to. You can find out this value by running ◊code{i2cdevice -y 1}, like so:
+What we've actually done, however, is open the device file ~/dev/i2c-1~, and then used the ~ioctl~ library to specify which device in particular we want to talk to. You can find out this value by running ~i2cdevice -y 1~, like so:
 
 ◊codeblock['text]{
   pi@raspberrypi:~ $ i2cdetect -y 1
@@ -76,7 +76,7 @@ What we've actually done, however, is open the device file ◊code{/dev/i2c-1}, 
 }
 
 ◊aside{
-  In my case, the device can be accessed at address ◊code{0x3C}, which is how I defined ◊code{i2c_addr} above.
+  In my case, the device can be accessed at address ~0x3C~, which is how I defined ~i2c_addr~ above.
 }
 
 We're at a good point now to try and compile this thing and then run it on the Pi. If we get the message 'Init successful.' then we're golden.
@@ -91,26 +91,26 @@ Are you writing this code on the Pi itself? Probably not, I imagine, and nor do 
 
 ◊q["Andrew Kelley" 2020]{Cross-compiling is a first-class use case}
 
-Let's build a binary, then. Save your code into a file, say, ◊code{stardust.zig} and then proceed.
+Let's build a binary, then. Save your code into a file, say, ~stardust.zig~ and then proceed.
 
 ◊codeblock['bash]{
   zig build-exe stardust.zig  -target arm-linux-musleabihf -mcpu arm1176jzf_s -O ReleaseSafe -lc
 }
 
-To unpack that a little, the ◊code{target} is a triplet stating that we want to build this using the musl◊^[9] libc ABI, on a 32bit ARM architecture. ◊code{mcpu} goes along with that to make sure the resulting binary will work on our Pi Zero. I grabbed these values from an issue on Zig's github repo◊^[10], so credit goes to the author of that issue for unintentionally guiding me forward.
+To unpack that a little, the ~target~ is a triplet stating that we want to build this using the musl◊^[9] libc ABI, on a 32bit ARM architecture. ~mcpu~ goes along with that to make sure the resulting binary will work on our Pi Zero. I grabbed these values from an issue on Zig's github repo◊^[10], so credit goes to the author of that issue for unintentionally guiding me forward.
 
-Passing the optimiser flag (◊code{-O}) isn't strictly necessary, so you can omit this if you require a debug build and stack traces with errors.
+Passing the optimiser flag (~-O~) isn't strictly necessary, so you can omit this if you require a debug build and stack traces with errors.
 
-◊code{-lc} basically says that this binary needs to be linked against libc.
+~-lc~ basically says that this binary needs to be linked against libc.
 
-Once the build finishes, you should find a shiny new executable called ◊code{stardust} in the same directory as your code. You can get it onto your Pi with ◊code{scp}, like so:
+Once the build finishes, you should find a shiny new executable called ~stardust~ in the same directory as your code. You can get it onto your Pi with ~scp~, like so:
 
 ◊codeblock['bash]{
   scp stardust pi@raspberrypi:~/stardust
 }
 
 ◊aside{
-  You will need to change ◊code{pi@raspberrypi} to whatever else you've configured if you've changed the defaults.
+  You will need to change ~pi@raspberrypi~ to whatever else you've configured if you've changed the defaults.
 }
 
 SSH into your Pi after that, and try and run it! Does it return successfully? I hope so!
@@ -194,9 +194,9 @@ Next we'll want to init the display and get it into a clean state, with the curs
   }
 }
 
-Wow, actual Zig code! The formatting may look a little odd because that's what ◊code{zig fmt} decides is appropriate.
+Wow, actual Zig code! The formatting may look a little odd because that's what ~zig fmt~ decides is appropriate.
 
-◊code{init_display} is quite a complex beast that issues a whole series of commands that sets up the display for further use. A more detailed explanation of that will be in another post, for the sake of brevity, but in essence it was adapted from AdaFruit's CircuitPi driver, written in Python◊^[15].
+~init_display~ is quite a complex beast that issues a whole series of commands that sets up the display for further use. A more detailed explanation of that will be in another post, for the sake of brevity, but in essence it was adapted from AdaFruit's CircuitPi driver, written in Python◊^[15].
 
 The recurring theme in all of these new functions is that the entire basis of their existence is to create an array of two bytes, and then write them to file descriptor we opened right at the start. The data structure looks something like this:
 
@@ -205,9 +205,9 @@ The recurring theme in all of these new functions is that the entire basis of th
   buf[1] = 0x??; // the value to assign to that register
 }
 
-The file opened in ◊code{main} isn't a traditional file as you know it, but it points to all of the devices connected to your GPIO header on the Pi. Therefore, if you know enough about the hardware at a low enough level, you can control all of them by writing the right bytes to the right register, at the right address.
+The file opened in ~main~ isn't a traditional file as you know it, but it points to all of the devices connected to your GPIO header on the Pi. Therefore, if you know enough about the hardware at a low enough level, you can control all of them by writing the right bytes to the right register, at the right address.
 
-The rest of the code, e.g. ◊code{reset_cursor}, resets the state of the display in such a way that you can write a pixel and the cursor will advance, linearly, to the next one.
+The rest of the code, e.g. ~reset_cursor~, resets the state of the display in such a way that you can write a pixel and the cursor will advance, linearly, to the next one.
 
 ◊codeblock['zig]{
   fn fill(fd: fs.File) !void {
@@ -220,7 +220,7 @@ The rest of the code, e.g. ◊code{reset_cursor}, resets the state of the displa
   }
 }
 
-This ◊code{fill} function will (rather quickly) turn the display solid white, updating each pixel one at a time. Before we continue though, let's go through some more Zig specifics; namely, ◊code{inline}.
+This ~fill~ function will (rather quickly) turn the display solid white, updating each pixel one at a time. Before we continue though, let's go through some more Zig specifics; namely, ~inline~.
 
 ◊hr{}
 
@@ -230,11 +230,11 @@ This ◊code{fill} function will (rather quickly) turn the display solid white, 
   Reach out to me at pleasemakeitstop@mrlee.dev if this is too much for you.
 }
 
-Zig has some nice language features intended to replace and improve upon C/C++ preprocessor macros. The ◊code{inline} keyword is one such thing, and when applied to a ◊code{for} or ◊code{while} loop it'll unroll it at compile time. A simple optimisation but a useful one. We don't use it, but you also have ◊code{comptime}, which is powerful enough to be able to implement generics, if you so desire. We're not going to go into that here though, and you can read more about it from a certain Loris Cro◊^[16].
+Zig has some nice language features intended to replace and improve upon C/C++ preprocessor macros. The ~inline~ keyword is one such thing, and when applied to a ~for~ or ~while~ loop it'll unroll it at compile time. A simple optimisation but a useful one. We don't use it, but you also have ~comptime~, which is powerful enough to be able to implement generics, if you so desire. We're not going to go into that here though, and you can read more about it from a certain Loris Cro◊^[16].
 
 ◊hr{}
 
-This post is getting pretty long-winded, and all I wanted to do was show how to set some pixels on a tiny display. Let's wrap this up then, since we're almost ready to recompile. Just one finishing touch, which is to call the functions we defined. Update ◊code{main} to look like this:
+This post is getting pretty long-winded, and all I wanted to do was show how to set some pixels on a tiny display. Let's wrap this up then, since we're almost ready to recompile. Just one finishing touch, which is to call the functions we defined. Update ~main~ to look like this:
 
 ◊codeblock['zig]{
   pub fn main() !void {
@@ -261,7 +261,7 @@ This post is getting pretty long-winded, and all I wanted to do was show how to 
   }
 }
 
-Once you're done, rebuild the binary and ◊code{scp} it over, like you did the first time. SSH into your Pi and run it again (i.e ◊code{./stardust}), and see your display light up! 🥳
+Once you're done, rebuild the binary and ~scp~ it over, like you did the first time. SSH into your Pi and run it again (i.e ~./stardust~), and see your display light up! 🥳
 
 ◊hr{}
 

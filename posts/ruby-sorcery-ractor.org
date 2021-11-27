@@ -8,9 +8,9 @@
 
 This is part two of a series of posts about Ruby and its more experimental features. The first part is about pattern matching.◊^[1]
 
-Ractor is a new addition to Ruby's core library, and it is essentially an implementation of the Actor model. More importantly, it offers a more lightweight approach to concurrency that might feel more at home to those familiar with Go's channels, or have perhaps worked with Elixir. Note that this isn't a wholesale replacement of Ruby's existing multithreading implementations, namely ◊code{Thread}◊^[2] and ◊code{Fiber}◊^[3], and is still highly experimental. As such, there is no guarantee that it would remain stable across future Ruby versions.
+Ractor is a new addition to Ruby's core library, and it is essentially an implementation of the Actor model. More importantly, it offers a more lightweight approach to concurrency that might feel more at home to those familiar with Go's channels, or have perhaps worked with Elixir. Note that this isn't a wholesale replacement of Ruby's existing multithreading implementations, namely ~Thread~◊^[2] and ~Fiber~◊^[3], and is still highly experimental. As such, there is no guarantee that it would remain stable across future Ruby versions.
 
-◊aside{Speaking of ◊code{Fiber}s, they've received some upgrades in Ruby 3 too. You can now create non-blocking fibers and provide your own scheduler to run them automatically.}
+◊aside{Speaking of ~Fiber~s, they've received some upgrades in Ruby 3 too. You can now create non-blocking fibers and provide your own scheduler to run them automatically.}
 
 ◊h1{The actor model}
 
@@ -20,7 +20,7 @@ In a nutshell, it's a way of handling concurrent communication. If, in OOP, ever
 
 An actor is something that has one or more addresses, and receives messages; but for anything useful to happen, it also has to do something with those messages.
 
-◊aside{Imagine a ◊code{no-reply} email inbox, where every cry for help sent to it is routinely ignored. That is a version of an actor model that has an address, can receive messages, but can do nothing else.}
+◊aside{Imagine a ~no-reply~ email inbox, where every cry for help sent to it is routinely ignored. That is a version of an actor model that has an address, can receive messages, but can do nothing else.}
 
 In addition to receiving messages, then, an actor can also send messages to another actor. On top of that, it can also create new actors as children of itself.
 
@@ -63,7 +63,7 @@ First things first, quick recap on Actors:
   ◊li{An actor can mutate its own state but not another actor's state}
 }
 
-In order to guarantee thread-safety, some aspects of the language have had to change. Most objects in Ruby are unshareable by default, which is different to how a ◊code{Thread} behaves, and this means that code inside a ractor essentially cannot read /anything/ outside of its own scope, which includes global variables and constants.
+In order to guarantee thread-safety, some aspects of the language have had to change. Most objects in Ruby are unshareable by default, which is different to how a ~Thread~ behaves, and this means that code inside a ractor essentially cannot read /anything/ outside of its own scope, which includes global variables and constants.
 
 Rather than rewording the Ruby manual on Ractors◊^[11], let's dig into a practical example and build a basic echo server over TCP.
 
@@ -89,7 +89,7 @@ Rather than rewording the Ruby manual on Ractors◊^[11], let's dig into a pract
 
 This example demonstrates how one Ractor can create more Ractors: whenever a new connection is established to the TCP server, a new Ractor is spawned and a TCP client is moved into it. This new Ractor listens on the connection and when input is received, it echoes it back but in uppercase.
 
-Try it for yourself by running that code in an IRB console, and then open up ◊code{telnet} in another session.
+Try it for yourself by running that code in an IRB console, and then open up ~telnet~ in another session.
 
 ◊script[#:id "asciicast-438705" #:src "https://asciinema.org/a/438705.js" #:async "true" #:data-cols "190"]{}
 
