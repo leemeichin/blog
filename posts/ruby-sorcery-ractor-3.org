@@ -44,7 +44,7 @@ And this bit of code in particular is what needs some attention:
   # ...
 }
 
-◊h2{HTTP responses in a nutshell}
+** HTTP responses in a nutshell
 
 A response has a similar structure to a request, comprising a status line, an arbitrary number of headers, and then optionally the response body.
 
@@ -66,7 +66,7 @@ This is not the only way to define a response, as it can also be split up into c
 
 For the sake of simplicity, the server will handle only the simple case for now: given a request to the server, it will respond with ~200 OK~ and a string of HTML.
 
-◊h2{Building an HTTP Response in Ractor}
+** Building an HTTP Response in Ractor
 
 This is the example HTTP request from the previous chapter◊^[1].
 

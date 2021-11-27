@@ -77,7 +77,7 @@ Now we have all of the ingredients to make the actual call, which syntactically 
 
 Run it again a few times, and with different strings. If you're feeling experimental, attach more functions in ~LibRuby~ and see what else you can print out! Ruby's extension documentation should be a good place to start◊^[3].
 
-◊h3{So, why disable the GC?}
+*** So, why disable the GC?
 
 For every step in this post up to creating a ~String~ object, we've been using function bindings and global variables. Global variables and constants won't be garbage collected, because the global scope will always maintain a reference to them; besides which, it would be quite bad if your classes and modules suddenly disappeared after a GC pass.
 

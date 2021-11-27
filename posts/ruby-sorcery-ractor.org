@@ -29,7 +29,7 @@ The final missing piece is that an actor can hold internal state, or in other wo
 How does it fit together? An actor can have multiple addresses, and many actors can share the same address. This means that you can achieve scaling by having more actors listen on an address, effectively load-balancing incoming messages, and you can create more powerful actors that perform different tasks based on those same messages.
 
 
-◊h2{Actor languages}
+** Actor languages
 
 If you've used Erlang◊^[4] or Elixir◊^[5] to any degree, you have already built something around this model and, perhaps, were not aware of it. This is because the actor model is an intuitive aspect of those languages that makes them what they are, and therefore everything is implemented in terms of it.
 
@@ -39,7 +39,7 @@ In Erlang/Elixir, one key feature is that programs are designed to be fault-tole
 
 ◊aside{WhatsApp, Discord use Erlang/Elixir in their operations. It also powers telephone exchanges and 3G networks across the world.}
 
-◊h2{Actors in the wild}
+** Actors in the wild
 
 You can consider technologies like Kubernetes◊^[7], Kafka◊^[8], and Web Workers◊^[9] in the browser to each be an application of the actor model in some form. This doesn't necessarily mean they were built with that in mind, just that you can find that they share many characteristics in common.
 

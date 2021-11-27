@@ -11,7 +11,7 @@ I recently realised that despite many new additions to the Ruby language and eco
 
 The first part of this series of posts is all about /Pattern Matching/.
 
-◊h2{Pattern matching}
+** Pattern matching
 
 Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more powerful than you may expect. All you need is to replace ~when~ with ~in~ and your ~case~ statements become capable of matching against /anything/.
 
@@ -44,7 +44,7 @@ Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more
   # NotAllowedError (forbidden)
 #+end_src
 
-◊h3{Custom destructuring}
+*** Custom destructuring
 
 You can deeply match any object in Ruby so long as you define a method to represent it as a hash, or a method to represent it as an array. Or both.
 
@@ -86,7 +86,7 @@ This ~PlayingCard~ class is now capable of pattern matching.
   #=> false
 #+end_src
 
-◊h3{Pinning}
+*** Pinning
 
 That's fairly basic, what about pattern matching poker? Matching one card is easy, but suppose you want to match a hand.
 
@@ -135,7 +135,7 @@ This particular solution depends on the hand being ordered, but that's fine, a l
 
 The clever bit here is that the first part of the match (~[1, c, s]~) is used to constrain the rest of the pattern. So if ~c~ is ~:red~, then ~^c~ also has to be ~:red~ in order to match.
 
-◊h2{Pattern guards}
+** Pattern guards
 
 You'll see this a lot if you're familiar with Elixir or other languages that do pattern matching well. Essentially, you can add conditional logic to your patterns so that a match is only possible if a separate condition is met.
 
@@ -160,7 +160,7 @@ Building on the poker example, maybe it's valid to play the Joker, but only if t
   # => true
 #+end_src
 
-◊h2{Destructuring assignment without ~case~}
+** Destructuring assignment without ~case~
 
 One of the odd side-effects of this pattern matching functionality is that you get a new kind of assingment. In fact, in Ruby 3 this gets a syntax of its own with the rightward assignment operator, but you can still use something similar in 2.7.
 
@@ -183,7 +183,7 @@ You also have to be absolutely sure you're matching the right thing.
   end
 #+end_src
 
-◊h2{Optimisations}
+** Optimisations
 
 If you recall earlier examples, I defined ~destructure_keys(*)~, which meant that I was explicitly ignoring the arguments normally passed to the method. This is useful in simple cases, but when dealing with complex objects you might want to be a bit more thoughtful about how you return a value. For example, converting the entire structure of the object into a hash might not be appropriate.
 

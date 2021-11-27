@@ -29,7 +29,7 @@ While simple, this isn't something you'd call 'production ready'. There is at le
 
 ◊aside{Hint: what does or does not happen when the client's connection is lost or terminated?}
 
-◊h2{Building an HTTP server with Ractor}
+** Building an HTTP server with Ractor
 
 In the beginning, the HyperText Transfer Protocol was (and still is!) a purely text-based specification layered on top of TCP. It has grown a hell of a lot of complexity over the years, in order to power more complex interactions over the web, but it is still easier to build a server that understands HTTP (even just HTTP 1.1) than it is to build the browser that handles all of the rendering.
 
@@ -42,7 +42,7 @@ So, it sounds like a good time to turn this toy TCP server into a basic HTTP ser
 
 There is, of course, a lot more to serving HTTP than this. For a start, there's no HTTP response! And then there are the other HTTP methods. Much of that will be covered in the following chapters.
 
-◊h2{Parsing the request}
+** Parsing the request
 
 The anatomy of an HTTP request is divided, essentially, into three parts:
 
