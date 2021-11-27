@@ -2,7 +2,6 @@
 
 :PROPERTIES:
 :CREATED: [2021-02-20]
-:PUBLISHED: t
 :CATEGORY: culture
 :END:
 

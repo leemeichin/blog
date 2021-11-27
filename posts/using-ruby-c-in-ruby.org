@@ -2,7 +2,6 @@
 
 :PROPERTIES:
 :CREATED: [2021-01-18]
-:PUBLISHED: t
 :CATEGORY: programming
 :END:
 

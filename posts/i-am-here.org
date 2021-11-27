@@ -2,7 +2,6 @@
 
 :PROPERTIES:
 :CREATED: [2020-06-25]
-:PUBLISHED: t
 :CATEGORY: personal
 :END:
 

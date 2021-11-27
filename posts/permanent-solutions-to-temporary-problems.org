@@ -2,7 +2,6 @@
 
 :PROPERTIES:
 :CREATED: [2021-02-01]
-:PUBLISHED: t
 :CATEGORY: mental-health
 :END:
 
