@@ -15,9 +15,6 @@
 
 (sup 'org)
 (sup 'htmlize)
-(sup 'dracula-theme)
-
-(load-theme 'dracula t)
 
 (require 'ox-publish)
 

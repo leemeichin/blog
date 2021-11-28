@@ -250,10 +250,6 @@ pre .src {
   font-family: var(--mono-font-stack);
 }
 
-pre .src {
-  background-color: #282a36;
-}
-
 blockquote,
 code,
 h1,
