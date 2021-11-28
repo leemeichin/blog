@@ -14,9 +14,11 @@
 (defalias 'sup 'straight-use-package)
 
 (sup 'org)
+(sup 'org-contrib)
 (sup 'htmlize)
 
 (require 'ox-publish)
+(require 'ox-rss)
 
 (defun expand-relative-path (path)
   "Expand relative PATH from current buffer or file to a full path"
@@ -31,7 +33,8 @@
     (insert-file-contents (expand-relative-path (concat "tpl/" template-name ".html")))
     (buffer-string)))
 
-(defun sitemap-format-table (title files)
+(defun kamelasa/sitemap-format-table (title files)
+  "Format FILES as a an org-table with TITLE as the page title."
   (concat "#+TITLE: " title "\n\n"
           "| permissions | user | group | name |\n"
           "|--+--+--+--+--|\n"
@@ -44,6 +47,18 @@
              :iend " |"
              :ifmt (lambda (type file)
                      (concat "-rw-r--r-- | lee | www | " file))))))
+
+(defun kamelasa/sitemap-function-rss (title files)
+  "Format FILES as a list of top level headers, with TITLE as the title."
+  (concat "#+TITLE: " title "\n\n"
+          (org-list-to-subtree list '(:icount "" :istart ""))))
+
+(defun kamelasa-publish-rss (plist filename pub-dir)
+   "Publish RSS with PLIST, only when FILENAME is 'rss.org'.
+PUB-DIR is when the output will be placed.
+This is to avoid republishing all other individual org-files."
+   (if (equal "rss.org" (file-name-nondirectory filename))
+      (org-rss-publish-to-rss plist filename pub-dir)))
 
 (setq org-html-htmlize-output-type 'inline-css)
 
@@ -69,7 +84,7 @@
         ("posts"
          :base-directory ,(expand-relative-path "org/posts/")
          :base-extension "org"
-         :exclude ".draft.org"
+         :exclude ,(regexp-opt "rss.org" "index.org" ".draft.org")
          :recursive t
          :with-toc nil
          :with-properties nil
@@ -83,16 +98,31 @@
          :sitemap-title "posts"
          :sitemap-filename "index.org"
          :sitemap-sort-files anti-chronologically
-         :sitemap-function sitemap-format-table
+         :sitemap-function kamelasa/sitemap-function-table
          :html-head ,(read-template "head")
          :html-preamble ,(read-template "preamble")
          :html-postamble ,(read-template "postamble")
          :publishing-directory ,(expand-relative-path "publish/posts/")
          :publish-function org-html-publish-to-html)
+        ("rss"
+         :base-directory ,(expand-relative-path "org/posts/")
+         :base-extension "org"
+         :exclude ,(regexp-opt '("rss.org" "index.org" ".draft.org"))
+         :recursive nil
+         :rss-extension "xml"
+         :html-link-home "https://www.kamelasa.dev"
+         :html-link-use-abs-url t
+         :auto-sitemap t
+         :sitemap-filename "rss.org"
+         :sitemap-style list
+         :sitemap-sort-files anti-chronologically
+         :sitemap-function kamelasa/sitemap-function-rss
+         :publishing-directory ,(expand-relative-path "publish/")
+         :publishing-function kamelasa/publish-rss)
         ("static"
          :base-directory ,(expand-relative-path "org/")
          :base-extension "css\\|txt\\|jpg\\|gif\\|png"
          :recursive t
          :publishing-directory ,(expand-relative-path "publish/")
          :publishing-function org-publish-attachment)
-        ("www.kamelasa.dev" :components ("pages" "posts" "static"))))
+        ("www.kamelasa.dev" :components ("pages" "posts" "static" "rss"))))
