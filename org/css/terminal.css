@@ -241,13 +241,17 @@ pre {
   white-space: -o-pre-wrap;
 }
 
-pre code {
+pre .src {
   overflow-x: scroll;
   padding: 0;
   margin: 0;
   display: inline-block;
   min-width: 100%;
   font-family: var(--mono-font-stack);
+}
+
+pre .src {
+  background-color: #282a36;
 }
 
 blockquote,
