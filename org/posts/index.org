@@ -1,31 +1,33 @@
-#+TITLE: archive
+#+TITLE: posts
 
-- [[file:ruby-sorcery.org][Ruby Sorcery Part 1: Pattern Matching]]
-- [[file:the-bookshelf.org][The Bookshelf]]
-- [[file:the-goose-is-out.org][The goose is out]]
-- [[file:rewrite-it-in-lisp.org][Rewrite it in Lisp?]]
-- [[file:growing-up.org][Growing up]]
-- [[file:past-mistakes.org][Past mistakes]]
-- [[file:floc-off.org][FLoC Off]]
-- [[file:agile-lipstick.org][Agile lipstick 💄]]
-- [[file:enough.org][Enough]]
-- [[file:human-after-all.org][Human after all]]
-- [[file:permanent-solutions-to-temporary-problems.org][Permanent solutions to temporary problems]]
-- [[file:to-simpler-times.org][To simpler times]]
-- [[file:things-ive-changed-my-mind-on.org][Things I've learned after 10 years in the industry]]
-- [[file:time-travel.org][Time travel]]
-- [[file:using-ruby-c-in-ruby.org][Using Ruby's C API inside Ruby]]
-- [[file:gettin-ziggy-with-it-pi-zero.org][Gettin' Ziggy With It On The Pi Zero]]
-- [[file:can-you-crack-the-code.org][Can you crack the code?]]
-- [[file:devops.org][Devops]]
-- [[file:hakyll-on-devops-pipelines.org][Hakyll on DevOps Pipelines]]
-- [[file:my-favourite-thing-about-programming.org][My favourite thing about programming]]
-- [[file:celebrate-each-other.org][Celebrate each other]]
-- [[file:a-damn-good-listen.org][A damn good listen]]
-- [[file:do-you-really-need-those-microservices.org][Do you really need those microservices?]]
-- [[file:a-decade-of-work.org][A decade of work]]
-- [[file:isolation-aloneness-and-loneliness.org][Isolation, aloneness and loneliness]]
-- [[file:on-sharing-vulnerability.org][On Sharing Vulnerability]]
-- [[file:blogging-in-haskell.org][Blogging in Haskell]]
-- [[file:on-working-remotely.org][On working remotely]]
-- [[file:i-am-here.org][I am here]]
+| permissions | user | group | name |
+|--+--+--+--+--|
+| -rw-r--r-- | lee | www | [[file:ruby-sorcery.org][Ruby Sorcery Part 1: Pattern Matching]] |
+| -rw-r--r-- | lee | www | [[file:the-bookshelf.org][The Bookshelf]] |
+| -rw-r--r-- | lee | www | [[file:the-goose-is-out.org][The goose is out]] |
+| -rw-r--r-- | lee | www | [[file:rewrite-it-in-lisp.org][Rewrite it in Lisp?]] |
+| -rw-r--r-- | lee | www | [[file:growing-up.org][Growing up]] |
+| -rw-r--r-- | lee | www | [[file:past-mistakes.org][Past mistakes]] |
+| -rw-r--r-- | lee | www | [[file:floc-off.org][FLoC Off]] |
+| -rw-r--r-- | lee | www | [[file:agile-lipstick.org][Agile lipstick 💄]] |
+| -rw-r--r-- | lee | www | [[file:enough.org][Enough]] |
+| -rw-r--r-- | lee | www | [[file:human-after-all.org][Human after all]] |
+| -rw-r--r-- | lee | www | [[file:permanent-solutions-to-temporary-problems.org][Permanent solutions to temporary problems]] |
+| -rw-r--r-- | lee | www | [[file:to-simpler-times.org][To simpler times]] |
+| -rw-r--r-- | lee | www | [[file:things-ive-changed-my-mind-on.org][Things I've learned after 10 years in the industry]] |
+| -rw-r--r-- | lee | www | [[file:time-travel.org][Time travel]] |
+| -rw-r--r-- | lee | www | [[file:using-ruby-c-in-ruby.org][Using Ruby's C API inside Ruby]] |
+| -rw-r--r-- | lee | www | [[file:gettin-ziggy-with-it-pi-zero.org][Gettin' Ziggy With It On The Pi Zero]] |
+| -rw-r--r-- | lee | www | [[file:can-you-crack-the-code.org][Can you crack the code?]] |
+| -rw-r--r-- | lee | www | [[file:devops.org][Devops]] |
+| -rw-r--r-- | lee | www | [[file:hakyll-on-devops-pipelines.org][Hakyll on DevOps Pipelines]] |
+| -rw-r--r-- | lee | www | [[file:my-favourite-thing-about-programming.org][My favourite thing about programming]] |
+| -rw-r--r-- | lee | www | [[file:celebrate-each-other.org][Celebrate each other]] |
+| -rw-r--r-- | lee | www | [[file:a-damn-good-listen.org][A damn good listen]] |
+| -rw-r--r-- | lee | www | [[file:do-you-really-need-those-microservices.org][Do you really need those microservices?]] |
+| -rw-r--r-- | lee | www | [[file:a-decade-of-work.org][A decade of work]] |
+| -rw-r--r-- | lee | www | [[file:isolation-aloneness-and-loneliness.org][Isolation, aloneness and loneliness]] |
+| -rw-r--r-- | lee | www | [[file:on-sharing-vulnerability.org][On Sharing Vulnerability]] |
+| -rw-r--r-- | lee | www | [[file:blogging-in-haskell.org][Blogging in Haskell]] |
+| -rw-r--r-- | lee | www | [[file:on-working-remotely.org][On working remotely]] |
+| -rw-r--r-- | lee | www | [[file:i-am-here.org][I am here]] |

@@ -31,6 +31,20 @@
     (insert-file-contents (expand-relative-path (concat "tpl/" template-name ".html")))
     (buffer-string)))
 
+(defun sitemap-format-table (title files)
+  (concat "#+TITLE: " title "\n\n"
+          "| permissions | user | group | name |\n"
+          "|--+--+--+--+--|\n"
+          (org-list-to-generic
+           files
+           '(:raw t
+             :splice t
+             :isep "\n"
+             :istart "| "
+             :iend " |"
+             :ifmt (lambda (type file)
+                     (concat "-rw-r--r-- | lee | www | " file))))))
+
 (setq org-html-htmlize-output-type 'css)
 
 (setq org-publish-project-alist
@@ -47,8 +61,8 @@
          :html-head-include-default-style nil
          :html-validation-link nil
          :html-head ,(read-template "head")
-         :html-preamble ,(read-template "page-header")
-         :html-postamble ,(read-template "page-footer")
+         :html-preamble ,(read-template "preamble")
+         :html-postamble ,(read-template "postamble")
          :publishing-directory ,(expand-relative-path "publish/")
          :publish-function org-html-publish-to-html
          )
@@ -66,12 +80,13 @@
          :html-head-include-default-style nil
          :html-validation-link nil
          :auto-sitemap t
-         :sitemap-title "archive"
+         :sitemap-title "posts"
          :sitemap-filename "index.org"
          :sitemap-sort-files anti-chronologically
+         :sitemap-function sitemap-format-table
          :html-head ,(read-template "head")
-         :html-preamble ,(read-template "post-header")
-         :html-postamble ,(read-template "post-footer")
+         :html-preamble ,(read-template "preamble")
+         :html-postamble ,(read-template "postamble")
          :publishing-directory ,(expand-relative-path "publish/posts/")
          :publish-function org-html-publish-to-html)
         ("static"

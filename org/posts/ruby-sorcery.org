@@ -7,6 +7,8 @@ I recently realised that despite many new additions to the Ruby language and eco
 
 The first part of this series of posts is all about /Pattern Matching/.
 
+#+TOC: headlines 2
+
 ** Pattern matching
 
 Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more powerful than you may expect. All you need is to replace ~when~ with ~in~ and your ~case~ statements become capable of matching against /anything/.
@@ -40,7 +42,7 @@ Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more
   # NotAllowedError (forbidden)
 #+end_src
 
-*** Custom destructuring
+** Custom destructuring
 
 You can deeply match any object in Ruby so long as you define a method to represent it as a hash, or a method to represent it as an array. Or both.
 
@@ -82,7 +84,7 @@ This ~PlayingCard~ class is now capable of pattern matching.
   #=> false
 #+end_src
 
-*** Pinning
+** Pinning
 
 That's fairly basic, what about pattern matching poker? Matching one card is easy, but suppose you want to match a hand.
 
