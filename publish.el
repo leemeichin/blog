@@ -61,12 +61,11 @@ PROJECT is the current project."
          (let* ((file (org-publish--expand-file-name entry project))
                 (title (org-publish-find-title entry project))
                 (date (format-time-string "%Y-%m-%d" (org-publish-find-date entry project)))
-                (link (concat (file-name-sans-extension entry) ".html")))
+                (link (concat "posts/" (file-name-sans-extension entry) ".html")))
            (with-temp-buffer
              (insert (format "* [[file:%s][%s]]\n" file title))
              (org-set-property "RSS_PERMALINK" link)
              (org-set-property "PUBDATE" date)
-             (insert-file-contents file)
              (buffer-string))))
         ((eq style 'tree)
          ;; Return only last subdir.
@@ -81,6 +80,7 @@ This is to avoid republishing all other individual org-files."
       (org-rss-publish-to-rss plist filename pub-dir)))
 
 (setq org-html-htmlize-output-type 'inline-css)
+(setq org-rss-use-entry-url-as-guid t)
 
 (setq org-publish-project-alist
       `(("posts"
