@@ -1,4 +1,5 @@
 #+TITLE: kamelasa.dev
+#+OPTIONS: title:nil
 
 * ls -al /var/www.kamelasa.dev/posts
 
