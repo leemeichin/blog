@@ -33,7 +33,7 @@
     (insert-file-contents (expand-relative-path (concat "tpl/" template-name ".html")))
     (buffer-string)))
 
-(defun kamelasa/sitemap-format-table (title files)
+(defun kamelasa/sitemap-function-table (title files)
   "Format FILES as a an org-table with TITLE as the page title."
   (concat "#+TITLE: " title "\n\n"
           "| permissions | user | group | name |\n"
@@ -51,9 +51,29 @@
 (defun kamelasa/sitemap-function-rss (title files)
   "Format FILES as a list of top level headers, with TITLE as the title."
   (concat "#+TITLE: " title "\n\n"
-          (org-list-to-subtree list '(:icount "" :istart ""))))
+          (org-list-to-subtree files 1 '(:icount "" :istart ""))))
 
-(defun kamelasa-publish-rss (plist filename pub-dir)
+(defun kamelasa/sitemap-format-entry-rss (entry style project)
+"Format ENTRY for the RSS feed.
+ENTRY is a file name.  STYLE is either 'list' or 'tree'.
+PROJECT is the current project."
+  (cond ((not (directory-name-p entry))
+         (let* ((file (org-publish--expand-file-name entry project))
+                (title (org-publish-find-title entry project))
+                (date (format-time-string "%Y-%m-%d" (org-publish-find-date entry project)))
+                (link (concat (file-name-sans-extension entry) ".html")))
+           (with-temp-buffer
+             (insert (format "* [[file:%s][%s]]\n" file title))
+             (org-set-property "RSS_PERMALINK" link)
+             (org-set-property "PUBDATE" date)
+             (insert-file-contents file)
+             (buffer-string))))
+        ((eq style 'tree)
+         ;; Return only last subdir.
+         (file-name-nondirectory (directory-file-name entry)))
+        (t entry)))
+
+(defun kamelasa/publish-rss (plist filename pub-dir)
    "Publish RSS with PLIST, only when FILENAME is 'rss.org'.
 PUB-DIR is when the output will be placed.
 This is to avoid republishing all other individual org-files."
@@ -61,30 +81,13 @@ This is to avoid republishing all other individual org-files."
       (org-rss-publish-to-rss plist filename pub-dir)))
 
 (setq org-html-htmlize-output-type 'inline-css)
+(setq org-rss-use-entry-url-as-guid t)
 
 (setq org-publish-project-alist
-      `(("pages"
-         :base-directory ,(expand-relative-path "org/")
-         :base-extension "org"
-         :recursive nil
-         :with-toc nil
-         :with-properties nil
-         :section-numbers nil
-         :html-doctype "html5"
-         :html-html5-fancy t
-         :html-head-include-scripts nil
-         :html-head-include-default-style nil
-         :html-validation-link nil
-         :html-head ,(read-template "head")
-         :html-preamble ,(read-template "preamble")
-         :html-postamble ,(read-template "postamble")
-         :publishing-directory ,(expand-relative-path "publish/")
-         :publish-function org-html-publish-to-html
-         )
-        ("posts"
+      `(("posts"
          :base-directory ,(expand-relative-path "org/posts/")
          :base-extension "org"
-         :exclude ,(regexp-opt "rss.org" "index.org" ".draft.org")
+         :exclude ,(regexp-opt '("rss.org" "index.org" ".draft.org"))
          :recursive t
          :with-toc nil
          :with-properties nil
@@ -104,6 +107,23 @@ This is to avoid republishing all other individual org-files."
          :html-postamble ,(read-template "postamble")
          :publishing-directory ,(expand-relative-path "publish/posts/")
          :publish-function org-html-publish-to-html)
+        ("pages"
+         :base-directory ,(expand-relative-path "org/")
+         :base-extension "org"
+         :recursive nil
+         :with-toc nil
+         :with-properties nil
+         :section-numbers nil
+         :html-doctype "html5"
+         :html-html5-fancy t
+         :html-head-include-scripts nil
+         :html-head-include-default-style nil
+         :html-validation-link nil
+         :html-head ,(read-template "head")
+         :html-preamble ,(read-template "preamble")
+         :html-postamble ,(read-template "postamble")
+         :publishing-directory ,(expand-relative-path "publish/")
+         :publish-function org-html-publish-to-html)
         ("rss"
          :base-directory ,(expand-relative-path "org/posts/")
          :base-extension "org"
@@ -113,10 +133,12 @@ This is to avoid republishing all other individual org-files."
          :html-link-home "https://www.kamelasa.dev"
          :html-link-use-abs-url t
          :auto-sitemap t
+         :sitemap-title "kamelasa.dev"
          :sitemap-filename "rss.org"
          :sitemap-style list
          :sitemap-sort-files anti-chronologically
          :sitemap-function kamelasa/sitemap-function-rss
+         :sitemap-format-entry kamelasa/sitemap-format-entry-rss
          :publishing-directory ,(expand-relative-path "publish/")
          :publishing-function kamelasa/publish-rss)
         ("static"
@@ -125,4 +147,4 @@ This is to avoid republishing all other individual org-files."
          :recursive t
          :publishing-directory ,(expand-relative-path "publish/")
          :publishing-function org-publish-attachment)
-        ("www.kamelasa.dev" :components ("pages" "posts" "static" "rss"))))
+        ("www.kamelasa.dev" :components ("posts" "pages" "static" "rss"))))
