@@ -3,8 +3,6 @@ sources:
   - https://git.sr.ht/~mrlee/www.kamelasa.dev
 packages:
   - emacs
-  - elpa-htmlize
-  - elpa-org
 secrets:
   - f74304b4-9735-47a4-9d23-6d9fd7c47f1a
 tasks:
