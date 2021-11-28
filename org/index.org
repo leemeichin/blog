@@ -1,3 +1,5 @@
+#+TITLE: kamelasa.dev
+
 * ls -al /var/www.kamelasa.dev/posts
 
 #+INCLUDE: posts/index.org :lines "2-"

@@ -67,7 +67,6 @@ PROJECT is the current project."
              (org-set-property "RSS_PERMALINK" link)
              (org-set-property "RSS_TITLE" title)
              (org-set-property "PUBDATE" date)
-             (org-set-property "AUTHOR" "Lee Meichin")
              (buffer-string))))
         ((eq style 'tree)
          ;; Return only last subdir.
