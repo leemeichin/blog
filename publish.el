@@ -65,6 +65,7 @@ PROJECT is the current project."
            (with-temp-buffer
              (insert (format "* [[file:%s][%s]]\n" file title))
              (org-set-property "RSS_PERMALINK" link)
+             (org-set-property "RSS_TITLE" title)
              (org-set-property "PUBDATE" date)
              (buffer-string))))
         ((eq style 'tree)
