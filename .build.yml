@@ -1,17 +1,17 @@
 image: debian/bullseye
 sources:
-  - https://git.sr.ht/~mrlee/www.kamelasa.dev
+  - https://git.sr.ht/~mrlee/www.leemeichin.com
 packages:
   - emacs
 secrets:
   - f74304b4-9735-47a4-9d23-6d9fd7c47f1a
 tasks:
   - check-branch: |
-      cd www.kamelasa.dev
+      cd www.leemeichin.com
       if [ "$(git rev-parse main)" != "$(git rev-parse HEAD)" ]; then
         complete-build;
       fi
   - publish: |
-      cd www.kamelasa.dev
+      cd www.leemeichin.com
       emacs --batch --no-init --load publish.el --eval '(org-publish "www.kamelasa.dev" t)'
       scp -o StrictHostKeyChecking=no -r publish/* deploy@kamelasa.mrlee.dev:/var/www/kamelasa.dev
