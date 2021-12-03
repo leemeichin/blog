@@ -1,6 +1,6 @@
-#+TITLE: kamelasa.dev
+#+TITLE: leemeichin.com
 #+OPTIONS: title:nil
 
-* ls -al /var/www.kamelasa.dev/posts
+* ls -al /var/www.leemeichin.com/posts
 
 #+INCLUDE: posts/index.org :lines "2-"

@@ -119,7 +119,7 @@ Try it for yourself by running that code in an IRB console, and then open up ~te
 The problem with this code is that it's too simple: it shows how one Ractor can spawn other ractors, but it's not taking advantage of the communication channels they have and how objects are shared between Ractors. Keep an eye out for the next part of Ruby Sorcery, where there'll be a much deeper dive into Ractor's capabilities.
 
 ◊footnotes{
-  [fn:1] https://www.kamelasa.dev/posts/ruby-sorcery.html
+  [fn:1] https://www.leemeichin.com/posts/ruby-sorcery.html
   [fn:2] https://ruby-doc.org/core-3.0.2/Thread.html
   [fn:3] https://ruby-doc.org/core-3.0.2/Fiber.html
   [fn:4] https://www.erlang.org

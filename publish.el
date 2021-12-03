@@ -130,10 +130,10 @@ This is to avoid republishing all other individual org-files."
          :exclude ,(regexp-opt '("rss.org" "index.org" ".draft.org"))
          :recursive nil
          :rss-extension "xml"
-         :html-link-home "https://www.kamelasa.dev"
+         :html-link-home "https://www.leemeichin.com"
          :html-link-use-abs-url t
          :auto-sitemap t
-         :sitemap-title "kamelasa.dev"
+         :sitemap-title "leemeichin.com"
          :sitemap-filename "rss.org"
          :sitemap-style list
          :sitemap-sort-files anti-chronologically

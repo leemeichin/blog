@@ -97,6 +97,6 @@ This is important to keep in mind, especially when dealing with sensitive data a
 
 
 ◊footnotes{
-  [fn:1] https://www.kamelasa.dev/posts/ruby-sorcery-ractor-2.html
+  [fn:1] https://www.leemeichin.com/posts/ruby-sorcery-ractor-2.html
   [fn:2] https://github.com/rack/rack
 }
