@@ -24,6 +24,7 @@ Perhaps I'll get Squeak ready instead.
 
 Hm, a lot of the examples in the Purple Book don't seem to directly correspond to the syntax I would type into the environment. The implementation description reads like a spec, in layout and formatting, so I'm not sure if that's something I actually write in code somewhere.
 
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/book-syntax.jpg
 [[../../assets/img/raytracing-challenge-smalltalk/book-syntax.jpg]]
 
 I can only assume this is all in reference to the original Smalltalk environment. The thing is I can make sense of what it's describing, I'm just not sure how to /write/ it or where I would actually put this code.
@@ -45,6 +46,7 @@ The example in Smalltalk is to open a workspace and use an object called ~Transc
   Transcript show: 'Hello world!'.
 #+end_src
 
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/helloworld.png
 [[../../assets/img/raytracing-challenge-smalltalk/helloworld.png]]
 
 I guess that's enough to play around with things, but I want to do this ray tracer challenge and for that I need to learn how to make classes. Then I can use the workspace or a special renderer class to make it appear on the screen.
@@ -77,12 +79,14 @@ Transcript open.
 Transcript show: testUrl retrieveContents contents.
 #+end_src
 
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/printurl.png
 [[../../assets/img/raytracing-challenge-smalltalk/printurl.png]]
 
 *** No-code before no-code was cool
 
 It feels more useful to provide screenshots of all of this, and I've wondered if this is an example of a 'no-code' sort of programming environment. It's not visual in the sense of connecting nodes together to form a graph though, which is what a lot of visual languages and no-code products do.
 
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/morph.png
 [[../../assets/img/raytracing-challenge-smalltalk/morph.png]]
 
 One of the powerful features is that literally everything is configurable. If I middle click on one of the windows it becomes surrounded by a bunch of little tools that allow me to play with the UI, debug it, customise it, and more. Squeak calls it Morph, and it seems like an evolution of MVC. I think Pharo has a very similar thing.
