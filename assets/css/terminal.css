@@ -481,6 +481,7 @@ p {
 
 img {
   width: 100%;
+  margin-bottom: 2ch;
 }
 
 .progress-bar {
