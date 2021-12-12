@@ -141,10 +141,10 @@ This is to avoid republishing all other individual org-files."
          :sitemap-format-entry kamelasa/sitemap-format-entry-rss
          :publishing-directory ,(expand-relative-path "publish/")
          :publishing-function kamelasa/publish-rss)
-        ("static"
-         :base-directory ,(expand-relative-path "org/")
-         :base-extension "css\\|txt\\|jpg\\|gif\\|png"
+        ("assets"
+         :base-directory ,(expand-relative-path "assets/")
+         :base-extension ".*"
          :recursive t
          :publishing-directory ,(expand-relative-path "publish/")
          :publishing-function org-publish-attachment)
-        ("www.kamelasa.dev" :components ("posts" "pages" "static" "rss"))))
+        ("www.kamelasa.dev" :components ("posts" "pages" "assets" "rss"))))
