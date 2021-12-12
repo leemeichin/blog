@@ -1,0 +1,106 @@
+#+TITLE: Ray Tracer Challenge: Smalltalk
+#+DATE: <2021-12-12 Sun>
+#+CATEGORY: programming
+
+Dear diary,
+
+It looks like I have some time off coming up, and it feels like a good chance to try something different. I've had The Ray Tracer Challenge[fn:1] for almost a year now and haven't even touched it yet! And it would be really cool to make use of that copy of the Smalltalk-80 Purple Book I've had lying around for almost as long.
+
+I wonder how far we can get in the space of a week. Don't worry, diary, I'll let you know how it goes.
+
+#+TOC: headlines 2
+
+** Day 1
+
+*** Setting up my environment
+
+So it looks like I can choose Pharo, Squeak, or GNU Smalltalk[fn:3]. The introduction to the GNU version says it closely follows Smalltalk-80, so that should be useful I think! It also says it's headless, so it can be used with files, and has some bindings to graphics libraries like SDL[fn:4], but doesn't have a graphical environment like the other two.
+
+Documentation seems fairly minimal but apparently Smalltalk is self-descriptive, so many I'm not supposed to be searching the web for these things.
+
+Perhaps I'll get Squeak ready instead.
+
+*** This Smalltalk book is quite weird
+
+Hm, a lot of the examples in the Purple Book don't seem to directly correspond to the syntax I would type into the environment. The implementation description reads like a spec, in layout and formatting, so I'm not sure if that's something I actually write in code somewhere.
+
+[[../../assets/img/raytracing-challenge-smalltalk/book-syntax.jpg]]
+
+I can only assume this is all in reference to the original Smalltalk environment. The thing is I can make sense of what it's describing, I'm just not sure how to /write/ it or where I would actually put this code.
+
+That said, I really do like this way of documenting code and it's clear some thought has been put into how to organise it too. It reminds me a bit of regions in C# or pragmas in Objective-C, except that those use special comments to group things in large objects.
+
+*** How the fuck do you actually do something?
+
+Alright, people say that switching from object-oriented code like Ruby or Java to something pure functional like Haskell is difficult, because it requires a different way of thinking.
+
+I challenge that assertion!
+
+It would still take me only a few minutes to do a trivial hello world in Haskell, C, Ruby, Java, C++, Javascript, or any other similar language. I put *code* into a *file* and then I point the interpreter or compiler to that file and then I either get ~"Hello, World!"~ straight away or a nice executable that will then print it out.
+
+The example in Smalltalk is to open a workspace and use an object called ~Transcript~, but it doesn't seem much different to doing ~console.log~ inside my browser's console.
+
+#+begin_src smalltalk
+  Transcript open.
+  Transcript show: 'Hello world!'.
+#+end_src
+
+[[../../assets/img/raytracing-challenge-smalltalk/helloworld.png]]
+
+I guess that's enough to play around with things, but I want to do this ray tracer challenge and for that I need to learn how to make classes. Then I can use the workspace or a special renderer class to make it appear on the screen.
+
+So, it looks like I probably have to do something with the browser, to set up a little hierarchy for my project. Looking through the stuff that's there, there's all sorts of stuff I can look at. And the code that appears when I click on a selector looks super similar to how things are printed in the Purple Book.
+
+*** Thinking in images
+
+I ordered a copy of Squeak By Example[fn:5] to help out, since I feel like I have to unlearn how I normally do programming. I'm so used to building everything as a hierarchy of files and directories, or placing everything into just a handful of files to begin with.
+
+Turns out you have an /image/ and everything you do is saved inside it, and you basically live inside that image. Those workspaces are essentially REPLs, then, but you can also open as many of those as you want and when you save and reload the image, they will all be there still. Pretty cool!
+
+Actually, it makes me wonder how you deploy stuff for other people to use, but that's a question for another time.
+
+Anyway, I think I've done enough today. I'm sure that once I understand the fundamentals I can start thinking about the challenge I want to complete.
+
+** Day 2
+
+Squeak by Example arrived! Just flicking through the pages and I think it should give me enough to become self-sufficient. One of the sections is about how to add a new method, and it shows how you do it TDD-style, which is cool. It uses the example of making a shouty string, like converting it to uppercase and then adding an explanation mark at the end.
+
+*** Everything in the browser
+
+I'm starting to make sense of it now; pretty much everything is done via the browser. It feels a little fiddly to search through, but I suppose I've just not found an easy way of doing that yet.
+
+Just to get into the habit, I scrolled through the list of objects to see if there were any that would talk to the network. Poking around ~Network-Url~ and also ~NetworkTests-Url~ gave me a good idea of how to download the contents of a URL and then print them out into the transcript. I tried it out on my own website.
+
+#+begin_src smalltalk
+testUrl := 'https://leemeichin.com' asUrl.
+Transcript open.
+Transcript show: testUrl retrieveContents contents.
+#+end_src
+
+[[../../assets/img/raytracing-challenge-smalltalk/printurl.png]]
+
+*** No-code before no-code was cool
+
+It feels more useful to provide screenshots of all of this, and I've wondered if this is an example of a 'no-code' sort of programming environment. It's not visual in the sense of connecting nodes together to form a graph though, which is what a lot of visual languages and no-code products do.
+
+[[../../assets/img/raytracing-challenge-smalltalk/morph.png]]
+
+One of the powerful features is that literally everything is configurable. If I middle click on one of the windows it becomes surrounded by a bunch of little tools that allow me to play with the UI, debug it, customise it, and more. Squeak calls it Morph, and it seems like an evolution of MVC. I think Pharo has a very similar thing.
+
+What separates Smalltalk from these other no-code tools, I think, is that it accepts that you will actually have to write code at some point if you want to build anything useful. You know, like how Haskell accepts that non-pure code needs to exist if you want programs that actually /do something/.
+
+Smalltalk and its environments seem to solve that problem by giving you interactive tools to create and organise code. It's quite interesting really and it makes me wonder how something similar would look if you rendered the contents of a running Ruby VM in the same way.
+
+*** It's all older than I am
+
+I guess I can only marvel at the various kinds of systems that were built so many decades ago that all show how cool it can be to work with a dynamic programming language. Lisp is old enough to be my dad and the way of working with Lisp was to basically modify the program as it was running (this is pretty much how Emacs works via emacs-lisp) via a REPL. It feels like you might do similar with Smalltalk, too.
+
+Neither of these are like C, C++, Rust, or other compiled languages that require an executable to be compiled and then shipped, or deployed. Ruby offers a middle ground, I suppose, which is also what makes it a pleasure to work with.
+
+Anyway, I haven't made too much progress today but I think I understand more. I'll come back tomorrow and see if I can figure out how to render an empty canvas or just something I can draw things onto.
+
+[fn:1] http://raytracerchallenge.com/
+[fn:2] https://wiki.c2.com/?PurpleBook
+[fn:3] https://pharo.org/, https://squeak.org, and https://www.gnu.org/software/smalltalk/ respectively
+[fn:4] https://www.libsdl.org/
+[fn:5] https://uk.bookshop.org/a/6865/9783952334102
