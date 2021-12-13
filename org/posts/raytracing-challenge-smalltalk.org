@@ -118,10 +118,10 @@ The first one is a tuple, which contains 3D co-ordinates and an extra value to s
 
 #+begin_src smalltalk
 Object subclass: #Tuple
-	instanceVariableNames: 'x y z pointOrVector'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'RayTracerChallenge'
+        instanceVariableNames: 'x y z pointOrVector'
+        classVariableNames: ''
+        poolDictionaries: ''
+        category: 'RayTracerChallenge'
 #+end_src
 
 #+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/tuple.png
@@ -205,11 +205,11 @@ As usual, tests first and then implementation second. I'm using the test example
   RTCTupleTest»testSubtractTwoPoints
     "Subtracting two points creates a vector describing the distance between two points."
     | pointA pointB |
-	
+
     pointA := RTCTuple asPoint x: 3 y: 2 z: 1.
     pointB := RTCTuple asPoint x: 5 y: 6 z: 7.
-	
-    self assert: (RTCTuple asVector x: -2 y: -4 z: -6) equals: pointA - pointB.   
+
+    self assert: (RTCTuple asVector x: -2 y: -4 z: -6) equals: pointA - pointB.
 #+end_src
 
 Subtracting one point from another doesn't mean I'll get another point, I'll actually get the distance between those two points instead, which is a vector. But when I subtract a vector from a point instead, then I /will/ get another point.
@@ -218,11 +218,11 @@ Subtracting one point from another doesn't mean I'll get another point, I'll act
   RTCTupleTest»testSubtractVectorFromPoint
       "Subtracting a vector from a point results in another point."
       | vector point |
-	
+
       vector := RTCTuple asVector x: 5 y: 6 z: 7.
       point := RTCTuple asPoint x: 3 y: 2 z: 1.
-	
-      self assert: (RTCTuple asPoint x: -2 y: -4 z: -6) equals: point - vector.   
+
+      self assert: (RTCTuple asPoint x: -2 y: -4 z: -6) equals: point - vector.
 #+end_src
 
 The test debugger is kinda cool, actually, although the output could be more helpful. I haven't got to the testing chapters in the books yet, so I expect that I've just missed out some things that would show me more useful info.
@@ -235,7 +235,7 @@ Back to the maths, the implementation of the subtraction feature is this (and it
 #+begin_src smalltalk
   RTCTuple»- aTuple
       "Subtract aTuple from this tuple"
-      ^RTCTuple 
+      ^RTCTuple
           x: x - aTuple x
           y: y - aTuple y
           z: z - aTuple z
@@ -268,7 +268,7 @@ Addition is like subtraction, so there's not much to do there. It has a similar 
 
 **** Negation
 
-Getting the opposite a vector (or negating it) is a case of subtracting it from a 'zero' value. I've already done subtraction, so this is child's play. 
+Getting the opposite a vector (or negating it) is a case of subtracting it from a 'zero' value. I've already done subtraction, so this is child's play.
 
 #+begin_src smalltalk
   RTCTuple»negate
@@ -292,11 +292,50 @@ I added that one to my Vector subclass, since it doesn't make sense to calculate
 
 *** Wrapping up for the day
 
-Between taking notes on my progress and going through the challenge, it's taken maybe half a day to get to this point. I think that's enough for one day, I've still got the rest of the week ahead of me after all. And I'm starting to feel more comfortable in the environment which is nice. 
+Between taking notes on my progress and going through the challenge, it's taken maybe half a day to get to this point. I think that's enough for one day, I've still got the rest of the week ahead of me after all. And I'm starting to feel more comfortable in the environment which is nice.
 
 Looks like the next chapter is actually about rendering. I've still got to handle a couple more operations (like the dot product and cross product) but I'll finish that up later.
 
 Until tomorrow, dear diary!
+
+** Day 3: Evening
+
+I really wanted to finish off this first chapter, so I did! Using the example in the ray tracer challenge book, I made a little ticker in the workspace to demonstrate a projectile falling to the ground.
+
+*** Console Cannon
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/cannons.png
+[[../../assets/img/raytracing-challenge-smalltalk/cannons.png]]
+
+I'll just leave it here, it's a nice little toy example. The ~Projectile~ and ~Environment~ objects are just containers for some vectors and points. The ~Ticker~ calculates a new position based on the projectile's velocity and some values corresponding to wind and gravity.
+
+#+begin_src smalltalk
+      Transcript clear.
+
+      p := RTCProjectile
+              withPosition: (RTCTuple asPoint x: 0 y: 1 z: 0)
+              andVelocity: (RTCTuple asVector x: 1 y: 1 z: 0) normalize.
+
+      e := RTCEnvironment
+              withWind: (RTCTuple asVector x: 0 y: -0.1 z: 0)
+               andGravity:  (RTCTuple asVector x: -0.01 y: 0 z: 0).
+
+      t := RTCTicker new.
+
+      i := 1.
+      [ p position y > 0 ] whileTrue: [
+              Transcript showln: 'Tick #', i asString.
+
+              p := t tickwithEnv: e andProj: p.
+
+              Transcript showln: 'X: ' , (p position x) asString;
+                         showln: 'Y: ', (p position y) asString.
+
+              i  := i + 1.
+      ]
+#+end_src
+
+Now to play some real games.
 
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
