@@ -18,6 +18,8 @@
   --code-bg-color: #e8eff2;
   --input-style: solid;
   --display-h1-decoration: none;
+  --pre-bg-color: #222225;
+  --pre-font-color: #e8e9ed;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -32,6 +34,8 @@
     --progress-bar-background: #3f3f44;
     --progress-bar-fill: #62c4ff;
     --code-bg-color: #3f3f44;
+    --pre-bg-color: #ffffff;
+    --pre-font-color: #151515;
   }
 }
 
@@ -86,6 +90,16 @@ em {
   font-style: italic;
   font-family: var(--font-stack);
   color: var(--font-color);
+}
+
+sup,
+sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+sub {
+  top: 0.4em;
 }
 
 blockquote,
@@ -231,8 +245,8 @@ pre {
   display: block;
   word-break: break-all;
   word-wrap: break-word;
-  color: var(--secondary-color);
-  background-color: var(--background-color);
+  color: var(--pre-font-color);
+  background-color: var(--pre-bg-color);
   padding: var(--global-space);
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
@@ -242,13 +256,13 @@ pre {
 
 pre.src {
   overflow-x: auto;
-  padding: 0;
-  padding-left: 2ch;
+  padding: 2ch;
   margin: 0;
   margin-bottom: 2ch;
   display: inline-block;
   min-width: 100%;
   font-family: var(--mono-font-stack);
+  border-radius: 4px;
 }
 
 blockquote,
@@ -481,7 +495,6 @@ p {
 
 img {
   width: 100%;
-  margin-bottom: 2ch;
 }
 
 .progress-bar {
