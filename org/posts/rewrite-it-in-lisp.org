@@ -2,7 +2,7 @@
 #+DATE: <2021-06-15>
 #+CATEGORY: programming
 
-I finally got around to paying some money for /Beautiful Racket}[fn:1], a fantastic online-only book that introduces you to Racket by guiding you through building a few language implementations. In that sense it's not unlike ◊em{Write Yourself a Scheme in 48 Hours/[fn:2], except that book focusses on Haskell and (through no fault of its own) lacks the wonderful presentation of Beautiful Racket.
+I finally got around to paying some money for /Beautiful Racket/[fn:1], a fantastic online-only book that introduces you to Racket by guiding you through building a few language implementations. In that sense it's not unlike /Write Yourself a Scheme in 48 Hours/[fn:2], except that book focusses on Haskell and (through no fault of its own) lacks the wonderful presentation of Beautiful Racket.
 
 Developing a soft spot for a lisp feels like a rite of passage for a typical programmer, alongside owning a copy of SICP and using emacs as your main editor. And for good reason, really; the beauty of writing lisp is that you are basically working directly with an AST instead of dealing with a special syntax that is parsed into one. It's powerfully expressive, if not a little intimidating at first.
 
@@ -51,28 +51,30 @@ As such, a functional approach is still the easiest way to add new capabilities 
 I use it like this:
 
 #+begin_src text
-  ◊"◊"footnotes{
-    ◊"◊"^[1]{◊"◊"<>["https://beautifulracket.com/"]}
-    ◊"◊"^[2]{◊"◊"<>["https://en.m.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours"]}
-    ◊"◊"^[3]{◊"◊"<>["https://docs.racket-lang.org/pollen"]}
-    ◊"◊"^[4]{◊"◊"<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/pollen.rkt"]}
-    ◊"◊"^[5]{◊"◊"<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/redirs.caddy"]}
+    ◊"◊"footnotes{
+      ◊"◊"^[1]{◊"◊"<>["https://beautifulracket.com/"]}
+      ◊"◊"^[2]{◊"◊"<>["https://en.m.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours"]}
+      ◊"◊"^[3]{◊"◊"<>["https://docs.racket-lang.org/pollen"]}
+      ◊"◊"^[4]{◊"◊"<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/pollen.rkt"]}
+      ◊"◊"^[5]{◊"◊"<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/redirs.caddy"]}
+    }
   }
-}
 
-The estimated reading time was also easier to implement than I first thought. Rather than splitting the text into words as I did in the previous version of the site, I figured I'd get a decent enough estimation by dividing the size of the file in bytes by an average English word-length, assuming a reading speed of 250 words a minute.
+#+end_src
 
-#+begin_src racket
-  (define (post->size post) (number->string (file-size (post->path post))))
+  The estimated reading time was also easier to implement than I first thought. Rather than splitting the text into words as I did in the previous version of the site, I figured I'd get a decent enough estimation by dividing the size of the file in bytes by an average English word-length, assuming a reading speed of 250 words a minute.
 
-  (define average-word-length 4.7)
-  (define words-per-minute 250)
-  
-  (define (post->ert post)
-   (exact-round
-    (/
-     (/ (string->number (post->size post)) average-word-length)
-     words-per-minute)))
+ #+begin_src racket
+   (define (post->size post) (number->string (file-size (post->path post))))
+
+   (define average-word-length 4.7)
+   (define words-per-minute 250)
+
+   (define (post->ert post)
+    (exact-round
+     (/
+      (/ (string->number (post->size post)) average-word-length)
+      words-per-minute)))
 #+end_src
 
 You can see the rest of what I scripted in the main `pollen.rkt` file for this site[fn:4]
