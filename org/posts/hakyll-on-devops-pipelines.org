@@ -65,7 +65,7 @@ Later on there will be a step that runs ~stack build~, which will take about 40 
       key: 'stack | stack.yaml.lock'
       path: .stack-work/
       cacheHitVar: 'STACK_DEPS_RESTORED'
-}
+#+end_src
 
 This is the same as the last step, but it's for the dependencies my static site requires. I want to cache these separately so adding a new project dependency doesn't force a full refresh of the Stack snapshot.
 
