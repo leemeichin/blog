@@ -35,9 +35,11 @@ I presume you've seen this kind of puzzle before: there is a lock that requires 
 
 If you're unaware of Prolog, it's a /logical progamming/ language that, in its most simplest terms, takes a bunch of facts and rules and then gives you the tools to query them to get the outcome you want. In more complicated terms, a cursory search on the intertubes will lead you to a vast collection of academic papers that explain more. This is not the kind of language that is casually blogged about by the masses, as with more mainstream ones like CSS, HTML, or ColdFusion.
 
-◊q["Dennis Merritt" 2017]{
-  Programming in Prolog is significantly different from conventional procedural programming and requires a readjustment in the way one things about programming. Logical relationships are asserted, and Prolog is used to determine whether or not certain statements are true, and if true, what variable bindings make them true. This leads to a very declarative style of programming.[fn:1]
-}
+#+begin_quote
+Programming in Prolog is significantly different from conventional procedural programming and requires a readjustment in the way one things about programming.
+
+Logical relationships are asserted, and Prolog is used to determine whether or not certain statements are true, and if true, what variable bindings make them true. This leads to a very declarative style of programming.[fn:1]
+#+end_quote
 
 Mr Merritt is, to put it professionally, *god damn right*. Here's a valid Prolog program:
 
