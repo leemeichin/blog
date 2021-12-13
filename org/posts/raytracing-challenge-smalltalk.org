@@ -8,7 +8,7 @@ It looks like I have some time off coming up, and it feels like a good chance to
 
 I wonder how far we can get in the space of a week. Don't worry, diary, I'll let you know how it goes.
 
-#+TOC: headlines 2
+#+TOC: headlines 3
 
 ** Day 1
 
@@ -42,8 +42,8 @@ It would still take me only a few minutes to do a trivial hello world in Haskell
 The example in Smalltalk is to open a workspace and use an object called ~Transcript~, but it doesn't seem much different to doing ~console.log~ inside my browser's console.
 
 #+begin_src smalltalk
-  Transcript open.
-  Transcript show: 'Hello world!'.
+  "Semicolon is called cascading, which is like method chaining"
+  Transcript open; show: 'Hello world!'.
 #+end_src
 
 #+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/helloworld.png
@@ -75,8 +75,7 @@ Just to get into the habit, I scrolled through the list of objects to see if the
 
 #+begin_src smalltalk
 testUrl := 'https://leemeichin.com' asUrl.
-Transcript open.
-Transcript show: testUrl retrieveContents contents.
+Transcript open; show: testUrl retrieveContents contents.
 #+end_src
 
 #+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/printurl.png
@@ -102,6 +101,202 @@ I guess I can only marvel at the various kinds of systems that were built so man
 Neither of these are like C, C++, Rust, or other compiled languages that require an executable to be compiled and then shipped, or deployed. Ruby offers a middle ground, I suppose, which is also what makes it a pleasure to work with.
 
 Anyway, I haven't made too much progress today but I think I understand more. I'll come back tomorrow and see if I can figure out how to render an empty canvas or just something I can draw things onto.
+
+** Day 3
+
+Opened up Sqeak so I could get cracking today. Must have saved the image in a weird state last night since it was behaving strangely. Managed to close the project and make a fresh one and that was fine.
+
+*** Data structures
+
+The ray tracer challenge book starts off by defining some data structures. I think I'll get on with that first, so I can feel like I've achieved something.
+
+I suppose it'll be useful to keep all of the objects I create under one category, so I created one called RayTracerChallenge. It doesn't do anything by itself though, so some new classes are needed.
+
+The first one is a tuple, which contains 3D co-ordinates and an extra value to state whether this is a point in space, or a direction (or vector). All I had to do here was update the code example in the browser and save it, and then the class was created.
+
+(One thing that feels odd is listing instance variables as a space separated string. Not even a list data structure.)
+
+#+begin_src smalltalk
+Object subclass: #Tuple
+	instanceVariableNames: 'x y z pointOrVector'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'RayTracerChallenge'
+#+end_src
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/tuple.png
+[[../../assets/img/raytracing-challenge-smalltalk/tuple.png]]
+
+I'll make two subclasses from that, called Point and Vector. The only difference is that one will initialise ~pointOrVector~ to ~0~ and the other will initialise it to ~1~. I'll leave screenshots out this time.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/conflict.png
+[[../../assets/img/raytracing-challenge-smalltalk/conflict.png]]
+
+Oh...I guess these objects aren't namespaced or anything. I'll just add a prefix to each object instead, like ~RTC~ for RayTracerChallenge. Reminds me of how it was in Objective-C.
+
+In fact, why not do this TDD-style. I'll make some tests first.
+
+#+begin_src smalltalk
+  TestCase subclass: #RTCTupleTest
+           instanceVariableNames: ''
+           classVariableNames: ''
+           poolDictionaries: ''
+           category: 'RayTracerChallenge-Tests'.
+#+end_src
+
+#+begin_src smalltalk
+  RTCTupleTest»testAsPoint
+      "A tuple where w is set to 1 is a point"
+      tuple := RTCTuple asPoint.
+      self assert: (tuple class asString) equals: 'RTCPoint'.
+      self assert: (tuple w) equals: 1.
+#+end_src
+
+#+begin_src smalltalk
+  RTCTupleTest»testAsVector
+      "A tuple where w is set to 0 is a vector"
+      tuple := RTCTuple asVector.
+      self assert: (tuple class asString) equals: 'RTCVector'.
+      self assert: (tuple w) equals: 1.
+#+end_src
+
+#+begin_aside
+~»~ isn't actual Smalltalk syntax, because adding new methods is done through the browser inside Squeak. It's just used to show an object and the name of a method. A bit like in Ruby where ~RTCTupleTest#testAsVector~ would describe an instance method called ~testAsVector~ on a class called ~RTCTupleTest~.
+#+end_aside
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/testing.png
+[[../../assets/img/raytracing-challenge-smalltalk/testing.png]]
+
+There's a lot of clicking around and not very much typing so far, so it definitely feels slower as I get to grips with this. It actually occurs to me that the Acme editor from Plan9 is quite similar, except it does it all through text rather than UI widgets.
+
+These tests aren't passing, of course, because I don't have my Point and Vector subclasses. The joy of TDD here is that I can automatically add them via the UI. Which I just did. After that, they just needed to be initialised with sensible defaults and some accessors.
+
+#+begin_src smalltalk
+  RTCTuple»initialize
+      x := 0.
+      y := 0.
+      z := 0.
+      w := 0.
+#+end_src
+
+#+begin_src smalltalk
+  RTCVector»initialize
+      w := 0.
+#+end_src
+
+#+begin_src smalltalk
+  RTCPoint»initialize
+      w := 1.
+#+end_src
+
+The ~w~ field is readonly to avoid mixing up Points and Vectors by changing the state of the object.
+
+*** Mathemologics
+
+Turns out there's still a fair bit to do with these objects: I've got to make them comparable and it has to be possible to do maths with them, e.g. adding two tuples together, or subtracting them, or multiplying them as you would with a matrix.
+
+According to my two Smalltalk books, it seems like Smalltalk has an abstract class called ~Magnitude~ which is used for comparison. All I need to do is define an implementation for ~=~ (equals), ~<~ (less than) and ~hash~ and then I'll get a lot of convenience methods from it. Before I do that, it would be more helpful to define some arithmetic operations though, so that I can use subtraction to compare two objects for example.
+
+**** Subtraction
+
+As usual, tests first and then implementation second. I'm using the test examples from the ray tracer book and my vague knowledge of vector maths from the last time I messed around with games and stuff.
+
+#+begin_src smalltalk
+  RTCTupleTest»testSubtractTwoPoints
+    "Subtracting two points creates a vector describing the distance between two points."
+    | pointA pointB |
+	
+    pointA := RTCTuple asPoint x: 3 y: 2 z: 1.
+    pointB := RTCTuple asPoint x: 5 y: 6 z: 7.
+	
+    self assert: (RTCTuple asVector x: -2 y: -4 z: -6) equals: pointA - pointB.   
+#+end_src
+
+Subtracting one point from another doesn't mean I'll get another point, I'll actually get the distance between those two points instead, which is a vector. But when I subtract a vector from a point instead, then I /will/ get another point.
+
+#+begin_src smalltalk
+  RTCTupleTest»testSubtractVectorFromPoint
+      "Subtracting a vector from a point results in another point."
+      | vector point |
+	
+      vector := RTCTuple asVector x: 5 y: 6 z: 7.
+      point := RTCTuple asPoint x: 3 y: 2 z: 1.
+	
+      self assert: (RTCTuple asPoint x: -2 y: -4 z: -6) equals: point - vector.   
+#+end_src
+
+The test debugger is kinda cool, actually, although the output could be more helpful. I haven't got to the testing chapters in the books yet, so I expect that I've just missed out some things that would show me more useful info.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/testfail.png
+[[../../assets/img/raytracing-challenge-smalltalk/testfail.png]]
+
+Back to the maths, the implementation of the subtraction feature is this (and it's in that screenshot too):
+
+#+begin_src smalltalk
+  RTCTuple»- aTuple
+      "Subtract aTuple from this tuple"
+      ^RTCTuple 
+          x: x - aTuple x
+          y: y - aTuple y
+          z: z - aTuple z
+          w: w - aTuple w.
+#+end_src
+
+All it does is make a new tuple by taking the values of one tuple and removing them from the other. The use of ~w~ to tell the difference between a point or vector makes it very easy to convert them, without having loads of logic to check if a Point should become a Vector, or vice-versa. I also notice I haven't really used the special subclasses I made because of this.
+
+There are some other tests I need to add but they follow the same pattern: subtracting two vectors gives me another vector. And there is the edge case where it doesn't make sense to subtract a point from a vector.
+
+**** Addition
+
+I'm just going to breeze through the rest of these because otherwise I'll be rewriting the whole damn book.
+
+#+begin_aside
+Note to self: figure out git and how to publish these changes on a repo.
+#+end_aside
+
+Addition is like subtraction, so there's not much to do there. It has a similar edge-case in terms of adding two points together, but I'm not going to bother handling errors.
+
+#+begin_src smalltalk
+  RTCTuple»+ aTuple
+      "Add aTuple on to this tuple, resulting in either another point or a vector"
+      ^RTCTuple
+          x: x + aTuple x
+          y: y + aTuple y
+          z: z + aTuple z
+          w: w + aTuple w.
+#+end_src
+
+**** Negation
+
+Getting the opposite a vector (or negating it) is a case of subtracting it from a 'zero' value. I've already done subtraction, so this is child's play. 
+
+#+begin_src smalltalk
+  RTCTuple»negate
+    "Create a tuple with the opposite values, e.g. by swapping the signs. The w value is not affected."
+    ^(RTCTuple zero) - self
+#+end_src
+
+**** Distance
+
+In rendering, a vector can represent a distance. It's basically the length of a straight line from the starting point of the vector to the ending point.
+
+In fact it's not so different to calculating the hypotenuse of a triangle, except this time there are three dimensions rather than two.
+
+#+begin_src smalltalk
+  RTCVector»length
+      "Calculate the distance represented by a vector."
+      ^(x squared + y squared + z squared) sqrt
+#+end_src
+
+I added that one to my Vector subclass, since it doesn't make sense to calculate the length of a point.
+
+*** Wrapping up for the day
+
+Between taking notes on my progress and going through the challenge, it's taken maybe half a day to get to this point. I think that's enough for one day, I've still got the rest of the week ahead of me after all. And I'm starting to feel more comfortable in the environment which is nice. 
+
+Looks like the next chapter is actually about rendering. I've still got to handle a couple more operations (like the dot product and cross product) but I'll finish that up later.
+
+Until tomorrow, dear diary!
 
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
