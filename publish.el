@@ -23,7 +23,7 @@
 (sup 'yaml-mode)
 (sup 'racket-mode)
 (sup 'pollen-mode)
-(sup 'prolog-mode)
+(sup 'prolog)
 
 (require 'ox-publish)
 (require 'ox-rss)

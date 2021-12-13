@@ -40,9 +40,9 @@ I only have a couple of jobs in this pipeline, to keep it simple. The next bunch
 
 #+begin_src yaml
   - script: |
-        mkdir -p ~/.local/bin $(Build.BinariesDirectory)
-        curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
-    displayName: Install Stack
+      mkdir -p ~/.local/bin $(Build.BinariesDirectory)
+      curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+  displayName: Install Stack
 #+end_src
 
 Won't get far without grabbing the latest stable Stack binary.
