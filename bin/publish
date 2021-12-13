@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+emacs --batch --no-init --load publish.el --eval '(org-publish "www.kamelasa.dev" t)'

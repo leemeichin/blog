@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+while $(inotifywait -qqre modify,create,delete --exclude '.git|publish' .); do
+  ./bin/publish
+done
