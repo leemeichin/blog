@@ -15,17 +15,17 @@
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
-    --syntax-builtin-color: #f78fe7;
-    --syntax-comment-color: #a8a8a8;
-    --syntax-comment-delim-color: #a8a8a8;
-    --syntax-doc-color: #b0d6f5;
-    --syntax-function-color: #feacd0;
-    --syntax-keyword-color: #b6a0ff;
-    --syntax-regexp-backslash: #abab00;
-    --syntax-regexp-grouping: #e7a59a;
-    --syntax-string-color: #79a8ff;
-    --syntax-type-color: #6ae4b9;
-    --syntax-variable-color: #00d3d0;
+    --syntax-builtin-color: #8f0075;
+    --syntax-comment-color: #505050;
+    --syntax-comment-delim-color: #505050;
+    --syntax-doc-color: #2a486a;
+    --syntax-function-color: #721045;
+    --syntax-keyword-color: #5317ac;
+    --syntax-regexp-backslash: #654d0f;
+    --syntax-regexp-grouping: #8b1030;
+    --syntax-string-color: #2544bb;
+    --syntax-type-color: #005a5f;
+    --syntax-variable-color: #00538b;
   }
 }
 
