@@ -82,7 +82,7 @@ This is to avoid republishing all other individual org-files."
    (if (equal "rss.org" (file-name-nondirectory filename))
       (org-rss-publish-to-rss plist filename pub-dir)))
 
-(setq org-html-htmlize-output-type 'inline-css)
+(setq org-html-htmlize-output-type 'css)
 (setq org-rss-use-entry-url-as-guid t)
 
 (setq org-publish-project-alist
