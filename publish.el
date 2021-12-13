@@ -16,6 +16,8 @@
 (sup 'org)
 (sup 'org-contrib)
 (sup 'htmlize)
+(sup 'ruby-mode)
+(sup 'smalltalk-mode)
 
 (require 'ox-publish)
 (require 'ox-rss)
