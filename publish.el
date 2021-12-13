@@ -17,6 +17,14 @@
 (sup 'org-contrib)
 (sup 'htmlize)
 
+;; Add colours for languages used in codeblocks
+(sup 'ruby-mode)
+(sup 'smalltalk-mode)
+(sup 'yaml-mode)
+(sup 'racket-mode)
+(sup 'pollen-mode)
+(sup 'prolog-mode)
+
 (require 'ox-publish)
 (require 'ox-rss)
 
