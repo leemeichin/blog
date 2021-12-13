@@ -50,8 +50,8 @@ As such, a functional approach is still the easiest way to add new capabilities 
 
 I use it like this:
 
-#+begin_src text
-    ◊"◊"footnotes{
+#+begin_src pollen
+  ◊"◊"footnotes{
       ◊"◊"^[1]{◊"◊"<>["https://beautifulracket.com/"]}
       ◊"◊"^[2]{◊"◊"<>["https://en.m.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours"]}
       ◊"◊"^[3]{◊"◊"<>["https://docs.racket-lang.org/pollen"]}
@@ -59,7 +59,6 @@ I use it like this:
       ◊"◊"^[5]{◊"◊"<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/redirs.caddy"]}
     }
   }
-
 #+end_src
 
   The estimated reading time was also easier to implement than I first thought. Rather than splitting the text into words as I did in the previous version of the site, I figured I'd get a decent enough estimation by dividing the size of the file in bytes by an average English word-length, assuming a reading speed of 250 words a minute.

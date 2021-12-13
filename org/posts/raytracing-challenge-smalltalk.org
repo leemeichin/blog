@@ -117,11 +117,11 @@ The first one is a tuple, which contains 3D co-ordinates and an extra value to s
 (One thing that feels odd is listing instance variables as a space separated string. Not even a list data structure.)
 
 #+begin_src smalltalk
-Object subclass: #Tuple
-        instanceVariableNames: 'x y z pointOrVector'
-        classVariableNames: ''
-        poolDictionaries: ''
-        category: 'RayTracerChallenge'
+  Object subclass: #Tuple
+         instanceVariableNames: 'x y z pointOrVector'
+         classVariableNames: ''
+         poolDictionaries: ''
+         category: 'RayTracerChallenge'
 #+end_src
 
 #+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/tuple.png
@@ -324,14 +324,14 @@ I'll just leave it here, it's a nice little toy example. The ~Projectile~ and ~E
 
       i := 1.
       [ p position y > 0 ] whileTrue: [
-              Transcript showln: 'Tick #', i asString.
+          Transcript showln: 'Tick #', i asString.
 
-              p := t tickwithEnv: e andProj: p.
+          p := t tickwithEnv: e andProj: p.
 
-              Transcript showln: 'X: ' , (p position x) asString;
-                         showln: 'Y: ', (p position y) asString.
+          Transcript showln: 'X: ' , (p position x) asString;
+                     showln: 'Y: ', (p position y) asString.
 
-              i  := i + 1.
+          i  := i + 1.
       ]
 #+end_src
 
