@@ -8,6 +8,11 @@ It looks like I have some time off coming up, and it feels like a good chance to
 
 I wonder how far we can get in the space of a week. Don't worry, diary, I'll let you know how it goes.
 
+Just so I don't forget, here's a picture of what I would like to achieve.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/thegoal.jpg
+[[../../assets/img/raytracing-challenge-smalltalk/thegoal.jpg]]
+
 #+TOC: headlines 3
 
 ** Day 1
