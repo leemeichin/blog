@@ -298,7 +298,7 @@ Looks like the next chapter is actually about rendering. I've still got to handl
 
 Until tomorrow, dear diary!
 
-** Day 3: Evening
+** Day 3.5
 
 I really wanted to finish off this first chapter, so I did! Using the example in the ray tracer challenge book, I made a little ticker in the workspace to demonstrate a projectile falling to the ground.
 
@@ -336,6 +336,236 @@ I'll just leave it here, it's a nice little toy example. The ~Projectile~ and ~E
 #+end_src
 
 Now to play some real games.
+
+** Day 4
+
+A lovely winter morning indeed, and here I am back at my desk to do more of this challenge.
+
+Flicking through the second chapter, it seems to start off with a bit of colour theory but there isn't anything scary there. In fact, in terms of implementation I'm set up for re-using all of the stuff I did with tuples, vectors and points yesterday.
+
+*** The smalltalk standard library
+
+There's nothing special to show off here, I just made another subclass of my ~RTCTuple~ and then created fresh accessor functions to refer to ~x~, ~y~ and ~z~ as ~red~, ~green~ and ~blue~ respectively.
+
+Smalltalk already has a ~Color~ object, the same as it has a ~Point~ object, and I was tempted to use those instead of my home-grown copies. I decided against it because the Point only represented two dimensions and I need three, and as convenient as the Color one might be I would be making things needlessly difficult by having to convert it back and forth.
+
+*** I'm not good with colours
+
+I had to add a function to calculate the Hadamard product of two colours. The hadamard product is similar to calculating the dot product of a vector, but rather than getting a scalar value back that represents the sum of ~x~, ~y~ and ~z~, you get a new colour where the two reds were multiplied, the two greens, and the two blues.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/hadamard.png
+[[../../assets/img/raytracing-challenge-smalltalk/hadamard.png]]
+
+Since I'm not good with colours, my attempts to demonstrate how it works aren't so good. I just plugged a few different numbers in until I got something that wasn't black.
+
+*** Data driven design
+
+I'm reminded of what little I know about data driven design, where one is encouraged to work with primitive data structures over high level abstractions around them. A list of structs might be more effective to work with than a collection of classes, for example.
+
+Knowing how much I'm typing things like ~RTCVector new x: 1 y: 2 z: 3~, I'm considering adding some convenience methods to the array object.
+
+#+begin_src smalltalk
+  #(1 2 3) asVector.
+  #(0.1 0.2 0.3) asColor. "I bet this already exists"
+  #(4 5 6) asPoint.
+  #(1 2 3 0) asTuple.
+#+end_src
+
+I'll come back to that one later, since I'm bikeshedding. The real problem is that I made a generic tuple and rather than indexing into it, I gave the values names that only make sense for vectors and points.
+
+For now I'll make it work and then I'll go and tidy it up.
+
+*** Hello world but for rendering
+
+Now for the fun part and slightly more difficult part! Yay!
+
+By doing the demo with colours I figured out how to draw things into the workspace. Squeak calls these ~Morphs~, presumably because the framework is called Morphic. I can do basic things like change their colour, add text into them, put other UI thingies into them and so on. Looking through the documentation though I'm not convinced that this is low level enough since I need to be able to draw individual pixels. I need something like an OpenGL canvas.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/blackimage.png
+[[../../assets/img/raytracing-challenge-smalltalk/blackimage.png]]
+
+After a bit of playing around I've got something that renders into an image. Like another hello world I suppose :).
+
+#+begin_src smalltalk
+  RTCRenderer»initialize
+      form := Form extent: 800@600 depth: 32.
+      form fillBlack.
+      canvas := FormCanvas on: form.
+      image := ImageMorph new.
+      image image: form.
+      image position: 30@30.
+      image openInWorld.
+#+end_src
+
+#+begin_aside
+  I didn't realise that dimensions are first-class in Smalltalk with the ~x@y~ syntax. They resolve to an instance of ~Point~, but unfortunately that isn't three-dimensional.
+#+end_aside
+
+I'm under no illusion that rendering code is inherently procedural, so I expect that I'll be wrangling a few bulky methods sooner or later. I've already moved the image rendering out of the initialize method though. And I changed ~openInWorld~ to ~openInHand~, which basically puts the image under my cursor in drag-and-drop mode so I can place it where I like.
+
+#+begin_src smalltalk
+  RTCRenderer»display
+      "Renders the form/canvas to an image morph in the world."
+      | morph |
+      
+      morph := ImageMorph new.
+      morph image: form;
+            position: 30@30;
+            openInHand.
+#+end_src
+
+I did have some trouble getting to this point. Some of the examples I found essentially drew the buffer straight onto the workspace. There's some situation where that is required (as it is when you run games in fullscreen mode and they take over the entire display instead of going through the windowing system), but for me it meant that the 'image' would be destroyed by dragging some other UI over it. It's like accessing or writing over memory you don't own. The extra step to make a 'morph' basically turned this into a self-contained canvas that I can play with more safely.
+
+*** Drawing pixels
+
+The book's moved on to drawing individual pixels now. This is normally the point where I'd give up on testing and just start eyeballing shit, but I'm interested to see if I can get these tests to pass.
+
+**** The test case
+
+The Ray Tracer Challenge book provides test cases in the form of BDD specs, using Gherkin-style syntax. This is maybe one of the one situations where BDD-style specs work /well/, because the author of the book wrote them to describe, well, the behaviour of the things you need to implement. Usually when someone gets the idea of setting up, say, Cucumber, they skip that step where someone in product actually writes up the specs to help disambiguate requirements, and so it falls onto the programmer to write both the Cukes and also the test cases themselves. No one outside of engineering actually bothers to read these, because they're stored alongside the code.
+
+And I digress... I've converted the spec in the book to a little test case here. It obviously fails.
+
+#+begin_src smalltalk
+  RTCRendererTest»testWritePixelAt
+      | renderer color point |
+
+      renderer := RTCRenderer new.
+      color := RTCColor new r: 1 g: 0 b: 0.
+      point := RTCPoint new x: 2 y: 3 z: 0.
+
+      renderer drawPixelAtPoint: point withColor: color.
+
+      self assert: color equals: (renderer pixelAt: point).
+#+end_src
+
+I've made some up-front decisions on the interface here. Seems sensible enough I think.
+
+The smalltalk (Squeak) environment is actually really nice for this. Because you're only seeing one method at a time, and because the structure of the method requires you to write document and declare your local variables up front, you can structure your tests in such a way that you only need to read the first few lines to get a feel for what will happen next.
+
+These tests are all /super small/ as a result.
+
+**** The implementation
+
+Based on the test I created, I have a good idea of what I need to do. When I made the ~RTCRenderer~ class I stored a ~FormCanvas~ context as an instance variable, which is the thing I will do all of my drawing on. So, I just need to poke around the browser to see what I can do with one of these canvases.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/canvasform.png
+[[../../assets/img/raytracing-challenge-smalltalk/canvasform.png]]
+
+I wasn't sure what exactly to look for, by name at least, but I need a way to draw a pixel of a given colour onto a canvas and I need a way to find the colour of a given pixel. So, one write operation and one read operation.
+
+#+begin_aside
+By pixel I mean a specific point on the canvas at ~x~ and ~y~ co-ordinates, where the origin (~0~) is at the top left.
+#+end_aside
+
+For drawing, it looks like I can call ~point:color:~ on the canvas object but I'll need to convert my 3D point to a 2D one (note to self: can I drop the RTC prefixes and refer to my version of Point as ~3DPoint~?), and I'll need to convert my home-made Color object too as the built-in one does lots of things my version can't. No biggie.
+
+#+begin_src smalltalk
+  RTCRenderer»drawPixelAtPoint: point withColor: color
+      "Draws a pixel at the x and y coordinates of point with the given color."
+
+      canvas point: (point x)@(point y) color: color asColor.
+#+end_src
+
+I have a feeling that most of these methods I add will be simple wrappers over what Smalltalk already offers.
+
+Anyway, that's one part of the test done, but I don't have an easy way to check that what I did is correct besides rendering it, which is awkward. How do I find the value of a pixel on my canvas?
+
+/Ten minutes later.../
+
+The canvas doesn't have a way to do this that I can tell, but the implementation of ~Canvas»point:color:~ manipulates an internal ~Form~ object. Objects all the way down. That form object defines ~colorAt:put:~ and, just as I thought, it means there is a ~colorAt~ method too.
+
+#+begin_src smalltalk
+  RTCRenderer»pixelAt: point
+      "Returns the colour of the pixel at point"
+      | color |
+
+      color := canvas form colorAt: point. "...duck typing, yay"
+      ^ RTCColor new r: (color red) g: (color green) b: (color blue).
+#+end_src
+
+Test has just gone from red to green. Woohoo!
+
+*** Writing to disk
+
+The next step of the book talks about writing the image to disk. It talks about writing the contents of the canvas to PPM (Portable Pixmap) format.
+
+Honestly? I don't wanna do that when I already have the tools to create a PNG or a JPEG from this canvas. The PPM format is quite literally a space separated list of RGB values for pixels, with some metadata to define the resolution of the image and how many colours are supported.
+
+Imma just make a PNG instead since this is a distraction from the main challenge.
+
+#+begin_src smalltalk
+  RTCRenderer»exportPNG: filename
+    "Export the canvas to PNG for your viewing pleasure."
+     canvas form writePNGfileNamed: filename
+#+end_src
+
+*** Console Cannons v2
+
+I should have enough here to take the console cannon example from yesterday and render an image instead of writing values to the transcript.
+
+Hopefully this script should be enough.
+
+#+begin_src smalltalk
+  p := RTCProjectile 
+          withPosition: (RTCTuple asPoint x: 0 y: 1 z: 0) 
+          andVelocity: ((RTCTuple asVector x: 1 y: 1.8 z: 0) normalize) * 11.25.
+	
+  e := RTCEnvironment 
+          withWind: (RTCTuple asVector x: 0 y: -0.1 z: 0)
+           andGravity:  (RTCTuple asVector x: -0.01 y: 0 z: 0).
+	
+  t := RTCTicker new.
+
+  r := RTCRenderer new.
+
+  i := 1.
+
+  [ p position y > 0 ] whileTrue: [
+          p := t tickwithEnv: e andProj: p.
+          r drawPixelAtPoint: (p position) withColor: (RTCColor new r: 0 g: 1 b: 0).
+          i  := i + 1.
+  ].
+
+  r writePNG: 'cannonsv2.png'.
+#+end_src
+
+And here's the result:
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/cannonsv2.png
+[[../../assets/img/raytracing-challenge-smalltalk/cannonsv2.png]]
+
+
+Wow, not bad! It's close enough to the example in the book, the only difference is that I hard-coded the size of the canvas to 800x600 so the velocity of the projectile sends it out of the picture.
+
+Luckily I'm not doing this in C or anything so I don't have to care about bounds checking, eh? ;)
+
+Oh yeah, it's also upside down. I suppose I could just rotate the image in an editor but where's the fun in that? All I need to do is subtract the Y co-ordinate from the height of the canvas, so ~600 - y~ really.
+
+#+begin_src smalltalk
+  [ p position y > 0 ] whileTrue: [
+          p := t tickwithEnv: e andProj: p.
+          r drawPixelAtPoint: (p position x)@(600 - p position y)
+            withColor: (RTCColor new r: 0 g: 1 b: 0).
+          i  := i + 1.
+  ].
+#+end_src
+
+There's probably a fancy vector-based way to do that but right now I don't know it. The results are in, though!
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/cannonsv2fix.png
+[[../../assets/img/raytracing-challenge-smalltalk/cannonsv2fix.png]]
+
+Perfect!
+
+*** Wrapping up for the day
+
+And that actually marks the end of the chapter, so I'm gonna call it a day here. Matrices and matric transformations are on the menu tomorrow, so we're back to the mathemology again.
+
+I think I said this last time but chances are I'll gloss over much of that, so I can get the foundational work out of the way and come back to the sexy graphical stuff.
+
+Until tomorrow!
+
 
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
