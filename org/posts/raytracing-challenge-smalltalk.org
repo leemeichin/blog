@@ -560,7 +560,11 @@ Perfect!
 
 *** Wrapping up for the day
 
-And that actually marks the end of the chapter, so I'm gonna call it a day here. Matrices and matric transformations are on the menu tomorrow, so we're back to the mathemology again.
+And that actually marks the end of the chapter, so I'm gonna call it a day here. One big takeaway from today's adventure was that there isn't that much to be gained from turning to the internet for help. In fact, I think I might have googled something /once/, and I've spent less time referring to my two Smalltalk books.
+
+I mean, they're still useful for reference but now I'm more familiar with Squeak, the immense discoverability of the environment is starting to take over. Not only that, but I'm already comfortable browsing for methods and then seeing what the docs and the implementations say. Smalltalk code, so far, is /remarkably/ easy to follow. This actually feels more like my experience with Ruby now, where I would generally browse through Ruby's docs and the lists of methods to see if there was anything that would help me out (Enumerable is a classic example of this, easily one of the best bits of Ruby).
+
+That said, matrices and matric transformations are on the menu tomorrow, so we're back to the mathemology again.
 
 I think I said this last time but chances are I'll gloss over much of that, so I can get the foundational work out of the way and come back to the sexy graphical stuff.
 
