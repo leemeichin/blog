@@ -575,6 +575,14 @@ I think I said this last time but chances are I'll gloss over much of that, so I
 
 Until tomorrow!
 
+** Day 5
+
+Technically it's day 3 since I started over the weekend and spent 2 days just setting up. Anyway, I was supposed to take time off work and I'm treating this challenge like a day job.
+
+I've got my mug of hot coffee (some brew from Kenya this time, I get a random packet every 2 weeks; always love a surprise) and I think I'll spend the morning playing more of Chrono Trigger.
+
+I'll come back to the matrix stuff later on - I did have a look around and Smalltalk again has its own implementation of a Matrix. I'll go with the book and roll my own for now and then summarise the bits that I found interesting.
+
 
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
