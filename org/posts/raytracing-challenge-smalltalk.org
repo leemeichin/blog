@@ -583,6 +583,91 @@ I've got my mug of hot coffee (some brew from Kenya this time, I get a random pa
 
 I'll come back to the matrix stuff later on - I did have a look around and Smalltalk again has its own implementation of a Matrix. I'll go with the book and roll my own for now and then summarise the bits that I found interesting.
 
+*** This is awkward
+
+So, the built in Matrix class does a bunch of helpful things, but not quite enough. I could subclass it and add the extra bits in but I definitely want a better understanding of what I'm working with. I imagine it'll take most of the day to do this.
+
+*** Today's agenda
+
+Essentially I need to be able to:
+
+- Create a matrix, ideally from a multi-dimensional list for convenience.
+- Multiply two matrices by other matrices and tuples
+- Transpose them (as in, swap the rows and columns around)
+- Invert them, which means calculating determinants
+- Compute cofactors
+- Errr, manipulate minors? (this is what the book says, lol)
+- And do multiplication on inverted matrices, if that's somehow different to normal multiplication.
+
+How hard can it be?
+
+*** Syntax sugar
+
+Smalltalk's way of creating a matrix appears to be to initialise one with certain dimensions, and then to expect you to iterate over your rows and columns by hand to set the values at certain positions. I'm too lazy for that, so I'll just generate one from a list of lists instead.
+
+First, the tests.
+
+#+begin_src smalltalk
+  RTCMatrix»testMatrixAccessAtPoint
+      | matrix |
+
+      matrix := RTCMatrix fromList: #(
+          (1 2 3 4)
+          (5.5 6.5 7.5 8.5)
+          (9 10 11 12)
+          (13.5 14.5 15.5 16.5)
+      ).
+
+      self assert: 1 equals: (matrix at: 0@0).
+      self assert: 4 equals: (matrix at: 0@3).
+      self assert: 5.5 equals: (matrix at: 1@0).
+      self assert: 7.5 equals: (matrix at: 1@2).
+      self assert: 11 equals: (matrix at: 2@2).
+      self assert: 13.5 equals: (matrix at: 3@0).
+      self assert: 15.5 equals: (matrix at: 3@2).
+#+end_src
+
+And some code to make it work. ~RTCMatrix»at~ is just a simple method that uses ~x~ as the row index and ~y~ as the column index and digs through the stored list to get the value there. Array indices start at ~1~ in Smalltalk though, and my matrix is zero-indexed, so it has to account for that.
+
+#+begin_src smalltalk
+    RTCMatrix»fromList: aList
+        "Create a new matrix from a multi-dimensional list."
+
+        | matrix numCols numRows |
+
+        numRows := aList length.
+        numCols := (aList at: 0) length.
+
+        (aList allSatisfy: [ :elem | elem length = numCols ])
+          ifFalse: [ ^ self error: 'Number of columns must all be equal' ].
+
+        matrix := self new.
+        matrix rows: numRows; columns: numCols; data: aList.
+
+        ^ matrix.
+#+end_src
+
+I added in some basic error checking to prevent the creaton of wonky matrices.
+
+*** I done fucked up
+
+In attempting to implement matrix equality, I've accidentally defined an ~=~ class method that doesn't return anything. Squeak emphatically /does not/ like this, so now I have to figure out how to actually undo the change when I can no longer actually get to the broken code.
+
+Oops!
+
+... after some fiddling around I was able to find the method in the changeset browser. This seems to track the things I've done throughout the project although it's not connected to git or anything.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/changeset.png
+[[../../assets/img/raytracing-challenge-smalltalk/changeset.png]]
+
+Unfortunately I clicked 'remove from changeset' instead of 'delete change', which meant I hadn't fixed the problem. Eventually I figured out how to do it programmatically inside a workspace.
+
+#+begin_src smalltalk
+  RTCMatrix class removeSelector: #=.
+#+end_src
+
+Crisis averted. And at least I know how to recover from a failure without throwing everything out.
+
 
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
