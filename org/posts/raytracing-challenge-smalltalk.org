@@ -593,6 +593,7 @@ Essentially I need to be able to:
 
 - Create a matrix, ideally from a multi-dimensional list for convenience.
 - Multiply two matrices by other matrices and tuples
+- Create an identity matrix (a matrix where all the diagonal values are 1)
 - Transpose them (as in, swap the rows and columns around)
 - Invert them, which means calculating determinants
 - Compute cofactors
@@ -668,6 +669,47 @@ Unfortunately I clicked 'remove from changeset' instead of 'delete change', whic
 
 Crisis averted. And at least I know how to recover from a failure without throwing everything out.
 
+*** What did I get myself into?
+
+I gotta admit that algorithmic stuff isn't my strong suit.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/matrixmultiply.png
+[[../../assets/img/raytracing-challenge-smalltalk/matrixmultiply.png]]
+
+It took me more time than I could care to imagine to be able to multiply two matrices together. Part of the problem was that the example in the ray tracing book had basically hard-coded the algorithm to a fixed-size matrix, because as far as the book was concerned I wouldn't be multiplying matrices of any other kind.
+
+I wanted to do this right though and make a general solution. I don't think this is the most elegant way since it contains three nested loops and then a fourth iteration. That said, for a data structure that will at most contain 16 elements (for a 4x4 matrix) it's not exactly a big deal.
+
+#+begin_src smalltalk
+  RTCMatrix»* aMatrix
+      "Answer with this matrix multiplied by the other matrix."	
+      | matrix |
+
+      matrix := RTCMatrix fill: rows@columns.
+
+      (0 to: rows - 1) do: [:rowNum | "loop 1"
+          (0 to: columns - 1) do: [:colNum | "loop 2"
+              | value |
+
+              value := ((self rowAt: rowNum)
+                  collectWithIndex: "loop 3"
+                      [ :rowVal :i | rowVal * (aMatrix at: (i - 1)@colNum) ])
+                  sum. "loop 4"
+
+              matrix at: rowNum@colNum put: value.
+              ]
+          ].
+
+          ^ matrix.
+#+end_src
+
+Of course, forcing zero-based indexing into a language that doesn't do it is also painful, but I'd rather handle that in my interfaces instead of mentally subtracting in every example the book gives.
+
+*** Calling it a day
+
+Hopefully the remainder of the section isn't too awkward but I think this might take a while longer as I'm in unfamiliar territory now. Multiplying by a tuple should be easy enough since a tuple in my case will be a 4x1 matrix.
+
+In any case, I think I'll deal with transposing, inverting, etc. tomorrow. That was surprisingly exhausting in spite of how rewarding it felt to get this far.
 
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
