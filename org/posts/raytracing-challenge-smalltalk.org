@@ -711,8 +711,18 @@ Hopefully the remainder of the section isn't too awkward but I think this might 
 
 In any case, I think I'll deal with transposing, inverting, etc. tomorrow. That was surprisingly exhausting in spite of how rewarding it felt to get this far.
 
+** Day 5.5
+
+Sooo.... I figured out how to get git working. That's a little bit different too but it's pretty consistent with how Squeak works. I'll have to learn how to make good commits with it since it's all based on a Smalltalk implementation of git and you basically don't (or can't, even) work with this from a terminal.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/git.png
+[[../../assets/img/raytracing-challenge-smalltalk/git.png]]
+
+I'll just drop the repo here (https://git.sr.ht/~mrlee/RayTracerChallenge) and throw in a footnote so I can reference it again.[fn:6]
+
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
 [fn:3] https://pharo.org/, https://squeak.org, and https://www.gnu.org/software/smalltalk/ respectively
 [fn:4] https://www.libsdl.org/
 [fn:5] https://uk.bookshop.org/a/6865/9783952334102
+[fn:6] https://git.sr.ht/~mrlee/RayTracerChallenge
