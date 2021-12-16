@@ -720,6 +720,21 @@ Sooo.... I figured out how to get git working. That's a little bit different too
 
 I'll just drop the repo here (https://git.sr.ht/~mrlee/RayTracerChallenge) and throw in a footnote so I can reference it again.[fn:6]
 
+** Day 6
+
+Been doing more matrix operations so far today. I've hit the wall once or twice just because of what feels like a lack of composition. For example, I can ~doWithIndex~ and ~collectWithIndex~ but there isn't a ~selectWithIndex~ or whatever. It's just a nitpick but since there isn't a generic enumerable thing in Smalltalk (more a variety of them that you have to convert between), I can't do the kind of things I'd get away with in Ruby, for example, chaining an enumerable method with ~with_index~.
+
+It's made things like calculating a submatrix a bit awkward but I'm probably overthinking it too, and of course I've only been working with Smalltalk for half a week and not the decade I've spent with Ruby.
+
+*** Enumerate collections for great good!
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/worldpeace.png
+[[../../assets/img/raytracing-challenge-smalltalk/worldpeace.png]]
+
+This is exactly the kind of message I'm looking for when I want to split an array into chunks!
+
+
+
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
 [fn:3] https://pharo.org/, https://squeak.org, and https://www.gnu.org/software/smalltalk/ respectively
