@@ -733,6 +733,192 @@ It's made things like calculating a submatrix a bit awkward but I'm probably ove
 
 This is exactly the kind of message I'm looking for when I want to split an array into chunks!
 
+*** Creating sub-matrices
+
+The ray tracer book completely glosses over this task: "there's no magic here, and really, no math."
+
+To create a submatrix, you slice out a chosen row and column to get a new, smaller matrix. So, a 4x4 matrix becomes a 3x3 matrix, and a 3x2 matrix becomes a 2x1 matrix.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/submatrix.jpg
+[[../../assets/img/raytracing-challenge-smalltalk/submatrix.jpg]]
+
+Because I'm storing my matrix as a two-dimensional array (~[[1, 1], [2, 2]...]~), it took a bit of finesse to remove these items. This code passes my tests but I don't feel particularly proud of it, and there is clear room to improve.
+
+Mainly I broke it down into steps so I could understand the process.
+
+#+begin_src smalltalk
+  RTCMatrix»sub: point
+      "Answers with a new matrix excluding the row and column represented by point."
+      | collection list |
+
+      collection := data concatenation asOrderedCollection.
+
+      "Null out the row from the matrix"
+      1 + (point x * rows) to: (point x * rows) + rows
+          do: [ :index | collection at: index put: nil ].
+
+      "Null out the column from the matrix"
+      point y + 1 to: collection size by: rows
+          do: [ :index | collection at: index put: nil ].
+
+      "Remove the null values"
+      collection removeAllSuchThat: #isNil.
+
+      "Group back into nested list"
+      list := (1 to: collection size by: rows - 1)
+          collect: [ :row |
+             collection collect: #yourself from: row to: row + (rows - 1) - 1].
+
+      ^RTCMatrix fromList: list.
+#+end_src
+
+Two steps of that process involve looping over a range and setting a value at an index to ~nil~. I could combine those into one and then loop over it once:
+
+#+begin_src smalltalk
+  "Null out the rows and columns from the matrix"
+  (1 + (point x * rows) to: (point x * rows) + rows),
+  (point y + 1 to: collection size by: rows)
+      do: [ :index | collection at: index put: nil ].
+#+end_src
+
+The reason I have to null the values out and then remove them is because modifying a collection while iterating over it is undefined behaviour. I could do this in a pure, immutable way, but it's much ado about nothing since I'm manipulating a temporary data structure inside a method.
+
+This bit, however, is still a bit nasty:
+
+#+begin_src smalltalk
+  "Group back into nested list"
+  list := (1 to: collection size by: rows - 1)
+      collect: [ :row |
+         collection collect: #yourself from: row to: row + (rows - 1) - 1].
+#+end_src
+
+*** Thinking about optimisation
+
+The Smalltalk implementation of a matrix maintains a flat array which in this case is easier to work with. I didn't anticipate any of this so I chose my data structure because it's easy to access a value (~matrix[row][column]~ or ~matrix[row, column]~), but the trade-off is evident when it requires manipulation. To start with, what I could have solved with some basic arithmetic to index into a flat array has turned into a nightmare of nested iteration.
+
+For example, take the following 4x4 matrix:
+
+#+begin_src text
+  1 2 3 4
+  2 1 4 3
+  3 4 1 2
+  4 3 2 1
+#+end_src
+
+My data structure tries to mimic the /shape/ of this, so I have a list that contains four other lists, and those four lists contain four values each. I'll write this in Ruby for simplicity.
+
+#+begin_src ruby
+  # Identity matrix
+  matrix = [
+    [1, 0, 0, 0], # row 1, cols 1 to 4
+    [0, 1, 0, 0], # row 2, cols 1 to 4
+    [0, 0, 1, 0], # row 3, cols 1 to 4
+    [0, 0, 0, 1], # row 4, cols 1 to 4
+  ]
+#+end_src
+
+It's super easy to grab a single row out of this, if I want the third row then I just index into the top-level list (remembering it's zero-indexed): ~matrix[2]~. If I want a full column, however, I would have to loop over each row.
+
+#+begin_src ruby
+  row_3 = matrix[2] #=> [0, 0, 1, 0]
+  column_1 = matrix.dig(0) #=> [1, 0, 0, 0]
+#+end_src
+
+I probably should have used Go as an example or something, Ruby makes this too easy lol.  If I wanted to get all the values on the diagonal (so, all of the 1 values), I would do something like this:
+
+#+begin_src ruby
+  diagonal = (0...matrix.size).map { |n| matrix.dig(n, n) }
+  # => [1, 1, 1, 1]
+#+end_src
+
+That really isn't so bad when you look at it in isolation, especially in a language that has nice ways to deal with iterable data structures. It might be more difficult when trying to render a large scene though because there could be thousands of these matrices flying around. I mean, for every 4x4 matrix I create, I'm allocating 5 arrays.
+
+**** Matrices, Harry Style(s)
+
+/Because he's from One Dimension innit. I'll see myself out.../
+
+Instead of the above structure, then, I could have it flat (or one-dimensional). The same identity matrix would therefore be represented thus, formatted for readability:
+
+#+begin_src ruby
+  matrix = [
+    1, 0, 0, 0,
+    0, 1, 0, 0,
+    0, 0, 1, 0,
+    0, 0, 0, 1,
+  ]
+#+end_src
+
+#+begin_aside
+I'm aware that I'm describing this as some grand revelation but this is for my own understanding as much as it is for anyone else, because I wish I thought about this earlier on. Direct your smug superiority to my inbox at ~/dev/null~ if you're feeling that way ;).
+#+end_aside
+
+Accessing an element of a matrix this way requires some arithmetic. You can do this in your head, or on paper. For my 4x4 matrix above, I know it has 4 rows and 4 columns.
+
+#+begin_src text
+  r - - -  r - - -  r - - -  r - - -
+  c c c c  c c c c  c c c c  c c c c
+  1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1
+#+end_src
+
+The number of values (or cells) in a matrix is found by multiplying the number of rows by the number of columns: ~rows x cols = 4 x 4 = 16~.
+
+Therefore, to get the first column of a row, you multiply that number by the number of rows.
+
+#+begin_src ruby
+  rows = 4
+  row_0_col_0 = matrix[0 * rows] #=> 1
+  row_1_col_0 = matrix[1 * rows] #=> 0
+  row_2_col_0 = matrix[2 * rows] #=> 0
+  row_3_col_0 = matrix[3 * rows] #=> 0
+#+end_src
+
+If you want the row instead, you need to find where it ends too. You already have the start of the row from above, so to get the end you simply have to add the number of columns to it, subtracting one because you already have the first value: ~row_0_col_0 + (num_cols - 1) = 0 + 4 - 1 = 3~. Put those two together and you can slice your row out.
+
+#+begin_src ruby
+  rows = 4
+  columns = 4
+
+  # using `...` in Ruby would do the same as `-1` but that's Ruby...
+  row_0 = matrix[(0 * rows)..(0 * rows + columns - 1)]
+  #=> [1, 0, 0, 0]
+#+end_src
+
+#+begin_aside
+It should be noted that a lot of languages will not include the end value when using standard library functions that give you subsets of an array. In those cases, you can drop it.
+#+end_aside
+
+It's a similar affair for getting columns. A column is the /n/th cell from every row, and since you know how to find both the start and an end of a row, you can tweak the formula to get something in between.
+
+#+begin_src ruby
+  col_3 = (0...rows).map { |n| matrix[n * rows + 2] }
+  #=> [0, 0, 1, 0]
+#+end_src
+
+You can't avoid a loop there but it's much tighter than it was before.
+
+Anyway, that's the bare minimum needed to work with a matrix that way. It's wonderfully elegant.
+
+That said, I'm not doing any premature refactoring as a rule so I'm not changing this now: you gotta deal with the hand that falls as it may, so to speak.
+
+#+begin_aside
+Well, I will come back and change it if it takes like a week to render one of the scenes later on or it brings my computer to its knees. But not before then.
+#+end_aside
+
+
+**** Skeuomorphic data
+
+So basically what I started with was a skeumorphism of a grid. I made a data structure that, when you look at it, has the appearance of a grid. It's a leaky abstraction and it causes more trouble than it's worth.
+
+*** Back on task
+
+So, where was I? I've wasted most of the day implementing a *single. fucking. function.* I need to finish off my determinants and matrix minors.
+
+Not a chance I could have done this in a weekend (like that other ray tracer challenge) unless I already knew how to do the damn thing.
+
+See ya tomorrow. I'll leave you with a screenshot of my workspace after learning all this.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/workspace.png
+[[../../assets/img/raytracing-challenge-smalltalk/workspace.png]]
 
 
 [fn:1] http://raytracerchallenge.com/

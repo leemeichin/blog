@@ -18,7 +18,7 @@
 (sup 'htmlize)
 
 ;; Add colours for languages used in codeblocks
-(sup 'ruby-mode)
+(sup 'enh-ruby-mode)
 (sup 'smalltalk-mode)
 (sup 'yaml-mode)
 (sup 'racket-mode)
