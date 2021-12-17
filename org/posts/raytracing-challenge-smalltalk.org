@@ -412,7 +412,7 @@ I'm under no illusion that rendering code is inherently procedural, so I expect 
   RTCRenderer»display
       "Renders the form/canvas to an image morph in the world."
       | morph |
-      
+
       morph := ImageMorph new.
       morph image: form;
             position: 30@30;
@@ -512,14 +512,14 @@ I should have enough here to take the console cannon example from yesterday and 
 Hopefully this script should be enough.
 
 #+begin_src smalltalk
-  p := RTCProjectile 
-          withPosition: (RTCTuple asPoint x: 0 y: 1 z: 0) 
+  p := RTCProjectile
+          withPosition: (RTCTuple asPoint x: 0 y: 1 z: 0)
           andVelocity: ((RTCTuple asVector x: 1 y: 1.8 z: 0) normalize) * 11.25.
-	
-  e := RTCEnvironment 
+
+  e := RTCEnvironment
           withWind: (RTCTuple asVector x: 0 y: -0.1 z: 0)
            andGravity:  (RTCTuple asVector x: -0.01 y: 0 z: 0).
-	
+
   t := RTCTicker new.
 
   r := RTCRenderer new.
@@ -682,7 +682,7 @@ I wanted to do this right though and make a general solution. I don't think this
 
 #+begin_src smalltalk
   RTCMatrix»* aMatrix
-      "Answer with this matrix multiplied by the other matrix."	
+      "Answer with this matrix multiplied by the other matrix."
       | matrix |
 
       matrix := RTCMatrix fill: rows@columns.
@@ -920,6 +920,117 @@ See ya tomorrow. I'll leave you with a screenshot of my workspace after learning
 #+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/workspace.png
 [[../../assets/img/raytracing-challenge-smalltalk/workspace.png]]
 
+** Day 7
+
+A whole seven days! Time does indeed fly like a banana.
+
+These matrix operations have been a real time sink and, in all honesty, the book hasn't been as helpful as it could have been here. For example, when calculating the determinant of a matrix the Ray Tracer Challenge guides you through calculating the determinant of a 2x2 matrix first, and then attempts to expand it outwards so you can do it for 3x3 matrices and 4x4 matrices, and so on. In doing so it starts talking about how you calculate cofactors and minors, and you can make tests pass for those. Finally, it shows a rough way to calculate the determinent which involves calculating the cofactor of a smaller matrix until you're left with a 2x2 one.
+
+*** Circular logic
+
+The problem here is that the definition becomes circular and while it pays lip service to solving this problem via recursion, the steps you take to get to that point don't lend to an intuitive solution. For example, to get the determinant of a larger matrix you need to get the cofactor of a submatrix, which involves getting the determinant of that matrix which involves getting the subfactor of another submatrix, and so on and so forth.
+
+Personally I feel like it had the effect of over-complicating the explanation. In the end I took to the internet to see what an algorithm for calculating a determinant looked like.
+
+*** Going recursive
+
+Those examples are largely recursive, which is fine. Just have to see if that kind of solution goes well in Smalltalk.
+
+I've ended up with this, now. It passes my tests so I'm happy.
+
+#+begin_src smalltalk
+  RTCMatrix»determinant
+    "Answer with the determinant of the matrix."
+    | sign det |
+
+    det := 0.
+    sign := 1.
+
+    "Base case - return the value for a 1x1 matrix."
+    (self size = 1) ifTrue: [ ^ self at: 0@0 ].
+
+    "Calculate the determinant of every submatrix."
+    (0 to: self size - 1) do: [ :n |
+        det  := det + (sign * ((self at: 0@n) * (self sub: 0@n) determinant)).
+        sign :=  sign negated
+    ].
+
+    ^ det.
+#+end_src
+
+To be honest I'm not convinced I would have reached this solution based solely on the guidance offered by the book. I just want to get to the action at this point because it's a bit boring hitting wall after wall and I don't want to give up.
+
+I'll probably find a better book that can explain the maths here though. Last time I did anything relating to linear algebra was almost 20 years ago at sixth-form.
+
+*** Inversion and cofactor matrices
+
+Only two more to go and then the chapter is done. There is still a second chapter that relates to matrix transformations though, which I hope I'll have a better grasp off because of the familiarity of it when making little games.
+
+...
+
+I think I better understand the stuff from before now, in terms of calculating a cofactor. I was doing that inline in the implementation of ~determinant~, so I was able to extract out that logic to get the cofactor.
+
+And the book is starting to make sense now I'm able to grasp this, particularly because it's a lot easier for me to reason with the generalised solution as opposed to trying to handle smaller matrices, then bigger ones.
+
+#+begin_src smalltalk
+  "det := det + (sign * ((self at: 0@n) * (self sub: 0@n) determinant))."
+
+  cofactor := sign * (self sub: 0@n) determinant.
+#+end_src
+
+I pulled that out into a method of its own because I need to reuse it here:
+
+#+begin_src smalltalk
+  RTCMatrix»inverse
+      "Answers with the inverse of the current matrix."
+
+      | matrix |
+
+      self invertible or: [ self error: 'Matrix is not invertible' ].
+
+      matrix := self class size: self size.
+
+      0 to: rows - 1 do: [ :row |
+          0 to: columns - 1 do: [ :col |
+               matrix at: col@row put: (self cofactor: row@col) / determinant ]].
+
+      ^ matrix.
+#+end_src
+
+That was quite a bit easier to do, thankfully. If I want a cofactor matrix then I can do more or less the same as this but without the bit where I divide the cofactor by the determinant.
+
+One problem is that I'll be dealing with floating point numbers with this, and quite often. Smalltalk itself offers ~#closeTo~ as a selector on floats, which is used to test equality with some margin for error. With that in mind, I'm trying to avoid hard-coding floats in the code and the tests in favour of using Smalltalk's ~Fraction~ object. So, rather than testing for a value like ~0.21804511278195488~, I'll just store it as ~(29/133)~ and handle any conversion at rendering time.
+
+*** Quick recap
+
+Given my earlier frustration with trying to grasp this, I have a better understanding now.
+
+- A /determinant/ is calculated in terms of the cofactors of a single row or column in the matrix.
+
+- A /cofactor/ is calculated in terms of the minor of a cell in the matrix (or an element).
+
+- A /minor/ is the determinant of the submatrix at that row and column.
+
+So yeah I can see how this is naturally recursive now. It's a bit like this:
+
+#+begin_src text
+  1 0 0 0  -> 1 0 0  -> 1 0  -> 1 (row 1 col 0)
+  0 1 0 0     0 1 0     0 1
+  0 0 1 0     0 0 1
+  0 0 0 1                         (repeat for each column)
+#+end_src
+
+I must have got turned around somewhere with the book, but re-reading the chapter shows me that all the info was there.
+
+*** Matrix transformations
+
+Just one more step to go and I'm done with this stuff! I need to add operations to translate, rotate, scale and shear. I think I'll do some of that tonight and then wrap up tomorrow.
+
+Knowing what I know now, I think that if I were to do this challenge again, I would breeze through this stuff much more quickly. Even if I needed to implement matrix functions from scratch to do this again, it wouldn't take as long now that I've actually learned how to do it.
+
+The chapter after that goes back to rendering. I imagine it'll take another week to finish that up but since I'll be back at work again I won't have as much time to do this.
+
+Once I'm finished I think I'll take this entire diary and rejig it into something more akin to a small book. It'll take a bit of editing and cleaning up but it could be worth it.
 
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
