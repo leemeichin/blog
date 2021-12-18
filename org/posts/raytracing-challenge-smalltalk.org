@@ -1150,6 +1150,75 @@ I still have to deal with rotation and shearing, as well as allowing for chainin
 
 Next update tomorrow will focus on the next chapter, which takes me back to rendering.
 
+** Day 8.5
+
+I thought I'd do matrix rotations while I'm here.
+
+*** Rotating matrices
+
+#+begin_src smalltalk
+  RTCMatrix»rotating: point
+      "Calculate a 3 dimensional rotation matrix given point."
+      | rotateX rotateY rotateZ |
+
+      rotateX := (self identity: 4)
+          at: 1@1 put: point x degreesToRadians cos;
+          at: 1@2 put: point x degreesToRadians sin negated;
+          at: 2@1 put: point x degreesToRadians sin;
+          at: 2@2 put: point x degreesToRadians cos.
+
+      rotateY := (self identity: 4)
+          at: 0@0 put: point y degreesToRadians cos;
+          at: 0@2 put: point y degreesToRadians sin;
+          at: 2@0 put: point y degreesToRadians sin negated;
+          at: 2@2 put: point y degreesToRadians cos.
+
+      rotateZ := (self identity: 4)
+          at: 0@0 put: point z degreesToRadians cos;
+          at: 0@1 put: point z degreesToRadians sin negated;
+          at: 1@0 put: point z degreesToRadians sin;
+          at: 1@1 put: point z degreesToRadians cos.
+
+      ^ rotateX * rotateY * rotateZ.
+#+end_src
+
+The book implements this as three separate functions but since you can chain transformations by multiplication, I thought I'd do it in one shot.
+
+For example, to rotate along the X axis I can call ~#rotate: (RTCPoint x: 45 y: 0 z: 0)~, where the value is the number of degrees to rotate.
+
+The reason this works is basically because the sine of 0 is zero, but the cosine of 0 is 1. The transformation matrices for each axis of rotation use the cosine value along the diagonal, and since it started with an identity matrix the result of rotating 0 degrees ~x~, ~y~, or ~z~ is just another identity.
+
+Interestingly enough, this doesn't work with scaling. Scaling a matrix by 0 in all directions is as good as removing it, whereas scaling by 1 in all directions is equivalent to identity.
+
+**** Testing this shit
+
+Unfortunately this is a bit more awkward because I'm not getting fractional objects back this time, just straight floats. I've not figured that one out just yet.
+
+I also broke my environment by printing out a line in one of the array comparison methods. Self DOS, yay!
+
+I'll figure out a way but I'll probs have to do it the ugly way by looping through the matrix and doing inexact float comparisons and more strict comparisons for everything else.
+
+The main problem is that you can't just compare the full list in linear fashion if you're dealing with a non-square matrix, because a 2x3 and 3x2 matrix will look different despite containing the exact same data underneath.
+
+So, I've ended up with a looser equality function that does the job:
+
+#+begin_src smalltalk
+    RTCMatrix»hasEqualElements: other
+        "Answer if this matrix is like the other matrix."
+
+        (rows = other rows) ifFalse: [ ^ false ].
+        (columns = other columns) ifFalse: [ ^ false ].
+
+        0 to: rows - 1 do: [ : row |
+            0 to: columns - 1 do: [ : col | 
+                ((self at: row@col) closeTo: (other at: row@col))
+                    ifFalse: [ ^ false ]]].
+
+        ^ true
+#+end_src
+
+My ~=~ function delegates to this one. ~closeTo~ basically compares numbers within a value known as ~epsilon~, which is something like 0.00001. It allows you to compare floats whena direct equality would cause a failure if the number was off by one at the 12th decimal place.
+
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
 [fn:3] https://pharo.org/, https://squeak.org, and https://www.gnu.org/software/smalltalk/ respectively
