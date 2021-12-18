@@ -866,10 +866,10 @@ Therefore, to get the first column of a row, you multiply that number by the num
 
 #+begin_src ruby
   rows = 4
-  row_0_col_0 = matrix[0 * rows] #=> 1
-  row_1_col_0 = matrix[1 * rows] #=> 0
-  row_2_col_0 = matrix[2 * rows] #=> 0
-  row_3_col_0 = matrix[3 * rows] #=> 0
+  row_0_col_0 = matrix[0 * cols] #=> 1
+  row_1_col_0 = matrix[1 * cols] #=> 0
+  row_2_col_0 = matrix[2 * cols] #=> 0
+  row_3_col_0 = matrix[3 * cols] #=> 0
 #+end_src
 
 If you want the row instead, you need to find where it ends too. You already have the start of the row from above, so to get the end you simply have to add the number of columns to it, subtracting one because you already have the first value: ~row_0_col_0 + (num_cols - 1) = 0 + 4 - 1 = 3~. Put those two together and you can slice your row out.
@@ -1032,9 +1032,128 @@ The chapter after that goes back to rendering. I imagine it'll take another week
 
 Once I'm finished I think I'll take this entire diary and rejig it into something more akin to a small book. It'll take a bit of editing and cleaning up but it could be worth it.
 
+** Day 8
+
+I couldn't resist, so I did some refactoring today based on what I learned over the past week. My matrix implementation is now based on a flat array and I do some arithmologics to access rows, columns and cells within it. Didn't need to change any of the tests except for how I actually created the instances - they all passed without changing the actual assertions.
+
+*** Deriving a tuple from a matrix
+
+I realised I could also refactor my tuple code, so that a tuple would really be a 1x4 matrix. In fact, if I want to do transformations then it's in my best interest to do this otherwise I'll have to litter the code with matrix conversions. And since a matrix is simply a flat array under the hood now, it means I can share some logic.
+
+As with the other refactoring, the test suite covered my ass well enough that changing the underlying structure was fairly trivial.
+
+For example, a lot of the operations are now basic operations on arrays which means I can lean on Smalltalk's standard library. The dot product of two tuples now looks like this:
+
+#+begin_src smalltalk
+  RTCVector»dot: other
+      "Calculate the dot product of this vector and another vector"
+      ^(self data * other data) sum
+#+end_src
+
+*** Getting on with it
+
+The yak shaving is out of the way so now I should be able to proceed more easily.
+
+That said, this is also the point where I should think about the messages I want to pass rather than trying to copy the API presented by the book. For example, it makes more sense for me to send a message called `translate` to a tuple, rather than overloading my multiplication operator. I can deal with the transform matrix internally.
+
+#+begin_src smalltalk
+  RTCTupleTest»testTranslatePoint
+      | pointA pointB expected |
+
+      pointA := RTCPoint x: -3 y: 4 z: 5.
+      pointB := RTCPoint x: 5 y: -3 z: 2.
+
+      expected := RTCPoint x: 2 y: 1 z: 7.
+
+      self assert: expected equals: (pointA translate: pointB).
+#+end_src
+
+Given the above test, I can satisfy it with the following implementation:
+
+#+begin_src smalltalk
+    RTCTuple»translate: to
+        "Translate the tuple to the given point."
+        | transform |
+
+        transform := RTCMatrix translation: to.
+
+        ^self class fromList: 	
+            ((0 to: rows - 1) collect: [ :row |
+                ((transform rowAt: row) * self data) sum ]).
+#+end_src
+
+Knowing this, I can probably make my multiplication operator do the heavy lifting, as I'll be re-using this quite often when implementing various transforms. The multiplication stays the same but the transform matrix is different each time.
+
+#+begin_src smalltalk
+  RTCMatrix»* other
+    "Answer with this matrix multiplied by the other matrix."	
+    | matrix |
+
+    "If other is a tuple (point / vector), calculate a new point/vector."
+    (other isKindOf: RTCTuple) ifTrue: [
+        ^ other class fromList: ((0 to: other rows - 1) collect: [ :row |
+            ((self rowAt: row) * other data) sum ])].
+    " ... rest of method"
+#+end_src
+
+The rest of that is still pretty ugly, since I hacked it together about a week ago and it was designed around the old nested data structure. It still works as intended, so I've not changed it yet.
+
+**** Inverted transformation matrices
+
+The book mentions that using an inverted matrix has the effect of reversing the direction of the translation. I've been thinking about skipping this, but looking ahead it appears that I'll need it for other transformations. For example, an inverted translation is the same as translating by using a negated point (e.g. ~pointA * -pointB~). However, that doesn't necessarily track for a scale transform because the equivalent will actually give you a /reflection/ instead.
+
+*** Scaling, reflecting, rotating
+
+Thanks to the refactoring, all I need to do to implement this is create some more transformation matrices. Fundamentally all I'm doing with these is taking an identity matrix and then setting certain values within it.
+
+For example, translating looks like this, where ~x~, ~y~, and ~z~ correspond to the destination point:
+
+#+begin_src text
+  1 0 0 x
+  0 1 0 y
+  0 0 1 z
+  0 0 0 1
+#+end_src
+
+And scaling looks like this:
+
+#+begin_src text
+  x 0 0 0
+  0 y 0 0
+  0 0 z 0
+  0 0 0 1
+#+end_src
+
+Multiply this with the point or vector you want to mess with and you will get the desired effect. I'm just setting these up with basic class methods on my matrix class.
+
+#+begin_src smalltalk
+  (class)RTCMatrix»translation: point
+      "Answer with a transformation matrix that can perform translate"
+      | matrix |
+
+      matrix := self identity: 4.
+
+      matrix at: 0@3 put: point x;
+             at: 1@3 put: point y;
+             at: 2@3 put: point z.
+
+      ^ matrix.
+#+end_src
+
+Same deal for the other ones really. Once they're set up, you just multiply them by a point or vector for the intended result.
+
+*** Finishing for the day
+
+A good summary of changes done today can be found on the git repo I've got set up[fn:7].
+
+I still have to deal with rotation and shearing, as well as allowing for chaining transformations for efficiency's sake. I know what I'm doing there now though.
+
+Next update tomorrow will focus on the next chapter, which takes me back to rendering.
+
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
 [fn:3] https://pharo.org/, https://squeak.org, and https://www.gnu.org/software/smalltalk/ respectively
 [fn:4] https://www.libsdl.org/
 [fn:5] https://uk.bookshop.org/a/6865/9783952334102
 [fn:6] https://git.sr.ht/~mrlee/RayTracerChallenge
+[fn:7] https://git.sr.ht/~mrlee/RayTracerChallenge/log
