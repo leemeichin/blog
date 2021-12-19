@@ -1219,6 +1219,50 @@ So, I've ended up with a looser equality function that does the job:
 
 My ~=~ function delegates to this one. ~closeTo~ basically compares numbers within a value known as ~epsilon~, which is something like 0.00001. It allows you to compare floats whena direct equality would cause a failure if the number was off by one at the 12th decimal place.
 
+** Day 9
+
+Just a quick one today. I finished off that last chapter and did the rendering challenge.
+
+#+ATTR_HTML: :src /img/raytracing-challenge-smalltalk/fakeclock.png
+[[../../assets/img/raytracing-challenge-smalltalk/fakeclock.png]]
+
+#+begin_aside
+I drew this as a 50px image and then scaled it up so the result was actually visible.
+#+end_aside
+
+Works exactly as the example said it would! A nice way to show that what I've got so far is for a purpose, but it definitely took more effort than I imagined to get to this point.
+
+The code for it is pretty simple, but I tripped up at first because I decided that I'd pass /degrees/ of rotation into my ~#rotate:~ method and then convert it to radians internally, because degrees are nice and simple to reason with. Of course, the code examples do the conversion to radians up front and I forgot that.
+
+Here it is, anyway...
+
+#+begin_src smalltalk
+  r := RTCRenderer new.
+
+  center := 400.
+
+  1 to: 12 do: [ :h |
+      p := RTCPoint x: 0 y: 0 z: 1. 
+      deg := (360 / 12) * h.
+
+      p := p rotate: (RTCPoint x: 0 y: deg z: 0 ).
+
+      p := p scale: (RTCPoint x: 300 y: 1 z: 300).
+
+      p := p translate: (RTCPoint x: center y: 0 z: center ).
+
+      r drawPixelAtPoint: (p x@p z) withColor: (RTCColor r: 255 g: 0 b: 0)
+  ].
+
+  r writePNG: 'fakeclock.png'.
+#+end_src
+
+I haven't done anything with chained or fluent interfaces so far but that's partly because I see it more of an API design challenge than a ray tracing one.
+
+Also, since all of the code is immutable and changes are made by creating /new/ objects, I think I'd have to build a special class for chaining operations, such that I had something that /could/ hold state. The cascading operator would make this super easy.
+
+Chapter 5 is all about ray-sphere intersections so things should start to get more interesting now, if they weren't already interesting.
+
 [fn:1] http://raytracerchallenge.com/
 [fn:2] https://wiki.c2.com/?PurpleBook
 [fn:3] https://pharo.org/, https://squeak.org, and https://www.gnu.org/software/smalltalk/ respectively
