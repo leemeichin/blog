@@ -1,0 +1,81 @@
+#+title: Getting to know your customers
+#+date: <2022-01-01 Sat>
+#+category: personal
+
+
+There was one time where I thought that being a software developer meant that I just had to get good at writing code, because to my mind the main thing I was producing in my time at work was, well, code.
+
+This was back at an agency called New Bamboo, and it was my first job both in London, and as a programmer doing Ruby. I only had one year of professional experience writing PHP code--everything else was self-learning and freelancing as a favour--so this is going back to the dawn of my career. I was incredibly fortunate to work there, with a group of people who placed immense value on potential and growth.
+
+After a few months of onboarding, pairing, learning about scrum and agile, and working on internal projects to make sure I was up to speed, it was time to rotate on to client projects. We had our home-grown mix of Scrum and XP (Extreme Programming) which basically meant that we worked projects primarily in pairs with one of our scrum masters and a product owner we requested from the client.
+
+I was still new to all of this, especially after spending 12 months being given commands top-down from a manager in his corner-office, but the support was immense and leadership was done entirely by example. So I could learn a lot just by paying attention and learning by that same example.
+
+We were highly committed to our process here, because we'd empirically found that it was successful for us. One key aspect was communication between ourselves and also with the client: if we found out that there was an unanticipated blocker or something else would cause us to miss the sprint, we'd discuss this with our scrum master and the scrum master would communicate it to the product owner. Oftentimes this was a case of bargaining: because of X we've realised we actually need to do Y sooner than we thought, so can we swap it with Z to keep things moving? In other cases, we just fucked up and underestimated the effort of some story, so we come clean and work it out in the next retrospective (which the product owner was always involved in).
+
+The process of delivering software, in that sense, was more like a weekly dialogue between the team (of which the client was a part). We didn't take a client and tell them to come back in 3 months when we're done.
+
+I'm describing this now because it's basically the setup for my first 'come to Jesus' moment as a software engineer. I was only 6 months into the job at the time and the unexpected inevitably happened. The sprint wasn't going that well and I thought the best way to rescue it was to code my way out of it, without telling the scrum master or the product owner what was actually going on. This had the secondary effect of stressing me out because I couldn't actually code my way out of the problem.
+
+If you're not aware of the Dunning-Kruger effect[fn:1], it's essentially the feeling that you're capable of climbing Mount Everest because you've successfully tackled a flight of stairs. For me, the experience of learning Ruby and Rails over the course of that year had been exaggerated into a much larger feeling of skill and competence, so I thought I was more competent than I actually was.
+
+Realising what was going on, I was taken aside for a conversation. Firstly to see how I was feeling, because I wasn't handling my emotions well at the time, and secondly to impart some wisdom that has stuck with me for the decade since:
+
+#+begin_quote
+Writing code is one of the least important parts of being a good developer, what matters most is that you know how to work with the client.
+#+end_quote
+
+It's been a long time so I'm sure it was worded more succinctly than that, but the message was that they knew I was great at writing code but that we needed to spend time improving my skills in other areas. Because if I couldn't work well with the client and proactively communicate, then what good is all of that code for?
+
+My internal reaction was that if I didn't take this advice on board, I'd be out of a job soon enough. I really enjoyed working there so I started to open my mind to the other aspects of software dev. The prevailing theme was that we got to know our client, and we also did our best to get to know their intended customers.
+
+Most of our work revolved around that and we treated our culture around that quite dearly. To this date, the scrum masters who I worked with at New Bamboo remain to be some of the best people I've worked with; easily top-of-class in the field.
+
+-----
+
+Jump forward to 2015 and I'm in Barcelona, and it's my first day at a small, 30-person startup called Typeform. I'd certainly matured as a software developer in my formative years at New Bamboo, but that was hardly the end of the journey.
+
+In many ways, the onboarding process at Typeform was the same as it is in most places: you get your laptop and other equipment, you get your email account and other logins, you say hello to people and have some intro meetings, then you're given somewhere to sit so you can set up and get to grips with things.
+
+Except... you also had to spend your first two weeks on the Customer Success (CS) team. So, I was given my stuff and sat down with the CS team at one of their empty desks, and after some introductions I was given a Zendesk account and some mentoring. Full immersion!
+
+For a full fortnight I was responding to tickets and referring the difficult ones to the experienced CS members on the team. Sometimes I could just ask for some help and then respond myself. In between gaps I'd do some setup of my environment and figure out what the code was like, and gradually get to know my future team mates, but my primary responsibility was still support.
+
+The reason for doing this was because they wanted everyone who worked at the company to know what the experience was like for the users, and what it was like to support the product.
+
+We dogfooded the product heavily at the same time, often inventing unusual use-cases in the same way that many users tend to create novel workflows with a product. We stuffed onboarding materials into Typeforms, we used them for traditional surveys, we even used them as slide-decks such that all our presentations were done through Typeform. Because that's what users would also try to do!
+
+At its core, this was fundamentally an act of empathy, dare I say compassion. It drove the company culture and actively demonstrated that whatever internal notion we had of "the right way" to use our product, it would not hold true in reality.
+
+This was amazing to me, especially still being a young, starry-eyed developer, yet to be irreparably jaded with cynicism. I thought that we should do it more regularly, so that it's not a one-time experience when joining the company.
+
+Beyond that, though, it objectively made me a better developer: I started to consider features in terms of how it would feel like for a user to interact with them. I would start to say, "if I had to use this, it would be frustrating to have to click so many times to reach this page," or "I'm worried about making this change because I don't want the CS team to deal with the fallout." It wasn't done with the intention of getting my way, it was just to keep in touch with the people who would ultimately be using the stuff we delivered, and so that we could still explain /why/ we were building a certain thing in a certain way. It went hand-in-hand with the user research we had and the data collected, which would often point us in a good direction, and it was always useful to give things a final pass before we committed to building them.
+
+In that sense, it was an act of empathy not just to the users, and the support staff, but to our future selves who might have to revisit those decisions many months down the line.
+
+The added benefit was that having a close, and positive, relationship with the CS team meant that we could build internal tooling that measurably solved their own problems. That gave them more time to spend with the customers instead of wasting it jumping through internal hoops.
+
+-----
+
+Of course, I'm romanticising these experiences somewhat. They weren't perfect, we weren't perfect...but the underlying principles were good ones. Great ideas with oftentimes flawed execution, but nothing that can't be reflected upon and improved.
+
+So, when a US food delivery company called DoorDash announced they require all staff to do a delivery (or some unknown other duty) once a month [fn:2], I found myself in strong agreement with the practice.
+
+What better way to know you're building the right thing for your users when you can experience it for yourself? User research and discovery is great, but imagine what you see when you put yourself in those shoes.
+
+This obviously can't be applicable in every industry, but for your typical tech startup... why not? As a software engineer, product manager, or anyone higher up in the org chart, you are basically offerered the unique position to identify common pain-points in the product you build and even find a priority for them. This is an opportunity that is typically not available to the people working on the 'front lines', who use the software you design, plan, and build day to day, unless enough of those people report an issue for it to be tracked as a problem.
+
+If you refuse to use the product in that way, then how confident can you be that you are building the right thing and not just building something the right way?
+
+In this sense, my disappointment in the sort of people who turn their nose up to this hands-on-work is fairly noticeable. Personally I think that a software engineer in the US who can earn almost /half a million/ in total compensation--easily six figures a year in salary--can afford to spend a little time understanding what their users actually experience. And while there are absolutely valid reasons for not doing that, it's hard to claim that 'not my job' is one of them. In fact, it's hard not to interpret that as being somewhat elitist, as if the work is below you.
+
+I get my kicks as a software engineer by delivering something that people value. Maybe they find joy in it, maybe it makes their life easier, maybe something is better as a result; it could be anything really. It's often an indirect feeling, but I can get a taste for it if I actually become a user or a customer myself.
+
+I mean, if I feel frustrated about it, probably other people do too. If I feel impressed or happy, there are also people out there who feel likewise.
+
+So, in that sense, I think I'm a bit skeptical of people in tech who don't express interest in getting to know the people who use their software. And I like DoorDash's idea of setting this up as a monthly practice (although I'd draw the line at tying it into performance reviews - I think the experience you get would speak for itself compared to someone who chooses not to have it).
+
+For me, it all comes back to those first to stories. The one where I thought I could do well by just writing code (wrong), and the one where I couldn't even start writing code until I'd spent time using and supporting the product.
+
+[fn:1] https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect
+[fn:2] https://www.marketwatch.com/story/doordash-will-require-all-workers-to-deliver-goods-or-perform-other-gigs-and-some-of-them-arent-happy-11640300491
