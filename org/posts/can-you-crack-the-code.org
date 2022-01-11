@@ -14,19 +14,19 @@ I presume you've seen this kind of puzzle before: there is a lock that requires 
   🔐 _ _ _ _
 
   *9* *2* *8* *5*  
-  ◊p{One number is correct, but in the wrong place.}
+  One number is correct, but in the wrong place.
 
   *1* *9* *3* *7*  
-  ◊p{Two numbers are correct, but in the wrong place.}
+  Two numbers are correct, but in the wrong place.
 
   *5* *2* *0* *1*  
-  ◊p{One number is correct, and is in the right place.}
+  One number is correct, and is in the right place.
 
   *6* *5* *0* *7*
-  ◊p{None of the numbers are correct, in any place.}
+  None of the numbers are correct, in any place.
 
   *8* *5* *0* *4*  
-  ◊p{Two numbers are correct, but in the wrong place.}
+  Two numbers are correct, but in the wrong place.
 #+end_src
 
 -----
@@ -86,13 +86,13 @@ Let's try one more thing, which should explain enough about Prolog to be dangero
   president(X), cheese(X). % brie.
 #+end_src
 
-/Now we're cookin' wi' gas/ as we'd say back up north. A lot of what you do in prolog is chain little sentences like this together (using the comma operator ~,~, which means ~and~), and in this instance we're asking Prolog to get all the presidents, put them in ~X~, and then show me only the presidents that are also a cheese. The ~.~ finishes the sentence, or the query. Let's do a similar query to wrap this intro up, and you can see if your guess at the answer is the same as what this produces.
+/Now we're cookin' wi' gas/ as one might say. A lot of what you do in prolog is chain little sentences like this together (using the comma operator ~,~, which means ~and~), and in this instance we're asking Prolog to get all the presidents, put them in ~X~, and then show me only the presidents that are also a cheese. The ~.~ finishes the sentence, or the query. Let's do a similar query to wrap this intro up, and you can see if your guess at the answer is the same as what this produces.
 
 #+begin_src prolog
   president(X), person(X). % trump, obama.
 #+end_src
 
-This is more or less the essence of Prolog, and your program is essentially a database of facts and rules, and then you use the program by querying those facts and rules. You'll make a query by providing what you _do_ know, and then placing a variable (or a placeholder) in the spots where you don't know the answer. You don't tell Prolog how exactly to compute that answer. And with that explained, I think we can try and crack this code.
+This is more or less the essence of Prolog, and your program is essentially a database of facts and rules, and then you use the program by querying those facts and rules. You'll make a query by providing what you /do/ know, and then placing a variable (or a placeholder) in the spots where you don't know the answer. You don't tell Prolog how exactly to compute that answer. And with that explained, I think we can try and crack this code.
 
 ** Doing some l33t haxx0ring
 
@@ -106,19 +106,19 @@ Here's the puzzle again, for reference:
   🔐 _ _ _ _
 
   *9* *2* *8* *5*  
-  ◊p{One number is correct, but in the wrong place.}
+  One number is correct, but in the wrong place.
 
   *1* *9* *3* *7*  
-  ◊p{Two numbers are correct, but in the wrong place.}
+  Two numbers are correct, but in the wrong place.
 
   *5* *2* *0* *1*  
-  ◊p{One number is correct, and is in the right place.}
+  One number is correct, and is in the right place.
 
   *6* *5* *0* *7*
-  ◊p{None of the numbers are correct, in any place.}
+  None of the numbers are correct, in any place.
 
   *8* *5* *0* *4*  
-  ◊p{Two numbers are correct, but in the wrong place.}
+  Two numbers are correct, but in the wrong place.
 #+end_src
 
 -----
@@ -155,7 +155,7 @@ These clues don't really mean anything by themselves, they're simple facts in Pr
   wrong(Digit, [D|Ds]) :- Digit #\= D, wrong(Digit, Ds).
 #+end_src
 
-I'll leave the in-depth explanation of these rules to another post for the sake of brevity, and also because I'm not that much of a Prolog expert. These are all used to add meaning to the facts, as with these rules we can now define logic such as /one number is correct but in the wrong position}, and ◊em{none of the numbers are correct/. We just have to painstakingly mix and match them.
+I'll leave the in-depth explanation of these rules to another post for the sake of brevity, and also because I'm not that much of a Prolog expert. These are all used to add meaning to the facts, as with these rules we can now define logic such as /one number is correct but in the wrong position/, and /none of the numbers are correct/. We just have to painstakingly mix and match them.
 
 The next bit is quite long, but this query is where we make the sausage. Commentary will be written inline for ease of copy and paste, until I come back and edit this post with a more digestible version.
 
