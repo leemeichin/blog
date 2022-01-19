@@ -1,0 +1,45 @@
+#+title: Coupling and cohesion in fast-scaling teams
+#+date: <2022-01-18 Tue>
+#+category: startups
+
+In the world of software engineering, the concepts of coupling and cohesion become relevant in the architecture of an application as it grows in size. You might hear about it in terms of SOLID principles[fn:1], or when you read a book like Clean Code[fn:2]. In general, if two things are /tightly coupled/ then it's really hard, perhaps even impossible, to change one of them without affecting the other; and if two things are /loosely coupled/ or /decoupled/ then they can be changed more or less independently. Cohesion, it's close friend, is a more squishy concept that describes how snugly those things fit in the context of the whole.
+
+But we're not here to talk about software engineering and architecture, we're here to talk about 🙌 *The Org* 🙌. You know it as well as I do; that mythical multi-cellular creature that consumes Venture Capital and digests it into Annually Recurring Revenue. The good old goose that lays the golden egg, as it were.
+
+A startup in its earliest days will consist of a small, tightly-knit team. You would be able to count that team on one hand, perhaps even just a few fingers, and it'll be cross-functional by necessity because people in small startups have to wear more than one hat. In this sense, the org--however tiny it is--is both tightly coupled and highly cohesive, because there is a high level of interdependence between members of the org and also because everyone will have been selected for their commitment to the vision and the goal of that startup. It follows, then, that such an organisation (I'm using team and org interchangeably here because they're small enough to be one and the same) would be doomed to fail if it lacked cohesion or wasn't very tightly knit.
+
+This is not the only situation where technology has a habit of imitating the organisation (or /the org/ or /the org chart/ for short), or vice-versa. The same small startup is liable to favour a monolithic, organically grown solution more befitting of a prototype, because the more urgent need is to find product-market fit and not build a monument to technical excellence. And infrastructural tech like Kubernetes, for example, is as much a solution for orchestrating software development teams as much as it is for orchestrating microservices. Service Oriented Architecture (SOA) and Domain Driven Design (DDD) are arguably process-driven solutions for bringing order to a chaotic organisation, or at least attempting to because they'll never manage to neatly categorise and pack away /all/ of the entropy in a business.
+
+To bring this back to the topic, there might be a point where your tiny startup hits primetime and the wads of cash thrown by VCs are starting to pile up around your feet. Seems like a good time to invest it in growth before it starts to burn a hole in your pocket, eh? And so your small five-person team rather quickly turns into a ten-person team, and then there are twenty-five, fifty, eighty, a hundred, five hundred... Expanding a team is like opening a can of Pringles.
+
+Everything that worked when you were small and only a few people had to be responsible for it all is now going to start creaking under the weight of this rapidly expanding organisation. The natural solution here is to take inspiration from prior art, which might mean that you enjoyed the sound of 'The Spotify Model'[fn:3], which means that you try and portion up the organisation into a collection of chapters and squads or find other fun-sounding names for it (hives, swarms and honeycombs? You know who you are 😉).
+
+The problem, though, is not how you choose to name your various new business units--name them after the houses at Hogwarts if you really want to[fn:4]--it's how they will gradually tend to separate and become more decoupled, and therefore independent. This alone is not necessarily an issue, because different aspects of an organisation really do need to become autonomous and concurrent as things grow, but leave it unchecked and you might begin to see a problem with cohesion. Cohesion in this sense can be many things depending on where you look, but at the highest level it would be the overall mission, vision, and/or strategy.
+
+Such a rapidly scaling business (and therefore team) can lose internal consistency and as a result, become less aware of the need to co-operate. An over-correction for autonomy and the ability to solve more problems in parallel can unintentionally create an Every Team For Themselves style of environment, which will eventually become culture if left unchecked. There are a few noticeable symptoms of this:
+
+- Different teams independently encounter a problem and independently produce a solution; each attempt at a fix is different to the previous attempts
+- Silos are formed and ownership becomes more tribal, you almost have to pass the buck by necessity
+- The things that are collectively owned may become neglected in part because of the bystander effect (another team that knows better is probably dealing with the issue)
+- The number of generalists who can maintain a holistic overview becomes vanishingly small in comparison to the number of specialists working on their own services
+- Knowledge becomes more distributed and decentralised so it's difficult to find the information you need, if it even exists
+- The product itself suffers because the the user experience changes depending on which team owns it and what their design philosophy is
+
+This isn't to say that those things are all fundamentally bad, because the alternative is complete uniformity, everything decided from the top down, with no ability to be autonomous and therefore creative and innovative. They're just things that could become obstacles to innovation and advancement if they're neglected.
+
+Basically, the gradual loss of organisational cohesion is a fast way to rack up a whole heap of organisational debt and the more you have, the more it takes to pay it off. Same as that old technical debt you know and have grown to love.
+
+Where am I going with this, then? There isn't a single solution here that works for everyone: a business is a large and complex organism and its culture and history is going to play a large part in how it meets such challenges. I'm going to describe one approach that I'm quite fond of, though.
+
+** The internal bazaar
+
+Your mileage here is obviously going to vary, so let's talk about an ideal situation where such an organisation has already switched to using microservices or some kind of SOA to help organise the infrastructure and clear up ownership boundaries. This means that many teams will maintain ownership of individual APIs, frontend applications, and other processes as well as some pieces that still exist in a monolithic application. The goal is to keep these various moving parts fairly loosely coupled, if not entirely decoupled, such that a failure in one team doesn't unduly impact other teams elsewhere that might depend on their functionality.
+
+If you've worked on a codebase where the API on the backend is maintained separately to the frontend, which is a web-based client, and then sold that full package as a B2B or B2C product, then you might already know where this is going. It's pretty much the story of any modern technical startup.
+
+In this situation, you improve your chance of success by maintaining a good store-front, which means that the services you own have excellent API documentation as well as solid product-level documentation. Perhaps this is exposed through a portal your team manages (maybe this is through clever usage of Notion, Confluence, or some other tooling that makes it easy to self-host and maintain).
+
+[fn:1] https://en.wikipedia.org/wiki/SOLID
+[fn:2] https://uk.bookshop.org/a/6865/9780132350884
+[fn:3] the first result when searching for this is ironically from Atlassian, I'm not going to link it
+[fn:4] Hufflepuff would clearly be the highest performing team... /obviously/
