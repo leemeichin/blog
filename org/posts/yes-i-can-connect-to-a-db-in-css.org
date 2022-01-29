@@ -1,0 +1,297 @@
+#+title: Yes, I can connect to a DB in CSS
+#+date: <2022-01-28 Fri>
+#+category: shitpost-project
+
+As they're wont to do, a certain tweet was floating around the interwebs for a while the other week.
+
+#+ATTR_HTML: :src /img/yes-i-can-connect-to-a-db-in-css/tweet.jpg
+[[../../assets/img/yes-i-can-connect-to-a-db-in-css/tweet.jpg]]
+
+#+begin_quote
+Recruiters be like:
+
+We're looking for someone who can connect to the database using CSS.
+#+end_quote
+
+It's been a hell of a long time since I last embarked on a quality shitpost project[fn:1], in fact it's been so long that back then I probably didn't even have the word /shitpost/ in my vocabulary.
+
+To that end, I was partially inspired by an earlier shitpost project based on a blockchain startup's projection of their investors' faces onto 3D cubes.[fn:2] Reminds me of the old days of the internet when everything was just /weird/.
+
+I'm not looking to write a recipe here so I'll spare you the life story. Instead, I'm going to talk about how I managed my own new shitpost project: sqlcss.xyz[fn:3]
+
+#+ATTR_HTML: :src /img/yes-i-can-connect-to-a-db-in-css/example.png
+[[../../assets/img/yes-i-can-connect-to-a-db-in-css/example.png]]
+
+As the name might suggest, this is how you connect to a database using CSS. It only works in Chrome, unfortunately, but you can provide any SQLite database you like and query it via CSS.
+
+How does it work?
+
+----
+
+A new set of APIs affectionately known as Houdini[fn:4] give your browser the power to control CSS via its own Object Model in Javascript. In English, this means that you can make custom CSS styles, add custom properties, and so on.
+
+Possibly the biggest feature to come out of this work is the CSS Paint Worklet[fn:5], which allows you to 'paint' on an element, not unlike the Canvas you know and love, and have the browser treat it as an image in CSS. There are some examples to play with at houdini.how[fn:6].
+
+However, this worklet provides only a subset of the Worker API, and the canvas context itself is also heavily stripped down. The practical result of this is that your custom CSS painting code provides a smaller sandbox than you might have expected.
+
+What does that mean? You have no network access, so you can kiss ~fetch~ and ~XmlHttpRequest~ goodbye. You have no ~drawText~ functionality on the paint context. Various other JS APIs have also vanished, just in case you were hoping to work around some of those issues.
+
+No need to worry, though. All is not lost. Let's break this down into steps.
+
+---
+
+** 1. Setting up the database
+
+This has to be the first step, to understand if a proof of concept is even possible.
+
+There's a library called ~sql.js~[fn:7]. It's quite literally a version of SQLite compiled into WebAssembly and old-skool ASM.js via emscripten. We can't use the WASM version unfortunately, because it has to fetch a binary over the network. The ASM version doesn't have this limitation though as all of the code is available in a single module.
+
+While the PaintWorklet restricts network access inside the worker, you are still allow to ~import~ code as long as it's an ES6 Module. That means the file has to have an ~export~ statement somewhere inside it. Unfortunately, sql.js doesn't have an ES6 only build so I modified the script myself to make this work.
+
+Now for the moment of truth: can I set up a database inside my worklet?
+
+#+begin_src javascript
+  const SQL = await initSqlJs({
+    locateFile: file => `./${file}`,
+  });
+
+  const DB = new SQL.Database();
+#+end_src
+
+Success! No errors. But no data either, so let's fix that.
+
+** 2. Querying the database
+
+Easiest thing to do at the start is set up some fake data. Sql.js has a couple of functions to do precisely that.
+
+#+begin_src javascript
+  DB.run('CREATE TABLE test (name TEXT NOT NULL)')
+  DB.run(
+    'INSERT INTO test VALUES (?), (?), (?), (?)',
+    ['A', 'B', 'C', 'D']
+  )
+#+end_src
+
+I've got my test table with some values in it now. I should be able to query this and get those values back, although I'm not sure how the result will be structured.
+
+#+begin_src javascript
+  const result = DB.exec('SELECT * FROM test')
+  console.log(result)
+#+end_src
+
+Results are there, as expected. It would be nice to actually render this result though.
+
+** 3. Rendering the results, the easy way
+
+I assumed this would be just like writing text to a canvas. How hard can that be, right?
+
+#+begin_src javascript
+class SqlDB {
+  async paint(ctx, geom, properties) {
+    const result = DB.exec('SELECT * FROM test');
+    ctx.font = '32px monospace';
+    ctx.drawText(JSON.stringify(result), 0, 0, geom.width);
+  }
+}
+#+end_src
+
+Nah, that would have been too simple. The context here isn't the same as the context you can get for a canvas element, it only provides a subset of functionality.
+
+It can still draw paths and curves, of course, so the lack of a convenient API is an impediment but not a dealbreaker.
+
+** 4. Creating text without a text API
+
+Luckily, a library called opentype.js[fn:8] offers hope of a solution. It can parse a font file and then, given a string of text, generate the letterforms of each character. The practical result of this operation is a path object that represents the string, which can then rendered into my context.
+
+I don't have to modify the opentype library to import it this time, as it's already available from JSPM[fn:9]. If you give JSPM an npm package, it'll autogenerate an ES6 module that you can import directly into your browser. This is fantastic because I really didn't want to have to fuck around with a bundling tool for the sake of a joke project.
+
+
+#+begin_src javascript
+  import opentype from 'https://ga.jspm.io/npm:opentype.js@1.3.4/dist/opentype.module.js'
+
+  opentype.load('fonts/firasans.otf')
+#+end_src
+
+One problem here though - it wants to load a font over the network and I can't do that! Gah, foiled again!
+
+...Or am I? It also has a ~parse~ method that accepts an array buffer. I'll just base64 encode the font then and decode it in my module.
+
+#+begin_src javascript
+  import opentype from 'https://ga.jspm.io/npm:opentype.js@1.3.4/dist/opentype.module.js'
+  import base64 from 'https://ga.jspm.io/npm:base64-js@1.5.1/index.js'
+
+  const font = 'T1RUTwAKAIAAAwA ... 3 days later ... wAYABkAGgAbABwAIAKM'
+
+  export default opentype.parse(base64.toByteArray(font).buffer)
+#+end_src
+
+Did I tell you that the worklet doesn't have the APIs for handling base64 strings either? Not even ~atob~ and ~btoa~? I had to find a plain JS implementation for that, too.
+
+I put this code in its own file because it's not very...ergonomic...to have to work around a 200kb string of encoded font alongside the rest of the code.
+
+And that's how I abused an ES module to load my font.
+
+** 5. Rendering the results, the /other/ easy way
+
+The opentype library does all the heavy lifting from now on, so all I need to do is a little mathemology to align things nicely.
+
+#+begin_src javascript
+  import font from './font.js'
+
+  const SQL = await initSqlJs({
+    locateFile: file => `./${file}`,
+  });
+
+  const DB = new SQL.Database();
+
+  DB.run('CREATE TABLE test (name TEXT NOT NULL)')
+  DB.run(
+    'INSERT INTO test VALUES (?), (?), (?), (?)',
+    ['A', 'B', 'C', 'D']
+  )
+
+  class SqlDB {
+    async paint(ctx, geom, properties) {
+      const query = DB.exec('SELECT * FROM test')
+      const result = query[0].values.join(', ')
+
+      const size = 48
+      const width = font.getAdvanceWidth(queryResults, size)
+      const point = {
+        x: (geom.width / 2) - (width / 2),
+        y: geom.height / 2
+      }
+
+      const path = font.getPath(result, point.x, point.y, size)
+      path.draw(ctx)
+    }
+  }
+
+  registerPaint('sql-db', SqlDb)
+#+end_src
+
+Better had do some HTML and CSS to see what's happening.
+
+#+begin_src html
+  <html>
+    <head>
+      <script>
+        CSS.paintWorklet.addModule('./cssdb.js')
+      </script>
+      <style>
+        main {
+          width: 100vw;
+          height: 100vh;
+          background: paint(sql-db);
+        }
+      </style>
+    </head>
+    <body>
+      <main></main>
+    </body>
+  </html>
+#+end_src
+
+It works, but there's not enough CSS here and the query is hardcoded.
+
+** 6. Querying via CSS
+
+It would be better if you had to use CSS to query the database. In fact, that's the only way we can communicate with the paint worker from outside of its context as there is no messaging API like with normal workers.
+
+For this, a custom CSS property is required. Defining ~inputProperties~ has the benefit of subscribing to changes to that property, so this will re-render if the value of that property ever changes. No need to set up any listeners ourselves.
+
+#+begin_src javascript
+  class SqlDb {
+    static get inputProperties() {
+      return [
+        '--sql-query',
+      ]
+    }
+
+    async paint(ctx, geom, properties) {
+      // ...
+      const query = DB.exec(String(properties.get('--sql-query')))
+    }
+  }
+#+end_src
+
+Those CSS properties are known as typed properties, but they're essentially boxed up in a special ~CSSProperty~ class that isn't very useful by itself. So you have to manually convert it to a string or a number or some such to use it, as above.
+
+Just a quick tweak to the CSS now.
+
+#+begin_src css
+  main {
+    // ...
+    --sql-query: SELECT name FROM test;
+  }
+#+end_src
+
+Quotes are deliberately omitted here because otherwise I would have to remove them from the string before passing it to the database. That said, this works well!
+
+*Mission Accomplished!*
+
+-----
+
+If you've played with sqlcss.xyz already you will have noticed that I didn't settle for that. After a bit of refactoring, a couple more changes were made.
+
+** 7. BYODB
+
+Hard-coding a database schema and, well, actual data, kinda sucks. It proves the concept but surely we can do better than that.
+
+It would be cool if you could query whatever database you liked, so long as you had the database file handy. I would just have to read that file and base64 encode it, like I did with the font file.
+
+#+begin_src javascript
+  const fileInput = document.getElementById('db-file')
+  fileInput.onchange = () => {
+    const reader = new FileReader()
+    reader.readAsDataURL(fileInput.files[0])
+
+    reader.onload = () => {
+      document.documentElement.style.setProperty(
+          '--sql-database',
+          `url('${reader.result}')`
+      )
+    }
+  }
+#+end_src
+
+I made an extra CSS property for that, where you can provide your SQLite database as a base64-encoded data URI. The data URI is basically just for show and to make sure it's valid for the DOM; I'll parse that stuff out on the worker side.
+
+The last step is to make it easier to query, because otherwise you have to go into your debugger to manipulate the CSS on an element.
+
+** 8. Write your own queries
+
+This is possibly the least complicated part of the project. The custom property has a bit of an issue with semicolons, and SQLite doesn't care if the trailing semicolon is omitted, so the easiest thing to do is delete it if it's found in the input.
+
+#+begin_src javascript
+  const queryInput = document.getElementById('db-query')
+  queryInput.onchange = () => {
+    let query = queryInput.value;
+    if (query.endsWith(';')) {
+      query = query.slice(0, -1)
+    }
+
+      document.documentElement.style.setProperty(
+      '--sql-query',
+      queryInput.value
+    )
+  }
+#+end_src
+
+Now you can use CSS to import and browse your own database!
+
+-----
+
+One thing I left out from all of this is how to nicely render the results when there are a lot of them and they need to be split up onto separate lines. That's not really related to connecting to a database via CSS so I decided it wasn't worth it, but the code is all available on git if you want to take this ridiculous concept even further.[fn:10]
+
+
+[fn:1] https://github.com/leemeichin/node_module
+[fn:2] https://twitter.com/tarngerine/status/1466288061034156033
+[fn:3] https://www.sqlcss.xyz
+[fn:4] https://developer.mozilla.org/en-US/docs/Web/Guide/Houdini
+[fn:5] https://developer.mozilla.org/en-US/docs/Web/API/PaintWorklet
+[fn:6] https://houdini.how/
+[fn:7] https://sql.js.org/
+[fn:8] https://opentype.js.org/
+[fn:9] https://jspm.org/
+[fn:10] https://git.sr.ht/~mrlee/sqlcss
