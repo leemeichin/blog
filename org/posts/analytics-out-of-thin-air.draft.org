@@ -1,0 +1,79 @@
+#+title: Scarping analytics out of thin air
+#+date: <2022-02-06 Sun>
+#+category: programming
+
+I published a post last weekend about how I technically connected to a DB in CSS[fn:1], and on Thursday I was surprised to see it sat proudly at the top spot on Hacker New's frontpage.
+
+It sat at the top spot for roughly 3 hours before gradually slipping down the list, which surely meant that my post and sqlcss.xyz got a fair amount of traffic.
+
+Let's take a look at some data...
+
+
+** There are no analytics
+
+... oh, we can't. I don't have any analytics set up. I did have Plausible at one point but at some point I decided that there was no need for it. I mean, when I write a post here I'm writing it for myself, for my own benefit; I don't try and figure out what kind of writing will get the most attention or traffic and then tailor my 'content' to that.
+
+To that extent my main metric basically comes from LinkedIn, which is really the only place I'll share my posts. LinkedIn's pretty much the only social media I'll permit myself to have because, at least for me, I don't feel tricked into endlessly scrolling through the feed to find things to get pissed off about. I can go in for about 30 seconds or so and see if there's something interesting near the top, and if there's nothing then the tab is closed and I've moved on to something else.
+
+Given that this post gained a decent amount of traction, I'm now curious to see how my server dealt with the load. In terms of monitoring and observability that ship has long sailed, but I can still learn something from my server logs!
+
+Let's park that for now, then, and talk about infrastructure.
+
+** Served with love from the UK ❤
+
+Back in the day, the best way to host a website was to pay a reseller a few bob a month for access to a shared setup with Apache and PHP installed on it. You'd be given access to it via FTP and you could drag and drop your site into the right folder for it to appear on the interwebs. If you were lucky you had SFTP too, which meant that you could use something over SSH instead, like rsync or scp.
+
+This was static site hosting before the concept of 'static site generation' was invented, and certainly before it became cool again. In fact, given the time period, JS wasn't really a thing either so PHP was what you used to make things dynamic.
+
+Anyway, I digress. These days there are a wealth of alternatives to choose from when you want to host a site. Heroku has a hobby tier to deploy several different kinds of app (but primarily Ruby on Rails); Netlify will host your static sites for free; GitHub Pages can be abused as a free website host; CloudFlare offers up Workers for you to use; then there's serverless stuff like Lambda with a million free requests a month or something. All of those options will likely have some built-in monitoring or server-side analytics dashboard.
+
+I've played with those to various extents but, for me, there's nothing better than getting your hands dirty and provisioning a server of your own. So, I pay a few bob a month (about £2.99) for a UK-based VPS running some version of Debian, and good old Apache 2. I can install whatever else I want on this bad boy (/slaps roof of car/).
+
+#+begin_aside
+DigitalOcean has a great selection of articles explaining how to provision a server and take the necessary steps to secure it.[fn:2]
+#+end_aside
+
+Am I showing my age? I checked the mirror this morning and saw a few grey hairs on my beard.
+
+** Server logs
+
+The only measurements I have so far are the ones I get from my hosting provider. All they show is that in January I wasn't really using any bandwidth and then in February I'd suddenly used over 30GB.
+
+Apache maintains an access log though, so I could pull something out of that I guess. It's just that it's rolled over a few times so the data's going to be spread across a dozen gzipped logfiles. Rather than working wonders with grep and wc, I should be able to import these into some monitoring tool.
+
+I do have to take privacy into consideration since those logs contain IP addresses, and some countries consider the IP address to be personally identifying information (PII). That means that I'm not interested in signing up for some 3rd party service and uploading these files into it; I've got to self-host it.
+
+What are my options?
+
+*** Elasticsearch, Logstash and Kibana
+
+This is known as the ELK stack, but I'm worried it might be a bit too heavy for my small box.
+
+I could run it on a dedicated machine but then I have to think about networking as well because I could expose the entire stack to the internet by mistake. Elasticsearch in particular didn't come with secure defaults for a long time. Even though that situation has since changed, it's still a reason to be careful.
+
+That said, the technology is /nice/. I could do a lot with Kibana.
+
+*** Prometheus
+
+I don't know much about Prometheus to be honest, but I think it's one of those go-to, no-brainer solutions that most companies will choose over alternatives. I mean, despite not knowing a great deal about it (and having only given it a cursory look), I still know the name of it.
+
+This could be a nice to have in general, as it can monitor the whole system and not just visualise log files. It seems like it'd require a plugin or some other integration to handle logs.
+
+*** Fluentd
+
+You know a tool is serious when it ends its name in 'd'. Systemd, initd, etcd, containerd, rc.d. If it calls itself out as a daemon then you know it's cool.
+
+Fluentd is only part of a solution as it will collect logs and metrics and such like and then defer the responsibility of visualising those things to something else. So, this might be a way to pipe logs into an ELK stack or into Prometheus.
+
+*** OpenTelemetry
+
+As with Fluentd, this doesn't directly give me what I want but might help me get there. It defines an open source protocol for monitoring, observability, and so on, so it's really up to other services to support it.
+
+I also realise at this point that I'm losing track of the original goal. Let's pull it back a bit and see if there's anything simpler.
+
+
+
+
+
+[fn:1] https://www.leemeichin.com/posts/yes-i-can-connect-to-a-db-in-css.html
+[fn:2] https://www.digitalocean.com/community/tutorial_collections/initial-server-setup
