@@ -1,0 +1,65 @@
+#+title: Head, heart or gut?
+#+date: <2022-03-12 Sat>
+#+category: personal
+
+If there's one thing I like writing about more than anything else, it's compassion, empathy, and intuition. It's a super squishy topic which means it's vulnerable, emotional, empowering, and ultimately human. I wish I could talk about it more than I do but sometimes I think the depth of it can be a bit intimidating because it can encourage a way of thinking that might feel uncomfortable. Might show you something you weren't previously aware of.
+
+At the same time, there is a /literally/ counter-intuitive feeling of comfort in the cold embrace of rationality and logic. It reduces the world to a finite set of simple, often mutually exclusive, constraints: this or that, that or the other; /X/ happened therefore /Y/[fn:1]. It's how we write software, even buzzword machine learning and artifical intelligence tech boils down to it because you can't really program a computer to imagine that it is something that it's not.
+
+Well, that intro was a little bit misleading. We do talk about intuition quite a lot, we just don't call it that. You've got your gut instinct, and the old dichotomy of listening to your head or following your heart.
+
+#+begin_aside
+Studies have actually suggested that the 'gut feeling' is linked to your diet, in particular the ecosystem of bacteria in your digestive system that helps you process the nutrients in your food, and that diet can affect your mental health.[fn:2] Similarly, studies have explored the concept of 'hangry' (angry because of hunger) and linked negative emotions to hunger.[fn:3] Finally, the feeling of boredom can itself manifest as wanting to eat.[fn:4]
+
+For the sake of this post, 'gut feeling' corresponds to an intuitive or instinctive thought in the idiomatic sense, not the scientifically researched one.
+#+end_aside
+
+I bring this up because I find myself in the middle of many conversations that actually give me something to take home and consider. They make me look back through a different lens and in a sense they offer extra context and squishiness to some things that, through stress, anxiety, burnout, and depression, I've boiled down into simple logical decisions to help me cope with a racing, ruminating mind.
+
+Basically I overthink, but it's not nuanced thinking, it's cynical, conspiratorial thinking because I have to rationalise things and it's so fucking easy to default to the least charitable interpretation. I'm talking about simple stuff like, if someone says they're leaving because they want more time with their family, in my head that is "made to resign." Maybe it is, but I've also resigned once or twice because my mental health was tanking, I was unhappy, and I decided that it's better to take myself out of the equation before I drag anyone else down with me. So I've played the 'leaving because of my health' card before and it was totally legit.
+
+See what I did there, I wrote that I /played the X card/ which is about as barefaced cynical about a motive as you can get. I just shut my own conversation down.
+
+Anyway... what was it about following your head, gut, heart?
+
+My favourite conversations are the ones that play with my self awareness. They're like earworms and I imagine this is how wisdom was imparted and recorded amongst civilisations before people were able to write. There was always someone who was able to say exactly the right thing at exactly the right time and it grew from a mere utterance into something more substantial, maybe something that is remembered. All of these are compassionate, empathetic and intuitive at their very root as the person sharing those thoughts has to actually have a decent picture of the person they're offering it to, they can't just say what you want to hear.
+
+So yeah, I've had a few of those lately and indeed it triggered an avalanche of thought, almost a miniature crisis.
+
+If I look back on my career, for example, it is almost entirely driven by impulse and a commitment to a momentary thought. When I moved to Barcelona to work for Typeform, the seed was planted when a close friend referred me for a position with Skype that could either be in London, or in Estonia. The thought of working in a different country was completely alien to me back then but it was almost like being given permission and encouragment. I tanked the interview, enjoyed two days in Tallinn, and even in the face of failure I'd basically set my heart on working my next job abroad, somewhere in the EU. To be honest I am embellishing that a bit, there was also someone that I liked who was in Barcelona and we made plans, so I was also following something else.
+
+Similarly, if I leave a job I often find that it's on principle and I'm thinking about both what I value and who I want to be working for. In general that means that I don't really feel aligned in what we care about, which is a recipe ripe for conflict, but also because when I was once intrinsically motivated, I no longer am. I can say with immense privilege that once you feel like you're earning what you're worth, you want other things to make your day to day more enjoyable. Classic Maslow I suppose.[fn:5]
+
+In my time as a software developer, my career ladder is basically the companies I've worked for, with, until I've got a payrise and a step up by moving to a different company. My heart wants me to be loyal to these places, and I look back so fondly on those times (New Bamboo and Typeform are particularly special to me); my head says, no, no more interviews, no more code tests (fucking code tests, bane of the industry... one for another post), even if you're unhappy, you can put up and shut up; my gut says, fuck it, do what you gotta do, head and heart are gonna hold you back.
+
+What about the job itself? You have to know what's worth keeping and what you can live without, and as long as it goes with the shared values you have between you and the company you work for, and with, it's a dynamic worth embracing. You're not going to get it right all of the time but your leadership will shine through if you find a good way to respond to that, knowing what various people (end users and colleagues alike) think.
+
+*What about the customers?*
+
+As a software engineer I feel like any code I write has to be in service of value or utlity to an end user. The best work I have ever done has been because I understood the needs of my end user at the time (and at one time it was the internal customer success team) and we figured out how to give them exactly what they wanted while cutting hours of busywork out of their day. The end user or customer is not necessarily the client who pays you money, it is just the people who you are writing the software for.
+
+I genuinely believe an agile mindset is a great way to make this happen, because I have both worked with it and been a practitioner of it. I should talk about this more in a separate post.
+
+In all of this, my head says you're going to hate the tech debt from this, my heart says stay with it because you've gotta be strong and it'll work out, and my gut says...I'm not really on board with this but I need to process it before I decide.
+
+In that sense, my heart, head and gut are aligned. I love doing work that has a direct and meaningful impact on people but it comes with a substantial risk because there's an element of doubt that you have to manage. Anything else is a path to dissatisfaction, delusion, or burnout.
+
+---
+
+My gut has won out every time and it shows on my LinkedIn profile where I've failed to keep a job for more than 18 months. But is tenure at a single company worth more than my mental health and happiness?
+
+My head says I'll be a senior engineer forever, reliving 2 years of work over and over again...my gut says fuck it, why does it matter.
+
+Yet still, there's a more uncomfortable conclusion...it's really hard to build software and a company around the people it's meant to serve, and to then stay in service of those people.
+
+But you can fix it by talking to people, not replacing everyone with telemetry and performance data. Stop tryinwg to optimise people out.
+
+
+
+
+
+[fn:1] https://xyproblem.info/
+[fn:2] https://www.bmj.com/company/newsroom/anxiety-might-be-alleviated-by-regulating-gut-bacteria/
+[fn:3] https://psycnet.apa.org/buy/2018-27534-001
+[fn:4] https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4381486/
+[fn:5] https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs
