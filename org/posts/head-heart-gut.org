@@ -52,9 +52,6 @@ My head says I'll be a senior engineer forever, reliving 2 years of work over an
 
 Yet still, there's a more uncomfortable conclusion...it's really hard to build software and a company around the people it's meant to serve, and to then stay in service of those people.
 
-But you can fix it by talking to people, not replacing everyone with telemetry and performance data. Stop tryinwg to optimise people out.
-
-
 
 
 
