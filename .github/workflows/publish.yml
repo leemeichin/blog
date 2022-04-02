@@ -6,7 +6,9 @@ on:
 
 jobs:
   publish:
-    - uses: purcell/setup-emacs@v3.0
-      with: 27.2
-    - uses: actions/checkout@v2
-    - run: ./bin/publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: purcell/setup-emacs@v3.0
+        with: 27.2
+      - uses: actions/checkout@v2
+      - run: ./bin/publish
