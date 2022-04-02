@@ -1,0 +1,12 @@
+name: publish
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    - uses: purcell/setup-emacs@v3.0
+      with: 27.2
+    - uses: actions/checkout@v2
+    - run: ./bin/publish
