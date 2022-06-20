@@ -25,6 +25,8 @@
 (sup 'pollen-mode)
 (sup 'prolog)
 
+(sup '(el-patch :type git :host github :repo "emacsmirror/ox-rss"))
+
 (require 'ox-publish)
 (require 'ox-rss)
 
