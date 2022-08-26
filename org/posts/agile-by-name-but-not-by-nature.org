@@ -1,0 +1,23 @@
+#+title: Agile by name, but not by nature
+#+category: agile
+#+date: <2022-08-26 Fri>
+
+#+begin_aside
+This is an old post, originally written in 2014 during my time at New Bamboo. You can find the original in the web archives[fn:1]
+#+end_aside
+
+
+Agile is dead! Long live agility![fn:2] A very befitting eulogy to the spirit of Agile, I'm sure, but also an unnecessary one. I think it picks the wrong battle.
+
+The whole premise of Dave's argument (and every supporter of it) is one of semantics. You are not Agile, you merely exhibit agility. You, as an authentic practitioner, are the verb to the snake oil salesman's noun.
+
+The beef is that Agile has been twisted in such a way that it's a label for what you are, and not who you are, and at that point the choice to disown or change the name is utterly futile. You're not solving anything, you're just buying time.
+
+Agile is not the practice of herding up your team at 10am to meet for meetings' sake. It is not the practice of offering flexibility and empowerment to your team whilst giving your client a deadline and a set of commitments. You would be forgiven for thinking that it is, because enough people have done it such that the definition of Agile has changed. That's how language works.
+
+This is not a unique problem, but you can easily tell the difference between someone who sells themselves on the name, and someone who has absorbed the pure essence and exudes it. You have people who follow the letter of Agile but totally ignore the spirit of it, and they appear to outnumber everybody else.
+
+So, call it what you want, but the people for whom Agile comes naturally don't need the name at all.
+
+[fn:1] https://web.archive.org/web/20140625125723/http://new-bamboo.co.uk:80/blog/2014/04/04/agile-by-name-but-not-by-nature
+[fn:2] https://web.archive.org/web/20140625125723/http://pragdave.me/blog/2014/03/04/time-to-kill-agile/
