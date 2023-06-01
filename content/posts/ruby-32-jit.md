@@ -1,0 +1,90 @@
+---
+title: Trying out YJIT in Ruby 3.2
+date: 2023-01-04
+---
+
+This isn't going to be a deep dive into YJIT, benchmarking it and such like, just a few quick tips to get started with it yourself. First things first, though, some context!
+
+### What's YJIT?
+
+Yet another entry in the Yet Another series, YJIT is a new just-in-time compiler for Ruby. When you run your application, Ruby will optimise it on-the-fly depending on which code paths are accessed more frequently than others. That's the layman's definition anyway. Javascript in your browser relies heavily on JIT to perform as well as it does, because it (and Ruby) are dynamic languages and not statically compiled.
+
+### Why should I try it out?
+
+You might enjoy a boost in performance, but how much of a boost you get--if any--depends entirely on how you've built your application. You'd have to benchmark your own code and compare it against your existing metrics to see what kind of benefit you might enjoy.
+
+However, this doesn't apply only to your application! You might see some positive results on your test suite too, especially if it's a big one that takes a bit of time to run.
+
+------
+
+Enough fluff, here's how you can try this both locally and through Docker. I've chosen those two methods in particular as there are already convenient ways to get up and running without getting too hands on.
+
+## Local setup with a version manager
+
+My weapon of choice is `rbenv` (which uses `ruby-build` behind the scenes) but my assumption is that you'll do fine with `asdf` or `rvm` or `chruby` or whatever else is out there these days.
+
+
+### 1. Install/update Rust
+
+First, make sure you have Rust installed. You can install through Homebrew on Mac or Linux and that'll do the job:
+
+```shell
+brew install rust
+```
+
+No guarantee you'll get a recent enough version on Debian or another Linux through their built-in package repositories though, and of course there's Windows, so Rustup[^1] is your friend. I won't copy the command here because you should inspect the shell script it expects you to execute.
+
+### 2. Install Ruby
+
+You don't need to do anything more than install the new Ruby. It'll detect that you have Rust installed and compile YJIT.
+
+```shell
+rbenv install 3.2.0
+```
+
+### 3. Enable the JIT
+
+Easiest way to do this is to use an environment variable, especially when you're not running the `ruby` command directly.
+
+```shell
+RUBY_YJIT_ENABLE=1 bundle exec rails s
+```
+
+Personally, I just enabled it for all my shells by default by updating my `~/.zprofile` config:
+
+```shell
+export RUBY_YJIT_ENABLE=1
+```
+
+To check that it's actually enabled, check for `+YJIT` in the output:
+
+```shell
+RUBY_YJIT_ENABLE=1 ruby -v
+
+# ruby 3.2.0 (2022-12-25 revision a528908271) +YJIT [x86_64-darwin22]
+```
+
+I ran the test suite of the API I work on at, er, work, and it consistently ran about 15 seconds more quickly than in Ruby 3.1. I'll take it!
+
+## Running in Docker
+
+This isn't available in the official Ruby image yet, **unless you're using the Alpine build**. If you're on Debian then it might be better to wait as it's still hosting an older, incompatible version of the Rust compiler.
+
+If you're using Alpine though, just update your image:
+
+```dockerfile
+FROM ruby:3.2.0-alpine
+
+ENV RUBY_YJIT_ENABLE=1
+```
+
+I didn't set the env var in the Dockerfile myself, I put it in our secrets manager so we could just turn it off and trigger a fresh rollout. But that'd do the job for you.
+
+Of course, when you're running this in production it's not exactly enough. You'll need to keep an eye on your monitoring and potentially tweak your resource requirements if you're running in Kubernetes, as the JIT will naturally require more memory than you might have provisioned for. Anyway, that's a topic for another time.
+
+-------
+
+The stable JIT is probably the most interesting part of the new Ruby release for me, but it's not the *only* interesting feature, as the Ruby maintainers have documented[^2].
+
+[^1]: https://rustup.rs
+[^2]: https://www.ruby-lang.org/en/news/2022/12/25/ruby-3-2-0-released/

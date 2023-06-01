@@ -1,0 +1,65 @@
+---
+title: Trust, and choosing your bottlenecks
+date: 2022-01-06
+category: work
+---
+
+I recently read a post called /No code reviews by default/, by a startup called Raycast[^1]. In summary, code reviews are optional and the team deploys nightly internal releases so that the changes introduced can be tested (or used) by the team themselves, because they all run this nightly build locally. They're eating their own dogfood.
+
+This works well in small, agile teams. It reminds me somewhat of Extreme Programming (XP)[^2] and also of the common practice of bypassing code review by pairing on a feature with a team mate. From the perspective of a young startup with only a handful of engineers working in the same physical space, there's a lot you can communicate face-to-face that might otherwise be more difficult to co-ordinate in a larger organisation.
+
+So, there's nothing inherently wrong about taking this approach. In a world where everything is a trade-off or an optimisation, they're optimising for delivery rather than correctness. After all, there won't be much value in correctness if a startup uses six months of runway to build something right instead of figuring out the right thing to build.
+
+With that out of the way, let's talk about trust.
+
+\*\* Trust
+
+This post rationalises its decision to Not Do Code Reviews By Default not in terms of priorities, but essentially in the bond that the team members create between each other. To quote the article:
+
+#+begin_quote
+_Pull requests discourage trust._
+
+Proposing every code change that somebody else has to approve doesn't feel encouraging for teams that should operate with a high degree of trust. There are more efficient ways to collaborate on code.
+#+end_quote
+
+I wholeheartedly challenge this notion that code review (or peer review as you might call it) discourages trust, or the implication that teams that /do/ require code review don't operate with a high degree of trust. I believe that if you find yourself in a position where code review genuinely does discourage trust, then it's not a problem related to reviewing code but a problem of /mindset/. This might be your individual mindset, which is easier to change, or one that has grown to become a cultural mindset within the team or organisation, which is harder to change.
+
+The purpose of a code review, from both my perspective and my experience, is not to second-guess or critique a colleague's work. There isn't an inherent characteristic of a code review that one should feel threatened by such that it's seen as not-trusting. As a matter of fact, I hope that a team would trust each other implicitly and operate on a basis of assuming good intentions--that we and our colleagues are doing the best with what we have at the time. In that sense, code reviews don't discourage trust but instead encourage empathy, as they also allow you to understand how your teammates consider a problem and approach a solution.
+
+So, what exactly /are/ code reviews, required or not? Code reviews are a process a team can use to share knowledge and to collaborate in an asynchronous manner--and I think the author of the Raycast post admits as much when claiming that there are more efficient ways to do this, which I'll address a bit further on. They provide a tighter feedback loop between engineers on a team so changes can be iterated on before entering a wider feedback loop at another stage of the delivery cycle.
+
+For example, based on my understanding of the Raycast post, it could take over a day for an engineer to receive feedback on a change they made because they would first have to wait for a nightly release to happen. A code review or a QA review could surface this feedback in a much shorter timeframe; we're talking hours or even minutes.
+
+The various other benefits of code review really depend on how effective they are, I think, and that also makes it a question of /what else/ you want to get out of them. I don't really want to get into why code reviews are good or bad though, as it's besides the point and there's no one way to do them well. Suffice to say, though, that code reviews that discourage trust are indicative of a more fundamental problem and if you find yourself in that environment, you ought to identify those underlying causes and find a way to address them.
+
+In a nutshell, you get out what you put in. And now is a good time to segue into bottlenecks.
+
+\*\* Bottlenecks
+
+If you've read The Phoenix Project[^3], you might remember a chapter with some messianic figure that guides the main character around a factory and describes the different stages of the manufactoring process. Work items are pushed onto and pulled from a production line, but at some stage the backlog is growing exponentially and boxes are stacking up. Work is arriving at that stage more quickly than it can be processed and moved on, so it's all backing up. The people working at earlier points in the production line aren't aware of this as they are happilly churning through their own backlogs; it all seems optimal to them. The people working at later points are under the impression that the entire thing is a shitshow that is falling apart at the seams, because all they see is the blockage behind them and the occasional work item slipping through.
+
+The moral of the story was that it's all about where you place your bottlenecks. In the context of software /delivery/ (not development, per se), a bottleneck is basically an obstacle that is intentionally placed at one--or possibly more--stages in the cycle in order to ensure certain requirements are met before a change can continue on its way to production.
+
+If, for example, you cut a new release at the beginning of the month and then promote it to production or general availability at the beginning of the following month, you have a bottleneck that serves to combine many changes into a single deliverable which will presumably make its way through Quality Assurance and other stages of validation to confirm that it's good to be deployed. While the delivery cycle continues for new releases, changes will stack up over the course of a month until they've been squeezed through the bottleneck and out of the other end, probably with a nice changelog, a new version number, and some user friendly release notes. The downside to this particular bottleneck is that it can take a whole month before your users can enjoy a new feature, which means that you are waiting a whole month for user feedback.
+
+A code review, then, is another bottleneck, albeit a smaller one. It's not there because you don't trust engineers to be able to deploy working software, it's there because the consequences of breaking something inside a pull request (PR) are far smaller than the consequences of finding that breakage after a release has been cut. The impact of that error, and the reach of it, is limited entirely to the context of that PR, and if a team mate spots it at that stage it will cost less than it would if the build in the main branch is broken and nobody else on the engineering team can do their work; or if the issue is found during QA after the release is already cut, meaning that the release can no longer go to production until it's resolved. This does come with the cost of slowing the team down a bit, though, because they have to find time to review the change and approve it.
+
+It doesn't /have/ to be there though, as startups like Raycast are demonstrating. Their bottlenecks will likely be in their main branch in their repo (via a test suite that can pass or fail a build) and also in their nightly release cycle. In that situation, a test failure after merging would likely become a showstopper for the entire engineering team until the issue is fixed and the build passes again. If it happens overnight for an internal release, then a whole day's worth of work is unable to be tested by anyone else until that situation is resolved. I would imagine that the high-trust environment described by the article is one without blame, such that the team is happy to rally around the cause to fix these problems if and when they happen.
+
+Of course, this is still better than having the bottleneck in production, which will turn even the most minor issue into a potential catastrophe.
+
+#+begin_aside
+As it happens, this blog has a bottleneck of its own: the CI pipeline after I commit this post in the main branch and push it upstream to Sourcehut. If the pipeline can't build or deploy my site, then the post simply won't be available for anyone to read until I've fixed the problem. And the only person affected by this failure is, well, me.
+#+end_aside
+
+In a continuous delivery (CD) system, the bottleneck introduced at the code-review stage may act as a barrier for QA, testing, validating requirements, and so-on, because there is nothing else to stop that change from hitting production once you've committed to merging it. But you might also use feature flags, canary builds, blue/green deploys, and gradual rollouts as a final-stage bottleneck to ensure that your users aren't the first ones to discover a problem. The benefit of doing this is that your users hardly have to wait at all to enjoy a new feature once you're happy to roll it out.
+
+All in all then, it's just a matter of trade-offs. /It Depends/. There's no right or wrong, it's a case of what you choose to optimise for and how you optimise for it.
+
+Is it a bad thing or is it worrying to not require code reviews? No, not really. Would it damange trust to start requiring them? Hopefully not, hopefully it's just a change in priority. Would it feel strange to transition from one way of working to the other, as someone who is used to reviewing code being encouraged not to ask for it? Absolutely.
+
+For what it's worth, in agile this is known as _Failing Fast_ and the same concepts would apply fairly generally to any aspect of product design, development and delivery.
+
+[^1]: https://www.raycast.com/blog/no-code-reviews-by-default/
+[^2]: http://www.extremeprogramming.org/
+[^3]: https://uk.bookshop.org/a/6865/9781942788294

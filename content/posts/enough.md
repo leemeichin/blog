@@ -1,0 +1,57 @@
+---
+title: Enough
+date: 2021-03-06
+category: personal
+---
+
+I'm driven by ambition, as are many of us. I don't think that you need to be ambitious to be successful, though, unless you reframe your perception of it. You can be enough; no more, no less.
+
+My ambition is fuelled by wanting to do more or wanting to do better, but on the flip-side it feels more like over-compensation.
+
+One particular habit I have, for example, is to work late on an off-day to try and feel like I've pulled my weight. It's counter-productive in the same way that you can't extract blood from a stone, but I need to prove my worth to myself so I'll try anyway.
+
+It's not as healthy as stepping back and getting back into it the next day. The current COVID lockdown doesn't help, but at some point that becomes another excuse.
+
+And... it's the classic case of doing less with more. The prospect of doing something instead of nothing is a seductive one.
+
+I'm reminded of the Politician's Syllogism[^1], which in this case would sound like this:
+
+> To be productive, I must do something
+>
+> I am doing something
+>
+> Therefore, I am being productive
+
+It's a circular definition and it also makes me think of the first time an agile team tries to write a user story:
+
+> So that I can log in / As a user / I need a log in system
+
+The problem with defining a problem in terms of itself is that it looks like you're doing something for the sake of it. No one really benefits from anything done for the sake of it, but it'll feel good and it'll likely come with a cost.
+
+So it is with ambition for the sake of ambition. Working towards something without knowing what that something is.
+
+When is it enough?
+
+At one point in time, I didn't really have a concept of this. There would always be more, always something to do better, always some way to _be_ better, by whatever definition 'better' had at the time.
+
+These days that feels more like an endless treadmill, always chasing the carrot dangling an arm's length away and beating yourself with the stick when you fail to reach it.
+
+Enoughness has to come from the inside, and not through extrinsic reward. You have to connect with the carrot within, as it were. We all have our inner carrots somewhere, just as we have the inner-critic primed with the stick.
+
+Honestly, I don't know why I wrote that, but I like how silly it sounds. I'm not always trying to be deadly-serious here 😋.
+
+A healthy level of ambition has its place, as life itself is a decades long process of introspection and adaptation and you can't settle on the false pretense that is perfection. And 'enoughness' isn't a global constant: you can feel enough in some ways while still feeling a lack in other places and they will surely shift over time.
+
+When I write like this, I tend to be in a more spiritually-minded place and not thinking on purely practical terms. The ideas of being enough, or having ambition, come to me through my own experiences and are absolutely rooted in my experience of being born and growing up. As it is for us all... good old nature vs. nurture.
+
+I remember, one time, being proud of getting 94% on a test at school (I must have been 13 or 14 at the time). Mum shut that shit down real quick and said "why didn't you get 100%?" Nothing was enough for her so even if I got 100% there would have been another nit to pick. I just accepted the admonishment; god forbid I answer back to my infallible parents.
+
+That kind of thing probably feels 'normal' at the time, until you look back on it years later and realise that you still remember it. And then go through other events in your life and see how that mentality has influenced everything.
+
+Anyway, it makes me wonder: how many things do I do just because I feel I have to? And what, or who, am I trying to make it up to?
+
+Am I enough? Certainly!
+
+Do I behave like I am? Not at all.
+
+[^1]: https://en.wikipedia.org/wiki/Politician%27s_syllogism
