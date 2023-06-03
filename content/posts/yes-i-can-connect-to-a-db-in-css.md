@@ -17,7 +17,7 @@ It's been a hell of a long time since I last embarked on a quality shitpost proj
 
 To that end, I was partially inspired by an earlier shitpost project based on a blockchain startup's projection of their investors' faces onto 3D cubes.[^2] Reminds me of the old days of the internet when everything was just /weird/.
 
-I'm not looking to write a recipe here so I'll spare you the life story. Instead, I'm going to talk about how I managed my own new shitpost project: sqlcss.xyz[^3]
+I'm not looking to write a recipe here so I'll spare you the life story. Instead, I'm going to talk about how I managed my own new shitpost project: sqlcss.leemeichin.com[^3]
 
 ![Example of SQL in CSS](../media/yes-i-can-connect-to-a-db-in-css/example.png)
 
@@ -230,7 +230,7 @@ Quotes are deliberately omitted here because otherwise I would have to remove th
 
 ---
 
-If you've played with sqlcss.xyz already you will have noticed that I didn't settle for that. After a bit of refactoring, a couple more changes were made.
+If you've played with sqlcss.leemeichin.com already you will have noticed that I didn't settle for that. After a bit of refactoring, a couple more changes were made.
 
 ## 7. BYODB
 
@@ -284,7 +284,7 @@ One thing I left out from all of this is how to nicely render the results when t
 
 [^1]: https://github.com/leemeichin/node_module
 [^2]: https://twitter.com/tarngerine/status/1466288061034156033
-[^3]: https://www.sqlcss.xyz
+[^3]: https://www.sqlcss.leemeichin.com
 [^4]: https://developer.mozilla.org/en-US/docs/Web/Guide/Houdini
 [^5]: https://developer.mozilla.org/en-US/docs/Web/API/PaintWorklet
 [^6]: https://houdini.how/

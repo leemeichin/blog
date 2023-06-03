@@ -1,5 +1,5 @@
-module leemeichin
+module github.com/leemeichin/blog
 
-go 1.19
+go 1.20
 
-require github.com/panr/hugo-theme-terminal v0.0.0-20221209145414-1d7e65f42e01 // indirect
+require github.com/clente/hugo-bearcub v0.0.0-20230425190722-f26d122b2ad0 // indirect
