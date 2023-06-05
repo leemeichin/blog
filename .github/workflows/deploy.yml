@@ -5,7 +5,8 @@ on:
     branches: [main]
 
 env:
-  DOCKER_IMAGE: ${{ secrets.DOCKER_REGISTRY }}/blog
+  DOCKER_REGISTRY: docker.internal.mrlee.dev
+  DOCKER_IMAGE: docker.internal.mrlee.dev/blog
 
 jobs:
   build:
@@ -27,7 +28,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          registry: ${{ secrets.DOCKER_REGISTRY }}
+          registry: ${{ env.DOCKER_REGISTRY }}
       - name: Define tags
         id: docker_metadata
         uses: docker/metadata-action@v4
@@ -63,6 +64,6 @@ jobs:
               event_type: 'rollout',
               client_payload: {
                 deployment: 'blog',
-                docker_image: '${{ needs.build.outputs.docker_image }}'
+                docker_image: '${{ needs.build.outputs.docker-image }}'
               }
             })
