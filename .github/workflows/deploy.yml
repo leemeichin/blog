@@ -41,9 +41,12 @@ jobs:
         with:
           builder: ${{ steps.arm-builder.outputs.name }}
           push: true
+          context: .
           cache-from: ${{ env.DOCKER_IMAGE }}
           tags: ${{ steps.docker_metadata.outputs.tags }}
-          platforms: linux/arm64          
+          platforms: linux/arm64
+      - name: Test outputs
+        run: echo "${{ toJSON(steps.docker_build.outputs) }}"
         
   deploy:
     runs-on: ubuntu-latest
