@@ -27,7 +27,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: ${{ secrets.DOCKER_REGISTRY }}
       - name: Define tags
-        id: docker_tags
+        id: docker_metadata
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.DOCKER_IMAGE }}
@@ -41,8 +41,12 @@ jobs:
           builder: ${{ steps.arm-builder.outputs.name }}
           push: true
           cache-from: ${{ env.DOCKER_IMAGE }}
-          tags: ${{ steps.docker_tags.outputs.tags }}
+          tags: ${{ steps.docker_metadata.outputs.tags }}
           platforms: linux/arm64
+      - name: Check outputs
+        run: |
+          echo "${{ steps.docker_metadata.outputs.json}}"
+          
         
   deploy:
     runs-on: ubuntu-latest
