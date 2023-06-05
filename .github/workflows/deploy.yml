@@ -36,17 +36,14 @@ jobs:
           tags: |
             type=raw,value={{date 'YYYYMMDDHHmm'}}
       - name: Build and Push
+        id: docker_build
         uses: docker/build-push-action@v4
         with:
           builder: ${{ steps.arm-builder.outputs.name }}
           push: true
           cache-from: ${{ env.DOCKER_IMAGE }}
           tags: ${{ steps.docker_metadata.outputs.tags }}
-          platforms: linux/arm64
-      - name: Check outputs
-        run: |
-          echo "${{ steps.docker_metadata.outputs.json}}"
-          
+          platforms: linux/arm64          
         
   deploy:
     runs-on: ubuntu-latest
@@ -63,6 +60,6 @@ jobs:
               event_type: 'rollout',
               client_payload: {
                 deployment: 'blog',
-                docker_image: '${{ env.DOCKER_IMAGE }}'
+                docker_image: '${{ env.DOCKER_IMAGE }}@${{ steps.docker_build.outputs.imageid }}'
               }
             })
