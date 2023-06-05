@@ -43,4 +43,4 @@ home = ['HTML', 'RSS', 'JSON']
 
 [module]
 [[module.imports]]
-  path = 'github.com/kaiiiz/hugo-theme-monochrome'
+  path = 'github.com/janraasch/hugo-bearblog'
