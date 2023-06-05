@@ -46,6 +46,7 @@ jobs:
           push: true
           cache-from: ${{ env.DOCKER_IMAGE }}
           tags: ${{ steps.docker_tags.outputs.tags }}
+          platforms: linux/arm64
         
   deploy:
     runs-on: ubuntu-latest
@@ -59,8 +60,9 @@ jobs:
             github.rest.repos.createDispatchEvent({
               owner: context.repo.owner,
               repo: 'epona',
-              event_type: 'deploy:blog',
+              event_type: 'rollout',
               client_payload: {
+                deployment: 'blog',
                 docker_image: '${{ env.DOCKER_IMAGE }}'
               }
             })
