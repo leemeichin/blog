@@ -4,10 +4,6 @@ on:
   push:
     branches: [main]
 
-permissions:
-  id-token: write
-  contents: write
-
 env:
   DOCKER_IMAGE: ${{ secrets.DOCKER_REGISTRY }}/blog
 
