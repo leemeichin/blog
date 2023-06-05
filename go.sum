@@ -1,2 +1,4 @@
 github.com/clente/hugo-bearcub v0.0.0-20230425190722-f26d122b2ad0 h1:voCbfSmQ+zbSwKcUfYuQA89BCHGzpduS+SrWuAGLiK4=
 github.com/clente/hugo-bearcub v0.0.0-20230425190722-f26d122b2ad0/go.mod h1:apcY0kKQY+CnkwsWuHiEfSrBusQgEsfAp9g065sNLFg=
+github.com/kaiiiz/hugo-theme-monochrome v1.0.1 h1:Bzx+rghZ6sJaUWdCQt+cQb5JMj88u+2x7zdSipXw/2s=
+github.com/kaiiiz/hugo-theme-monochrome v1.0.1/go.mod h1:la906j3s0e3SFjWmXPM84sX8b/WU1wejqR6XaGmBO2I=

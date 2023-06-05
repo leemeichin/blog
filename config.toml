@@ -7,9 +7,10 @@ title = 'Lee Meichin'
 
 [params]
   author = 'Lee Meichin'
-  footer = '&copy; 2020-2023, Lee Meichin'
+  footer = '&copy; 2020-2023 Lee Meichin 🥰'
   enable_toc = true
   enable_collapsible_changelogs = true
+  enable_collapsible_toc = true
   enable_site_search = true
   enable_open_graph = true
   enable_twitter_cards = false
