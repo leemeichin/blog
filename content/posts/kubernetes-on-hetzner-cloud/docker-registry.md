@@ -1,5 +1,5 @@
 ---
-title: Private docker registry
+title: Docker registry
 date: 2023-06-05
 category: hetzner-k3s
 bookcase_cover_src: /kubernetes-on-hetzner-cloud/docker.svg

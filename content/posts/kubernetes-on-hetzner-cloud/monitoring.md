@@ -1,5 +1,5 @@
 ---
-title: Prometheus monitoring
+title: Monitoring
 date: 2023-06-05
 category: hetzner-k3s
 bookcase_cover_src: /kubernetes-on-hetzner-cloud/monitoring.svg
