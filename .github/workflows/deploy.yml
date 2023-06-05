@@ -10,6 +10,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      docker-image: "${{ env.DOCKER_IMAGE }}@${{ steps.docker_build.outputs.digest }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -45,12 +47,10 @@ jobs:
           cache-from: ${{ env.DOCKER_IMAGE }}
           tags: ${{ steps.docker_metadata.outputs.tags }}
           platforms: linux/arm64
-      - name: Test outputs
-        run: echo "${{ toJSON(steps.docker_build.outputs) }}"
         
   deploy:
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: build
     steps:
       - name: Trigger deploy
         uses: actions/github-script@v6
@@ -63,6 +63,6 @@ jobs:
               event_type: 'rollout',
               client_payload: {
                 deployment: 'blog',
-                docker_image: '${{ env.DOCKER_IMAGE }}@${{ steps.docker_build.outputs.imageid }}'
+                docker_image: '${{ needs.build.outputs.docker_image }}'
               }
             })
