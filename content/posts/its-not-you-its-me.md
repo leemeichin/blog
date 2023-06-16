@@ -1,0 +1,35 @@
+---
+title: It's not you, it's me
+date: 2023-06-16
+category: personal
+---
+
+I recently left my remote job, one I'd been working at for close to three years in total. It's pretty much been my life since COVID, as it has been for many, which meant that much of that time was spent in some form of lockdown with only brief moments of respite.
+
+Over the past couple of weeks during my break between jobs I've started to digest my thoughts and feelings about the whole experience, especially in contrast with my previous remote experience when I lived in Latvia.
+
+The long and short of it is that I feel that remote working accelerated my burnout. That doesn't mean that remote working is bad and people should get their arses back to the office, it simply means that remote working and me aren't very compatible with each other and over the past few years I've struggled or outright failed to meet my needs with it.
+
+I've posted multiple times about mental health and also my self-perception, which you might be familiar with if you've read old posts of mine. I'm not very kind to myself, I try too hard sometimes, and I'll feel like a failure if I'm not pleasing others. I've spent many years working on that but it is frustratingly easy to fall back into those old habits. 
+
+That's a pretty unkind--and biased--way to represent myself but it's a snapshot of the kind of stuff that goes through my mind when I'm under stress.
+
+The best way to maintain a work/life harmony while working remotely is to stick to a strong routine, which requires that you form new habits to enforce those new boundaries. Your workday is no longer bookended by a commute and your office is now a part of your home, so you've got to be good at stepping back. This is something I've personally struggled with, partly because I'm passionate about my work but partly because work is a convenient distraction from other aspects of life that are more difficult to focus on.
+
+In that sense, while I seem eager to hold myself to account in a highly self-critical manner when it comes to some things, that accountability is lost when it comes to maintaining a healthy routine and I don't really have much to show for the past few years outside of my job.
+
+There was one point where I managed to buck this trend, at the beginning of 2022, with the help of some external accountability...
+
+...Namely a personal trainer who helped me with my workout and my diet for several months for a princely sum. Money well spent to be honest and the flexibility of remote work gave me a lot of space to arrange my PT sessions at quiet times during the day, well outside of the morning and evening rushes. Working mostly asynchronously meant that I could catch up with most things on Slack after I was done instead of staying highly available for ad-hoc meetings all day. Both my manager and my team at the time were hugely supportive of this, knowing my tendency to overdo it, and that made all the difference.
+
+As you might have noticed, none of my commentary so far has really focussed on remote working itself, just on me, and that's the thing...it's not really about the environment it's about how you _are_ within it and how well it suits your circumstances. By that token, just because working from home isn't for me doesn't mean I will strip someone else of that opportunity.
+
+My next position is a hybrid one, which excites me because the external accountability will help with my routine. It's optional and it doesn't really matter to me if nobody else is present, because it's enough to just be out and in public without having to break the bank on my own coworking subscription.
+
+I also enjoy at least some face-to-face time when working. There's a lot you can achieve with people in the same room with effective facilitation. I'm not talking about your typical bullshit meetings that offer the impression of productivity, but getting people together to hash important things out and to build rapport and cohesion within the team.
+
+What encouraged me to ramble about this, anyway? Honestly...it's just looking back on my life and realising how much I lost myself in work at the expense of so many other things. That's all on me and nobody made me do it...but my existence post 2020 has been far less adventurous than what it was earlier on.
+
+In my mind it's because I got too comfortable with spending the majority of my time at home when, previously, I spent the majority of time away from it. I'm only 36 this year, so still very much young, so it's as good a time as any to make some change.
+
+And I feel like it's a good time to do that.
