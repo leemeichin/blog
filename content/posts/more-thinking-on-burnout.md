@@ -15,7 +15,7 @@ This got me thinking a bit, so I'm going to lay down some assumptions that have 
 
 So, how do you deal with it when you find out? The answer I commonly hear or read is to take a long break from work, we're talking maybe six months or a year, to focus on recovery or doing something else.
 
-I have a bone to pick with this answer primarily because it's steeped in economic privelege. *Anybody* would jump at the chance to take a huge break if they could afford it, but life has a way of getting in the way and not everybody manages to acquire the wealth required to pull this off.
+I have a bone to pick with this answer primarily because it's steeped in economic privilege. *Anybody* would jump at the chance to take a huge break if they could afford it, but life has a way of getting in the way and not everybody manages to acquire the wealth required to pull this off.
 
 I was fortunate to manage even a month of runway, and this is a total non-starter for anyone living payslip to payslip.
 
@@ -73,7 +73,11 @@ I think you just have to lay off on yourself a bit and understand that nobody el
 
 Ultimately, you're going to find your own way to deal with burnout and mitigate the effects of it, maybe even overcome it given enough time and patience.
 
-My favourite way of tracking this is through little gratitude journals and jotting down the things I managed to do on my calendar, because a calendar after all is just a reminder of events in a convenient layout. Right now it has 'wrote a blog post' and 'went to the gym' on 13 Aug 2023.
+My favourite way of tracking this is through little gratitude journals and jotting down the things I managed to do on my calendar, because a calendar after all is just a reminder of events in a convenient chronological layout. Right now it has 'wrote a blog post' and 'went to the gym' on 13 Aug 2023.
 
 
 The entire reason for this is to remember what you *can* do, *can* manage, and use it as a confidence boost to remind you that, no matter how hard a time you're having, you've got this.
+
+---
+
+My goal with this is that I'll take these thoughts and apply them in practice for 60 days, and then see how it turned out at the end and write about it.
