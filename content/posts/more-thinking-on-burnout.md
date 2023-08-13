@@ -31,7 +31,7 @@ I won't do both the gym and the walk on the same day because that's overdoing it
 
 ## Reading books to change your mindset
 
-I think that, when you're low on mental resources, it can feel like too much effort to do anything but mindlessly scroll through content on the internet and bathe in the quagmire of current affairs, politics, news and outrage. It passes the time but there isn't really anything to show for it, and especially in the case of Facebook or Instagram it can really amp up that feeling of missing out. It's not good for the soul when the soul needs nourishment more than ever.
+I think that, when you're low on mental resources, it can feel like too much effort to do anything but mindlessly scroll through content on the internet and bathe in the quagmire of current affairs, politics, news, outrage, and other people being more superior to you. It passes the time but there isn't really anything to show for it, and especially in the case of Facebook or Instagram it can really amp up that feeling of missing out. It's not good for the soul when the soul needs nourishment more than ever.
 
 For me this simply means that I'll pick up a book instead of pulling the phone out of my pocket, unless I'm actually talking to a friend. I tend to enjoy non-fiction books that help me get to grips with a problem I'm facing, or help me become better at what I do, and I try to pick the kind of book that makes me feel empowered or confident by reading it.
 
