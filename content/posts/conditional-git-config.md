@@ -10,8 +10,8 @@ All I need to do is run a small script to set most of my shit up:
 
 ```shell
 for config in \*/; do
-echo "Stowing: ${config}"
-stow -t $HOME $config
+  echo "Stowing: ${config}"
+  stow -t $HOME $config
 done
 ```
 
@@ -24,9 +24,6 @@ My config files are structure in a way that `stow` likes:
 │   └── .tool-versions
 ├── bash
 │   └── .bashrc
-├── duckypad
-│   ├── .config
-│   └── .folder.json
 ├── emacs
 │   ├── .emacs.d
 │   └── .gitignore
@@ -35,10 +32,6 @@ My config files are structure in a way that `stow` likes:
 ├── .gitignore
 ├── kitty
 │   └── .config
-├── polybar
-│   └── .config
-├── xmonad
-│   └── .xmonad
 └── zsh
 └── .zprofile
 ```
@@ -51,17 +44,17 @@ You also don't want to share your signing keys across purposes like that.
 
 If you're not interested in making your environment setup more complex, you can just leverage git for this.
 
-Here's part of my ~.gitconfig~ file:
+Here's part of my `.gitconfig` file:
 
 ```ini
-[includeIf "gitdir/i:~/source/personal/"]
+[includeIf "gitdir/i:`/source/personal/"]
 path = "~/.config/git/home-config"
 
-[includeIf "gitdir/i:~/source/work/"]
-path = "~/.config/git/work-config"  
+[includeIf "gitdir/i:`/source/work/"]
+path = "~/.config/git/work-config"
 ```
 
-My ~home-config~ is just a partial override of the main git config, like this:
+My `home-config` is just a partial override of the main git config, like this:
 
 ```ini
 [user]
@@ -77,7 +70,7 @@ It works in reverse too...when you're on the job, you can use this to make sure 
 
 How does it work?
 
-It's all in the ~[includeIf "..."]~ part of your config. The easy way is to stick to a particular directory structure. For me, I chose "Source/Work" and "Source/Personal": my work config activates when I'm in the ~Work~ folder and my personal one activates when I'm in ~Personal~.
+It's all in the `[includeIf "..."]` part of your config. The easy way is to stick to a particular directory structure. For me, I chose "Source/Work" and "Source/Personal": my work config activates when I'm in the `Work` folder and my personal one activates when I'm in `Personal`.
 
 That's not the only way you can do it, and the git manual shows you what else you can do.[^1]
 
