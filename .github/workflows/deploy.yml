@@ -1,0 +1,69 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+env:
+  DOCKER_REGISTRY: docker.internal.mrlee.dev
+  DOCKER_IMAGE: docker.internal.mrlee.dev/blog
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      docker-image: "${{ env.DOCKER_IMAGE }}@${{ steps.docker_build.outputs.digest }}"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Setup ARM Builder
+        id: arm_builder
+        uses: docker/setup-buildx-action@v2
+        with:
+          platforms: linux/arm64
+      - name: Authenticate Docker
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ${{ env.DOCKER_REGISTRY }}
+      - name: Define tags
+        id: docker_metadata
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.DOCKER_IMAGE }}
+          flavor: |
+            latest=true
+          tags: |
+            type=raw,value={{date 'YYYYMMDDHHmm'}}
+      - name: Build and Push
+        id: docker_build
+        uses: docker/build-push-action@v4
+        with:
+          builder: ${{ steps.arm-builder.outputs.name }}
+          push: true
+          context: .
+          cache-from: ${{ env.DOCKER_IMAGE }}
+          tags: ${{ steps.docker_metadata.outputs.tags }}
+          platforms: linux/arm64
+        
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Trigger deploy
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.EPONA_DEPLOY_TOKEN }}
+          script: |
+            github.rest.repos.createDispatchEvent({
+              owner: context.repo.owner,
+              repo: 'epona',
+              event_type: 'rollout',
+              client_payload: {
+                deployment: 'blog',
+                docker_image: '${{ needs.build.outputs.docker-image }}'
+              }
+            })
