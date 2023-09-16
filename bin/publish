@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-emacs --batch --no-init --load publish.el --eval '(org-publish "www.kamelasa.dev" t)'
-
-scp -o StrictHostKeyChecking=no -r publish/* deploy@kamelasa.mrlee.dev:/var/www/www.leemeichin.com
