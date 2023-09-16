@@ -1,7 +1,5 @@
 FROM silex/emacs:29.1 AS emacs
 
-RUN apk add --update git
-
 WORKDIR /home/build
 
 COPY . .
