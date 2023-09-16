@@ -1,5 +1,5 @@
 #+TITLE: Trying out YJIT in Ruby 3.2
-#+DATE: 2023-01-04
+#+DATE: <2023-01-04>
 #+CATEGORY: programming
 This isn't going to be a deep dive into YJIT, benchmarking it and such like, just a few quick tips to get started with it yourself. First things first, though, some context!
 

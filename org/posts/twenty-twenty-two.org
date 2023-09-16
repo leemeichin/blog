@@ -1,5 +1,5 @@
 #+TITLE: "Twenty Twenty-Two"
-#+DATE: 2022-11-07
+#+DATE: <2022-11-07>
 #+CATEGORY: personal
 
 At the start of the year I wrote a post about my outlook for this year. I signed it off with a desire to check back on it in six months or so and see how things turned out.

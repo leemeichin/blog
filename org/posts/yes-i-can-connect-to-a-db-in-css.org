@@ -1,5 +1,5 @@
 #+TITLE: Yes, I can connect to a DB in CSS
-#+DATE: 2022-01-28
+#+DATE: <2022-01-28>
 #+CATEGORY: shitpost-project
 
 As they're wont to do, a certain tweet was floating around the interwebs for a while the other week.

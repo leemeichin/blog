@@ -1,5 +1,5 @@
 #+TITLE: Work, life, and broken windows
-#+DATE: 2022-01-23
+#+DATE: <2022-01-23>
 #+CATEGORY: personal
 
 I've been working fully remotely for almost 18 months now. It's not a temporary measure, brought on by the Covid-19 pandemic, it's because the place I work is fully remote. No offices anywhere (just like Elastic and Gitlab, last time I checked). It's not my first rodeo either, thanks to previously enjoying a year of living and working by the Baltic coast in Jūrmala, Latvia.

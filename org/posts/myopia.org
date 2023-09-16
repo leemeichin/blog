@@ -1,5 +1,5 @@
 #+TITLE: Myopia
-#+DATE: 2023-03-06
+#+DATE: <2023-03-06>
 #+CATEGORY: personal
  
 I have a feeling that this post might say more about me than anything else, but given that I mostly write about my own experience anyway that probably isn’t such a problem.

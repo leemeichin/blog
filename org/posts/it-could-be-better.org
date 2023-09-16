@@ -1,5 +1,5 @@
 #+TITLE: It could be better
-#+DATE: 2023-06-22
+#+DATE: <2023-06-22>
 #+CATEGORY: personal
 
 Growing up in Britain, one learns how to stiffen one’s lip in the face of adversity. No matter /how/ something is—good or bad—one simply needs to say ‘could be worse’ and all will become right with the world.

@@ -1,5 +1,5 @@
 #+TITLE: Rewrite it in lisp again
-#+DATE: 2021-11-30
+#+DATE: <2021-11-30>
 #+CATEGORY: programming
 
 About six months ago I wrote a post about rewriting the tech that publishes this blog.[^1] It seemed like a good idea at the time to try and build something out in Racket and Pollen, and it was a learning experience.

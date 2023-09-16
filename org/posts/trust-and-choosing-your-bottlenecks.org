@@ -1,5 +1,5 @@
 #+TITLE: Trust, and choosing your bottlenecks
-#+DATE: 2022-01-06
+#+DATE: <2022-01-06>
 #+CATEGORY: work
 
 I recently read a post called /No code reviews by default/, by a startup called Raycast[^1]. In summary, code reviews are optional and the team deploys nightly internal releases so that the changes introduced can be tested (or used) by the team themselves, because they all run this nightly build locally. They're eating their own dogfood.
