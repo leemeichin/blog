@@ -2,7 +2,7 @@
 #+DATE: 2023-04-02
 #+CATEGORY: tech
 
-The term 'hedonic treadmill' was coined back in the 1970s to describe the tendency to revert to a baseline state of happiness over time. In one limited sense it works as a metaphor for chasing pleasure without a lasting sense of fulfilment: buying a brand new car, for example, is exciting at first and brings some joy, but some time later it's _just_ a car and maybe what would bring you some new joy is to upgrade it to a brand new car. Similarly, it's the idea of getting your phone upgraded every year - it's a new toy for the first few weeks and then just a phone until the next upgrade comes along.
+The term 'hedonic treadmill' was coined back in the 1970s to describe the tendency to revert to a baseline state of happiness over time. In one limited sense it works as a metaphor for chasing pleasure without a lasting sense of fulfilment: buying a brand new car, for example, is exciting at first and brings some joy, but some time later it's /just/ a car and maybe what would bring you some new joy is to upgrade it to a brand new car. Similarly, it's the idea of getting your phone upgraded every year - it's a new toy for the first few weeks and then just a phone until the next upgrade comes along.
 
 Alternatively it suggests adaptation and resilence, such that any particularly negative experiences may only be temporary blips before you climb back up to the baseline. 
 
@@ -24,7 +24,7 @@ My overall experience is that you get the best out of K8S with a team of SREs wh
 
 I started off excited about this though, and spent a lot of time learning how to use it and maintain it. These days my excitement is tempered but I appreciate knowing about it so I can work with it and help out in a pinch. 
 
-If anything, I expect K8S to be an inevitability in any startup and a migration to it is just a matter of time. K8S is choosing _build_ over _buy_ and you can get a hell of a lot out of Heroku, Render, Fly, Vercel, etc. before you make such an enormous commitment... if you can convince the org about that.
+If anything, I expect K8S to be an inevitability in any startup and a migration to it is just a matter of time. K8S is choosing /build/ over /buy/ and you can get a hell of a lot out of Heroku, Render, Fly, Vercel, etc. before you make such an enormous commitment... if you can convince the org about that.
 
 Similarly, I think letting teams host their own on Linode or Digital Ocean is unlikely to pass muster in any startup seeking any kind of compliance, if only because K8S has solved the job of provisioning workloads dynamically, making deployment a self-service problem.
 
@@ -38,7 +38,7 @@ I will admit to falling for the fantasy of building a brand new feature or busin
 
 If you want it, you should probably acquire intimate knowledge of the business's domains and design around those instead of taking the org chart as a given.
 
-Unfortunately this also seems to be an inevitability in many startups that want to 'replatform' the codebase and turn a monolithic architecture into a distributed one. I have never _not_ known that to be an expensive mistake but I remain to be convinced.
+Unfortunately this also seems to be an inevitability in many startups that want to 'replatform' the codebase and turn a monolithic architecture into a distributed one. I have never /not/ known that to be an expensive mistake but I remain to be convinced.
 
 Ultimately, it was exciting to be told each team could build stuff using the language of their choice with full autonomy, but it never played out that way. Just ends up with a meta-layer of management to keep it all in sync.
 
@@ -50,7 +50,7 @@ I was big on this, I loved the idea of it. In a way I still am and I still do be
 
 I would not even consider suggesting this now, though, unless there was a clear game plan for it. The problem isn't just the tech, or the event sourcing pattern, it's getting all of the engineers on board and understanding how to work with it, and to even agree if it was even needed in the first place.
 
-To that extent it's like microservices but you're not distributing the org-chart over a network, you're distributing business _data_ with the idea that it will be consumed many times. But what happens when most of the time you have have data that nobody understands, because it hasn't been designed for sharing?
+To that extent it's like microservices but you're not distributing the org-chart over a network, you're distributing business /data/ with the idea that it will be consumed many times. But what happens when most of the time you have have data that nobody understands, because it hasn't been designed for sharing?
 
 Yet still, I'd be happy to meet this challenge again and I'd find some enjoyment in it.
 
@@ -66,7 +66,7 @@ For me this is the circle you can't square; I was a scrum master and agile coach
 
 If you ask the internet I think you'll find more critics of agile than supporters. For every job I've worked, no matter what I've done to do my best, I keep getting pulled back into what I learned and did a decade ago in an agile/scrum/XP team.
 
-Agile for me has been good, and tremendously hard, but never outright _bad_.
+Agile for me has been good, and tremendously hard, but never outright /bad/.
 
 As far as the treadmill goes, this one keeps coming up and smacking my ankles to remind me it's still there.
 
