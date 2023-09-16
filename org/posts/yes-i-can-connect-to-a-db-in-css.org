@@ -37,7 +37,7 @@ No need to worry, though. All is not lost. Let's break this down into steps.
 
 ---
 
-## Setting up the database
+** Setting up the database
 
 This has to be the first step, to understand if a proof of concept is even possible.
 
@@ -57,7 +57,7 @@ const DB = new SQL.Database();
 
 Success! No errors. But no data either, so let's fix that.
 
-## 2. Querying the database
+** 2. Querying the database
 
 Easiest thing to do at the start is set up some fake data. Sql.js has a couple of functions to do precisely that.
 
@@ -78,7 +78,7 @@ console.log(result)
 
 Results are there, as expected. It would be nice to actually render this result though.
 
-## 3. Rendering the results, the easy way
+** 3. Rendering the results, the easy way
 
 I assumed this would be just like writing text to a canvas. How hard can that be, right?
 
@@ -96,7 +96,7 @@ Nah, that would have been too simple. The context here isn't the same as the con
 
 It can still draw paths and curves, of course, so the lack of a convenient API is an impediment but not a dealbreaker.
 
-## 4. Creating text without a text API
+** 4. Creating text without a text API
 
 Luckily, a library called opentype.js[^8] offers hope of a solution. It can parse a font file and then, given a string of text, generate the letterforms of each character. The practical result of this operation is a path object that represents the string, which can then rendered into my context.
 
@@ -127,7 +127,7 @@ I put this code in its own file because it's not very...ergonomic...to have to w
 
 And that's how I abused an ES module to load my font.
 
-## 5. Rendering the results, the *other* easy way
+** 5. Rendering the results, the *other* easy way
 
 The opentype library does all the heavy lifting from now on, so all I need to do is a little mathemology to align things nicely.
 
@@ -190,7 +190,7 @@ Better had do some HTML and CSS to see what's happening.
 
 It works, but there's not enough CSS here and the query is hardcoded.
 
-## 6. Querying via CSS
+** 6. Querying via CSS
 
 It would be better if you had to use CSS to query the database. In fact, that's the only way we can communicate with the paint worker from outside of its context as there is no messaging API like with normal workers.
 
@@ -230,7 +230,7 @@ Quotes are deliberately omitted here because otherwise I would have to remove th
 
 If you've played with sqlcss.leemeichin.com already you will have noticed that I didn't settle for that. After a bit of refactoring, a couple more changes were made.
 
-## 7. BYODB
+** 7. BYODB
 
 Hard-coding a database schema and, well, actual data, kinda sucks. It proves the concept but surely we can do better than that.
 
@@ -255,7 +255,7 @@ I made an extra CSS property for that, where you can provide your SQLite databas
 
 The last step is to make it easier to query, because otherwise you have to go into your debugger to manipulate the CSS on an element.
 
-## 8. Write your own queries
+** 8. Write your own queries
 
 This is possibly the least complicated part of the project. The custom property has a bit of an issue with semicolons, and SQLite doesn't care if the trailing semicolon is omitted, so the easiest thing to do is delete it if it's found in the input.
 
