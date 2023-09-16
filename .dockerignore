@@ -1,3 +1,4 @@
 .git
 publish
 .github
+.dir-locals.el
