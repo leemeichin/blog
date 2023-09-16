@@ -16,15 +16,15 @@ That was the easy, albeit boring, part. The real challenge was taking the bits a
 
 This is where Pollen gets interesting: each source file is essentially converted into a huge S-expression, known in Pollen as tagged X-expressions. A simple example would look like this:
 
-#+begin_src racket
+#+BEGIN_SRC racket
 (root (div ((class "main")) (p "Hello" (span "world"))))
-#+end_src
+#+END_SRC
 
 There is no templating language, per-se, in Pollen. The ~◊"◊"~ syntax is a small sugar over normal Lisp syntax, and all you're ultimately doing is calling a function that you've defined somewhere in your code (or in the same file). These functions can do anything--there's nothing special about them--so long as they return a valid X-expression, which means that you don't really have to learn how to extend a language or figure out how to integrate with one.
 
 As such, a functional approach is still the easiest way to add new capabilities to your project, although it may not always be enough if you need to handle state across pages. An example is my implementation for links with footnotes:
 
-#+begin_src racket
+#+BEGIN_SRC racket
 (define (footnotes . refs)
 ~(hr
 (section [(class "footnotes")]
@@ -40,11 +40,11 @@ As such, a functional approach is still the easiest way to add new capabilities 
 (role "doc-backlink")
 (href ,(format "#fnref~a" ref-num)))
 "↩"))))
-#+end_src
+#+END_SRC
 
 I use it like this:
 
-#+begin_src pollen
+#+BEGIN_SRC pollen
 ◊"◊"footnotes{
 ◊"◊"^[1]{◊"◊"<>["https://beautifulracket.com/"]}
 ◊"◊"^[2]{◊"◊"<>["https://en.m.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours"]}
@@ -53,11 +53,11 @@ I use it like this:
 ◊"◊"^[5]{◊"◊"<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/redirs.caddy"]}
 }
 }
-#+end_src
+#+END_SRC
 
 The estimated reading time was also easier to implement than I first thought. Rather than splitting the text into words as I did in the previous version of the site, I figured I'd get a decent enough estimation by dividing the size of the file in bytes by an average English word-length, assuming a reading speed of 250 words a minute.
 
-#+begin_src racket
+#+BEGIN_SRC racket
 (define (post->size post) (number->string (file-size (post->path post))))
 
 (define average-word-length 4.7)
@@ -68,7 +68,7 @@ The estimated reading time was also easier to implement than I first thought. Ra
 (/
 (/ (string->number (post->size post)) average-word-length)
 words-per-minute)))
-#+end_src
+#+END_SRC
 
 You can see the rest of what I scripted in the main ~pollen.rkt~ file for this site[^4]
 

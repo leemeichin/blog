@@ -8,7 +8,7 @@ I presume you've seen this kind of puzzle before: there is a lock that requires 
 
 ---
 
-#+begin_src text
+#+BEGIN_SRC text
 _CAN YOU CRACK THE CODE?_
 
 🔐 \_ \_ \_ \_
@@ -27,7 +27,7 @@ None of the numbers are correct, in any place.
 
 _8_ _5_ _0_ _4_  
  Two numbers are correct, but in the wrong place.
-#+end_src
+#+END_SRC
 
 ---
 
@@ -43,7 +43,7 @@ Logical relationships are asserted, and Prolog is used to determine whether or n
 
 Mr Merritt is, to put it professionally, _god damn right_. Here's a valid Prolog program:
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 % https://swish.swi-prolog.org/p/KfdGtcJr.swinb
 
 president(trump).
@@ -54,7 +54,7 @@ cheese(brie).
 cheese(wensleydale).
 person(trump).
 person(obama).
-#+end_src
+#+END_SRC
 
 What we have here are some facts, both true and technically true. It's a fact that Obama is a president, as is Trump. It's also a fact that there is a brand of cheese in the UK called President. This is quite ambiguous as a result so some extra facts are supplied, namely that brie is a cheese as much as it is a President-brand cheese, and that Wensleydale is also a cheese. It goes without saying that Trump and Obama are people, so with those facts we should be able to do some querying.
 
@@ -62,19 +62,19 @@ If you're doing this on your own machine, you can save those facts into a file (
 
 Let's do some querying then, which will show you how Prolog might seem a bit back to front compared to what you're used to.
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 president(trump). % true.
-#+end_src
+#+END_SRC
 
 So far, so boring. We stated ~president(trump)~ as a fact in our first prolog file, so this is basically confirming that we did so. Let's spice it up a little.
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 president(X). % trump; obama; brie.
-#+end_src
+#+END_SRC
 
-#+begin_aside
+#+BEGIN_ASIDE
 With the online editor you can click 'Next' to see all of the results, and in the console you can type ~;~. This can be done repeatedly until the input ends with ~.~, which says there are no more facts that fit the query)
-#+end_aside
+#+END_ASIDE
 
 The fuck? What is ~X~?
 
@@ -82,15 +82,15 @@ The fuck? What is ~X~?
 
 Let's try one more thing, which should explain enough about Prolog to be dangerous.
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 president(X), cheese(X). % brie.
-#+end_src
+#+END_SRC
 
 /Now we're cookin' wi' gas/ as one might say. A lot of what you do in prolog is chain little sentences like this together (using the comma operator ~,~, which means ~and~), and in this instance we're asking Prolog to get all the presidents, put them in ~X~, and then show me only the presidents that are also a cheese. The ~.~ finishes the sentence, or the query. Let's do a similar query to wrap this intro up, and you can see if your guess at the answer is the same as what this produces.
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 president(X), person(X). % trump, obama.
-#+end_src
+#+END_SRC
 
 This is more or less the essence of Prolog, and your program is essentially a database of facts and rules, and then you use the program by querying those facts and rules. You'll make a query by providing what you /do/ know, and then placing a variable (or a placeholder) in the spots where you don't know the answer. You don't tell Prolog how exactly to compute that answer. And with that explained, I think we can try and crack this code.
 
@@ -100,7 +100,7 @@ Here's the puzzle again, for reference:
 
 ---
 
-#+begin_src text
+#+BEGIN_SRC text
 _CAN YOU CRACK THE CODE?_
 
 🔐 \_ \_ \_ \_
@@ -119,7 +119,7 @@ None of the numbers are correct, in any place.
 
 _8_ _5_ _0_ _4_  
  Two numbers are correct, but in the wrong place.
-#+end_src
+#+END_SRC
 
 ---
 
@@ -127,7 +127,7 @@ According to Leon Sterling and Ehud Shapiro in /The Art of Prolog/ [^3], this ty
 
 So, let's begin with our set of rules:
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 :- use_module(library(clpfd)). % we're working with numbers, this makes it easier.
 
 clue_1([9, 2, 8, 5]). % one number correct, but in the wrong place
@@ -135,15 +135,15 @@ clue_2([1, 9, 3, 7]). % two numbers are correct, but in the wrong place
 clue_3([5, 2, 0, 1]). % one number is correct, and is also in the right place
 clue_4([6, 5, 0, 7]). % none of the numbers are correct, anywhere
 clue_5([8, 5, 2, 4]). % two numbers are correct, but in the wrong place
-#+end_src
+#+END_SRC
 
-#+begin_aside
+#+BEGIN_ASIDE
 If you're curious about the first ~use_module~ statement, beyond knowing that it makes things easier, check out the docs on /Constraint Logic Programming over Finite Domains/.[^4]
-#+end_aside
+#+END_ASIDE
 
 These clues don't really mean anything by themselves, they're simple facts in Prolog terms, so we need to add a bit more to give these some meaning. All of this will go into the same file, as we're not ready to query yet.
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 % rule: a digit is correct but it is in the wrong place
 wrong_place(Digit, Index, Digits) :- nth1(Index1, Digits, Digit), Index \== Index1.
 
@@ -153,13 +153,13 @@ right_place(Digit, Index, Digits) :- nth1(Index, Digits, Digit).
 % rule: the digit is wrong.
 wrong(\_, []).
 wrong(Digit, [D|Ds]) :- Digit #\= D, wrong(Digit, Ds).
-#+end_src
+#+END_SRC
 
 I'll leave the in-depth explanation of these rules to another post for the sake of brevity, and also because I'm not that much of a Prolog expert. These are all used to add meaning to the facts, as with these rules we can now define logic such as /one number is correct but in the wrong position/, and /none of the numbers are correct/. We just have to painstakingly mix and match them.
 
 The next bit is quite long, but this query is where we make the sausage. Commentary will be written inline for ease of copy and paste, until I come back and edit this post with a more digestible version.
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 crack_code(Code) :-
 % A, B, C and D represent the four digits of the code, which are all between 0 and 9.
 A in 0..9,
@@ -250,17 +250,17 @@ D in 0..9,
     % rules.
     Code = [A, B, C, D].
 
-#+end_src
+#+END_SRC
 
 Did you solve the puzzle yourself? Do you remember the answer? If you don't care to copy and paste all of that, you can open up this ready made notebook[^5], and then run the following:
 
-#+begin_src prolog
+#+BEGIN_SRC prolog
 crack_code([A, B, C, D]),
 write('The first number is: '), write(A), write('\n'),
 write('The second number is: '), write(B), write('\n'),
 write('The third number is: '), write(C), write('\n'),
 write('The fourth number is: '), write(D), write('\n').
-#+end_src
+#+END_SRC
 
 The exercise of writing that in a less brute-force manner is left to you, my beloved reader.
 

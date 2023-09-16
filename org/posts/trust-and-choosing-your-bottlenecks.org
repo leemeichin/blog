@@ -46,9 +46,9 @@ It doesn't /have/ to be there though, as startups like Raycast are demonstrating
 
 Of course, this is still better than having the bottleneck in production, which will turn even the most minor issue into a potential catastrophe.
 
-#+begin_aside
+#+BEGIN_ASIDE
 As it happens, this blog has a bottleneck of its own: the CI pipeline after I commit this post in the main branch and push it upstream to Sourcehut. If the pipeline can't build or deploy my site, then the post simply won't be available for anyone to read until I've fixed the problem. And the only person affected by this failure is, well, me.
-#+end_aside
+#+END_ASIDE
 
 In a continuous delivery (CD) system, the bottleneck introduced at the code-review stage may act as a barrier for QA, testing, validating requirements, and so-on, because there is nothing else to stop that change from hitting production once you've committed to merging it. But you might also use feature flags, canary builds, blue/green deploys, and gradual rollouts as a final-stage bottleneck to ensure that your users aren't the first ones to discover a problem. The benefit of doing this is that your users hardly have to wait at all to enjoy a new feature once you're happy to roll it out.
 

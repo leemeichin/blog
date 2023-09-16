@@ -8,7 +8,7 @@ One of those thoughts stuck out in particular, because of how ridiculous it soun
 
 Let's apply some method to this madness and set up some bindings, otherwise we're dead in the water. Let's be descriptive and call our FFI module ~LibRuby~. No naming conflicts at all there, /no sirree/!
 
-#+begin_src ruby
+#+BEGIN_SRC ruby
 require 'ffi'
 
 module LibRuby
@@ -26,7 +26,7 @@ extend FFI::Library
     attach_function :rb_str_new_cstr, [:string], :value
 
 end
-#+end_src
+#+END_SRC
 
 If you look at the code in this module, you'll notice that I used ~attach_variable~ to get access to the Kernel module, and ~attach_function~ for the method calls. The ~:id~ and ~:value~ types are just aliases for ~:pointer~, because ~VALUE~ and ~ID~ in the C API are themselves pointers. It's for the sake of documentation, so it's clearer what order you pass arguments in.
 
@@ -34,43 +34,43 @@ Ruby's built in modules and classes are already defined globally with a naming s
 
 Anyway this boilerplate should give us enough to do a hello world using Ruby's C API but at runtime, in Ruby, so it's time to fire up ~irb~.
 
-#+begin_aside
+#+BEGIN_ASIDE
 It should go without saying that at this point, you're not just playing with fire, you're inviting it to burn down your house. Be careful lest the ~segfault~s creep up on you.
-#+end_aside
+#+END_ASIDE
 
 Let's take it from the top and talk through this ungodly incantation. Go ahead and copy that little module into your console! If it fails, make sure you've got the ~ffi~ gem installed[^2].
 
 Once you're done, you can save some keystrokes by importing that module.
 
-#+begin_src ruby
+#+BEGIN_SRC ruby
 include LibRuby
-#+end_src
+#+END_SRC
 
 In order to call ~puts~ in Ruby through the C API, we'll need to get a reference to the module it's defined in (~Kernel~), and also get the method name as a symbol (like you might normally do with ~.to_sym~).
 
-#+begin_src ruby
+#+BEGIN_SRC ruby
 kernel = LibRuby.rb_mKernel
 puts_method = rb_intern('puts')
-#+end_src
+#+END_SRC
 
 Oh, before we continue, better disable the garbage collector. This is a simple way to stop the oscillating turbine from splattering unpleasant substances around the room. (More on that later, but see if you can guess why.)
 
-#+begin_src ruby
+#+BEGIN_SRC ruby
 GC.disable
-#+end_src
+#+END_SRC
 
 We can't just pass in a normal string to ~puts~ without things going 💥, as everything is an object in Ruby and therefore we need to
 get a pointer to a ~String~ instance (or in internal Ruby lingo, one of those ~VALUE~s).
 
-#+begin_src ruby
+#+BEGIN_SRC ruby
 str = rb_str_new_cstr('welcome, mortals')
-#+end_src
+#+END_SRC
 
 Now we have all of the ingredients to make the actual call, which syntactically and aesthetically blows idiomatic Ruby out of the water. Delicately paste this into your console and you should see the string printed out. You'll also get a return value like ~#<FFI::Pointer address=0x0000000000000008>~, which will refer to ~Qnil~. ~Qnil~ is a pointer to Ruby's ~nil~ object.
 
-#+begin_src ruby
+#+BEGIN_SRC ruby
 rb_funcall(kernel, puts_method, 1, :value, str)
-#+end_src
+#+END_SRC
 
 Run it again a few times, and with different strings. If you're feeling experimental, attach more functions in ~LibRuby~ and see what else you can print out! Ruby's extension documentation should be a good place to start[^3].
 

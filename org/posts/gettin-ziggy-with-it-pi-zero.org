@@ -24,7 +24,7 @@ The first and most complicated part of any low-level project is the bit where yo
 
 The next step is to define a ~main~ function that grabs a file descriptor (or handle) corresponding to our OLED display. According to the aforementioned dev interface docs, we'll need to open a file and check it with ~ioctl~.
 
-#+begin_src zig
+#+BEGIN_SRC zig
 const std = @import("std");
 
 const c = @cImport({
@@ -49,7 +49,7 @@ const stdout = std.io.getStdOut().outStream();
     stdout.print("Init successful.\n", .{});
 
 }
-#+end_src
+#+END_SRC
 
 You might have noticed something odd: we're not really writing much Zig here, it's practically 95% interop with C. The beauty of Zig is that this interop is so simple and intuitive that it's the /easiest/ way to get started if you're going to be linking against existing C libraries. Get the software working first, abstract it later, as they say, and you might already start to get an idea of what we could convert into idiomatic Zig libraries in future.
 
@@ -59,7 +59,7 @@ There's also the ~try~ macro, used in combination with the ~!void~ return type, 
 
 What we've actually done, however, is open the device file ~/dev/i2c-1~, and then used the ~ioctl~ library to specify which device in particular we want to talk to. You can find out this value by running ~i2cdevice -y 1~, like so:
 
-#+begin_src text
+#+BEGIN_SRC text
 pi@raspberrypi:~ $ i2cdetect -y 1
 0 1 2 3 4 5 6 7 8 9 a b c d e f
 00: -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -70,11 +70,11 @@ pi@raspberrypi:~ $ i2cdetect -y 1
 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 70: -- -- -- -- -- -- -- --
-#+end_src
+#+END_SRC
 
-#+begin_aside
+#+BEGIN_ASIDE
 In my case, the device can be accessed at address ~0x3C~, which is how I defined ~i2c_addr~ above.
-#+end_aside
+#+END_ASIDE
 
 We're at a good point now to try and compile this thing and then run it on the Pi. If we get the message 'Init successful.' then we're golden.
 
@@ -90,9 +90,9 @@ Are you writing this code on the Pi itself? Probably not, I imagine, and nor do 
 
 Let's build a binary, then. Save your code into a file, say, ~stardust.zig~ and then proceed.
 
-#+begin_src bash
+#+BEGIN_SRC bash
 zig build-exe stardust.zig -target arm-linux-musleabihf -mcpu arm1176jzf_s -O ReleaseSafe -lc
-#+end_src
+#+END_SRC
 
 To unpack that a little, the ~target~ is a triplet stating that we want to build this using the musl[^9] libc ABI, on a 32bit ARM architecture. ~mcpu~ goes along with that to make sure the resulting binary will work on our Pi Zero. I grabbed these values from an issue on Zig's github repo[^10], so credit goes to the author of that issue for unintentionally guiding me forward.
 
@@ -102,13 +102,13 @@ Passing the optimiser flag (~-O~) isn't strictly necessary, so you can omit this
 
 Once the build finishes, you should find a shiny new executable called ~stardust~ in the same directory as your code. You can get it onto your Pi with ~scp~, like so:
 
-#+begin_src bash
+#+BEGIN_SRC bash
 scp stardust pi@raspberrypi:~/stardust
-#+end_src
+#+END_SRC
 
-#+begin_aside
+#+BEGIN_ASIDE
 You will need to change ~pi@raspberrypi~ to whatever else you've configured if you've changed the defaults.
-#+end_aside
+#+END_ASIDE
 
 SSH into your Pi after that, and try and run it! Does it return successfully? I hope so!
 
@@ -120,7 +120,7 @@ Let's move on and make this kitten purr. Meow 🐈.
 
 In true /draw the rest of the fucking owl/ fashion[^11], what follows is a bit of a code-dump since the primary method of communicating with your OLED display is to, literally, write a few bytes to a file. The registers available and what can be written to them are often described in a meticulously detailed datasheet[^12], but they're not exactly light reading and we can save a bit of time by grabbing the info from elsewhere. A lot of the constants that follow are gracefully derived from those listed in a certain ~owenosborn~'s wiringPi-based driver.[^13]. Credit where credit's due, eh.
 
-#+begin_src zig
+#+BEGIN_SRC zig
 const SET_CONTRAST = 0x81;
 const SET_DISPLAY_ALL_ON_RESUME = 0xA4;
 const SET_DISPLAY_ALL_ON = 0xA5;
@@ -145,7 +145,7 @@ const SET_COM_SCAN_INC = 0xC0;
 const SET_COM_SCAN_DEC = 0xC8;
 const SET_SEG_REMAP = 0xA0;
 const SET_CHARGE_PUMP = 0x8D;
-#+end_src
+#+END_SRC
 
 The registers available to an i◊sup{2}c compatible device will depend on the device itself, so it's not really safe to copy and paste these without knowing exactly what you're dealing with. This is driver level code so it's not like you'll get some fancy validation error if you write the wrong bytes, you'll more likely fuck it up and burn down your house[^14].
 
@@ -191,7 +191,7 @@ SET_PAGE_ADDR,
       }
 
 }
-#+end_src
+#+END_SRC
 
 Wow, actual Zig code! The formatting may look a little odd because that's what ~zig fmt~ decides is appropriate.
 
@@ -199,16 +199,16 @@ Wow, actual Zig code! The formatting may look a little odd because that's what ~
 
 The recurring theme in all of these new functions is that the entire basis of their existence is to create an array of two bytes, and then write them to file descriptor we opened right at the start. The data structure looks something like this:
 
-#+begin_src c
+#+BEGIN_SRC c
 buf[0] = 0x00; // the register to be written to
 buf[1] = 0x??; // the value to assign to that register
-#+end_src
+#+END_SRC
 
 The file opened in ~main~ isn't a traditional file as you know it, but it points to all of the devices connected to your GPIO header on the Pi. Therefore, if you know enough about the hardware at a low enough level, you can control all of them by writing the right bytes to the right register, at the right address.
 
 The rest of the code, e.g. ~reset_cursor~, resets the state of the display in such a way that you can write a pixel and the cursor will advance, linearly, to the next one.
 
-#+begin_src zig
+#+BEGIN_SRC zig
 fn fill(fd: fs.File) !void {
 var i: usize = 0;
 
@@ -218,7 +218,7 @@ var i: usize = 0;
       }
 
 }
-#+end_src
+#+END_SRC
 
 This ~fill~ function will (rather quickly) turn the display solid white, updating each pixel one at a time. Before we continue though, let's go through some more Zig specifics; namely, ~inline~.
 
@@ -226,9 +226,9 @@ This ~fill~ function will (rather quickly) turn the display solid white, updatin
 
 \*\* A zig-a-Zig aaaahhhh...
 
-#+begin_aside
+#+BEGIN_ASIDE
 Reach out to me at pleasemakeitstop@mrlee.dev if this is too much for you.
-#+end_aside
+#+END_ASIDE
 
 Zig has some nice language features intended to replace and improve upon C/C++ preprocessor macros. The ~inline~ keyword is one such thing, and when applied to a ~for~ or ~while~ loop it'll unroll it at compile time. A simple optimisation but a useful one. We don't use it, but you also have ~comptime~, which is powerful enough to be able to implement generics, if you so desire. We're not going to go into that here though, and you can read more about it from a certain Loris Cro[^16].
 
@@ -236,7 +236,7 @@ Zig has some nice language features intended to replace and improve upon C/C++ p
 
 This post is getting pretty long-winded, and all I wanted to do was show how to set some pixels on a tiny display. Let's wrap this up then, since we're almost ready to recompile. Just one finishing touch, which is to call the functions we defined. Update ~main~ to look like this:
 
-#+begin_src zig
+#+BEGIN_SRC zig
 pub fn main() !void {
 const stdout = std.io.getStdOut().outStream();
 const fd = try fs.openFileAbsolute(i2c_device, fs.File.OpenFlags{ .write = true, .read = true });
@@ -260,7 +260,7 @@ defer fd.close();
       try fill(fd);
 
 }
-#+end_src
+#+END_SRC
 
 Once you're done, rebuild the binary and ~scp~ it over, like you did the first time. SSH into your Pi and run it again (i.e ~./stardust~), and see your display light up! 🥳
 

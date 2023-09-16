@@ -22,9 +22,9 @@ Of course, this is all subjective and what I'm sharing comes primarily from my o
 
 Thanks to COVID and the lockdowns we've endured since 2020, I had a lot of spare time to get into the one thing that is more comfortable for me than anything else: my work. I bury myself into work as a coping mechanism, as do many of us, because it makes me feel like I'm useful and I feel like I'm pretty good at it.
 
-#+begin_aside
+#+BEGIN_ASIDE
 I'm going to focus on the professional side of things rather than non-work stuff because I still feel like the work I want to do is important to me.
-#+end_aside
+#+END_ASIDE
 
 Even then, I could feel the stagnation from just doing stuff that I already knew how to do quite well. I was just maintaining and I started to become nostalgic about various failures that I'd been involved with that I also learned from.
 

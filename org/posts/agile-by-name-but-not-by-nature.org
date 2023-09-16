@@ -2,9 +2,9 @@
 #+CATEGORY: agile
 #+DATE: <2022-08-26>
 
-<aside>
+#+BEGIN_ASIDE
   <small>This is an old post, originally written in 2014 during my time at New Bamboo. You can find the original in the web archives[^1]</small>
-</aside>
+#+END_ASIDE
 
 Agile is dead! Long live agility![^2] A very befitting eulogy to the spirit of Agile, I'm sure, but also an unnecessary one. I think it picks the wrong battle.
 

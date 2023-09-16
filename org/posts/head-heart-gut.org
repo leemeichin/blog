@@ -8,11 +8,11 @@ At the same time, there is a /literally/ counter-intuitive feeling of comfort in
 
 Well, that intro was a little bit misleading. We do talk about intuition quite a lot, we just don't call it that. You've got your gut instinct, and the old dichotomy of listening to your head or following your heart.
 
-#+begin_aside
+#+BEGIN_ASIDE
 Studies have actually suggested that the 'gut feeling' is linked to your diet, in particular the ecosystem of bacteria in your digestive system that helps you process the nutrients in your food, and that diet can affect your mental health.[^2] Similarly, studies have explored the concept of 'hangry' (angry because of hunger) and linked negative emotions to hunger.[^3] Finally, the feeling of boredom can itself manifest as wanting to eat.[^4]
 
 For the sake of this post, 'gut feeling' corresponds to an intuitive or instinctive thought in the idiomatic sense, not the scientifically researched one.
-#+end_aside
+#+END_ASIDE
 
 I bring this up because I find myself in the middle of many conversations that actually give me something to take home and consider. They make me look back through a different lens and in a sense they offer extra context and squishiness to some things that, through stress, anxiety, burnout, and depression, I've boiled down into simple logical decisions to help me cope with a racing, ruminating mind.
 

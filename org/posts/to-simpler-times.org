@@ -18,7 +18,7 @@ Even though it worked it all felt a bit... manky. It's clearly not the way softw
 
 I threw all of that out at one point and moved back over to GitHub Pages, because that's where my repo was. The last few posts here were published in a manner not so dissimilar to this:
 
-#+begin_src bash
+#+BEGIN_SRC bash
 emacs posts/my-new-post.md &
 
 # write the damn post
@@ -42,7 +42,7 @@ git commit --amend --no-edit
 git push -f
 stack exec site build
 #.........
-#+end_src
+#+END_SRC
 
 It's not the worst thing ever, except that if I switch to a different computer, like my laptop, I have to do a lot of setup to be able to write and deploy. I'd rather focus on my writing and automate the rest of it away, which brings us back to CI and complication.
 
@@ -50,7 +50,7 @@ So, back to basics!
 
 The site has moved once again, back to a VPS hosted somewhere in the UK. Caddy[^4] is doing the hard work as an elegant alternative to nginx or apache and for simple setups you can't really go wrong with it if you just want a server with HTTPS by default. Here's how I configured this site:
 
-#+begin_src caddy
+#+BEGIN_SRC caddy
 leemeichin.com {
 redir https://www.leemeichin.com{uri}
 }
@@ -59,7 +59,7 @@ www.leemeichin.com {
 root \* /var/www/leemeichin.com
 file_server
 }
-#+end_src
+#+END_SRC
 
 Deploying to this server is a case of firing off a couple of ~ssh~, ~scp~ or ~rsync~ requests using a separate user with its own SSH key, and as soon as the command is finished running the changes are visible online.[^5]
 
@@ -67,11 +67,11 @@ This leads me to the final bit. Modern tech feels more complicated as it tends t
 
 It took me just about a day to figure out how to host my own ~apt~ repository for Debian[^6], compiling information from various manuals, blog posts and examples. It was mostly a case of creating a GPG key and setting up a correct directory structure for ~apt-ftparchive~[^7] to do its business, with a little bit of extra config. I'll go into detail about that another time, but let it be said it does the job tremendously in any Debian-based CI pipeline.
 
-#+begin_src bash
+#+BEGIN_SRC bash
 cd www.leemeichin.com
 sudo apt install kamelasa
 kamelasa build
-#+end_src
+#+END_SRC
 
 ---
 

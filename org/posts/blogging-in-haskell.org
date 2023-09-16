@@ -14,7 +14,7 @@ Once you compile this file, you end up with a nice binary, e.g. ~site~, and /tha
 
 As an example, on the home page, there is a ~git log~ output section. It's fairly primitive, although I intend to build out the functionality a bit more. Writing the functionality was fairly effortless, with the help of some other authors on the net:
 
-#+begin_src haskell
+#+BEGIN_SRC haskell
 data GitLog = Hash | Commit | Full
 deriving (Eq, Read)
 
@@ -50,7 +50,7 @@ return $ map logItem logs
 where
 ctx = field singularName (return . show . itemBody)
 logItem log = Item (fromString $ path ++ "/log/" ++ log) log
-#+end_src
+#+END_SRC
 
 The result of adding this code, and then inserting it into the template context, is that I have a new template variable that I can loop over, for each log item. The practical use is fairly limited, but I like it because it adds a certain flavour to the site. Later on I will try to use a parser combinator library to be able to present the different parts of the log with more control.
 
