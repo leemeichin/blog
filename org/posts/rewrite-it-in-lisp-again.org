@@ -37,7 +37,7 @@ This is surprisingly powerful if you're not familiar with that way of working. E
 
 #+begin_src emacs-lisp
 (setq org-publish-project-alist
-`(("assets"
+~(("assets"
 :base-directory ,(kamelasa/expand-relative-path "assets/")
 :base-extension ".\*"
 :recursive t

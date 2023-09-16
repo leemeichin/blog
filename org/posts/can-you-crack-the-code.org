@@ -66,7 +66,7 @@ Let's do some querying then, which will show you how Prolog might seem a bit bac
 president(trump). % true.
 #+end_src
 
-So far, so boring. We stated `president(trump)` as a fact in our first prolog file, so this is basically confirming that we did so. Let's spice it up a little.
+So far, so boring. We stated ~president(trump)~ as a fact in our first prolog file, so this is basically confirming that we did so. Let's spice it up a little.
 
 #+begin_src prolog
 president(X). % trump; obama; brie.
@@ -138,7 +138,7 @@ clue_5([8, 5, 2, 4]). % two numbers are correct, but in the wrong place
 #+end_src
 
 #+begin_aside
-If you're curious about the first `use_module` statement, beyond knowing that it makes things easier, check out the docs on /Constraint Logic Programming over Finite Domains/.[^4]
+If you're curious about the first ~use_module~ statement, beyond knowing that it makes things easier, check out the docs on /Constraint Logic Programming over Finite Domains/.[^4]
 #+end_aside
 
 These clues don't really mean anything by themselves, they're simple facts in Prolog terms, so we need to add a bit more to give these some meaning. All of this will go into the same file, as we're not ready to query yet.

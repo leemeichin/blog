@@ -19,7 +19,7 @@ Enough fluff, here's how you can try this both locally and through Docker. I've 
 
 ## Local setup with a version manager
 
-My weapon of choice is `rbenv` (which uses `ruby-build` behind the scenes) but my assumption is that you'll do fine with `asdf` or `rvm` or `chruby` or whatever else is out there these days.
+My weapon of choice is ~rbenv~ (which uses ~ruby-build~ behind the scenes) but my assumption is that you'll do fine with ~asdf~ or ~rvm~ or ~chruby~ or whatever else is out there these days.
 
 
 ### 1. Install/update Rust
@@ -42,19 +42,19 @@ rbenv install 3.2.0
 
 ### 3. Enable the JIT
 
-Easiest way to do this is to use an environment variable, especially when you're not running the `ruby` command directly.
+Easiest way to do this is to use an environment variable, especially when you're not running the ~ruby~ command directly.
 
 #+BEGIN_SRC shell
 RUBY_YJIT_ENABLE=1 bundle exec rails s
 #+END_SRC
 
-Personally, I just enabled it for all my shells by default by updating my `~/.zprofile` config:
+Personally, I just enabled it for all my shells by default by updating my ~~/.zprofile~ config:
 
 #+BEGIN_SRC shell
 export RUBY_YJIT_ENABLE=1
 #+END_SRC
 
-To check that it's actually enabled, check for `+YJIT` in the output:
+To check that it's actually enabled, check for ~+YJIT~ in the output:
 
 #+BEGIN_SRC shell
 RUBY_YJIT_ENABLE=1 ruby -v

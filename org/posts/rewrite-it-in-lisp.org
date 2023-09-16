@@ -26,13 +26,13 @@ As such, a functional approach is still the easiest way to add new capabilities 
 
 #+begin_src racket
 (define (footnotes . refs)
-`(hr
+~(hr
 (section [(class "footnotes")]
 (ol [(role "doc-endnotes")] ,@refs))))
 
 '(define (^ ref-num . footnote)
 (if (empty? footnote)
-`(a ((class "footnote-ref") (role "doc-noteref") (id ,(format "fnref~a" ref-num)) (href ,(format "#fn~a" ref-num))) (sup ,(number->string ref-num))) `(li
+~(a ((class "footnote-ref") (role "doc-noteref") (id ,(format "fnref~a" ref-num)) (href ,(format "#fn~a" ref-num))) (sup ,(number->string ref-num))) ~(li
 ((id ,(format "fn~a" ref-num)) (role "doc-endnote"))
 ,@footnote
 (a
@@ -70,7 +70,7 @@ The estimated reading time was also easier to implement than I first thought. Ra
 words-per-minute)))
 #+end_src
 
-You can see the rest of what I scripted in the main `pollen.rkt` file for this site[^4]
+You can see the rest of what I scripted in the main ~pollen.rkt~ file for this site[^4]
 
 In the end, the only thing I traded-off was the post category in the URL itself. Hakyll made that easy to add, but ultimately it wasn't that important a feature to add. There was no point getting clever as there are only a dozen or so published posts, so I constructed a flat list of permanent redirects for Caddy to serve[^5].
 

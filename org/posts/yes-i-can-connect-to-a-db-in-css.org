@@ -31,7 +31,7 @@ Possibly the biggest feature to come out of this work is the CSS Paint Worklet[^
 
 However, this worklet provides only a subset of the Worker API, and the canvas context itself is also heavily stripped down. The practical result of this is that your custom CSS painting code provides a smaller sandbox than you might have expected.
 
-What does that mean? You have no network access, so you can kiss `fetch` and `XmlHttpRequest` goodbye. You have no `drawText` functionality on the paint context. Various other JS APIs have also vanished, just in case you were hoping to work around some of those issues.
+What does that mean? You have no network access, so you can kiss ~fetch~ and ~XmlHttpRequest~ goodbye. You have no ~drawText~ functionality on the paint context. Various other JS APIs have also vanished, just in case you were hoping to work around some of those issues.
 
 No need to worry, though. All is not lost. Let's break this down into steps.
 
@@ -41,15 +41,15 @@ No need to worry, though. All is not lost. Let's break this down into steps.
 
 This has to be the first step, to understand if a proof of concept is even possible.
 
-There's a library called `sql.js`[^7]. It's quite literally a version of SQLite compiled into WebAssembly and old-skool ASM.js via emscripten. We can't use the WASM version unfortunately, because it has to fetch a binary over the network. The ASM version doesn't have this limitation though as all of the code is available in a single module.
+There's a library called ~sql.js~[^7]. It's quite literally a version of SQLite compiled into WebAssembly and old-skool ASM.js via emscripten. We can't use the WASM version unfortunately, because it has to fetch a binary over the network. The ASM version doesn't have this limitation though as all of the code is available in a single module.
 
-While the PaintWorklet restricts network access inside the worker, you are still allow to `import` code as long as it's an ES6 Module. That means the file has to have an `export` statement somewhere inside it. Unfortunately, sql.js doesn't have an ES6 only build so I modified the script myself to make this work.
+While the PaintWorklet restricts network access inside the worker, you are still allow to ~import~ code as long as it's an ES6 Module. That means the file has to have an ~export~ statement somewhere inside it. Unfortunately, sql.js doesn't have an ES6 only build so I modified the script myself to make this work.
 
 Now for the moment of truth: can I set up a database inside my worklet?
 
 #+BEGIN_SRC javascript
 const SQL = await initSqlJs({
-  locateFile: file => `./${file}`,
+  locateFile: file => ~./${file}~,
 });
 
 const DB = new SQL.Database();
@@ -110,7 +110,7 @@ opentype.load('fonts/firasans.otf')
 
 One problem here though - it wants to load a font over the network and I can't do that! Gah, foiled again!
 
-...Or am I? It also has a `parse` method that accepts an array buffer. I'll just base64 encode the font then and decode it in my module.
+...Or am I? It also has a ~parse~ method that accepts an array buffer. I'll just base64 encode the font then and decode it in my module.
 
 #+BEGIN_SRC javascript
 import opentype from 'https://ga.jspm.io/npm:opentype.js@1.3.4/dist/opentype.module.js'
@@ -121,7 +121,7 @@ const font = 'T1RUTwAKAIAAAwA ... 3 days later ... wAYABkAGgAbABwAIAKM'
 export default opentype.parse(base64.toByteArray(font).buffer)
 #+END_SRC
 
-Did I tell you that the worklet doesn't have the APIs for handling base64 strings either? Not even `atob` and `btoa`? I had to find a plain JS implementation for that, too.
+Did I tell you that the worklet doesn't have the APIs for handling base64 strings either? Not even ~atob~ and ~btoa~? I had to find a plain JS implementation for that, too.
 
 I put this code in its own file because it's not very...ergonomic...to have to work around a 200kb string of encoded font alongside the rest of the code.
 
@@ -135,7 +135,7 @@ The opentype library does all the heavy lifting from now on, so all I need to do
 import font from './font.js'
 
 const SQL = await initSqlJs({
-  locateFile: file => `./${file}`,
+  locateFile: file => ~./${file}~,
 });
 
 const DB = new SQL.Database();
@@ -194,7 +194,7 @@ It works, but there's not enough CSS here and the query is hardcoded.
 
 It would be better if you had to use CSS to query the database. In fact, that's the only way we can communicate with the paint worker from outside of its context as there is no messaging API like with normal workers.
 
-For this, a custom CSS property is required. Defining `inputProperties` has the benefit of subscribing to changes to that property, so this will re-render if the value of that property ever changes. No need to set up any listeners ourselves.
+For this, a custom CSS property is required. Defining ~inputProperties~ has the benefit of subscribing to changes to that property, so this will re-render if the value of that property ever changes. No need to set up any listeners ourselves.
 
 #+BEGIN_SRC javascript
 class SqlDb {
@@ -211,7 +211,7 @@ class SqlDb {
 }
 #+END_SRC
 
-Those CSS properties are known as typed properties, but they're essentially boxed up in a special `CSSProperty` class that isn't very useful by itself. So you have to manually convert it to a string or a number or some such to use it, as above.
+Those CSS properties are known as typed properties, but they're essentially boxed up in a special ~CSSProperty~ class that isn't very useful by itself. So you have to manually convert it to a string or a number or some such to use it, as above.
 
 Just a quick tweak to the CSS now.
 
@@ -245,7 +245,7 @@ fileInput.onchange = () => {
   reader.onload = () => {
     document.documentElement.style.setProperty(
       '--sql-database',
-      `url('${reader.result}')`
+      ~url('${reader.result}')~
     )
   }
 }
