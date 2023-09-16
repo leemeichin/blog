@@ -42,7 +42,7 @@ I only have a couple of jobs in this pipeline, to keep it simple. The next bunch
 
 - script: |
   mkdir -p ~/.local/bin $(Build.BinariesDirectory)
-  curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '\*/stack'
+  curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
   displayName: Install Stack
   #+END_SRC
 
@@ -173,7 +173,7 @@ There's only step left now, and that's to deploy!
   inputs:
   sshEndpoint: 'Nexus'
   sourceFolder: '\_site/'
-  contents: '\*\*'
+  contents: '**'
   targetFolder: '/var/www/www.mrlee.dev'
   cleanTargetFolder: true
   readyTimeout: '20000'

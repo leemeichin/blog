@@ -78,7 +78,7 @@ _So, why disable the GC?_
 
 For every step in this post up to creating a ~String~ object, we've been using function bindings and global variables. Global variables and constants won't be garbage collected, because the global scope will always maintain a reference to them; besides which, it would be quite bad if your classes and modules suddenly disappeared after a GC pass.
 
-The string object is different, however, as on the C side of things Ruby is taking a pointer to a C string (a ~const char \*~), allocating memory, and giving back a pointer to the new object. Eventually the GC will run and free up the memory at the pointer's address, and the string will no longer exist. You'll probably find something else at that address instead, or just garbage.
+The string object is different, however, as on the C side of things Ruby is taking a pointer to a C string (a ~const char *~), allocating memory, and giving back a pointer to the new object. Eventually the GC will run and free up the memory at the pointer's address, and the string will no longer exist. You'll probably find something else at that address instead, or just garbage.
 
 Disabling the GC in this instance is a /shitty hack/ because it's a direct admission that the code is /not memory safe/. Hopefully you didn't need me to tell you that, though, and the quality of the code in this post was self-evident.
 

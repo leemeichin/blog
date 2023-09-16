@@ -7,7 +7,7 @@ I like to maintain a single configuration across machines. Mostly it works fine 
 All I need to do is run a small script to set most of my shit up:
 
 #+BEGIN_SRC shell
-for config in \*/; do
+for config in */; do
   echo "Stowing: ${config}"
   stow -t $HOME $config
 done

@@ -29,7 +29,7 @@ git push
 stack exec site build # dumps output into www
 mv www ../blah2
 git co deploy
-cp -r ../blah2/\* .
+cp -r ../blah2/* .
 git add .
 git commit -m 'deploy'
 git push
@@ -56,7 +56,7 @@ redir https://www.leemeichin.com{uri}
 }
 
 www.leemeichin.com {
-root \* /var/www/leemeichin.com
+root * /var/www/leemeichin.com
 file_server
 }
 #+END_SRC

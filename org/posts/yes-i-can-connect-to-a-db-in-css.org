@@ -72,7 +72,7 @@ DB.run(
 I've got my test table with some values in it now. I should be able to query this and get those values back, although I'm not sure how the result will be structured.
 
 #+BEGIN_SRC javascript
-const result = DB.exec('SELECT \* FROM test')
+const result = DB.exec('SELECT * FROM test')
 console.log(result)
 #+END_SRC
 
@@ -85,7 +85,7 @@ I assumed this would be just like writing text to a canvas. How hard can that be
 #+BEGIN_SRC javascript
 class SqlDB {
   async paint(ctx, geom, properties) {
-    const result = DB.exec('SELECT \* FROM test');
+    const result = DB.exec('SELECT * FROM test');
     ctx.font = '32px monospace';
     ctx.drawText(JSON.stringify(result), 0, 0, geom.width);
   }
@@ -148,7 +148,7 @@ DB.run(
 
 class SqlDB {
   async paint(ctx, geom, properties) {
-    const query = DB.exec('SELECT \* FROM test')
+    const query = DB.exec('SELECT * FROM test')
     const result = query[0].values.join(', ')
 
     const size = 48

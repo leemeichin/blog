@@ -18,7 +18,7 @@ Ready to... get Ziggy with it? Oh, I bet you are. 😋 If you want to skip to th
 
 ---
 
-\*\* Hello, Pi.
+** Hello, Pi.
 
 The first and most complicated part of any low-level project is the bit where you try and establish a build system of some sorts. We're going to forget about that completely for now and apply some elbow-grease to the situation.
 
@@ -80,7 +80,7 @@ We're at a good point now to try and compile this thing and then run it on the P
 
 ---
 
-\*\* Build and Push
+** Build and Push
 
 Zig comes with a nice little build system out of the box, but we're not going to use it right now because it's a work in progress. I'll leave that as an exercise to you, the reader, and I urge you to contribute any documentation you come up with to Zig. Instead, we'll use the CLI which is just as powerful and, gracefully, a bit more discoverable for our purposes.
 
@@ -116,7 +116,7 @@ Let's move on and make this kitten purr. Meow 🐈.
 
 ---
 
-\*\* Getting this show on the road
+** Getting this show on the road
 
 In true /draw the rest of the fucking owl/ fashion[^11], what follows is a bit of a code-dump since the primary method of communicating with your OLED display is to, literally, write a few bytes to a file. The registers available and what can be written to them are often described in a meticulously detailed datasheet[^12], but they're not exactly light reading and we can save a bit of time by grabbing the info from elsewhere. A lot of the constants that follow are gracefully derived from those listed in a certain ~owenosborn~'s wiringPi-based driver.[^13]. Credit where credit's due, eh.
 
@@ -224,7 +224,7 @@ This ~fill~ function will (rather quickly) turn the display solid white, updatin
 
 ---
 
-\*\* A zig-a-Zig aaaahhhh...
+** A zig-a-Zig aaaahhhh...
 
 #+BEGIN_ASIDE
 Reach out to me at pleasemakeitstop@mrlee.dev if this is too much for you.

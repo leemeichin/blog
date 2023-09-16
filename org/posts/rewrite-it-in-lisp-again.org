@@ -39,7 +39,7 @@ This is surprisingly powerful if you're not familiar with that way of working. E
 (setq org-publish-project-alist
 ~(("assets"
 :base-directory ,(kamelasa/expand-relative-path "assets/")
-:base-extension ".\*"
+:base-extension ".*"
 :recursive t
 :publishing-directory ,(kamelasa/expand-relative-path "publish/")
 :publishing-function org-publish-attachment)
