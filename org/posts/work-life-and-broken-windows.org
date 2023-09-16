@@ -6,11 +6,11 @@ I've been working fully remotely for almost 18 months now. It's not a temporary 
 
 Even having worked remotely before, however, that experience in 2017 and my current experience from 2020 onwards could hardly be further apart.
 
-I was out of the house almost every day in Latvia, either going to the beach for a walk, to wade in the shallow waters, or taking the train into Riga to work from one of the many laptop-friendly coffee shops, all with table service[^1]. Ordering takeaway wasn't really a thing there, there was no Uber Eats or anything similar to it, and I don't think there needed to be.
+I was out of the house almost every day in Latvia, either going to the beach for a walk, to wade in the shallow waters, or taking the train into Riga to work from one of the many laptop-friendly coffee shops, all with table service[fn:1]. Ordering takeaway wasn't really a thing there, there was no Uber Eats or anything similar to it, and I don't think there needed to be.
 
 Long story short, I was able to get out of the house and be mostly functional, because the alternative was to stay at home and starve. This arguably prevented my depression from becoming worse, which it absolutely would have done if I shut myself inside. It was easier to be active than it was to be /in/-active.
 
-Fast forward to Summer, 2020 and I'm remote again, but this time it's in the quiet, sort of leafy suburb of Somewhere Near Crystal Palace in the South East of London[^2].
+Fast forward to Summer, 2020 and I'm remote again, but this time it's in the quiet, sort of leafy suburb of Somewhere Near Crystal Palace in the South East of London[fn:2].
 
 The first thing I realised is that I took a lot of my old work routine for granted. I didn't have to love my daily commute to South Kensington to appreciate that it set up a daily, active routine, where I would spend about forty minutes each day walking around, getting from A to B. I didn't have to love the office to appreciate the simple act of taking the stairs or walking to a bathroom a bit further away, just to keep myself on my feet a little bit. Eventually I'd go to the gym over lunch each day, too. The office itself was always clean and free of clutter thanks to the tireless work of the housekeeping staff.
 
@@ -26,7 +26,7 @@ Despite saying this, I don't feel bad about that because it's what I chose to do
 
 2022, then, happens to be the first time I've tried to take the concept of a New Year's Resolution seriously. For a long time I had the arrogant (and somewhat cynical) belief that I didn't need to wait for a new year to do this, if I wanted to change I could do it whenever I want right? That /is/ true, but it's not helpful. Why not seize the opportunity of making a fresh start in a fresh year? It's still 'whenever I want' and the 1st of January doesn't somehow diminish that.
 
-One of the things I've quickly realised over these past few weeks is something akin to the broken windows theory [^3]. As a criminological thesis, this has been widely debunked, but there's an internal consistency to it that I think holds some truth when applied to one's personal life. I'm not talking about the Marie Kondo Method or Feng Shui; just the simple fact that clutter around the house, left unchecked, encouraged procrastination and allowed unhealthy habits to thrive.
+One of the things I've quickly realised over these past few weeks is something akin to the broken windows theory [fn:3]. As a criminological thesis, this has been widely debunked, but there's an internal consistency to it that I think holds some truth when applied to one's personal life. I'm not talking about the Marie Kondo Method or Feng Shui; just the simple fact that clutter around the house, left unchecked, encouraged procrastination and allowed unhealthy habits to thrive.
 
 For example, I got so accustomed to stacking up empty boxes of takeaway food from Uber Eats and Deliveroo that I would see them and think, 'fuck it, no need to nip out for groceries, I'll just order something online'. I could even order groceries from it so I didn't have to walk ten minutes to the big Sainsbury's supermarket around the corner.
 
@@ -64,6 +64,6 @@ The point of this is that fixing those 'broken windows' means I'm no longer main
 
 It will be interesting to see what this post looks like at the end of this year, as 2023 approaches. But as far as the present moment goes, it's nice to be able to reflect on the time gone by with a new sense of awareness and basically decide what to stop doing, what to carry on doing, and what to continue with.
 
-[^1] I owe a lot to Double Coffee and their coffees, blinis and yeast pancakes with sour cream.
-[^2] Well, compared to a lot of other places in London it's more green looking. The parks are nice.
-[^3] https://en.wikipedia.org/wiki/Broken_windows_theory
+[fn:1] I owe a lot to Double Coffee and their coffees, blinis and yeast pancakes with sour cream.
+[fn:2] Well, compared to a lot of other places in London it's more green looking. The parks are nice.
+[fn:3] https://en.wikipedia.org/wiki/Broken_windows_theory

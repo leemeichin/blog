@@ -3,10 +3,10 @@
 #+DATE: <2022-08-26>
 
 #+BEGIN_ASIDE
-  <small>This is an old post, originally written in 2014 during my time at New Bamboo. You can find the original in the web archives[^1]</small>
+  <small>This is an old post, originally written in 2014 during my time at New Bamboo. You can find the original in the web archives[fn:1]</small>
 #+END_ASIDE
 
-Agile is dead! Long live agility![^2] A very befitting eulogy to the spirit of Agile, I'm sure, but also an unnecessary one. I think it picks the wrong battle.
+Agile is dead! Long live agility![fn:2] A very befitting eulogy to the spirit of Agile, I'm sure, but also an unnecessary one. I think it picks the wrong battle.
 
 The whole premise of Dave's argument (and every supporter of it) is one of semantics. You are not Agile, you merely exhibit agility. You, as an authentic practitioner, are the verb to the snake oil salesman's noun.
 
@@ -18,5 +18,5 @@ This is not a unique problem, but you can easily tell the difference between som
 
 So, call it what you want, but the people for whom Agile comes naturally don't need the name at all.
 
-[^1]: https://web.archive.org/web/20140625125723/http://new-bamboo.co.uk:80/blog/2014/04/04/agile-by-name-but-not-by-nature
-[^2]: https://web.archive.org/web/20140625125723/http://pragdave.me/blog/2014/03/04/time-to-kill-agile/
+[fn:1] https://web.archive.org/web/20140625125723/http://new-bamboo.co.uk:80/blog/2014/04/04/agile-by-name-but-not-by-nature
+[fn:2] https://web.archive.org/web/20140625125723/http://pragdave.me/blog/2014/03/04/time-to-kill-agile/

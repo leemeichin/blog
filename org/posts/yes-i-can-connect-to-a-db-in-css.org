@@ -11,11 +11,11 @@ As they're wont to do, a certain tweet was floating around the interwebs for a w
 > We're looking for someone who can connect to the database using CSS.
 >
 
-It's been a hell of a long time since I last embarked on a quality shitpost project[^1], in fact it's been so long that back then I probably didn't even have the word *shitpost* in my vocabulary.
+It's been a hell of a long time since I last embarked on a quality shitpost project[fn:1], in fact it's been so long that back then I probably didn't even have the word *shitpost* in my vocabulary.
 
-To that end, I was partially inspired by an earlier shitpost project based on a blockchain startup's projection of their investors' faces onto 3D cubes.[^2] Reminds me of the old days of the internet when everything was just /weird/.
+To that end, I was partially inspired by an earlier shitpost project based on a blockchain startup's projection of their investors' faces onto 3D cubes.[fn:2] Reminds me of the old days of the internet when everything was just /weird/.
 
-I'm not looking to write a recipe here so I'll spare you the life story. Instead, I'm going to talk about how I managed my own new shitpost project: sqlcss.leemeichin.com[^3]
+I'm not looking to write a recipe here so I'll spare you the life story. Instead, I'm going to talk about how I managed my own new shitpost project: sqlcss.leemeichin.com[fn:3]
 
 ![Example of SQL in CSS](../media/yes-i-can-connect-to-a-db-in-css/example.png)
 
@@ -25,9 +25,9 @@ How does it work?
 
 ---
 
-A new set of APIs affectionately known as Houdini[^4] give your browser the power to control CSS via its own Object Model in Javascript. In English, this means that you can make custom CSS styles, add custom properties, and so on.
+A new set of APIs affectionately known as Houdini[fn:4] give your browser the power to control CSS via its own Object Model in Javascript. In English, this means that you can make custom CSS styles, add custom properties, and so on.
 
-Possibly the biggest feature to come out of this work is the CSS Paint Worklet[^5], which allows you to 'paint' on an element, not unlike the Canvas you know and love, and have the browser treat it as an image in CSS. There are some examples to play with at houdini.how[^6].
+Possibly the biggest feature to come out of this work is the CSS Paint Worklet[fn:5], which allows you to 'paint' on an element, not unlike the Canvas you know and love, and have the browser treat it as an image in CSS. There are some examples to play with at houdini.how[fn:6].
 
 However, this worklet provides only a subset of the Worker API, and the canvas context itself is also heavily stripped down. The practical result of this is that your custom CSS painting code provides a smaller sandbox than you might have expected.
 
@@ -41,7 +41,7 @@ No need to worry, though. All is not lost. Let's break this down into steps.
 
 This has to be the first step, to understand if a proof of concept is even possible.
 
-There's a library called ~sql.js~[^7]. It's quite literally a version of SQLite compiled into WebAssembly and old-skool ASM.js via emscripten. We can't use the WASM version unfortunately, because it has to fetch a binary over the network. The ASM version doesn't have this limitation though as all of the code is available in a single module.
+There's a library called ~sql.js~[fn:7]. It's quite literally a version of SQLite compiled into WebAssembly and old-skool ASM.js via emscripten. We can't use the WASM version unfortunately, because it has to fetch a binary over the network. The ASM version doesn't have this limitation though as all of the code is available in a single module.
 
 While the PaintWorklet restricts network access inside the worker, you are still allow to ~import~ code as long as it's an ES6 Module. That means the file has to have an ~export~ statement somewhere inside it. Unfortunately, sql.js doesn't have an ES6 only build so I modified the script myself to make this work.
 
@@ -98,9 +98,9 @@ It can still draw paths and curves, of course, so the lack of a convenient API i
 
 ** 4. Creating text without a text API
 
-Luckily, a library called opentype.js[^8] offers hope of a solution. It can parse a font file and then, given a string of text, generate the letterforms of each character. The practical result of this operation is a path object that represents the string, which can then rendered into my context.
+Luckily, a library called opentype.js[fn:8] offers hope of a solution. It can parse a font file and then, given a string of text, generate the letterforms of each character. The practical result of this operation is a path object that represents the string, which can then rendered into my context.
 
-I don't have to modify the opentype library to import it this time, as it's already available from JSPM[^9]. If you give JSPM an npm package, it'll autogenerate an ES6 module that you can import directly into your browser. This is fantastic because I really didn't want to have to fuck around with a bundling tool for the sake of a joke project.
+I don't have to modify the opentype library to import it this time, as it's already available from JSPM[fn:9]. If you give JSPM an npm package, it'll autogenerate an ES6 module that you can import directly into your browser. This is fantastic because I really didn't want to have to fuck around with a bundling tool for the sake of a joke project.
 
 #+BEGIN_SRC javascript
 import opentype from 'https://ga.jspm.io/npm:opentype.js@1.3.4/dist/opentype.module.js'
@@ -278,15 +278,15 @@ Now you can use CSS to import and browse your own database!
 
 ---
 
-One thing I left out from all of this is how to nicely render the results when there are a lot of them and they need to be split up onto separate lines. That's not really related to connecting to a database via CSS so I decided it wasn't worth it, but the code is all available on git if you want to take this ridiculous concept even further.[^10]
+One thing I left out from all of this is how to nicely render the results when there are a lot of them and they need to be split up onto separate lines. That's not really related to connecting to a database via CSS so I decided it wasn't worth it, but the code is all available on git if you want to take this ridiculous concept even further.[fn:10]
 
-[^1]: https://github.com/leemeichin/node_module
-[^2]: https://twitter.com/tarngerine/status/1466288061034156033
-[^3]: https://www.sqlcss.leemeichin.com
-[^4]: https://developer.mozilla.org/en-US/docs/Web/Guide/Houdini
-[^5]: https://developer.mozilla.org/en-US/docs/Web/API/PaintWorklet
-[^6]: https://houdini.how/
-[^7]: https://sql.js.org/
-[^8]: https://opentype.js.org/
-[^9]: https://jspm.org/
-[^10]: https://github.com/leemeichin/sqlcss
+[fn:1] https://github.com/leemeichin/node_module
+[fn:2] https://twitter.com/tarngerine/status/1466288061034156033
+[fn:3] https://www.sqlcss.leemeichin.com
+[fn:4] https://developer.mozilla.org/en-US/docs/Web/Guide/Houdini
+[fn:5] https://developer.mozilla.org/en-US/docs/Web/API/PaintWorklet
+[fn:6] https://houdini.how/
+[fn:7] https://sql.js.org/
+[fn:8] https://opentype.js.org/
+[fn:9] https://jspm.org/
+[fn:10] https://github.com/leemeichin/sqlcss

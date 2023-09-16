@@ -2,7 +2,7 @@
 #+DATE: <2021-11-30>
 #+CATEGORY: programming
 
-About six months ago I wrote a post about rewriting the tech that publishes this blog.[^1] It seemed like a good idea at the time to try and build something out in Racket and Pollen, and it was a learning experience.
+About six months ago I wrote a post about rewriting the tech that publishes this blog.[fn:1] It seemed like a good idea at the time to try and build something out in Racket and Pollen, and it was a learning experience.
 
 In doing this, I inadvertently painted myself into a corner. While I could fairly easily hack away at the code while I was building the initial release, I essentially had to re-learn most of it when returning to it several months later. If I used Racket day-to-day then this of course would be a non-issue as I would be continually training the old brain muscle.
 
@@ -47,9 +47,9 @@ This is surprisingly powerful if you're not familiar with that way of working. E
 ("www.kamelasa.dev" :components ("posts" "pages" "assets" "rss"))))
 #+END_SRC
 
-You can find the full script on the git repo, which is public as it always has been.[^2]
+You can find the full script on the git repo, which is public as it always has been.[fn:2]
 
-One thing that has fascinated me about this is syntax highlighting. It's not something I was really satisfied with previously, and I wasn't prepared to make a colour scheme of my own (or figure out how to adapt one). ~org-publish~ uses a package called ~htmlize~[^3], which generates CSS based on the /actual theme of your editor/. So long as you have loaded the language modes you need, ~htmlize~ will convert all your codeblocks into HTML using the colours of your chosen emacs theme. I haven't really taken advantage of this, to be honest, so I'm sticking with basic monochrome codeblocks for now until I feel like setting up dark and light colour schemes.
+One thing that has fascinated me about this is syntax highlighting. It's not something I was really satisfied with previously, and I wasn't prepared to make a colour scheme of my own (or figure out how to adapt one). ~org-publish~ uses a package called ~htmlize~[fn:3], which generates CSS based on the /actual theme of your editor/. So long as you have loaded the language modes you need, ~htmlize~ will convert all your codeblocks into HTML using the colours of your chosen emacs theme. I haven't really taken advantage of this, to be honest, so I'm sticking with basic monochrome codeblocks for now until I feel like setting up dark and light colour schemes.
 
 The final part is the development and deployment process. This is fairly simple, as publishing is just a case of running emacs in batch mode.
 
@@ -73,12 +73,12 @@ Of course, no setup would be complete without a simple server to admire my handi
 python3 -m http.server 8080 -d publish
 #+END_SRC
 
-It has to be said that I didn't figure all of this out by myself. I had a little trouble getting RSS feeds working, but the example at writepermission.com[^4] set me on the right track. And most of the initial setup was adapted from a post at taingram.org[^5], which gave me a good introduction.
+It has to be said that I didn't figure all of this out by myself. I had a little trouble getting RSS feeds working, but the example at writepermission.com[fn:4] set me on the right track. And most of the initial setup was adapted from a post at taingram.org[fn:5], which gave me a good introduction.
 
 Maybe once I've spent more time working on this I'll describe some of the more novel changes I might make, but for those things I've mentioned, the source material is worth reading.
 
-[^1] [[file:rewrite-it-in-lisp.org][Rewrite it in Lisp?]]
-[^2] https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/publish.el
-[^3] https://www.emacswiki.org/emacs/Htmlize
-[^4] https://writepermission.com/org-blogging-rss-feed.html
-[^5] https://taingram.org/blog/org-mode-blog.html
+[fn:1] [[file:rewrite-it-in-lisp.org][Rewrite it in Lisp?]]
+[fn:2] https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/publish.el
+[fn:3] https://www.emacswiki.org/emacs/Htmlize
+[fn:4] https://writepermission.com/org-blogging-rss-feed.html
+[fn:5] https://taingram.org/blog/org-mode-blog.html

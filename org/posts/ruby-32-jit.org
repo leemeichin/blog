@@ -30,7 +30,7 @@ First, make sure you have Rust installed. You can install through Homebrew on Ma
 brew install rust
 #+END_SRC
 
-No guarantee you'll get a recent enough version on Debian or another Linux through their built-in package repositories though, and of course there's Windows, so Rustup[^1] is your friend. I won't copy the command here because you should inspect the shell script it expects you to execute.
+No guarantee you'll get a recent enough version on Debian or another Linux through their built-in package repositories though, and of course there's Windows, so Rustup[fn:1] is your friend. I won't copy the command here because you should inspect the shell script it expects you to execute.
 
 *** 2. Install Ruby
 
@@ -82,7 +82,7 @@ Of course, when you're running this in production it's not exactly enough. You'l
 
 -------
 
-The stable JIT is probably the most interesting part of the new Ruby release for me, but it's not the *only* interesting feature, as the Ruby maintainers have documented[^2].
+The stable JIT is probably the most interesting part of the new Ruby release for me, but it's not the *only* interesting feature, as the Ruby maintainers have documented[fn:2].
 
-[^1]: https://rustup.rs
-[^2]: https://www.ruby-lang.org/en/news/2022/12/25/ruby-3-2-0-released/
+[fn:1] https://rustup.rs
+[fn:2] https://www.ruby-lang.org/en/news/2022/12/25/ruby-3-2-0-released/

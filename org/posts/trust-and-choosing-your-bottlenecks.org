@@ -2,9 +2,9 @@
 #+DATE: <2022-01-06>
 #+CATEGORY: work
 
-I recently read a post called /No code reviews by default/, by a startup called Raycast[^1]. In summary, code reviews are optional and the team deploys nightly internal releases so that the changes introduced can be tested (or used) by the team themselves, because they all run this nightly build locally. They're eating their own dogfood.
+I recently read a post called /No code reviews by default/, by a startup called Raycast[fn:1]. In summary, code reviews are optional and the team deploys nightly internal releases so that the changes introduced can be tested (or used) by the team themselves, because they all run this nightly build locally. They're eating their own dogfood.
 
-This works well in small, agile teams. It reminds me somewhat of Extreme Programming (XP)[^2] and also of the common practice of bypassing code review by pairing on a feature with a team mate. From the perspective of a young startup with only a handful of engineers working in the same physical space, there's a lot you can communicate face-to-face that might otherwise be more difficult to co-ordinate in a larger organisation.
+This works well in small, agile teams. It reminds me somewhat of Extreme Programming (XP)[fn:2] and also of the common practice of bypassing code review by pairing on a feature with a team mate. From the perspective of a young startup with only a handful of engineers working in the same physical space, there's a lot you can communicate face-to-face that might otherwise be more difficult to co-ordinate in a larger organisation.
 
 So, there's nothing inherently wrong about taking this approach. In a world where everything is a trade-off or an optimisation, they're optimising for delivery rather than correctness. After all, there won't be much value in correctness if a startup uses six months of runway to build something right instead of figuring out the right thing to build.
 
@@ -34,7 +34,7 @@ In a nutshell, you get out what you put in. And now is a good time to segue into
 
 ** Bottlenecks
 
-If you've read The Phoenix Project[^3], you might remember a chapter with some messianic figure that guides the main character around a factory and describes the different stages of the manufactoring process. Work items are pushed onto and pulled from a production line, but at some stage the backlog is growing exponentially and boxes are stacking up. Work is arriving at that stage more quickly than it can be processed and moved on, so it's all backing up. The people working at earlier points in the production line aren't aware of this as they are happilly churning through their own backlogs; it all seems optimal to them. The people working at later points are under the impression that the entire thing is a shitshow that is falling apart at the seams, because all they see is the blockage behind them and the occasional work item slipping through.
+If you've read The Phoenix Project[fn:3], you might remember a chapter with some messianic figure that guides the main character around a factory and describes the different stages of the manufactoring process. Work items are pushed onto and pulled from a production line, but at some stage the backlog is growing exponentially and boxes are stacking up. Work is arriving at that stage more quickly than it can be processed and moved on, so it's all backing up. The people working at earlier points in the production line aren't aware of this as they are happilly churning through their own backlogs; it all seems optimal to them. The people working at later points are under the impression that the entire thing is a shitshow that is falling apart at the seams, because all they see is the blockage behind them and the occasional work item slipping through.
 
 The moral of the story was that it's all about where you place your bottlenecks. In the context of software /delivery/ (not development, per se), a bottleneck is basically an obstacle that is intentionally placed at one--or possibly more--stages in the cycle in order to ensure certain requirements are met before a change can continue on its way to production.
 
@@ -58,6 +58,6 @@ Is it a bad thing or is it worrying to not require code reviews? No, not really.
 
 For what it's worth, in agile this is known as /Failing Fast/ and the same concepts would apply fairly generally to any aspect of product design, development and delivery.
 
-[^1]: https://www.raycast.com/blog/no-code-reviews-by-default/
-[^2]: http://www.extremeprogramming.org/
-[^3]: https://uk.bookshop.org/a/6865/9781942788294
+[fn:1] https://www.raycast.com/blog/no-code-reviews-by-default/
+[fn:2] http://www.extremeprogramming.org/
+[fn:3] https://uk.bookshop.org/a/6865/9781942788294

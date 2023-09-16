@@ -70,6 +70,6 @@ How does it work?
 
 It's all in the ~[includeIf "..."]~ part of your config. The easy way is to stick to a particular directory structure. For me, I chose "Source/Work" and "Source/Personal": my work config activates when I'm in the ~Work~ folder and my personal one activates when I'm in ~Personal~.
 
-That's not the only way you can do it, and the git manual shows you what else you can do.[^1]
+That's not the only way you can do it, and the git manual shows you what else you can do.[fn:1]
 
-[^1]: https://git-scm.com/docs/git-config#_conditional_includes
+[fn:1] https://git-scm.com/docs/git-config#_conditional_includes

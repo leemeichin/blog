@@ -16,7 +16,7 @@ The process of delivering software, in that sense, was more like a weekly dialog
 
 I'm describing this now because it's basically the setup for my first 'come to Jesus' moment as a software engineer. I was only 6 months into the job at the time and the unexpected inevitably happened. The sprint wasn't going that well and I thought the best way to rescue it was to code my way out of it, without telling the scrum master or the product owner what was actually going on. This had the secondary effect of stressing me out because I couldn't actually code my way out of the problem.
 
-If you're not aware of the Dunning-Kruger effect[^1], it's essentially the feeling that you're capable of climbing Mount Everest because you've successfully tackled a flight of stairs. For me, the experience of learning Ruby and Rails over the course of that year had been exaggerated into a much larger feeling of skill and competence, so I thought I was more competent than I actually was.
+If you're not aware of the Dunning-Kruger effect[fn:1], it's essentially the feeling that you're capable of climbing Mount Everest because you've successfully tackled a flight of stairs. For me, the experience of learning Ruby and Rails over the course of that year had been exaggerated into a much larger feeling of skill and competence, so I thought I was more competent than I actually was.
 
 Realising what was going on, I was taken aside for a conversation. Firstly to see how I was feeling, because I wasn't handling my emotions well at the time, and secondly to impart some wisdom that has stuck with me for the decade since:
 
@@ -58,7 +58,7 @@ The added benefit was that having a close, and positive, relationship with the C
 
 Of course, I'm romanticising these experiences somewhat. They weren't perfect, we weren't perfect...but the underlying principles were good ones. Great ideas with oftentimes flawed execution, but nothing that can't be reflected upon and improved.
 
-So, when a US food delivery company called DoorDash announced they require all staff to do a delivery (or some unknown other duty) once a month [^2], I found myself in strong agreement with the practice.
+So, when a US food delivery company called DoorDash announced they require all staff to do a delivery (or some unknown other duty) once a month [fn:2], I found myself in strong agreement with the practice.
 
 What better way to know you're building the right thing for your users when you can experience it for yourself? User research and discovery is great, but imagine what you see when you put yourself in those shoes.
 
@@ -76,5 +76,5 @@ So, in that sense, I think I'm a bit skeptical of people in tech who don't expre
 
 For me, it all comes back to those first to stories. The one where I thought I could do well by just writing code (wrong), and the one where I couldn't even start writing code until I'd spent time using and supporting the product.
 
-[^1]: https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect
-[^2]: https://www.marketwatch.com/story/doordash-will-require-all-workers-to-deliver-goods-or-perform-other-gigs-and-some-of-them-arent-happy-11640300491
+[fn:1] https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect
+[fn:2] https://www.marketwatch.com/story/doordash-will-require-all-workers-to-deliver-goods-or-perform-other-gigs-and-some-of-them-arent-happy-11640300491

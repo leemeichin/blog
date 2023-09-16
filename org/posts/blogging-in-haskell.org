@@ -2,9 +2,9 @@
 #+DATE: <2020-06-27>
 #+CATEGORY: programming
 
-It's taken me quite a while to settle on a particular look and feel for this blog. Rather than just having an outlet for writing, I wanted the creation of it to be a learning experience too. Hugo[^1], Gatsby[^2] and Zola[^3], with Netlify CMS[^4] as a fancy interface for writing posts on top of it all. Each attempt left me feeling less inspired than the last.
+It's taken me quite a while to settle on a particular look and feel for this blog. Rather than just having an outlet for writing, I wanted the creation of it to be a learning experience too. Hugo[fn:1], Gatsby[fn:2] and Zola[fn:3], with Netlify CMS[fn:4] as a fancy interface for writing posts on top of it all. Each attempt left me feeling less inspired than the last.
 
-Eventually I stumbled across Hakyll[^5] and, after finding a CSS 'framework' that gave the appearance of a terminal UI[^6], I felt like I had enough to get things off the ground.
+Eventually I stumbled across Hakyll[fn:5] and, after finding a CSS 'framework' that gave the appearance of a terminal UI[fn:6], I felt like I had enough to get things off the ground.
 
 The major appeal so far has been the immense ease of customisation. Hakyll itself isn't a static site generator in the same sense that others are, and as a result it offers a layer of customisation that other generators generally defer to templating languages for.
 
@@ -56,9 +56,9 @@ The result of adding this code, and then inserting it into the template context,
 
 In any case, I've enjoyed playing around with Haskell in order to deploy this site, and I'm looking forward to seeing what else I can build with the language. It's truly fascinating.
 
-[^1]: https://gohugo.io
-[^2]: https://www.gatsbyjs.org
-[^3]: https://www.netlifycms.org
-[^4]: https://jaspervdj.be/hakyll
-[^5]: https://www.getzola.org
-[^6]: https://terminalcss.xyz
+[fn:1] https://gohugo.io
+[fn:2] https://www.gatsbyjs.org
+[fn:3] https://www.netlifycms.org
+[fn:4] https://jaspervdj.be/hakyll
+[fn:5] https://www.getzola.org
+[fn:6] https://terminalcss.xyz

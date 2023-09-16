@@ -4,12 +4,12 @@
 
 If there's one thing I like writing about more than anything else, it's compassion, empathy, and intuition. It's a super squishy topic which means it's vulnerable, emotional, empowering, and ultimately human. I wish I could talk about it more than I do but sometimes I think the depth of it can be a bit intimidating because it can encourage a way of thinking that might feel uncomfortable. Might show you something you weren't previously aware of.
 
-At the same time, there is a /literally/ counter-intuitive feeling of comfort in the cold embrace of rationality and logic. It reduces the world to a finite set of simple, often mutually exclusive, constraints: this or that, that or the other; /X/ happened therefore /Y/[^1]. It's how we write software, even buzzword machine learning and artifical intelligence tech boils down to it because you can't really program a computer to imagine that it is something that it's not.
+At the same time, there is a /literally/ counter-intuitive feeling of comfort in the cold embrace of rationality and logic. It reduces the world to a finite set of simple, often mutually exclusive, constraints: this or that, that or the other; /X/ happened therefore /Y/[fn:1]. It's how we write software, even buzzword machine learning and artifical intelligence tech boils down to it because you can't really program a computer to imagine that it is something that it's not.
 
 Well, that intro was a little bit misleading. We do talk about intuition quite a lot, we just don't call it that. You've got your gut instinct, and the old dichotomy of listening to your head or following your heart.
 
 #+BEGIN_ASIDE
-Studies have actually suggested that the 'gut feeling' is linked to your diet, in particular the ecosystem of bacteria in your digestive system that helps you process the nutrients in your food, and that diet can affect your mental health.[^2] Similarly, studies have explored the concept of 'hangry' (angry because of hunger) and linked negative emotions to hunger.[^3] Finally, the feeling of boredom can itself manifest as wanting to eat.[^4]
+Studies have actually suggested that the 'gut feeling' is linked to your diet, in particular the ecosystem of bacteria in your digestive system that helps you process the nutrients in your food, and that diet can affect your mental health.[fn:2] Similarly, studies have explored the concept of 'hangry' (angry because of hunger) and linked negative emotions to hunger.[fn:3] Finally, the feeling of boredom can itself manifest as wanting to eat.[fn:4]
 
 For the sake of this post, 'gut feeling' corresponds to an intuitive or instinctive thought in the idiomatic sense, not the scientifically researched one.
 #+END_ASIDE
@@ -28,7 +28,7 @@ So yeah, I've had a few of those lately and indeed it triggered an avalanche of 
 
 If I look back on my career, for example, it is almost entirely driven by impulse and a commitment to a momentary thought. When I moved to Barcelona to work for Typeform, the seed was planted when a close friend referred me for a position with Skype that could either be in London, or in Estonia. The thought of working in a different country was completely alien to me back then but it was almost like being given permission and encouragment. I tanked the interview, enjoyed two days in Tallinn, and even in the face of failure I'd basically set my heart on working my next job abroad, somewhere in the EU. To be honest I am embellishing that a bit, there was also someone that I liked who was in Barcelona and we made plans, so I was also following something else.
 
-Similarly, if I leave a job I often find that it's on principle and I'm thinking about both what I value and who I want to be working for. In general that means that I don't really feel aligned in what we care about, which is a recipe ripe for conflict, but also because when I was once intrinsically motivated, I no longer am. I can say with immense privilege that once you feel like you're earning what you're worth, you want other things to make your day to day more enjoyable. Classic Maslow I suppose.[^5]
+Similarly, if I leave a job I often find that it's on principle and I'm thinking about both what I value and who I want to be working for. In general that means that I don't really feel aligned in what we care about, which is a recipe ripe for conflict, but also because when I was once intrinsically motivated, I no longer am. I can say with immense privilege that once you feel like you're earning what you're worth, you want other things to make your day to day more enjoyable. Classic Maslow I suppose.[fn:5]
 
 In my time as a software developer, my career ladder is basically the companies I've worked for, with, until I've got a payrise and a step up by moving to a different company. My heart wants me to be loyal to these places, and I look back so fondly on those times (New Bamboo and Typeform are particularly special to me); my head says, no, no more interviews, no more code tests (fucking code tests, bane of the industry... one for another post), even if you're unhappy, you can put up and shut up; my gut says, fuck it, do what you gotta do, head and heart are gonna hold you back.
 
@@ -52,8 +52,8 @@ My head says I'll be a senior engineer forever, reliving 2 years of work over an
 
 Yet still, there's a more uncomfortable conclusion...it's really hard to build software and a company around the people it's meant to serve, and to then stay in service of those people.
 
-[^1]: https://xyproblem.info/
-[^2]: https://www.bmj.com/company/newsroom/anxiety-might-be-alleviated-by-regulating-gut-bacteria/
-[^3]: https://psycnet.apa.org/buy/2018-27534-001
-[^4]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4381486/
-[^5]: https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs
+[fn:1] https://xyproblem.info/
+[fn:2] https://www.bmj.com/company/newsroom/anxiety-might-be-alleviated-by-regulating-gut-bacteria/
+[fn:3] https://psycnet.apa.org/buy/2018-27534-001
+[fn:4] https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4381486/
+[fn:5] https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs

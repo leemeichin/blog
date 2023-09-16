@@ -32,7 +32,7 @@ Find a therapist you can connect with and trust (you don't have to stick with th
 Ask your closest friends if you can confide in them (try not to treat a 'no' as a rejection, some people are better equipped to support than others)
 }
 ◊li{
-If you can chat to people you don't know over the phone, then Samaritans[^1] is a good place to start but not the only place
+If you can chat to people you don't know over the phone, then Samaritans[fn:1] is a good place to start but not the only place
 }
 ◊li{
 Talk to your doctor about Cognitive Behavioural Therapy (CBT)
@@ -43,10 +43,10 @@ A friend has also suggested some other options:
 
 ◊ul{
 ◊li{
-If you prefer to text rather than call, then shout[^2] might work for you
+If you prefer to text rather than call, then shout[fn:2] might work for you
 }
 ◊li{
-And if you're younger, still in school maybe, then Papyrus[^3] can help
+And if you're younger, still in school maybe, then Papyrus[fn:3] can help
 }
 }
 
@@ -54,6 +54,6 @@ I'm aware that these options are very specific to the UK and you might not have 
 
 Take care of yourself.
 
-[^1] https://www.samaritans.org
-[^2] https://giveusashout.org
-[^3] https://www.papyrus-uk.org
+[fn:1] https://www.samaritans.org
+[fn:2] https://giveusashout.org
+[fn:3] https://www.papyrus-uk.org

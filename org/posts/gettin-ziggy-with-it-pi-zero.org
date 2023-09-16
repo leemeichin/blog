@@ -4,15 +4,15 @@
 
 Alright, you can read the article first and shoot me later for a title like that, and what will inevitably become a series of Zig-based puns.
 
-Zig, for the unaware, is a fancy language that looks to be to C what Rust is to C++. Honestly, I recommend you read the summary on the main page[^1] to find out more yourself, as the best I can do is to just parrot what has already been written. However, you can see it as a valid /alternative/ to C and Zig itself has claimed that it wants to be a better version of C than C itself. An ambitious challenge, for sure. To that end, Zig itself ships its own C compiler.
+Zig, for the unaware, is a fancy language that looks to be to C what Rust is to C++. Honestly, I recommend you read the summary on the main page[fn:1] to find out more yourself, as the best I can do is to just parrot what has already been written. However, you can see it as a valid /alternative/ to C and Zig itself has claimed that it wants to be a better version of C than C itself. An ambitious challenge, for sure. To that end, Zig itself ships its own C compiler.
 
-I've been interested in giving Zig a spin for quite a while, and once my Raspberry Pi Zero W[^2] and OLED display[^3] arrived in the post, I decided that this would be my best opportunity to try it out. I'm not really going to cover the process of wiring up the hardware, suffice to say that once you've got your Pi Zero you'll need to be able to SSH into it, and that you'll need a [solderless] GPIO header[^4] to plug the OLED display into. I recommend the Zero /W/ because the W means 'WiFi', which means that if you connect it to your network you can SSH in without faffing around with USB cables and what not. It's not a requirement, though.
+I've been interested in giving Zig a spin for quite a while, and once my Raspberry Pi Zero W[fn:2] and OLED display[fn:3] arrived in the post, I decided that this would be my best opportunity to try it out. I'm not really going to cover the process of wiring up the hardware, suffice to say that once you've got your Pi Zero you'll need to be able to SSH into it, and that you'll need a [solderless] GPIO header[fn:4] to plug the OLED display into. I recommend the Zero /W/ because the W means 'WiFi', which means that if you connect it to your network you can SSH in without faffing around with USB cables and what not. It's not a requirement, though.
 
-With that out of the way, let's see if we can write something in Zig to power this little display. It's going to be a simple program that simply fills the entire screen by turning the pixels from black (off) to white (on). As an extra challenge, we will do this without pulling in dependencies like WiringPi[^5], or relying on existing drivers, as lovely as they are.
+With that out of the way, let's see if we can write something in Zig to power this little display. It's going to be a simple program that simply fills the entire screen by turning the pixels from black (off) to white (on). As an extra challenge, we will do this without pulling in dependencies like WiringPi[fn:5], or relying on existing drivers, as lovely as they are.
 
-Instead, we will be directly using the i◊sup{2}c dev interface[^6]. If you're using Debian and/or Ubuntu on your Pi and your own machine, you can grab these libraries with a simple ~sudo apt install i2c-dev~. You will need to enable i◊sup{2}c on your Pi separately though, through ~sudo raspi-config~[^7].
+Instead, we will be directly using the i◊sup{2}c dev interface[fn:6]. If you're using Debian and/or Ubuntu on your Pi and your own machine, you can grab these libraries with a simple ~sudo apt install i2c-dev~. You will need to enable i◊sup{2}c on your Pi separately though, through ~sudo raspi-config~[fn:7].
 
-Ready to... get Ziggy with it? Oh, I bet you are. 😋 If you want to skip to the end and just grab the code, though, you can find this all on GitHub[^8]. I called it Stardust, like /Zig/gy Stardust. Get it?
+Ready to... get Ziggy with it? Oh, I bet you are. 😋 If you want to skip to the end and just grab the code, though, you can find this all on GitHub[fn:8]. I called it Stardust, like /Zig/gy Stardust. Get it?
 
 🥁
 
@@ -94,7 +94,7 @@ Let's build a binary, then. Save your code into a file, say, ~stardust.zig~ and 
 zig build-exe stardust.zig -target arm-linux-musleabihf -mcpu arm1176jzf_s -O ReleaseSafe -lc
 #+END_SRC
 
-To unpack that a little, the ~target~ is a triplet stating that we want to build this using the musl[^9] libc ABI, on a 32bit ARM architecture. ~mcpu~ goes along with that to make sure the resulting binary will work on our Pi Zero. I grabbed these values from an issue on Zig's github repo[^10], so credit goes to the author of that issue for unintentionally guiding me forward.
+To unpack that a little, the ~target~ is a triplet stating that we want to build this using the musl[fn:9] libc ABI, on a 32bit ARM architecture. ~mcpu~ goes along with that to make sure the resulting binary will work on our Pi Zero. I grabbed these values from an issue on Zig's github repo[fn:10], so credit goes to the author of that issue for unintentionally guiding me forward.
 
 Passing the optimiser flag (~-O~) isn't strictly necessary, so you can omit this if you require a debug build and stack traces with errors.
 
@@ -118,7 +118,7 @@ Let's move on and make this kitten purr. Meow 🐈.
 
 ** Getting this show on the road
 
-In true /draw the rest of the fucking owl/ fashion[^11], what follows is a bit of a code-dump since the primary method of communicating with your OLED display is to, literally, write a few bytes to a file. The registers available and what can be written to them are often described in a meticulously detailed datasheet[^12], but they're not exactly light reading and we can save a bit of time by grabbing the info from elsewhere. A lot of the constants that follow are gracefully derived from those listed in a certain ~owenosborn~'s wiringPi-based driver.[^13]. Credit where credit's due, eh.
+In true /draw the rest of the fucking owl/ fashion[fn:11], what follows is a bit of a code-dump since the primary method of communicating with your OLED display is to, literally, write a few bytes to a file. The registers available and what can be written to them are often described in a meticulously detailed datasheet[fn:12], but they're not exactly light reading and we can save a bit of time by grabbing the info from elsewhere. A lot of the constants that follow are gracefully derived from those listed in a certain ~owenosborn~'s wiringPi-based driver.[fn:13]. Credit where credit's due, eh.
 
 #+BEGIN_SRC zig
 const SET_CONTRAST = 0x81;
@@ -147,7 +147,7 @@ const SET_SEG_REMAP = 0xA0;
 const SET_CHARGE_PUMP = 0x8D;
 #+END_SRC
 
-The registers available to an i◊sup{2}c compatible device will depend on the device itself, so it's not really safe to copy and paste these without knowing exactly what you're dealing with. This is driver level code so it's not like you'll get some fancy validation error if you write the wrong bytes, you'll more likely fuck it up and burn down your house[^14].
+The registers available to an i◊sup{2}c compatible device will depend on the device itself, so it's not really safe to copy and paste these without knowing exactly what you're dealing with. This is driver level code so it's not like you'll get some fancy validation error if you write the wrong bytes, you'll more likely fuck it up and burn down your house[fn:14].
 
 Next we'll want to init the display and get it into a clean state, with the cursor pointing at the first pixel.
 
@@ -195,7 +195,7 @@ SET_PAGE_ADDR,
 
 Wow, actual Zig code! The formatting may look a little odd because that's what ~zig fmt~ decides is appropriate.
 
-~init_display~ is quite a complex beast that issues a whole series of commands that sets up the display for further use. A more detailed explanation of that will be in another post, for the sake of brevity, but in essence it was adapted from AdaFruit's CircuitPi driver, written in Python[^15].
+~init_display~ is quite a complex beast that issues a whole series of commands that sets up the display for further use. A more detailed explanation of that will be in another post, for the sake of brevity, but in essence it was adapted from AdaFruit's CircuitPi driver, written in Python[fn:15].
 
 The recurring theme in all of these new functions is that the entire basis of their existence is to create an array of two bytes, and then write them to file descriptor we opened right at the start. The data structure looks something like this:
 
@@ -230,7 +230,7 @@ This ~fill~ function will (rather quickly) turn the display solid white, updatin
 Reach out to me at pleasemakeitstop@mrlee.dev if this is too much for you.
 #+END_ASIDE
 
-Zig has some nice language features intended to replace and improve upon C/C++ preprocessor macros. The ~inline~ keyword is one such thing, and when applied to a ~for~ or ~while~ loop it'll unroll it at compile time. A simple optimisation but a useful one. We don't use it, but you also have ~comptime~, which is powerful enough to be able to implement generics, if you so desire. We're not going to go into that here though, and you can read more about it from a certain Loris Cro[^16].
+Zig has some nice language features intended to replace and improve upon C/C++ preprocessor macros. The ~inline~ keyword is one such thing, and when applied to a ~for~ or ~while~ loop it'll unroll it at compile time. A simple optimisation but a useful one. We don't use it, but you also have ~comptime~, which is powerful enough to be able to implement generics, if you so desire. We're not going to go into that here though, and you can read more about it from a certain Loris Cro[fn:16].
 
 ---
 
@@ -268,19 +268,19 @@ Once you're done, rebuild the binary and ~scp~ it over, like you did the first t
 
 Hopefully that worked, but if it didn't, get in touch with your feedback at wtf@mrlee.dev and help contribute to this post being a better, more informative read. After all, /works on my machine!/ can only go so far.
 
-[^1]: https://ziglang.org
-[^2]: https://thepihut.com/products/raspberry-pi-zero-w
-[^3]: https://thepihut.com/products/adafruit-pioled-128x32-monochrome-oled-add-on-for-raspberry-pi-ada3527
-[^4]: https://thepihut.com/products/gpio-hammer-header-solderless
-[^5]: http://wiringpi.com
-[^6]: https://www.kernel.org/doc/Documentation/i2c/dev-interface
-[^7]: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
-[^8]: https://github.com/mrleedev/stardust
-[^9]: https://musl.libc.org
-[^10]: https://github.com/ziglang/zig/issues/4875
-[^11]: https://knowyourmeme.com/memes/how-to-draw-an-owl
-[^12]: https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf
-[^13]: https://github.com/owenosborn/SSD1306-OLED-WiringPi/blob/master/ssd1306.h
-[^14]: Possibly exaggerated for effect. Possibly.
-[^15]: https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/adafruit_ssd1306.py
-[^16]: https://kristoff.it/blog/what-is-zig-comptime/
+[fn:1] https://ziglang.org
+[fn:2] https://thepihut.com/products/raspberry-pi-zero-w
+[fn:3] https://thepihut.com/products/adafruit-pioled-128x32-monochrome-oled-add-on-for-raspberry-pi-ada3527
+[fn:4] https://thepihut.com/products/gpio-hammer-header-solderless
+[fn:5] http://wiringpi.com
+[fn:6] https://www.kernel.org/doc/Documentation/i2c/dev-interface
+[fn:7] https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
+[fn:8] https://github.com/mrleedev/stardust
+[fn:9] https://musl.libc.org
+[fn:10] https://github.com/ziglang/zig/issues/4875
+[fn:11] https://knowyourmeme.com/memes/how-to-draw-an-owl
+[fn:12] https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf
+[fn:13] https://github.com/owenosborn/SSD1306-OLED-WiringPi/blob/master/ssd1306.h
+[fn:14] Possibly exaggerated for effect. Possibly.
+[fn:15] https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/adafruit_ssd1306.py
+[fn:16] https://kristoff.it/blog/what-is-zig-comptime/

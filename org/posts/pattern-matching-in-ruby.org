@@ -207,7 +207,7 @@ end
 
 ---
 
-Well, this doesn't cover the entirety of Ruby's pattern matching fun, but it should at least show you the various things you're now able to do with the feature. If in doubt, RTFM[^1]; Ruby's documentation is absolutely fantastic.
+Well, this doesn't cover the entirety of Ruby's pattern matching fun, but it should at least show you the various things you're now able to do with the feature. If in doubt, RTFM[fn:1]; Ruby's documentation is absolutely fantastic.
 
 #+BEGIN_ASIDE
 Specifying 'rubydoc' in your Google searches should reveal Ruby's official documentation and not the SEO spam that is ApiDock.
@@ -215,4 +215,4 @@ Specifying 'rubydoc' in your Google searches should reveal Ruby's official docum
 
 Check in soon to see another deep-dive into Ruby Sorcery.
 
-[^1]: https://docs.ruby-lang.org/en/3.0.0/doc/syntax/pattern_matching_rdoc.html
+[fn:1] https://docs.ruby-lang.org/en/3.0.0/doc/syntax/pattern_matching_rdoc.html

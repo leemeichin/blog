@@ -2,7 +2,7 @@
 #+DATE: <2021-01-24>
 #+CATEGORY: programming
 
-Earlier today I read a blog post titled /Software development topics I've changed my mind on after 6 years in the industry/[^1] and it made me reflect on how my own thinking has (hopefully) evolved over my decade long career. I'm not going to discuss the content of the linked post, except to say that as much as I empathise with the author and have been an angry programmer myself, the overly aggressive tone that occasionally slips out isn't really my cup of tea.
+Earlier today I read a blog post titled /Software development topics I've changed my mind on after 6 years in the industry/[fn:1] and it made me reflect on how my own thinking has (hopefully) evolved over my decade long career. I'm not going to discuss the content of the linked post, except to say that as much as I empathise with the author and have been an angry programmer myself, the overly aggressive tone that occasionally slips out isn't really my cup of tea.
 
 A lot of things can happen in ten years, and if nothing else my 30-something year old self feels substantially less enlightened than his more youthful counterpart. I look forward to reading this again in future and seeing what I think about it then.
 
@@ -14,7 +14,7 @@ Corrollary: Having an answer to everything (or being overconfident) is a hard ha
 
 *** A boring tech stack is nice, but you have to allow some scope for innovation if you don't want to stagnate.
 
-One idea is to set up an innovation budget[^2], but it's not the only one.
+One idea is to set up an innovation budget[fn:2], but it's not the only one.
 
 *** PHP is a legitimate--if not /superior--option to start a new project with and it deserves another chance./
 
@@ -64,5 +64,5 @@ Rejection isn't always so easy to handle, but there's always another time and a 
 
 It feels a bit weird to write out a series of arbitrary maxims the way I just have, so I'll aim to explore each one in more depth throughout this year. With that said, it was an interesting exercise if ultimately a rather shallow one. Watch this space for more details.
 
-[^1]: https://chriskiehl.com/article/thoughts-after-6-years
-[^2]: https://mcfunley.com/choose-boring-technology
+[fn:1] https://chriskiehl.com/article/thoughts-after-6-years
+[fn:2] https://mcfunley.com/choose-boring-technology
