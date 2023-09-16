@@ -1,0 +1,86 @@
+---
+title: Rewrite it in lisp again
+date: 2021-11-30
+category: programming
+---
+
+About six months ago I wrote a post about rewriting the tech that publishes this blog.[^1] It seemed like a good idea at the time to try and build something out in Racket and Pollen, and it was a learning experience.
+
+In doing this, I inadvertently painted myself into a corner. While I could fairly easily hack away at the code while I was building the initial release, I essentially had to re-learn most of it when returning to it several months later. If I used Racket day-to-day then this of course would be a non-issue as I would be continually training the old brain muscle.
+
+It was too much hassle for me, and none of the things I thought would be useful actually materialised. It was a step up from markdown but a step down from my old system of a Haskell-based wrapper around Pandoc.
+
+Time to step back, a second time, and figure out what I actually wanted from all of this beyond using the site as a basis for experimentation. The solution was under my nose the whole time, as I do most of my work in emacs and therefore I had the power of org-mode at my hands.
+
+The first step was to rename all the files so they would be recognised as Org-mode files. That's easy enough using emacs, dired and a magic incantation:
+
+#+begin_src text
+C-x C-f posts/ RET ; Open posts directory in dired
+M-x replace-string RET ; Start a find and replace
+.poly.pm RET ; Enter the search string
+.org RET ; Enter the replacement
+C-c C-c ; Write the changes to disk (performing a bulk rename)
+#+end_src
+
+The most effort was in converting the site from the special Pollen syntax and into Org syntax. It was primarily a matter of using ~sed~ to swap things around and, due to not being the most proficient with sed, spending a bit of time manually finessing the results. Presumably I could have used something in emacs for this too, like using ~query-replace-regexp~ or similar across the project, but it didn't occur to me at the time.
+
+#+begin_src shell
+sed -i -r "s/◊codeblock\['(._)\]\{/#+begin_src \1/" posts/_.org
+sed -i -r "s/◊define-meta\['title\]\{(._)\)\}/title: \1/" posts/_.org
+#+end_src
+
+I tended to make the changes in place because I could much more easily review them in magit and either commit them if I did it well, or throw the changes out if I messed something up. If you're not familiar with emacs and haven't heard of magit, then I can say without any exaggeration that it is one of the--if not /the/--best git clients out there and is a genuine feat of user experience and engineering.
+
+Several hours of wrangling text later, the next step was to figure out how to publish the damn thing. Org-mode comes with a package called ~ox-publish~ that can convert Org-mode files to various formats, including HTML, while also handling static assets and providing other helper utilities. The documentation is functional but a little thin in parts, presumably because if you're doing this in emacs then you're only a ~C-x C-h~ or an ~M-x describe-function~ away from a better explanation.
+
+#+begin_aside
+This is surprisingly powerful if you're not familiar with that way of working. Emacs is, for all intents and purposes, a full-blown IDE for my blog. Of course, I would lose this benefit if I chose to simply render the Org files via Pandoc or some other tooling.
+#+end_aside
+
+#+begin_src emacs-lisp
+(setq org-publish-project-alist
+`(("assets"
+:base-directory ,(kamelasa/expand-relative-path "assets/")
+:base-extension ".\*"
+:recursive t
+:publishing-directory ,(kamelasa/expand-relative-path "publish/")
+:publishing-function org-publish-attachment)
+;; ... plus the other bits
+("www.kamelasa.dev" :components ("posts" "pages" "assets" "rss"))))
+#+end_src
+
+You can find the full script on the git repo, which is public as it always has been.[^2]
+
+One thing that has fascinated me about this is syntax highlighting. It's not something I was really satisfied with previously, and I wasn't prepared to make a colour scheme of my own (or figure out how to adapt one). ~org-publish~ uses a package called ~htmlize~[^3], which generates CSS based on the /actual theme of your editor/. So long as you have loaded the language modes you need, ~htmlize~ will convert all your codeblocks into HTML using the colours of your chosen emacs theme. I haven't really taken advantage of this, to be honest, so I'm sticking with basic monochrome codeblocks for now until I feel like setting up dark and light colour schemes.
+
+The final part is the development and deployment process. This is fairly simple, as publishing is just a case of running emacs in batch mode.
+
+#+begin_src shell
+emacs --batch --no-init --load publish.el --eval '(org-publish "www.kamelasa.dev" t)'
+#+end_src
+
+That's all that the CI pipeline does, with an extra step to copy the files over to my server.
+
+When writing or developing, it's convenient to have some processes running so that I can easily see the changes I make without manually rerunning a build. I don't have a clever solution for this, just one that works and guarantees that I see the changes I make (as opposed to being confused by cached output).
+
+#+begin_src shell
+while $(inotifywait -qqre modify,create,delete --exclude '.git|publish' .); do
+emacs --batch --no-init --load publish.el --eval '(org-publish "www.kamelasa.dev" t)'
+done
+#+end_src
+
+Of course, no setup would be complete without a simple server to admire my handiwork in all its rendered beauty.
+
+#+begin_src shell
+python3 -m http.server 8080 -d publish
+#+end_src
+
+It has to be said that I didn't figure all of this out by myself. I had a little trouble getting RSS feeds working, but the example at writepermission.com[^4] set me on the right track. And most of the initial setup was adapted from a post at taingram.org[^5], which gave me a good introduction.
+
+Maybe once I've spent more time working on this I'll describe some of the more novel changes I might make, but for those things I've mentioned, the source material is worth reading.
+
+[^1] [[file:rewrite-it-in-lisp.org][Rewrite it in Lisp?]]
+[^2] https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/publish.el
+[^3] https://www.emacswiki.org/emacs/Htmlize
+[^4] https://writepermission.com/org-blogging-rss-feed.html
+[^5] https://taingram.org/blog/org-mode-blog.html

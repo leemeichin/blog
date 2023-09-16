@@ -1,0 +1,38 @@
+---
+title: "Twenty Twenty-Two"
+date: 2022-11-07
+category: personal
+---
+
+At the start of the year I wrote a post about my outlook for this year. I signed it off with a desire to check back on it in six months or so and see how things turned out.
+
+The post still lives on the old version of my blog and I haven’t migrated it over yet, but I was positive about some changes to my routine and hopeful about my health and work-life balance as a result.
+
+Who could have known that—fresh off the back of COVID lockdowns over the previous two years—we’d have even more of a shitshow to look forward to! How many generational crises does it take to become the crisis generation?
+
+Still, I was doing my best. I managed about 6 months of consistent training at the gym with my PT, and although I found it increasingly difficult to lose weight, at least some of it was replaced with muscle. I feel pretty proud of myself for managing one PT session a week plus a couple more sessions alone, usually swimming. My diet had improved too.
+
+It’s difficult to describe just how abruptly I shifted from active, energetic and motivated to inactive, lethargic, and demotivated. What was once effortless became a struggle, and keeping up the routine I had was monumentally difficult. I couldn’t do it.
+
+Burnout, or so I thought. I’ve been mostly happy with my work except for a slight blip earlier in the year, around the time of our first round of layoffs. I left, and a month later rejoined on a different project, different team. It was a drastic move, not very well thought out, but I’m grateful that I was welcomed back. I’ll come back to this topic later.
+
+At the end of 2020 I got a letter through the post saying my landlord had committed suicide, which explained why he’d totally dropped off the radar—completely incommunicado for over six months. I’ve got an old post about that too, but suffice to say he seemed like a good guy and I felt for his loss. Ever since then my tenancy has been in some kind of limbo, which on the one hand has been fantastic (rent is still the same as it was almost five years ago), but on the other has been a sort of unwanted uncertainty. You know…are they going to sell? When? Almost two whole years, now, in probate.
+
+The first plan was to buy the place out; after all, I’ve been here almost five years now. But now I want more space, because working fully-remote is hard when my ‘office’ and my ‘lounge’ are the same room, and I want a physical separation.
+
+Second plan was to find a bigger flat, and buy it. Well, buy it on a mortgage. Found somewhere nearby, with more space, better insulation, and a balcony, and hopefully by the end of the month I’ve moved in.
+
+So, that was an unexpected turn of events as I never had a plan for this. Just found a flat I liked the look of and thought, if it falls through it falls through, don’t get emotionally attached.
+
+While this was happening, I wasn’t making any progress with my feeling of being burned out. Had a therapist for a couple of months but felt like I was almost inventing an issue for a therapist to go through with me. It’s more like my mood has plummeted *just because*. No reason, no background story, it was just at one level and now it’s incredibly low.
+
+It’s a familiar feeling, and I’ve been on anti-depressants more than once before. But it felt strange to me that I would almost cyclically fall into this state, with periods in between where my mood is more neutral, or absurdly high.
+
+The doctor says it sounds like it’s definitely more than depression, and I’ve got a consultation to assess whether or not it’s bi-polar disorder.
+
+I find that quite distressing in one way, but comforting in another, especially if the diagnosis actually is bi-polar. It would go a long way in helping me untangle those feelings I’d normally put down to burnout or ‘depression…*again*’ so that I can be better with my mental health. Knowing that, I can look back on my gym routine for example and not blame myself because some switch was flicked and my desire to go and work out vanished overnight. I didn’t become demotivated or lazy, it was just something I have no control over that changed. 
+
+The distressing aspect is around treatment and what that means in the long run, although the prospect of that is still an improvement over mistreating it as depression. Until then, the jury’s out. 
+
+Overall, I have no idea where I expected to be when I wrote about the year ahead in January but I have to admit that, despite a challenging time overall, I’m grateful of where I’ve arrived to, and of how I got here (in particular the people who’ve supported me and the opportunities I’ve had).
+

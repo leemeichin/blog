@@ -1,0 +1,37 @@
+---
+title: Myopia
+date: 2023-03-06
+category: personal
+---
+ 
+I have a feeling that this post might say more about me than anything else, but given that I mostly write about my own experience anyway that probably isn’t such a problem.
+
+A long, long time ago I wrote a post on Medium about how news on the internet becomes increasingly amplified until all you are hearing is distorted information. The post doesn’t exist any more but it ran with the idea that a piece of music can contain an incredible amount of detail and subtlety at an appropriate volume, but if you turn it up to eleven it’ll sound like complete and utter *shite*; every subtle flourish, every gentle melody, every aspect of harmony, all flattened out into an unintelligible dirge. You just want to tune it the fuck out before it makes your ears bleed.
+
+Well, I don’t think I explained it exactly like that, but it’s a decent enough summary.
+
+That was roughly around 2017 and in just over five years it has only got worse. There isn’t a melody any more, just the constant clattering din of wooden spoons bashing metal saucepans. Can’t somebody just listen to my noise instead of all that other noise?
+
+“It’s all about curation,” someone will say, “you’ve got to tailor your feed so the algorithm only gives you good vibes.” This is true but can require a lot of pushing back against a service that believes it knows what you want better than you do.
+
+I suppose that’s why even typical ‘feel good’ communities on Reddit often descend into uncivilised depravity, because the lowest common denominator on the internet is myopic outrage.
+
+Myopia is the clinical term for having short-sighted vision, meaning that your eyes have difficulty focussing on objects that are further away. It colloquially refers to the other kind of short-sightedness often known as *tunnel vision*.
+
+If you’ve got tunnel vision you’re basically unable to perceive anything beyond what is immediately in front of you. There’s no big picture, there’s no holistic point of view, there’s no stepping back, just an impulsive response to what you see before you as you dig an even deeper hole for yourself.
+
+At work, if I get tunnel vision I’m so committed to a particular solution that I’m unable to take on board the feedback I’m getting from my team-mates. I can spend hours getting increasingly frustrated because I can’t reach the solution that I think is correct, even when people are spending the time to point me in more helpful directions. I’m not being stubborn, I just failed to take a step back and instead doubled down on an incorrect approach. We all do it, you’ve just got to be patient when it happens.
+
+This is what it currently feels like to pass time on the internet. People young and old entrenched in their views, waiting for the next thing to piss them off. Flamewars, rage bait, politics, hatred, angry mobs…there is no communication or listening just a relentless trading of blows. I’m not going to go into specifics because you only have to open Twitter, Facebook, TikTok, YouTube or Reddit to get a lethal dose of pure despair.
+
+That’s not the worst thing about it though, as bad as it is. The worst thing is that if you spend enough time on there you’ll begin a regression towards the mean. Impulsive, addicted to anger…and before you know it you’ve been funnelled down a dark path with no light at the end. 
+
+I’ve felt myself going there once or twice before. If you go on Reddit, for example, you might be greeted by a subreddit called Am I The Asshole (AITA). This is a gateway drug and once you’ve joined the AITA peanut gallery you are already on a downward trajectory into judgmental nastiness. It’s just too fucking easy to let go of your empathy and forget you're talking to other human beings.
+
+Thank god for self-awareness so I could step back and think “what the fuck are you doing Lee? This isn’t who you are, and it’s not good for your mental health either.” You just lose sight of things as you seek thrills from getting pissed off and arguing, and I’m saying that as someone who talks about empathy and compassion at length.
+
+What are you supposed to do, really? Curating what you consume is one thing, but you’re always at the mercy of the engagement algorithm. There’s still plenty to enjoy on the internet out of the social tarpits, especially for hobbyists and enthusiasts, and RSS is a great tool to aggregate the feeds from those sites.
+
+Sometimes though, it’s better to just walk away.
+
+(And of course, the irony of this post is not lost on me since I've chosen to singularly focus on the toxic aspect of the internet, and not all of the good that comes from it.)

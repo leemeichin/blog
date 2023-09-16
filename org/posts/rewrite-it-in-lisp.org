@@ -1,0 +1,85 @@
+---
+title: Rewrite it in Lisp?
+date: 2021-06-15
+category: programming
+---
+
+I finally got around to paying some money for /Beautiful Racket/[^1], a fantastic online-only book that introduces you to Racket by guiding you through building a few language implementations. In that sense it's not unlike /Write Yourself a Scheme in 48 Hours/[^2], except that book focusses on Haskell and (through no fault of its own) lacks the wonderful presentation of Beautiful Racket.
+
+Developing a soft spot for a lisp feels like a rite of passage for a typical programmer, alongside owning a copy of SICP and using emacs as your main editor. And for good reason, really; the beauty of writing lisp is that you are basically working directly with an AST instead of dealing with a special syntax that is parsed into one. It's powerfully expressive, if not a little intimidating at first.
+
+Going through Beautiful Racket led me to the technology used to build the book, Pollen[^3]. Reading through the introduction and some of the reasoning behind Pollen's design decisions, I felt like I agreed enough with the premise of the system that I wanted to try it out. It also helped that I've been in the process of outlining a book I'd like to write, and this helped me settle on what I could use to accomplish that.
+
+The best way to evaluate a solution is to build a proof of concept, and soon enough I'd embarked on a several-week long project to convert this blog to be a Pollen-based publication. The end result is what you're reading now: a successful rewrite, operating in production without a hitch.
+
+In order to make that happen, I had to convert all the Markdown-based posts to use the Pollen Markup processor. This is a minimal syntax that uses a 'lozenge' (~◊"◊"~) to apply formatting to text where needed. This makes it much easier to publish posts under multiple formats, like LaTeX or PDF, as each format can render the same tags in an appropriate way, not just as HTML.
+
+That was the easy, albeit boring, part. The real challenge was taking the bits and pieces I'd written in Haskell and porting them over to this new system, such as the changelog that is rendered at the bottom of each post and the estimated reading time at the top. Footnote references are not a built-in feature either, so that also required some thinking.
+
+This is where Pollen gets interesting: each source file is essentially converted into a huge S-expression, known in Pollen as tagged X-expressions. A simple example would look like this:
+
+#+begin_src racket
+(root (div ((class "main")) (p "Hello" (span "world"))))
+#+end_src
+
+There is no templating language, per-se, in Pollen. The ~◊"◊"~ syntax is a small sugar over normal Lisp syntax, and all you're ultimately doing is calling a function that you've defined somewhere in your code (or in the same file). These functions can do anything--there's nothing special about them--so long as they return a valid X-expression, which means that you don't really have to learn how to extend a language or figure out how to integrate with one.
+
+As such, a functional approach is still the easiest way to add new capabilities to your project, although it may not always be enough if you need to handle state across pages. An example is my implementation for links with footnotes:
+
+#+begin_src racket
+(define (footnotes . refs)
+`(hr
+(section [(class "footnotes")]
+(ol [(role "doc-endnotes")] ,@refs))))
+
+'(define (^ ref-num . footnote)
+(if (empty? footnote)
+`(a ((class "footnote-ref") (role "doc-noteref") (id ,(format "fnref~a" ref-num)) (href ,(format "#fn~a" ref-num))) (sup ,(number->string ref-num))) `(li
+((id ,(format "fn~a" ref-num)) (role "doc-endnote"))
+,@footnote
+(a
+((class "footnote-back")
+(role "doc-backlink")
+(href ,(format "#fnref~a" ref-num)))
+"↩"))))
+#+end_src
+
+I use it like this:
+
+#+begin_src pollen
+◊"◊"footnotes{
+◊"◊"^[1]{◊"◊"<>["https://beautifulracket.com/"]}
+◊"◊"^[2]{◊"◊"<>["https://en.m.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours"]}
+◊"◊"^[3]{◊"◊"<>["https://docs.racket-lang.org/pollen"]}
+◊"◊"^[4]{◊"◊"<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/pollen.rkt"]}
+◊"◊"^[5]{◊"◊"<>["https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/redirs.caddy"]}
+}
+}
+#+end_src
+
+The estimated reading time was also easier to implement than I first thought. Rather than splitting the text into words as I did in the previous version of the site, I figured I'd get a decent enough estimation by dividing the size of the file in bytes by an average English word-length, assuming a reading speed of 250 words a minute.
+
+#+begin_src racket
+(define (post->size post) (number->string (file-size (post->path post))))
+
+(define average-word-length 4.7)
+(define words-per-minute 250)
+
+(define (post->ert post)
+(exact-round
+(/
+(/ (string->number (post->size post)) average-word-length)
+words-per-minute)))
+#+end_src
+
+You can see the rest of what I scripted in the main `pollen.rkt` file for this site[^4]
+
+In the end, the only thing I traded-off was the post category in the URL itself. Hakyll made that easy to add, but ultimately it wasn't that important a feature to add. There was no point getting clever as there are only a dozen or so published posts, so I constructed a flat list of permanent redirects for Caddy to serve[^5].
+
+Overall, I'm happy with the change. It doesn't take 45 minutes to re-compile my Hakyll build if I add new functionality, and I don't have to host my own Debian repo to install the compiled binary through ~apt~. Rendering the site and publishing it is still completed in a matter of seconds. And, now I've gone through the effort of deploying it for this site, I'm a lot more confident about using Pollen again for other projects.
+
+[^1]: https://beautifulracket.com/
+[^2]: https://en.m.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
+[^3]: https://docs.racket-lang.org/pollen
+[^4]: https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/pollen.rkt
+[^5]: https://git.sr.ht/~mrlee/www.kamelasa.dev/tree/main/item/redirs.caddy

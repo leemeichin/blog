@@ -1,0 +1,26 @@
+---
+title: Marginalia
+date: 2023-03-17
+category: work
+---
+
+Everybody loves to talk about self-documenting code, self-documenting architecture, self-eplanatory everything. 
+
+If it's obvious you should obviously know it. If it's intuitive you should know it without actually knowing it.
+
+This comes up a lot when you talk about documenting a codebase and it comes up a lot with refactoring.
+
+Pull requests (contributions to the codebase) are fun because they also document a change of code from one version to another. How do you document the space between old and new?
+
+It's not always easy to describe those changes - you can write a PR description or create meticulous commits and both are amazing, but they're not always enough.
+
+Whenever I submit a pull-request I review it myself and comment on the lines I want to draw attention to. Either I'm justifying the approach or the change, or I'm asking for some help. Most of it is discarded, but some of it is kept.
+
+Those comments are different because they were made on top of the code, not as a part of it. Like drawing notes on what you did after the fact.
+
+Marginalia for code.
+
+
+
+
+

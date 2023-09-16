@@ -1,0 +1,78 @@
+---
+title: Technical Treadmill
+date: 2023-04-02
+category: tech
+---
+
+The term 'hedonic treadmill' was coined back in the 1970s to describe the tendency to revert to a baseline state of happiness over time. In one limited sense it works as a metaphor for chasing pleasure without a lasting sense of fulfilment: buying a brand new car, for example, is exciting at first and brings some joy, but some time later it's _just_ a car and maybe what would bring you some new joy is to upgrade it to a brand new car. Similarly, it's the idea of getting your phone upgraded every year - it's a new toy for the first few weeks and then just a phone until the next upgrade comes along.
+
+Alternatively it suggests adaptation and resilence, such that any particularly negative experiences may only be temporary blips before you climb back up to the baseline. 
+
+I feel the same happens with technology and software engineering and it's not exactly a novel thought. It's all cyclical and if you stay in the game long enough you'll start to see the old becoming new again.
+
+For example, isn't cloud computing just an evolution of old fashioned mainframe programming? You're billed for the CPU time your AWS Lambda function uses. Oftentimes you can pay for this resource at a discount on a spot market, at the expensive of reliability. Your EC2 instance isn't physically a rack in a data farm somewhere, just a conceptual block of resource you've paid to allocate.
+
+What about the old debate between thin clients, where the server is responsible for most of the application's workload, and thick ones, where the client is responsible for the workload? You know, the difference between deploying a traditional full-stack Rails app with HTML templates and all, and deploying an API that's consumed by a React application in the browser? I don't know where to go with that one as far as web dev is concerned, it seems to be in a perpetual spin cycle.
+
+In each case, the evolution of the technology is met with great excitement and equally great cynicism until a rhythm is found and everyone's back to their usual pace, like a heartbeat levelling out.
+
+Anyway, in the spirit of reflecting on my own recent experience, I thought I'd pick out a few things I've worked with that I initially found exciting and where I am with them now.
+
+## 1. Kubernetes (K8S)
+
+I've gone back and forth on this one several times in my career and I cannot confidently say where I stand on it. Where it succeeds is that it is an incredible abstraction over complex, distributed infrastructure that might be cloud-based, on your own hardware, or both. It's as simple as you need it to be but it takes experience to understand what 'simple' is (as always, simple isn't easy). It's also easy to make an mess of it but that's a criticism to be levelled at engineering culture, not the tech, because any team of engineers can make a mess if there isn't any discipline.
+
+My overall experience is that you get the best out of K8S with a team of SREs who can help maintain it. It's not something you give to a team of senior software engineers with the idea of saving some money by making them all devops experts.
+
+I started off excited about this though, and spent a lot of time learning how to use it and maintain it. These days my excitement is tempered but I appreciate knowing about it so I can work with it and help out in a pinch. 
+
+If anything, I expect K8S to be an inevitability in any startup and a migration to it is just a matter of time. K8S is choosing _build_ over _buy_ and you can get a hell of a lot out of Heroku, Render, Fly, Vercel, etc. before you make such an enormous commitment... if you can convince the org about that.
+
+Similarly, I think letting teams host their own on Linode or Digital Ocean is unlikely to pass muster in any startup seeking any kind of compliance, if only because K8S has solved the job of provisioning workloads dynamically, making deployment a self-service problem.
+
+## 2. Microservices
+
+Many good cases can be made for abstracting parts of your business logic over the network but in my experience microservice design has either been impulsive or a manifestation of Conway's Law. 
+
+Basically, you get microservices because the company re-organised your teams into smaller autonomous units, and therefore your architecture has to consist of smaller autonomous services. How do they talk to each other? Probably as well as how the teams talk to each other.
+
+I will admit to falling for the fantasy of building a brand new feature or business domain from scratch in a new service - that always has an appeal especially if you feel bogged down by legacy - but there are many alternatives to choose that don't involve distributed architecture.
+
+If you want it, you should probably acquire intimate knowledge of the business's domains and design around those instead of taking the org chart as a given.
+
+Unfortunately this also seems to be an inevitability in many startups that want to 'replatform' the codebase and turn a monolithic architecture into a distributed one. I have never _not_ known that to be an expensive mistake but I remain to be convinced.
+
+Ultimately, it was exciting to be told each team could build stuff using the language of their choice with full autonomy, but it never played out that way. Just ends up with a meta-layer of management to keep it all in sync.
+
+## 3. Kafka
+
+One of the biggest regrets, as well as biggest achievements, in my recent career was taking the lead on introducing Kafka into the tech stack. In my mind I was addressing latent demand in the engineering team and stepping up and to that extent it was a success. We designed a git-hosted schema registry using protobuf and all other sorts of things to fit it in to the architecture.
+
+I was big on this, I loved the idea of it. In a way I still am and I still do because it comes in handy where SQS/SNS/et al can't do the job and, in the case of microservices, can help tame the architecture a bit.
+
+I would not even consider suggesting this now, though, unless there was a clear game plan for it. The problem isn't just the tech, or the event sourcing pattern, it's getting all of the engineers on board and understanding how to work with it, and to even agree if it was even needed in the first place.
+
+To that extent it's like microservices but you're not distributing the org-chart over a network, you're distributing business _data_ with the idea that it will be consumed many times. But what happens when most of the time you have have data that nobody understands, because it hasn't been designed for sharing?
+
+Yet still, I'd be happy to meet this challenge again and I'd find some enjoyment in it.
+
+## 4. Ruby [on Rails]
+
+It doesn't matter how many 'Rails is dead', 'Rails is dying', 'Rails is boring' posts there are...nothing feels better to a Ruby dev than a blank slate in a Gem or a Rails app.
+
+It's my bread and butter, simple as, and I've never regretted spinning up a prototype in Rails. One of my favourite career moments was selling it to the team as a legit way to prototype.
+
+## 5. Agile
+
+For me this is the circle you can't square; I was a scrum master and agile coach for a while over the years.
+
+If you ask the internet I think you'll find more critics of agile than supporters. For every job I've worked, no matter what I've done to do my best, I keep getting pulled back into what I learned and did a decade ago in an agile/scrum/XP team.
+
+Agile for me has been good, and tremendously hard, but never outright _bad_.
+
+As far as the treadmill goes, this one keeps coming up and smacking my ankles to remind me it's still there.
+
+
+----
+
+I'll leave it there but I've got plenty more. My opinions on these will surely change but it's where I am now, on this particular cycle.

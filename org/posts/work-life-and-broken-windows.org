@@ -1,0 +1,71 @@
+---
+title: Work, life, and broken windows
+date: 2022-01-23
+category: personal
+---
+
+I've been working fully remotely for almost 18 months now. It's not a temporary measure, brought on by the Covid-19 pandemic, it's because the place I work is fully remote. No offices anywhere (just like Elastic and Gitlab, last time I checked). It's not my first rodeo either, thanks to previously enjoying a year of living and working by the Baltic coast in Jūrmala, Latvia.
+
+Even having worked remotely before, however, that experience in 2017 and my current experience from 2020 onwards could hardly be further apart.
+
+I was out of the house almost every day in Latvia, either going to the beach for a walk, to wade in the shallow waters, or taking the train into Riga to work from one of the many laptop-friendly coffee shops, all with table service[^1]. Ordering takeaway wasn't really a thing there, there was no Uber Eats or anything similar to it, and I don't think there needed to be.
+
+Long story short, I was able to get out of the house and be mostly functional, because the alternative was to stay at home and starve. This arguably prevented my depression from becoming worse, which it absolutely would have done if I shut myself inside. It was easier to be active than it was to be /in/-active.
+
+Fast forward to Summer, 2020 and I'm remote again, but this time it's in the quiet, sort of leafy suburb of Somewhere Near Crystal Palace in the South East of London[^2].
+
+The first thing I realised is that I took a lot of my old work routine for granted. I didn't have to love my daily commute to South Kensington to appreciate that it set up a daily, active routine, where I would spend about forty minutes each day walking around, getting from A to B. I didn't have to love the office to appreciate the simple act of taking the stairs or walking to a bathroom a bit further away, just to keep myself on my feet a little bit. Eventually I'd go to the gym over lunch each day, too. The office itself was always clean and free of clutter thanks to the tireless work of the housekeeping staff.
+
+There isn't really a direct analogue of this setup when you're at home, unless you're already incredibly well-disciplined. I sure as hell wasn't. And, even accounting for the Covid lockdowns that were in place in the UK for a large part of 2020 and a smaller part of 2021, it can't really be blamed for everything I'm about to get into.
+
+My life for half of 2020 and /most/ of 2021 was practically non-existent. I spent most of it working, and working late quite a lot too. There are moments where I broke the mold as it were, so it's not like it was all a total write-off, but it was like 80% working and 20% doing other stuff. 20% /at best/.
+
+The reason I didn't burn the fuck out was because I genuinely enjoyed what I was doing, and it felt worthwhile in the moment. I think if you asked someone else who spent time with me during that period though, they'd suspect I was just doing a good job of hiding it--or delaying the inevitable--because I rarely had anything interesting to share beyond vague descriptions of what I was doing at work. It's not something I thought about at the time, I basically put my head down and only occasionally came up for air.
+
+I do actually wonder sometimes if this was just a way to cope for me, since I'd only stopped taking anti-depressants at the start of the year and I was quite scared of rocking my boat, not really wanting to test my resilience in case it hadn't improved since. I imagine it played some part. Maybe not all of it, but some.
+
+Despite saying this, I don't feel bad about that because it's what I chose to do, whether it was intentional or not. Either I can sit around and sulk about the infinite number of alternative possibilities available to me over the course of that year, or I can choose to do something different this time around.
+
+2022, then, happens to be the first time I've tried to take the concept of a New Year's Resolution seriously. For a long time I had the arrogant (and somewhat cynical) belief that I didn't need to wait for a new year to do this, if I wanted to change I could do it whenever I want right? That /is/ true, but it's not helpful. Why not seize the opportunity of making a fresh start in a fresh year? It's still 'whenever I want' and the 1st of January doesn't somehow diminish that.
+
+One of the things I've quickly realised over these past few weeks is something akin to the broken windows theory [^3]. As a criminological thesis, this has been widely debunked, but there's an internal consistency to it that I think holds some truth when applied to one's personal life. I'm not talking about the Marie Kondo Method or Feng Shui; just the simple fact that clutter around the house, left unchecked, encouraged procrastination and allowed unhealthy habits to thrive.
+
+For example, I got so accustomed to stacking up empty boxes of takeaway food from Uber Eats and Deliveroo that I would see them and think, 'fuck it, no need to nip out for groceries, I'll just order something online'. I could even order groceries from it so I didn't have to walk ten minutes to the big Sainsbury's supermarket around the corner.
+
+Not only did I line Deliveroo's pockets, I lined my stomach. The price of that unimaginable (and expensive) convenience is a Personal Trainer who I pay several hundred a month to teach me how to lose weight at the gym and to be held accountable to my fitness goals.
+
+Same deal with alcohol, over those lockdown months. Probably not a great idea to have a coping mechanism delivered by courier to your front door. Even going to the pub a couple of times a week back in the day was limited by the pub's opening hours. But at home, well, if you see an empty bottle of wine in the trash you're going to be thinking about a bottle of wine.
+
+What else? Well, working from home means working in your pyjamas, right? Just stay in comfortable clothes that you will only wear at home and it becomes more difficult to change out of them to go outside. Combine it with the other two things and the outdoor clothes might not even fit as well any more, which means they're uncomfortable and you don't want to put them on.
+
+On a similar note, not everyone has the luxury of a spare bedroom or a home office to keep their work stuff separate from the rest of the home. It becomes so difficult to disconnect from work because it's always there, maybe in your bedroom, maybe your living room, and you wonder if you're ever really switched off from it even if your laptop is closed.
+
+In that sense, I had a few broken windows:
+
+_Clutter from frequent takeaway food and drinks, that discouraged me from cooking my own stuff and going shopping._
+
+_Comfortable, loose-fitting homewear that made my normal clothes uncomfortable as I put on weight._
+
+_Leaving my work computer somewhere accessible so I never felt switched off._
+
+_Putting so much into my work that I began to feel less interesting and adventurous than I used to be._
+
+And in terms of fixing them, I came up with a few very simple things to keep on top of:
+
+_Always keep the kitchen spotless, no dirty plates in the sink or on the counter at the end of the day._
+
+_Always get up and get dressed in the morning as if I was going out to work, no PJs until after work (which is also my signal for 'not working now')._
+
+_Close the laptop and unplug it from my monitor, maybe even put it in my gym bag (this is similar to my much older rule of never keeping my phone in my bedroom - if I want to look at my phone then I have to wake up and get out of bed)._
+
+_Do different things in the evening, preferably out of the house, even if it's just a PT session or the gym or whatever._
+
+The point of this is that fixing those 'broken windows' means I'm no longer maintaining the environment that supported so many of my unhealthy habits. Instead, I'm changing it into one that supports the things I want to do instead.
+
+---
+
+It will be interesting to see what this post looks like at the end of this year, as 2023 approaches. But as far as the present moment goes, it's nice to be able to reflect on the time gone by with a new sense of awareness and basically decide what to stop doing, what to carry on doing, and what to continue with.
+
+[^1] I owe a lot to Double Coffee and their coffees, blinis and yeast pancakes with sour cream.
+[^2] Well, compared to a lot of other places in London it's more green looking. The parks are nice.
+[^3] https://en.wikipedia.org/wiki/Broken_windows_theory

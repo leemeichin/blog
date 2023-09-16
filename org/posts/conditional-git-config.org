@@ -1,0 +1,77 @@
+---
+title: Conditional Git Config
+date: 2022-06-20
+category: programming
+---
+
+I like to maintain a single configuration across machines. Mostly it works fine and I take account for whether I'm working on Mac, Windows or Linux.
+
+All I need to do is run a small script to set most of my shit up:
+
+```shell
+for config in \*/; do
+  echo "Stowing: ${config}"
+  stow -t $HOME $config
+done
+```
+
+My config files are structure in a way that `stow` likes:
+
+```text
+.
+├── asdf
+│   ├── .asdfrc
+│   └── .tool-versions
+├── bash
+│   └── .bashrc
+├── emacs
+│   ├── .emacs.d
+│   └── .gitignore
+├── git
+│   └── .config
+├── .gitignore
+├── kitty
+│   └── .config
+└── zsh
+└── .zprofile
+```
+
+It gets interesting with git, because you want to make sure that you've correctly configured the author of a commit, especially if you intend to verify it.
+
+I imagine most of the time you rock with your default config, or Github works it out one way or another, but you end up with your work email assigned to commits on your side project, and your personal email assigned to commits on your work project. That's a lot of improper attribution that could screw you up, especially if you're doing open-source work.
+
+You also don't want to share your signing keys across purposes like that.
+
+If you're not interested in making your environment setup more complex, you can just leverage git for this.
+
+Here's part of my `.gitconfig` file:
+
+```ini
+[includeIf "gitdir/i:`/source/personal/"]
+path = "~/.config/git/home-config"
+
+[includeIf "gitdir/i:`/source/work/"]
+path = "~/.config/git/work-config"
+```
+
+My `home-config` is just a partial override of the main git config, like this:
+
+```ini
+[user]
+name = Lee Meichin
+email = spam@mrlee.dev
+[commit]
+gpgsign = false
+```
+
+Because of this, I can disable commit signing when working on personal, private projects, and I can also ensure that I'm not committing using my work email or signing credentials.
+
+It works in reverse too...when you're on the job, you can use this to make sure your work is signed and that your work email is on the commit, not your personal one.
+
+How does it work?
+
+It's all in the `[includeIf "..."]` part of your config. The easy way is to stick to a particular directory structure. For me, I chose "Source/Work" and "Source/Personal": my work config activates when I'm in the `Work` folder and my personal one activates when I'm in `Personal`.
+
+That's not the only way you can do it, and the git manual shows you what else you can do.[^1]
+
+[^1]: https://git-scm.com/docs/git-config#_conditional_includes
