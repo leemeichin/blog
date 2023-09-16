@@ -56,7 +56,7 @@ All in all then, it's just a matter of trade-offs. /It Depends/. There's no righ
 
 Is it a bad thing or is it worrying to not require code reviews? No, not really. Would it damange trust to start requiring them? Hopefully not, hopefully it's just a change in priority. Would it feel strange to transition from one way of working to the other, as someone who is used to reviewing code being encouraged not to ask for it? Absolutely.
 
-For what it's worth, in agile this is known as _Failing Fast_ and the same concepts would apply fairly generally to any aspect of product design, development and delivery.
+For what it's worth, in agile this is known as /Failing Fast/ and the same concepts would apply fairly generally to any aspect of product design, development and delivery.
 
 [^1]: https://www.raycast.com/blog/no-code-reviews-by-default/
 [^2]: http://www.extremeprogramming.org/
