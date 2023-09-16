@@ -1,4 +1,6 @@
-FROM silex/emacs:29.1-alpine AS emacs
+FROM silex/emacs:27.1-alpine AS emacs
+
+RUN apk add --update git
 
 WORKDIR /build
 
