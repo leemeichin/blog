@@ -1,8 +1,6 @@
----
-title: Getting to know your customers
-date: 2022-01-01
-category: personal
----
+#+TITLE: Getting to know your customers
+#+DATE: 2022-01-01
+#+CATEGORY: personal
 
 There was one time where I thought that being a software developer meant that I just had to get good at writing code, because to my mind the main thing I was producing in my time at work was, well, code.
 

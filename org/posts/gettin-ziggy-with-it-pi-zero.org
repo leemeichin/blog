@@ -1,8 +1,6 @@
----
-title: Gettin' Ziggy With It On The Pi Zero
-date: 2021-01-05
-category: programming
----
+#+TITLE: Gettin' Ziggy With It On The Pi Zero
+#+DATE: 2021-01-05
+#+CATEGORY: programming
 
 Alright, you can read the article first and shoot me later for a title like that, and what will inevitably become a series of Zig-based puns.
 

@@ -1,8 +1,6 @@
----
-title: Out of the frying pan
-date: 2022-05-14
-category: personal
----
+#+TITLE: Out of the frying pan
+#+DATE: 2022-05-14
+#+CATEGORY: personal
 
 I have a friend who once explained to me the concept of a comfort zone and what it means to go outside of it. It happened a good few years ago so my memory is a little hazy, but it came with a useful visual aid. Enjoy my crude representation of one.
 

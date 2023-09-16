@@ -1,8 +1,6 @@
----
-title: Technical Treadmill
-date: 2023-04-02
-category: tech
----
+#+TITLE: Technical Treadmill
+#+DATE: 2023-04-02
+#+CATEGORY: tech
 
 The term 'hedonic treadmill' was coined back in the 1970s to describe the tendency to revert to a baseline state of happiness over time. In one limited sense it works as a metaphor for chasing pleasure without a lasting sense of fulfilment: buying a brand new car, for example, is exciting at first and brings some joy, but some time later it's _just_ a car and maybe what would bring you some new joy is to upgrade it to a brand new car. Similarly, it's the idea of getting your phone upgraded every year - it's a new toy for the first few weeks and then just a phone until the next upgrade comes along.
 

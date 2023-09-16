@@ -1,8 +1,6 @@
----
-title: Conditional Git Config
-date: 2022-06-20
-category: programming
----
+#+TITLE: Conditional Git Config
+#+DATE: 2022-06-20
+#+CATEGORY: programming
 
 I like to maintain a single configuration across machines. Mostly it works fine and I take account for whether I'm working on Mac, Windows or Linux.
 

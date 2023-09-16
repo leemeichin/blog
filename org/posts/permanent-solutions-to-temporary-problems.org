@@ -1,8 +1,6 @@
----
-title: Permanent solutions to temporary problems
-date: 2021-02-01
-category: mental-health
----
+#+TITLE: Permanent solutions to temporary problems
+#+DATE: 2021-02-01
+#+CATEGORY: mental-health
 
 Depression fucking sucks. It sucks to suffer from it; it sucks to see others suffer from it.
 

@@ -1,8 +1,6 @@
----
-title: Emotional Debt
-date: 2022-07-13
-category: personal
----
+#+TITLE: Emotional Debt
+#+DATE: 2022-07-13
+#+CATEGORY: personal
 
 Another day, another post about burnout. But really, I'm thinking more about that point that precedes it, the stall that--left unchecked--turns into a nosedive. The good thing is you do have an opportunity to pull back up, you always do, but it gets harder the longer you wait.
 

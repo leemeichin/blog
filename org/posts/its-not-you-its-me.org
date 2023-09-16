@@ -1,8 +1,6 @@
----
-title: It's not you, it's me
-date: 2023-06-16
-category: personal
----
+#+TITLE: It's not you, it's me
+#+DATE: 2023-06-16
+#+CATEGORY: personal
 
 I recently left my remote job, one I'd been working at for close to three years in total. It's pretty much been my life since COVID, as it has been for many, which meant that much of that time was spent in some form of lockdown with only brief moments of respite.
 
