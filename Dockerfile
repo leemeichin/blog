@@ -1,6 +1,4 @@
-FROM silex/emacs:29.1 AS emacs
-
-RUN apt install git
+FROM silex/emacs:29-ci AS emacs
 
 WORKDIR /home/build
 
