@@ -10,12 +10,12 @@ So, there's nothing inherently wrong about taking this approach. In a world wher
 
 With that out of the way, let's talk about trust.
 
-\*\* Trust
+** Trust
 
 This post rationalises its decision to Not Do Code Reviews By Default not in terms of priorities, but essentially in the bond that the team members create between each other. To quote the article:
 
 #+begin_quote
-_Pull requests discourage trust._
+/Pull requests discourage trust./
 
 Proposing every code change that somebody else has to approve doesn't feel encouraging for teams that should operate with a high degree of trust. There are more efficient ways to collaborate on code.
 #+end_quote
@@ -32,7 +32,7 @@ The various other benefits of code review really depend on how effective they ar
 
 In a nutshell, you get out what you put in. And now is a good time to segue into bottlenecks.
 
-\*\* Bottlenecks
+** Bottlenecks
 
 If you've read The Phoenix Project[^3], you might remember a chapter with some messianic figure that guides the main character around a factory and describes the different stages of the manufactoring process. Work items are pushed onto and pulled from a production line, but at some stage the backlog is growing exponentially and boxes are stacking up. Work is arriving at that stage more quickly than it can be processed and moved on, so it's all backing up. The people working at earlier points in the production line aren't aware of this as they are happilly churning through their own backlogs; it all seems optimal to them. The people working at later points are under the impression that the entire thing is a shitshow that is falling apart at the seams, because all they see is the blockage behind them and the occasional work item slipping through.
 
