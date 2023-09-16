@@ -44,7 +44,7 @@ If you're not interested in making your environment setup more complex, you can 
 
 Here's part of my ~.gitconfig~ file:
 
-#+BEGIN_SRC ini
+#+BEGIN_SRC conf
 [includeIf "gitdir/i:~/source/personal/"]
 path = "~/.config/git/home-config"
 
@@ -54,7 +54,7 @@ path = "~/.config/git/work-config"
 
 My ~home-config~ is just a partial override of the main git config, like this:
 
-#+BEGIN_SRC ini
+#+BEGIN_SRC conf
 [user]
 name = Lee Meichin
 email = spam@mrlee.dev
