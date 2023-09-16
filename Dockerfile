@@ -1,5 +1,7 @@
 FROM silex/emacs:29.1 AS emacs
 
+RUN apt install git
+
 WORKDIR /home/build
 
 COPY . .
