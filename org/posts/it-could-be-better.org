@@ -10,7 +10,7 @@ Something bugs me about it this because I think it also serves as an excuse or a
 
 How low are you letting the bar sink if something could always be worse? There really is no limit to it, is there?
 
-What if—and hear me out on this because it’s going to sound crazy—it could be ***better***? What if the bar has sunk too low and it needs to be lifted back up again? Even more: what if you knew how to do that or could help make it happen and, you know, make it **actionable**?
+What if—and hear me out on this because it’s going to sound crazy—it could be ***better***? What if the bar has sunk too low and it needs to be lifted back up again? Even more: what if you knew how to do that or could help make it happen and, you know, make it *actionable*?
 
 I work in the world of tech, and the process of ideating, designing, building, testing and releasing software is a volatile equation in which the variables can change at any time. Take a specialist in any one stage of the feedback loop and most likely you learn about all of the things that could be improved, as well as all of the things that are just ‘lived with’ because they’re low priority. Some of those things will demand more attention than others, naturally, because they have a greater impact.
 
