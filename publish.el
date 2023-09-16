@@ -30,6 +30,8 @@
 (require 'ox-publish)
 (require 'ox-rss)
 
+(load-theme 'modus-videndi)
+
 (defun expand-relative-path (path)
   "Expand relative PATH from current buffer or file to a full path"
   (concat
