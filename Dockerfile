@@ -1,8 +1,8 @@
-FROM silex/emacs:27.1-alpine AS emacs
+FROM silex/emacs:27.2-alpine AS emacs
 
 RUN apk add --update git
 
-WORKDIR /build
+WORKDIR /home/build
 
 COPY . .
 
@@ -14,6 +14,6 @@ RUN adduser -D static
 USER static
 WORKDIR /home/static
 
-COPY --from=emacs /build .
+COPY --from=emacs /home/build/publish .
 
 CMD ["busybox", "httpd", "-f", "-v", "-p", "3000"]

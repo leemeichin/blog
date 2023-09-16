@@ -157,4 +157,4 @@ This is to avoid republishing all other individual org-files."
          :recursive t
          :publishing-directory ,(expand-relative-path "publish/")
          :publishing-function org-publish-attachment)
-        ("www.leemeichin.com" :components ("posts" "pages" "assets" "rss"))))
+        ("www.leemeichin.com" :components ("posts" "pages" "assets"))))
