@@ -9,7 +9,7 @@
   --mono-font-stack: ui-monospace, "Cascadia Mono", "Segoe UI Mono",
     "Liberation Mono", Menlo, Monaco, Consolas, monospace;
   --background-color: #fff;
-  --page-width: 60em;
+  --page-width: 80ch;
   --font-color: #151515;
   --invert-font-color: #fff;
   --primary-color: #1a95e0;
