@@ -1,0 +1,27 @@
+#+TITLE: Switching to Elixir
+#+DATE: <2023-09-28>
+#+CATEGORY: programming
+
+A few months ago I started a new job at a company that uses Elixir as its main language on the backend. I've never written a line of Elixir or Erlang before in my life, but I've heard a lot about it and Erlang is familiar because I've played around with Prolog for a bit.
+
+Thanks to the heavily Ruby-inspired syntax, Elixir was a synch to pick up. I might not be an expert on best practices, architecture, and lower level Erlang concepts yet, but none of this has been a barrier to entry.
+
+In fact, I might go as far as saying that Elixir gives you a fun language (like Ruby) while leaving out the stateful footguns OOP languages give you. There are no classes, no instances, no inheritance...it's immutable and functional and you're not bogged down by a static type system.
+
+I see this as a benefit because code that holds mutable state is immensely harder to maintain than code that doesn't, and it isn't always clear to a developer if state should be local to a function, to an instance, or to a class. In Ruby you'll tend to get a mix of all three in an attempt to build an intuitive DSL, because literally everything is an object and therefore every object can hold state. It's called an Eigenclass, which is like a class of a class, and every class has one (and is how one instance of a class can mutate the state of every other instance, without knowing about them, by modifying the eigenclass).
+
+Speaking of which, Elixir mimics Ruby in its support for DSLs (Domain Specific Languages) too, with a very familiar syntax. The key difference is that Elixir DSLs are compile-time macros and they generate runtime code, whereas Ruby DSLs depend on modifying the runtime by defining objects and methods dynamically.
+
+I like this because I don't need to write a test to confirm that I used a library correctly. Either I used the macro wrong and I get an error from the library, or the generated macro was wrong and I get an error from the compiler. All of this happens at compile time, so I can just focus on writing tests on my actual application logic.
+
+The pipeline syntax is nice, but I like Clojure's 'threading' operators a lot. They're not related to concurrency, you just have two operators: ~->~ is the same as Elixir's ~|>~, and it inserts the result of the previous expression into the first argument of the next function; ~->>~ in Clojure inserts the same result into the /last/ argument. It seems minor but works great with interop without having to write an anonymous function.
+
+I love the ~with~ expression, if only because it reminds me of Haskell and Lisp with ~let~, while baking in ~otherwise~. This basically lets you split a complex function in half, with the happy path in the top part and the error handling at the bottom. It works best with a ~Result~ tuple because if you can't pattern match on ~{:ok, result}~ then you have a recoverable error.
+
+Exceptions, then! In Ruby it's common to use exceptions for control flow. It often feels cleaner to do that because it's not common to return explicit error types; usually you either get a successful result or ~nil~ or ~false~, and if you're lucky the error state was actually stored in one of the objects you were using. If you call ~model.update(params)~ in Ruby, then it returns ~false~ if it fails and updates ~model.errors~ with what went wrong. Mutable state.
+
+I'm happy to see the ~Result~ / ~Either~ monad get mainstream traction compared to that. Exceptions for exceptional stuff, and a tuple that gives you ~ok~ and ~error~ as a return value (or ~left~ and ~right~ with the ~Either~ type).
+
+I've only scratched the surface really, and I'm sure I'll have more thoughts as I continue to work, but after 3 months of Elixir I have to say that I /genuinely/ enjoy writing it and it carries Ruby's torch of programming being fun.
+
+
