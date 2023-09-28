@@ -1,6 +1,7 @@
 #+TITLE: Trying out YJIT in Ruby 3.2
 #+DATE: <2023-01-04>
 #+CATEGORY: programming
+
 This isn't going to be a deep dive into YJIT, benchmarking it and such like, just a few quick tips to get started with it yourself. First things first, though, some context!
 
 *** What's YJIT?
@@ -27,7 +28,7 @@ My weapon of choice is ~rbenv~ (which uses ~ruby-build~ behind the scenes) but m
 First, make sure you have Rust installed. You can install through Homebrew on Mac or Linux and that'll do the job:
 
 #+BEGIN_SRC shell
-brew install rust
+  brew install rust
 #+END_SRC
 
 No guarantee you'll get a recent enough version on Debian or another Linux through their built-in package repositories though, and of course there's Windows, so Rustup[fn:1] is your friend. I won't copy the command here because you should inspect the shell script it expects you to execute.
@@ -37,7 +38,7 @@ No guarantee you'll get a recent enough version on Debian or another Linux throu
 You don't need to do anything more than install the new Ruby. It'll detect that you have Rust installed and compile YJIT.
 
 #+BEGIN_SRC shell
-rbenv install 3.2.0
+  rbenv install 3.2.0
 #+END_SRC
 
 *** 3. Enable the JIT
@@ -45,21 +46,21 @@ rbenv install 3.2.0
 Easiest way to do this is to use an environment variable, especially when you're not running the ~ruby~ command directly.
 
 #+BEGIN_SRC shell
-RUBY_YJIT_ENABLE=1 bundle exec rails s
+  RUBY_YJIT_ENABLE=1 bundle exec rails s
 #+END_SRC
 
 Personally, I just enabled it for all my shells by default by updating my ~~/.zprofile~ config:
 
 #+BEGIN_SRC shell
-export RUBY_YJIT_ENABLE=1
+  export RUBY_YJIT_ENABLE=1
 #+END_SRC
 
 To check that it's actually enabled, check for ~+YJIT~ in the output:
 
 #+BEGIN_SRC shell
-RUBY_YJIT_ENABLE=1 ruby -v
+  RUBY_YJIT_ENABLE=1 ruby -v
 
-# ruby 3.2.0 (2022-12-25 revision a528908271) +YJIT [x86_64-darwin22]
+  # ruby 3.2.0 (2022-12-25 revision a528908271) +YJIT [x86_64-darwin22]
 #+END_SRC
 
 I ran the test suite of the API I work on at, er, work, and it consistently ran about 15 seconds more quickly than in Ruby 3.1. I'll take it!
@@ -71,9 +72,9 @@ This isn't available in the official Ruby image yet, *unless you're using the Al
 If you're using Alpine though, just update your image:
 
 #+BEGIN_SRC dockerfile
-FROM ruby:3.2.0-alpine
+  FROM ruby:3.2.0-alpine
 
-ENV RUBY_YJIT_ENABLE=1
+  ENV RUBY_YJIT_ENABLE=1
 #+END_SRC
 
 I didn't set the env var in the Dockerfile myself, I put it in our secrets manager so we could just turn it off and trigger a fresh rollout. But that'd do the job for you.
