@@ -13,34 +13,31 @@ The first part of this series of posts is all about /Pattern Matching/.
 Ruby's pattern matching support, introduced experimentally in 2.7, is a lot more powerful than you may expect. All you need is to replace ~when~ with ~in~ and your ~case~ statements become capable of matching against /anything/.
 
 #+BEGIN_SRC ruby
-require 'base64'
+  require 'base64'
 
-class ParsedJson; end;
+  class ParsedJson; end;
 
-def handle_response(response)
-case response
-in { code: (300..399) }
-redirect_to response.headers[:location]
-in { status: :unauthorized | :forbidden => status }
-raise NotAllowedError.new(status)
-in { code: 200, body: ParsedJson => payload }
-Service.call(payload)
-in { code: 200, body: String => text, content_type: 'application/base64' }
-Base64.decode64(text)
-end
-end
+  def handle_response(response)
+    case response
+    in { code: (300..399) }
+      redirect_to response.headers[:location]
+    in { status: :unauthorized | :forbidden => status }
+      raise NotAllowedError.new(status)
+    in { code: 200, body: ParsedJson => payload }
+      Service.call(payload)
+    in { code: 200, body: String => text, content_type: 'application/base64' }
+      Base64.decode64(text)
+    end
+  end
 
-handle_response({ code: 200, body: 'aGVsbG8gd29ybGQ=', content_type: 'application/base64' })
-#=> 'hello world'
+  handle_response({ code: 200, body: 'aGVsbG8gd29ybGQ=', content_type: 'application/base64' })
+  #=> 'hello world'
 
-handle_response({ code: 301 })
+  handle_response({ code: 301 })
+  # => redirect
 
-# => redirect
-
-handle_response({ status: :forbidden, code: 403 })
-
-# NotAllowedError (forbidden)
-
+  handle_response({ status: :forbidden, code: 403 })
+  # NotAllowedError (forbidden)
 #+END_SRC
 
 ** Custom destructuring
@@ -48,8 +45,8 @@ handle_response({ status: :forbidden, code: 403 })
 You can deeply match any object in Ruby so long as you define a method to represent it as a hash, or a method to represent it as an array. Or both.
 
 #+BEGIN_SRC ruby
-class PlayingCard
-attr_reader :value, :colour, :suit
+  class PlayingCard
+    attr_reader :value, :colour, :suit
 
     def initialize(value:, colour:, suit:)
       @value = value
@@ -68,22 +65,23 @@ attr_reader :value, :colour, :suit
         suit: suit
       }
     end
-
-end
+  end
 #+END_SRC
 
 This ~PlayingCard~ class is now capable of pattern matching.
 
 #+BEGIN_SRC ruby
-def face_card?(playing_card)
-case playing_card
-in { value: 'K' | 'Q' | 'J' } then true
-else false
-end
-end
+  def face_card?(playing_card)
+    case playing_card
+    in { value: 'K' | 'Q' | 'J' } then true
+    else
+      false
+    end
+  end
 
-face_card?(PlayingCard.new(value: '3', colour: :red, suit: :spades))
-#=> false
+  face_card?(PlayingCard.new(value: '3', colour: :red, suit: :spades))
+
+  #=> false
 #+END_SRC
 
 ** Pinning
@@ -91,8 +89,8 @@ face_card?(PlayingCard.new(value: '3', colour: :red, suit: :spades))
 That's fairly basic, what about pattern matching poker? Matching one card is easy, but suppose you want to match a hand.
 
 #+BEGIN_SRC ruby
-class PokerHand
-attr_reader :cards
+  class PokerHand
+    attr_reader :cards
 
     def initialize(cards: [])
       @cards = cards
@@ -101,8 +99,7 @@ attr_reader :cards
     def deconstruct
       cards
     end
-
-end
+  end
 #+END_SRC
 
 Now that a hand of cards is represented, it should be possible to use pattern matching to find a winning play, say... a Royal Flush. For this to work, /variable pinning/ is required, because a Royal Flush requires the colour and suit to be the same for each card.
@@ -110,30 +107,29 @@ Now that a hand of cards is represented, it should be possible to use pattern ma
 This particular solution depends on the hand being ordered, but that's fine, a lot of computational problems become simpler if you sort them first. For the sake of example, assume that has already happened.
 
 #+BEGIN_SRC ruby
-def royal_flush?(hand)
-case hand
-in [['1', c, s], ['10', ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]]
-true
-else false
-end
-end
+  def royal_flush?(hand)
+    case hand
+    in [['1', c, s], ['10', ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]]
+      true
+    else
+      false
+    end
+  end
 
-# alternatively, if golfing in Ruby 3:
+  # alternatively, if golfing in Ruby 3:
 
-# def royal_flush?(hand) = !!(hand in [['1', c, s], ['10', ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]] rescue false)
+  # def royal_flush?(hand) = !!(hand in [['1', c, s], ['10', ^c, ^s], ['J', ^c, ^s], ['Q', ^c, ^s], ['K', ^c, ^s]] rescue false)
 
-my_hand = PokerHand.new(cards: [
-PlayingCard.new(value: '1', colour: :black, suit: :hearts),
-PlayingCard.new(value: '10', colour: :black, suit: :hearts),
-PlayingCard.new(value: 'J', colour: :black, suit: :hearts),
-PlayingCard.new(value: 'Q', colour: :black, suit: :hearts),
-PlayingCard.new(value: 'K', colour: :black, suit: :hearts),
-])
+  my_hand = PokerHand.new(cards: [
+    PlayingCard.new(value: '1', colour: :black, suit: :hearts),
+    PlayingCard.new(value: '10', colour: :black, suit: :hearts),
+    PlayingCard.new(value: 'J', colour: :black, suit: :hearts),
+    PlayingCard.new(value: 'Q', colour: :black, suit: :hearts),
+    PlayingCard.new(value: 'K', colour: :black, suit: :hearts),
+  ])
 
-royal_flush?(my_hand)
-
-# => true
-
+  royal_flush?(my_hand)
+  # => true
 #+END_SRC
 
 The clever bit here is that the first part of the match (~[1, c, s]~) is used to constrain the rest of the pattern. So if ~c~ is ~:red~, then ~^c~ also has to be ~:red~ in order to match.
@@ -145,25 +141,24 @@ You'll see this a lot if you're familiar with Elixir or other languages that do 
 Building on the poker example, maybe it's valid to play the Joker, but only if the dealer has allowed it?
 
 #+BEGIN_SRC ruby
-def joker_allowed?
-true
-end
+  def joker_allowed?
+    true
+  end
 
-def valid_call?(card)
-case card
-in [:Joker, *] if joker_allowed?
-puts 'joker allowed'
-true
-else true
-end
-end
+  def valid_call?(card)
+    case card
+    in [:Joker, *] if joker_allowed?
+      puts 'joker allowed'
+      true
+    else
+      true
+    end
+  end
 
-valid_call?(PlayingCard.new(value: :Joker, colour: nil, suit: nil))
+  valid_call?(PlayingCard.new(value: :Joker, colour: nil, suit: nil))
 
-# => joker allowed
-
-# => true
-
+  # => joker allowed
+  # => true
 #+END_SRC
 
 ** Destructuring assignment without ~case~
@@ -175,19 +170,19 @@ In fact, this method also allows you to use pattern matching while destructuring
 You also have to be absolutely sure you're matching the right thing.
 
 #+BEGIN_SRC ruby
-card = PlayingCard.new(value: '7', suit: :diamonds, colour: :red)
+  card = PlayingCard.new(value: '7', suit: :diamonds, colour: :red)
 
-card in { value: ('1'..'10') => v, suit: :diamonds => s}
+  card in { value: ('1'..'10') => v, suit: :diamonds => s}
 
-# v => '7'
+  # v => '7'
 
-# s: :diamonds
+  # s: :diamonds
 
-begin
-card in { value: String, suit: Symbol }
-rescue NoMatchingPatternError
-puts 'son, I am disappoint'
-end
+  begin
+    card in { value: String, suit: Symbol }
+  rescue NoMatchingPatternError
+    puts 'son, I am disappoint'
+  end
 #+END_SRC
 
 ** Optimisations
@@ -195,14 +190,13 @@ end
 If you recall earlier examples, I defined ~destructure_keys(*)~, which meant that I was explicitly ignoring the arguments normally passed to the method. This is useful in simple cases, but when dealing with complex objects you might want to be a bit more thoughtful about how you return a value. For example, converting the entire structure of the object into a hash might not be appropriate.
 
 #+BEGIN_SRC ruby
+  # When used in pattern matching, this class will only destructure into the provided keys
 
-# When used in pattern matching, this class will only destructure into the provided keys
-
-class PokerHand
-def deconstruct_keys(keys)
-cards.map { |card| card.slice(keys) }
-end
-end
+  class PokerHand
+    def deconstruct_keys(keys)
+      cards.map { |card| card.slice(keys) }
+    end
+  end
 #+END_SRC
 
 ---
@@ -210,7 +204,7 @@ end
 Well, this doesn't cover the entirety of Ruby's pattern matching fun, but it should at least show you the various things you're now able to do with the feature. If in doubt, RTFM[fn:1]; Ruby's documentation is absolutely fantastic.
 
 #+BEGIN_ASIDE
-Specifying 'rubydoc' in your Google searches should reveal Ruby's official documentation and not the SEO spam that is ApiDock.
+  Specifying 'rubydoc' in your Google searches should reveal Ruby's official documentation and not the SEO spam that is ApiDock.
 #+END_ASIDE
 
 Check in soon to see another deep-dive into Ruby Sorcery.
