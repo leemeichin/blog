@@ -202,8 +202,9 @@ Bootstrapping is done in ~init.el~ and ~early-init.el~, and then this configurat
 ** Projects
 
 #+begin_src emacs-lisp
-  (require 'project)
+  (use-package project)
   (use-package tabspaces)
+  (use-package ripgrep)
 
   (setq project-vc-extra-root-markers '(".prj"))
 
@@ -264,6 +265,7 @@ Bootstrapping is done in ~init.el~ and ~early-init.el~, and then this configurat
           (cpp . ("git@github.com:tree-sitter/tree-sitter-cpp.git"))
           (css . ("git@github.com:tree-sitter/tree-sitter-css.git"))
           (elixir . ("git@github.com:elixir-lang/tree-sitter-elixir.git"))
+          (heex . ("git@github.com:phoenixframework/tree-sitter-heex.git"))
           (go . ("git@github.com:tree-sitter/tree-sitter-go.git"))
           (html . ("git@github.com:tree-sitter/tree-sitter-html.git"))
           (javascript . ("git@github.com:tree-sitter/tree-sitter-javascript.git"))
@@ -361,64 +363,84 @@ Bootstrapping is done in ~init.el~ and ~early-init.el~, and then this configurat
   (add-hook 'typescript-mode-hook 'eglot-ensure)
 #+end_src
 
+**** Zig
 
 #+begin_src emacs-lisp
-  ;;;; Zig
-
   (use-package zig-mode)
+#+end_src
 
-  ;;;; Haskell
+**** Haskell
 
+#+begin_src emacs-lisp
   (use-package haskell-mode)
+#+end_src
 
-  ;;;; Nix
+**** Nix
 
+#+begin_src emacs-lisp
   (use-package nix-mode)
   (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
+#+end_src
 
-  ;;;; Rust
+**** Rust
 
+#+begin_src emacs-lisp
   (use-package rustic)
 
   (setq rustic-format-on-save t)
   (setq rustic-format-trigger 'on-save)
+#+end_src
 
-  ;;;; Go
+**** Go
 
+#+begin_src emacs-lisp
   (use-package go-mode)
+#+end_src
 
-  ;;;; Protobuf
+**** Protobuf
 
+#+begin_src emacs-lisp
   (use-package protobuf-mode)
   (add-to-list 'auto-mode-alist '("\\.proto?\\'" . protobuf-mode))
+#+end_src
 
-  ;;;; Smalltalk
+**** Smalltalk
 
+#+begin_src emacs-lisp
   (use-package smalltalk-mode)
+#+end_src
 
-  ;;;; Devops
+**** Devops
 
+#+begin_src emacs-lisp
   (use-package kubernetes)
   (use-package terraform-mode)
   (use-package dockerfile-mode)
 
   (add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
   (add-to-list 'auto-mode-alist '("\\Dockerfile" . dockerfile-mode))
+#+end_src
 
-  ;;; Direnv (always load last)
+*** Reading / Browsing
 
+**** Pocket
+
+#+begin_src emacs-lisp
+  (use-package pocket-reader)
+#+end_src
+  
+*** Direnv (always load last)
+
+#+begin_src emacs-lisp
   (use-package envrc)
 
   (envrc-global-mode)
+#+end_src
 
-  ;;; Reading / Browsing
 
-  ;;;; Pocket
+*** Custom overrides
 
-  (use-package pocket-reader)
-
-  ;;; Custom overrides
-
+#+begin_src emacs-lisp
   (custom-set-variables
    ;; custom-set-variables was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
@@ -435,4 +457,3 @@ Bootstrapping is done in ~init.el~ and ~early-init.el~, and then this configurat
   (put 'upcase-region 'disabled nil)
   (put 'narrow-to-region 'disabled nil)
 #+end_src
-
