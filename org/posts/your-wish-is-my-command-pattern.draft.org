@@ -9,42 +9,44 @@ What exactly is this pattern I speak of? It's typically represents a procedural 
 Do you really need such a library? I would argue that, frequently, you don't. Here's a ~Service~ pattern in plain old Ruby 3.2, with a bit of fluorish:
 
 #+begin_src ruby
-  class DoSomethingService
-    SomethingError = Class.new(StandardError)
-    
+  class CreatePost
+    InsufficientKudosError = Class.new(StandardError)
+
     def self.call(...) = new(...).call
 
-    def initialize(your:, service:, arguments:)
-      @your = your
-      @service = service
-      @arguments = arguments
+    def initialize(user:, params:)
+      @user = user
+      @params = params
     end
 
     def call
-      do_something
-      do_something_else
-      do_something_wrong
-    rescue SomethingError => e
-      handle_something_error(e)
+      build_post
+      check_kudos
+      save_post
+
+      enqueue_moderation
+      enqueue_notification
+
+      @post
+    rescue ActiveRecord::ValidationError
+      validation_error_payload
+    rescue InsufficientKudosError
+      insufficient_kudos_error_payload
     end
 
     private
 
-    attr_reader :your, :service, :arguments
+    def build_post = @post ||= Post.new(@post_params)
+    def check_kudos = raise InsufficientKudosError if @user.kudos_count < 1_000
+    def save_post = @post.save!
+    def enqueue_moderation = PostModerationQueueJob.perform_later(@post)
+    def enqueue_notification = CreatePostNotification.perform_later(@post)
 
-    def do_something = puts "I did something"
-    def do_something_else = puts "I also did something else"
-    def do_something_wrong = raise SomethingError, "This is wrong"
-
-    def handle_something_error(e) = puts e.message
+    def validation_error_payload = @post.errors.to_json
+    def insufficient_kudos_error_payload = { error: :insufficient_kudos }.to_json
   end
 
-  result = DoSomethingService.call(your: 1, service: 2, arguments: 3)
-  
-  #=> I did something
-  #=> I also did something else
-  #=> This is wrong
-  #=> nil
+  result = CreatePost.call(user: current_user, params: params.permit(:content))
 #+end_src
 
 You don't really need much more than that. Maybe you pull out ~.call~ into a mixin or base class to avoid duplication, and the initializer does feel like boilerplate, but it's boilerplate that clearly describes the arguments the service takes. You're basically defining a single public ~#call~ method that performs your business logic step-by-step in a fairly descriptive way.
