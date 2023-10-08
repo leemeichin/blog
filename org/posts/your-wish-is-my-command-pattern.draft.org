@@ -6,7 +6,7 @@ In all my time as a Ruby developer, I have never been more mildly intrigued by t
 
 What exactly is this pattern I speak of? It's typically represents a procedural business transaction where a number of steps may need to be taken in sequence to complete an operation, and it's the favoured abstraction for a developer who wants to keep this logic out of their models and controllers. Most of the libraries that provide such an interface will bake in support for database transactions and rollbacks, some kind of ~Result~ object that responds to ~failure~ and ~success~, and of course an opinionated DSL.
 
-Do you really need such a library? I would argue that, frequently, you don't. Here's a ~Service~ pattern in plain old Ruby 3.2, with a bit of fluorish:
+Do you really need such a library? I would argue that, frequently, you don't. Here's how a ~Service~ pattern might look in Plain Old Ruby where side-effects include persisting to a database and enqueuing background jobs:
 
 #+begin_src ruby
   class CreatePost
@@ -36,7 +36,7 @@ Do you really need such a library? I would argue that, frequently, you don't. He
 
     private
 
-    def build_post = @post ||= Post.new(@post_params)
+    def build_post = @post ||= Post.new(@params)
     def check_kudos = raise InsufficientKudosError if @user.kudos_count < 1_000
     def save_post = @post.save!
     def enqueue_moderation = PostModerationQueueJob.perform_later(@post)
@@ -51,53 +51,56 @@ Do you really need such a library? I would argue that, frequently, you don't. He
 
 You don't really need much more than that. Maybe you pull out ~.call~ into a mixin or base class to avoid duplication, and the initializer does feel like boilerplate, but it's boilerplate that clearly describes the arguments the service takes. You're basically defining a single public ~#call~ method that performs your business logic step-by-step in a fairly descriptive way.
 
-As for error handling, you're on your own still, but you can make something work with judicious use of exceptions. It could be worse.
+As for error handling, you're on your own still, but you can make something work with judicious use of exceptions. It's not ideal to use exceptions as control flow, but it could definitely be worse.
+
+Arguably, this doesn't scale very well with larger, more complicated business transactions. Or it does but it requires a more disciplined approach to avoid the almost inevitable ball of mud you end up with.
 
 We can't just leave it there though. What do the alternatives look like and what do they add to the vanilla approach?
 
 *** [[https://github.com/leemeichin/superlime][Superlime]]
 
-I built this one myself to demonstrate basic pattern matching. The implementation is simplistic and arguably quite hacky, and really doesn't offer
-anything except another weird DSL to remember.
+I built this one myself to demonstrate basic pattern matching. The implementation is simplistic and arguably quite hacky, and really doesn't offer anything except another weird DSL to remember.
 
 #+begin_src ruby
-  class DoSomethingService < Superlime::Command
-    def initialize(your:, service:, arguments:)
-      @your = your
-      @service = service
-      @arguments = arguments
+  class CreatePost < Superlime::Command
+    def initialize(user:, params:)
+      @user = user
+      @params = params
     end
 
     def call
-      do_something
-      do_something_else
-      do_something_wrong
+      build_post
+      check_kudos
+      save_post
 
-      broadcast(:ok, some: :data) # never reached
-    rescue SomethingError => e
-        handle_something_error(e)
+      enqueue_moderation
+      enqueue_notification
+
+      broadcast(:ok, @post)
+    rescue ActiveRecord::ValidationError
+      broadcast(:error, :post_invalid, @post.errors)
+    rescue InsufficientKudosError
+      broadcast(:error, :insufficient_kudos)
     end
 
-    def do_something = puts "I did something"
-    def do_something_else = puts "I also did something else"
-    def do_something_wrong = raise SomethingError, "This is wrong"
-
-    def handle_something_error(e) = broadcast(:error, e)
+    private
+    def build_post = @post ||= Post.new(@params)
+    def check_kudos = raise InsufficientKudosError if @user.kudos_count < 1_000
+    def save_post = @post.save!
+    def enqueue_moderation = PostModerationQueueJob.perform_later(@post)
+    def enqueue_notification = CreatePostNotification.perform_later(@post)
   end
 
-  result = DoSomethingService.call(your: 1, service: 2, arguments: 3)
+  result = CreatePost.call(user: current_user, params: params.permit(:content))
 
   case result
-  in ok: result then puts result.inspect
-  in error: SomethingError => e then puts e.message
+  in :ok, post } then puts post.inspect
+  in :error, :post_invalid, validation_errors then puts validation_errors.inspect
+  in :error, :insufficient_kudos then puts "Not enough kudos"
   end
-
-  #=> I did something
-  #=> I also did something else
-  #=> This is wrong
 #+end_src
 
-The gem is simply a few lines of code that abuses ~throw~ and ~catch~ in place of ~return~. I can't really recommend it and the implementation is so small that if you did find it interesting, you could just copy/paste the class from the GitHub repo.
+The gem is simply a few lines of code that abuses ~throw~ and ~catch~ in place of ~return~, which means you can treat ~broadcast~ similarly to old-skool ~goto~ in terms of using non-local returns for control flow. I can't really recommend it and the implementation is so small that if you did find it interesting, you could just copy/paste the class from the GitHub repo.
 
 #+begin_aside
 *Why do we always use the method ~call~?*
