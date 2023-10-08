@@ -4,12 +4,14 @@
 
 As they're wont to do, a certain tweet was floating around the interwebs for a while the other week.
 
-![Screenshot of a tweet](../media/yes-i-can-connect-to-a-db-in-css/tweet.jpg)
 
-> Recruiters be like:
-> 
-> We're looking for someone who can connect to the database using CSS.
->
+[[../media/yes-i-can-connect-to-a-db-in-css/tweet.jpg][Screenshot of a Tweet]]
+
+#+begin_quote
+Recruiters be like:
+ 
+We're looking for someone who can connect to the database using CSS.
+#+end_quote
 
 It's been a hell of a long time since I last embarked on a quality shitpost project[fn:1], in fact it's been so long that back then I probably didn't even have the word *shitpost* in my vocabulary.
 
@@ -17,7 +19,7 @@ To that end, I was partially inspired by an earlier shitpost project based on a 
 
 I'm not looking to write a recipe here so I'll spare you the life story. Instead, I'm going to talk about how I managed my own new shitpost project: sqlcss.leemeichin.com[fn:3]
 
-![Example of SQL in CSS](../media/yes-i-can-connect-to-a-db-in-css/example.png)
+[[../media/yes-i-can-connect-to-a-db-in-css/example.png][Example of SQL in CSS]]
 
 As the name might suggest, this is how you connect to a database using CSS. It only works in Chrome, unfortunately, but you can provide any SQLite database you like and query it via CSS.
 
@@ -48,11 +50,11 @@ While the PaintWorklet restricts network access inside the worker, you are still
 Now for the moment of truth: can I set up a database inside my worklet?
 
 #+BEGIN_SRC javascript
-const SQL = await initSqlJs({
-  locateFile: file => ~./${file}~,
-});
+  const SQL = await initSqlJs({
+    locateFile: file => `./${file}`,
+  });
 
-const DB = new SQL.Database();
+  const DB = new SQL.Database();
 #+END_SRC
 
 Success! No errors. But no data either, so let's fix that.
@@ -62,18 +64,18 @@ Success! No errors. But no data either, so let's fix that.
 Easiest thing to do at the start is set up some fake data. Sql.js has a couple of functions to do precisely that.
 
 #+BEGIN_SRC javascript
-DB.run('CREATE TABLE test (name TEXT NOT NULL)')
-DB.run(
-  'INSERT INTO test VALUES (?), (?), (?), (?)',
-  ['A', 'B', 'C', 'D']
-)
+  DB.run('CREATE TABLE test (name TEXT NOT NULL)')
+  DB.run(
+    'INSERT INTO test VALUES (?), (?), (?), (?)',
+    ['A', 'B', 'C', 'D']
+  )
 #+END_SRC
 
 I've got my test table with some values in it now. I should be able to query this and get those values back, although I'm not sure how the result will be structured.
 
 #+BEGIN_SRC javascript
-const result = DB.exec('SELECT * FROM test')
-console.log(result)
+  const result = DB.exec('SELECT * FROM test')
+  console.log(result)
 #+END_SRC
 
 Results are there, as expected. It would be nice to actually render this result though.
@@ -83,13 +85,13 @@ Results are there, as expected. It would be nice to actually render this result 
 I assumed this would be just like writing text to a canvas. How hard can that be, right?
 
 #+BEGIN_SRC javascript
-class SqlDB {
-  async paint(ctx, geom, properties) {
-    const result = DB.exec('SELECT * FROM test');
-    ctx.font = '32px monospace';
-    ctx.drawText(JSON.stringify(result), 0, 0, geom.width);
+  class SqlDB {
+    async paint(ctx, geom, properties) {
+      const result = DB.exec('SELECT * FROM test');
+      ctx.font = '32px monospace';
+      ctx.drawText(JSON.stringify(result), 0, 0, geom.width);
+    }
   }
-}
 #+END_SRC
 
 Nah, that would have been too simple. The context here isn't the same as the context you can get for a canvas element, it only provides a subset of functionality.
@@ -103,9 +105,9 @@ Luckily, a library called opentype.js[fn:8] offers hope of a solution. It can pa
 I don't have to modify the opentype library to import it this time, as it's already available from JSPM[fn:9]. If you give JSPM an npm package, it'll autogenerate an ES6 module that you can import directly into your browser. This is fantastic because I really didn't want to have to fuck around with a bundling tool for the sake of a joke project.
 
 #+BEGIN_SRC javascript
-import opentype from 'https://ga.jspm.io/npm:opentype.js@1.3.4/dist/opentype.module.js'
+  import opentype from 'https://ga.jspm.io/npm:opentype.js@1.3.4/dist/opentype.module.js'
 
-opentype.load('fonts/firasans.otf')
+  opentype.load('fonts/firasans.otf')
 #+END_SRC
 
 One problem here though - it wants to load a font over the network and I can't do that! Gah, foiled again!
@@ -113,12 +115,12 @@ One problem here though - it wants to load a font over the network and I can't d
 ...Or am I? It also has a ~parse~ method that accepts an array buffer. I'll just base64 encode the font then and decode it in my module.
 
 #+BEGIN_SRC javascript
-import opentype from 'https://ga.jspm.io/npm:opentype.js@1.3.4/dist/opentype.module.js'
-import base64 from 'https://ga.jspm.io/npm:base64-js@1.5.1/index.js'
+  import opentype from 'https://ga.jspm.io/npm:opentype.js@1.3.4/dist/opentype.module.js'
+  import base64 from 'https://ga.jspm.io/npm:base64-js@1.5.1/index.js'
 
-const font = 'T1RUTwAKAIAAAwA ... 3 days later ... wAYABkAGgAbABwAIAKM'
+  const font = 'T1RUTwAKAIAAAwA ... 3 days later ... wAYABkAGgAbABwAIAKM'
 
-export default opentype.parse(base64.toByteArray(font).buffer)
+  export default opentype.parse(base64.toByteArray(font).buffer)
 #+END_SRC
 
 Did I tell you that the worklet doesn't have the APIs for handling base64 strings either? Not even ~atob~ and ~btoa~? I had to find a plain JS implementation for that, too.
@@ -197,18 +199,18 @@ It would be better if you had to use CSS to query the database. In fact, that's 
 For this, a custom CSS property is required. Defining ~inputProperties~ has the benefit of subscribing to changes to that property, so this will re-render if the value of that property ever changes. No need to set up any listeners ourselves.
 
 #+BEGIN_SRC javascript
-class SqlDb {
-  static get inputProperties() {
-    return [
-      '--sql-query',
-    ]
-  }
+  class SqlDb {
+    static get inputProperties() {
+      return [
+        '--sql-query',
+      ]
+    }
 
-  async paint(ctx, geom, properties) {
-    // ...
-    const query = DB.exec(String(properties.get('--sql-query')))
+    async paint(ctx, geom, properties) {
+      // ...
+      const query = DB.exec(String(properties.get('--sql-query')))
+    }
   }
-}
 #+END_SRC
 
 Those CSS properties are known as typed properties, but they're essentially boxed up in a special ~CSSProperty~ class that isn't very useful by itself. So you have to manually convert it to a string or a number or some such to use it, as above.
@@ -216,10 +218,10 @@ Those CSS properties are known as typed properties, but they're essentially boxe
 Just a quick tweak to the CSS now.
 
 #+BEGIN_SRC css
-main {
-  // ...
-  --sql-query: SELECT name FROM test;
-}
+  main {
+    // ...
+    --sql-query: SELECT name FROM test;
+  }
 #+END_SRC
 
 Quotes are deliberately omitted here because otherwise I would have to remove them from the string before passing it to the database. That said, this works well!
@@ -237,18 +239,18 @@ Hard-coding a database schema and, well, actual data, kinda sucks. It proves the
 It would be cool if you could query whatever database you liked, so long as you had the database file handy. I would just have to read that file and base64 encode it, like I did with the font file.
 
 #+BEGIN_SRC javascript
-const fileInput = document.getElementById('db-file')
-fileInput.onchange = () => {
-  const reader = new FileReader()
-  reader.readAsDataURL(fileInput.files[0])
+  const fileInput = document.getElementById('db-file')
+  fileInput.onchange = () => {
+    const reader = new FileReader()
+    reader.readAsDataURL(fileInput.files[0])
 
-  reader.onload = () => {
-    document.documentElement.style.setProperty(
-      '--sql-database',
-      ~url('${reader.result}')~
-    )
+    reader.onload = () => {
+      document.documentElement.style.setProperty(
+        '--sql-database',
+        `url('${reader.result}')`
+      )
+    }
   }
-}
 #+END_SRC
 
 I made an extra CSS property for that, where you can provide your SQLite database as a base64-encoded data URI. The data URI is basically just for show and to make sure it's valid for the DOM; I'll parse that stuff out on the worker side.
@@ -260,18 +262,18 @@ The last step is to make it easier to query, because otherwise you have to go in
 This is possibly the least complicated part of the project. The custom property has a bit of an issue with semicolons, and SQLite doesn't care if the trailing semicolon is omitted, so the easiest thing to do is delete it if it's found in the input.
 
 #+BEGIN_SRC javascript
-const queryInput = document.getElementById('db-query')
-queryInput.onchange = () => {
-  let query = queryInput.value;
-  if (query.endsWith(';')) {
-    query = query.slice(0, -1)
-  }
+  const queryInput = document.getElementById('db-query')
+  queryInput.onchange = () => {
+    let query = queryInput.value;
+    if (query.endsWith(';')) {
+      query = query.slice(0, -1)
+    }
 
-  document.documentElement.style.setProperty(
-    '--sql-query',
-    queryInput.value
-  )
-}
+    document.documentElement.style.setProperty(
+      '--sql-query',
+      queryInput.value
+    )
+  }
 #+END_SRC
 
 Now you can use CSS to import and browse your own database!

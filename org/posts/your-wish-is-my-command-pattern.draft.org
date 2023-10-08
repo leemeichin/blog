@@ -102,6 +102,8 @@ I built this one myself to demonstrate basic pattern matching. The implementatio
 
 The gem is simply a few lines of code that abuses ~throw~ and ~catch~ in place of ~return~, which means you can treat ~broadcast~ similarly to old-skool ~goto~ in terms of using non-local returns for control flow. I can't really recommend it and the implementation is so small that if you did find it interesting, you could just copy/paste the class from the GitHub repo.
 
+I would go as far as saying a lot of libraries merely layer a light DSL on top of a plain object and don't really give you much more than that, so going over each variation of a minor abstraction isn't particularly interesting.
+
 #+begin_aside
 *Why do we always use the method ~call~?*
 
@@ -124,7 +126,7 @@ All of these are the same:
 
 This one has been around for quite a long time. Each ~interactor~ instance receives a mutable context which data can be read from or written to. Arguments required by your ~interactor~ are set in the context before invoking the class, and the same context can be queried after the ~interceptor~ has exceuted to determine if it was successful or not.
 
-That isn't particularly interesting by itself, but ~Organizers~ are a different story (despite the somewhat obscure naming). You can consider this to be an implementation of a ~Saga~, which is a simple finite state machine (FSM) that steps forward for each successful result and offers the ability to rollback (or compensate) if a step fails. Fundamentally, this offers the potential of transactionality to business logic or side-effects that are not typically transactional in nature, like HTTP requests or scheduling emails.
+As mentioned, this alone isn't exactly exciting, but ~Organizers~ are a different story (despite the somewhat obscure naming). You can consider this to be an implementation of a ~Saga~, which is a simple finite state machine (FSM) that steps forward for each successful result and offers the ability to rollback (or compensate) if a step fails. Fundamentally, this offers the potential of transactionality to business logic or side-effects that are not typically transactional in nature, like HTTP requests or scheduling emails.
 
 #+begin_aside
 You might be familiar with Sagas if you've worked with React and ~redux-saga~. ~redux-saga~ doubles up as an event bus and pulls in a few reactive elements to suit the reality of UI development, but fundamentally you'll be composing little state machines with it and leaving your reducers purely to handle data.
