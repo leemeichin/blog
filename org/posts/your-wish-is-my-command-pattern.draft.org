@@ -1,0 +1,137 @@
+#+TITLE: Your wish is my command pattern
+#+DATE: <2023-10-05 Thu>
+#+CATEGORY: programming
+
+In all my time as a Ruby developer, I have never been more mildly intrigued by the seemingly never-ending variations of what we call a ~Service~ or ~Command~ pattern.
+
+What exactly is this pattern I speak of? It's typically represents a procedural business transaction where a number of steps may need to be taken in sequence to complete an operation, and it's the favoured abstraction for a developer who wants to keep this logic out of their models and controllers. Most of the libraries that provide such an interface will bake in support for database transactions and rollbacks, some kind of ~Result~ object that responds to ~failure~ and ~success~, and of course an opinionated DSL.
+
+Do you really need such a library? I would argue that, frequently, you don't. Here's a ~Service~ pattern in plain old Ruby 3.2, with a bit of fluorish:
+
+#+begin_src ruby
+  class DoSomethingService
+    SomethingError = Class.new(StandardError)
+    
+    def self.call(...) = new(...).call
+
+    def initialize(your:, service:, arguments:)
+      @your = your
+      @service = service
+      @arguments = arguments
+    end
+
+    def call
+      do_something
+      do_something_else
+      do_something_wrong
+    rescue SomethingError => e
+      handle_something_error(e)
+    end
+
+    private
+
+    attr_reader :your, :service, :arguments
+
+    def do_something = puts "I did something"
+    def do_something_else = puts "I also did something else"
+    def do_something_wrong = raise SomethingError, "This is wrong"
+
+    def handle_something_error(e) = puts e.message
+  end
+
+  result = DoSomethingService.call(your: 1, service: 2, arguments: 3)
+  
+  #=> I did something
+  #=> I also did something else
+  #=> This is wrong
+  #=> nil
+#+end_src
+
+You don't really need much more than that. Maybe you pull out ~.call~ into a mixin or base class to avoid duplication, and the initializer does feel like boilerplate, but it's boilerplate that clearly describes the arguments the service takes. You're basically defining a single public ~#call~ method that performs your business logic step-by-step in a fairly descriptive way.
+
+As for error handling, you're on your own still, but you can make something work with judicious use of exceptions. It could be worse.
+
+We can't just leave it there though. What do the alternatives look like and what do they add to the vanilla approach?
+
+*** [[https://github.com/leemeichin/superlime][Superlime]]
+
+I built this one myself to demonstrate basic pattern matching. The implementation is simplistic and arguably quite hacky, and really doesn't offer
+anything except another weird DSL to remember.
+
+#+begin_src ruby
+  class DoSomethingService < Superlime::Command
+    def initialize(your:, service:, arguments:)
+      @your = your
+      @service = service
+      @arguments = arguments
+    end
+
+    def call
+      do_something
+      do_something_else
+      do_something_wrong
+
+      broadcast(:ok, some: :data) # never reached
+    rescue SomethingError => e
+        handle_something_error(e)
+    end
+
+    def do_something = puts "I did something"
+    def do_something_else = puts "I also did something else"
+    def do_something_wrong = raise SomethingError, "This is wrong"
+
+    def handle_something_error(e) = broadcast(:error, e)
+  end
+
+  result = DoSomethingService.call(your: 1, service: 2, arguments: 3)
+
+  case result
+  in ok: result then puts result.inspect
+  in error: SomethingError => e then puts e.message
+  end
+
+  #=> I did something
+  #=> I also did something else
+  #=> This is wrong
+#+end_src
+
+The gem is simply a few lines of code that abuses ~throw~ and ~catch~ in place of ~return~. I can't really recommend it and the implementation is so small that if you did find it interesting, you could just copy/paste the class from the GitHub repo.
+
+#+begin_aside
+*Why do we always use the method ~call~?*
+
+Interesting question! Thanks to Ruby's duck typing, any object that responds to ~#call~ or ~.call~ is considered to be an, erm, callable object.
+
+In practice, blocks, procs and lambdas all define ~#call~ which means they can be invoked via ~.()~ or ~[]~, and with a little bit of effort means you can define ~#to_proc~ on them for shorthand syntax. This seems a little uninspiring at first, but comes in handy with functional code and using methods like ~then~ and ~Proc#curry~.
+
+All of these are the same:
+
+#+begin_src ruby
+  foo = ->(arg) { puts arg.inspect }
+
+  foo.("hello") #=> "hello"
+  foo["hello"] #=> "hello"
+  foo.call("hello") #=> "hello"
+#+end_src
+#+end_aside
+
+*** [[https://github.com/collectiveidea/interactor][interactor]]
+
+This one has been around for quite a long time. Each ~interactor~ instance receives a mutable context which data can be read from or written to. Arguments required by your ~interactor~ are set in the context before invoking the class, and the same context can be queried after the ~interceptor~ has exceuted to determine if it was successful or not.
+
+That isn't particularly interesting by itself, but ~Organizers~ are a different story (despite the somewhat obscure naming). You can consider this to be an implementation of a ~Saga~, which is a simple finite state machine (FSM) that steps forward for each successful result and offers the ability to rollback (or compensate) if a step fails. Fundamentally, this offers the potential of transactionality to business logic or side-effects that are not typically transactional in nature, like HTTP requests or scheduling emails.
+
+#+begin_aside
+You might be familiar with Sagas if you've worked with React and ~redux-saga~. ~redux-saga~ doubles up as an event bus and pulls in a few reactive elements to suit the reality of UI development, but fundamentally you'll be composing little state machines with it and leaving your reducers purely to handle data.
+#+end_aside
+
+An example of such an ~Organizer~ would be like this:
+
+#+begin_src ruby
+
+#+end_src
+
+
+*** [[https://github.com/trailblazer/trailblazer][trailblazer]]
+
+*** [[https://github.com/dry-rb/dry-transaction][dry-transaction]]
