@@ -2,11 +2,17 @@
 #+DATE: <2023-10-05 Thu>
 #+CATEGORY: programming
 
+#+TOC: headlines 3
+
+* Command/Service Patterns
+
 In all my time as a Ruby developer, I have never been more mildly intrigued by the seemingly never-ending variations of what we call a ~Service~ or ~Command~ pattern.
+
+** What is it?
 
 What exactly is this pattern I speak of? It's typically represents a procedural business transaction where a number of steps may need to be taken in sequence to complete an operation, and it's the favoured abstraction for a developer who wants to keep this logic out of their models and controllers. Most of the libraries that provide such an interface will bake in support for database transactions and rollbacks, some kind of ~Result~ object that responds to ~failure~ and ~success~, and of course an opinionated DSL.
 
-Do you really need such a library? I would argue that, frequently, you don't. Here's how a ~Service~ pattern might look in Plain Old Ruby where side-effects include persisting to a database and enqueuing background jobs:
+Here's how a ~Service~ pattern might look in Plain Old Ruby where side-effects include persisting to a database and enqueuing background jobs:
 
 #+begin_src ruby
   class CreatePost
@@ -56,6 +62,10 @@ As for error handling, you're on your own still, but you can make something work
 Arguably, this doesn't scale very well with larger, more complicated business transactions. Or it does but it requires a more disciplined approach to avoid the almost inevitable ball of mud you end up with.
 
 We can't just leave it there though. What do the alternatives look like and what do they add to the vanilla approach?
+
+** Existing libraries
+
+Let's take a look at some examples in the wild.
 
 *** [[https://github.com/leemeichin/superlime][Superlime]]
 
@@ -142,3 +152,7 @@ An example of such an ~Organizer~ would be like this:
 *** [[https://github.com/trailblazer/trailblazer][trailblazer]]
 
 *** [[https://github.com/dry-rb/dry-transaction][dry-transaction]]
+
+** Another way
+
+In my experience, this pattern exists because of the tendency to build controllers with multiple responsibilities, and this is something more unique to object-oriented languages than functional ones.
