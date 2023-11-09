@@ -1,0 +1,33 @@
+#+TITLE: Lemmings
+#+DATE: <2023-11-09 Thur>
+#+CATEGORY: tech
+
+I was going to call this post /Cargo Culting/ but I think the term is inaccurate as much as it is antiquated. In fact, I'd be happy if we cut the wartime rhetoric out of tech entirely, as if getting a 64k bill from a badly built Lambda function is as bad as getting trench foot in Alsace-Lorraine or waiting for a care-package that will never come, but that's a topic for another time.
+
+Instead, I want to talk about the apocryphal Lemming-like phenomenon of people in tech blindly following trends and how it is far from specific to software engineering. I promise, this one is gonna be short.
+
+In 2022, one or two prominent startups decided it was time to drop some ballast (as it were) and a round of layoffs ensued. This gave legitimacy to every other VC-backed startup firm to kick off their own round of layoffs because that's what everyone else is doing. The first few companies to do it attracted most of the heat, carving out the path for others to follow.
+
+In late 2022/early 2023 it is decided that COVID is no longer /a thing/ and return to office (RTO) comes out in full force. It only required one prominent tech company to enforce this policy and say that the loss of remote staff is acceptable for everybody else to get on board.
+
+In mid 2023 it becomes clear a company can enjoy the benefit of shedding ballast and getting people in the office by enforcing an even stricter RTO policy, without triggering any legal redundancy proceedings. This is not a conspiracy, by the way - in the UK it is well-known as fire-and-rehire where the employer simply changes the contract by terminating your existing one and offering you a less beneficial contract to continue in the job.
+
+How exactly has all of this happened? It is simply because a small handful of businesses set the stage for every other business to follow, and then this grows from a trend into status quo.
+
+If you ask anyone, they will likely say... everybody else is doing it so why shouldn't we?
+
+---
+
+Anyone who has spent their time working as engineers in tech startups will be familiar with this idea, particularly as it pertains to actual tech.
+
+Why are we using kubernetes? It's because everybody else is.
+
+Why are we using the cloud? It's because everybody else is.
+
+Why are we using Kafka? It's because everybody else is.
+
+Why are we using React? It's because everybody else is.
+
+Why are we using XYZ? It's because everybody else is.
+
+I'll leave it at that.
