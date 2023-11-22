@@ -1,0 +1,39 @@
+#+TITLE: My kind of interview
+#+DATE: <2023-11-22 Wed>
+#+CATEGORY: culture
+
+I rather suddenly found myself back on the job market recently (by choice, before anyone asks). Given that it puts me back on the interviewing circuit it's given me an opportunity to reflect on the conversations and processes I enjoy the most, even if ultimately it doesn't result in an offer.
+
+I'm not exactly fond of interviewing--or I should say that I'm not fond of what interviewing in tech has /become/. Over the years a potential candidate has had to jump through more and more hoops and the hiring process has become more of a gauntlet that, in my mildly cynical opinion, selects for endurance over actual skill. What used to be a few conversations with a team has become a series of in-depth tests and challenges that are rather aspirational in their reflection of the day to day workflow. You could easily go through five or six stages, which can take a month or longer, only to fall at the final hurdle, the /culture fit interview/. This is a completely impractical waste of everyone's time and it is /rare/ that screening calls filter it out.
+
+This isn't exactly a novel thought; I'm not sure who exactly enjoys these processes. Hell, I've been the interviewer for them enough times and the exhaustion of doing several of these a week not only gets in the way of your actual work, it can start to become a chore that negatively affects the experience of the candidate.
+
+Anyway, rather than focus on what I don't particularly like, let's look at what I think is ideal, or even /great/.
+
+** Thoughtfulness
+
+At some point in your career I feel it becomes less important to dig into the nitty-gritty of your technical experience and instead look at the higher level stuff. A lot can be learned from the questions you ask, the questions you are asked, and how they are answered.
+
+Some may argue against this and say it's too easy to bullshit your way through such an interview. I disagree and would contend that the line of questioning may not dig deep enough to solicit a satisfying response, and perhaps the questioning is too heavily scripted and therefore doesn't leave much room to maintain a flowing conversation.
+
+A similar argument is that this approach may be subject to unconscious bias, particularly because it would select for charming people who are good in a chat. I agree, that would be a problem, and I don't have a solution for it. "Don't be unconsciously biased," is obviously not a legitimate solution. However, these same biases are just as likely to occur in a more heavily scripted interview. I'd similarly argue that a bigger problem with such bias is how it is presented in /feedback/, which is when those unconscious biases are committed to paper and become conscious.
+
+** Curiosity
+
+I love it when somebody asks what my take is on something, or what do I think about something, rather than answering general technical trivia. It gives me a chance to ask the same in return. 'Nuff said.
+
+** Authenticity
+
+I could be faulted for being naive here, but I'm generally shit at negotiating and I prefer to operate at a level of high trust in favour of optimising the outcome for myself. This sometimes leads me into less than ideal situations or what you might call /putting in more than I get out/, however this is an acceptable trade-off so I can stick to my values. While I can be astute, I'm not what you would call cut-throat.
+
+In that sense, if I am pretending to be someone I'm not for the sake of getting a job, it's a good sign that it wasn't the right fit in the first place. If I can succeed in being myself then that is far more promising.
+
+** A slice of life
+
+An interview process is essentially a ritual whereby an employer and candidate explore the potential of entering a working relationship for the next few years (or longer). In this sense, I think culture, work ethic and adaptability play a much stronger role in recruitment than sheer technical prowess. Tech can be learned with varying amounts of effort so long as the drive, the potential is there; but behavioural changes are much more challenging to facilitate (not to mention being more delicate, too).
+
+These days I would opt to interview face to face in a hybrid role to get a feel for where I'd be spending my time, rather than conducting everything over video call. How times have changed that this is no longer the norm.
+
+-----
+
+There is surely more than this to consider, but I realise that any interview process that checks some or all of these boxes is one that I will leave with a smile, no matter how I perform in the moment.
