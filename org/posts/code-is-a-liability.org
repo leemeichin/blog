@@ -1,0 +1,30 @@
+#+TITLE: Code is a liability
+#+DATE: <2023-12-26 Tue>
+#+CATEGORY: Tech
+
+There have been a few posts going around recently floating the idea that all code is tech-debt[fn:1], all code is legacy, whatever. Naturally there are a selection of posts that refute this and provide their own explanation, like this one called /Code is Not Technical Debt/[fn:2].
+
+I'd like to share my own fairly absolute point of view, which I am sure will invite some criticism.
+
+*All code is a liability*.
+
+There are so many arguments you can make to say this is wrong but they all focus on the necessity of the implementation and not the end result.
+
+If you have a problem that is solved by maintaining code, and /then/ find a solution that is code free, you are now adding the same value without the burden of software maintainence.
+
+This happens all the time in the industry; every time you choose buy over build you are making the code /not your problem/, and your liability becomes a line item on the balance sheet for some SaaS that does the same. The decision you have to make is: if we pay this premium to offload one dependency, does that give us more room to move in our own problem space?
+
+When it comes to infra or hosting for example, the answer is unequivocally yes: it is not the business of a startup to innovate on hosting and infrastructure, so pay a company like Heroku, Render or Fly to do it for you and make sure it stays online.
+
+All code has /weight/. Frameworks are bottom-heavy because they set the entire foundation of your system such that you only need to worry about the structure on top. Write that kind of foundation yourself and you are carrying the entire burden on your shoulders, making it top-heavy.
+
+What makes it a liability then? A layman's understanding will consider a liability a bad thing, but a liability in this sense is simply something that costs you money to own. The less code you have to write, the less code you have to maintain. The more code you write, the more you're stuck with.
+
+Someone might say, "well, this code solves a novel problem so it's clearly an asset and it's making us money." I would argue that it's not the code itself that gives you the edge, it's the discovery of a novel solution - you can solve it however the fuck you like, with loads of infrastructure and effort, or something entirely manual like a simple Excel spreadsheet.
+
+But it will always be a liability for as long as it costs more to operate than the overall value it provides both in terms of generating revenue, and mitigating loss (i.e. retention/renewal).
+
+
+
+[fn:1] https://www.tokyodev.com/articles/all-code-is-technical-debt
+[fn:2] https://gavinhoward.com/2023/12/code-is-not-technical-debt/
