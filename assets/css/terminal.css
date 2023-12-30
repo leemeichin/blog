@@ -2,12 +2,8 @@
   --global-font-size: 15px;
   --global-line-height: 1.4em;
   --global-space: 10px;
-  --font-stack: ui-monospace, "Cascadia Mono", "Segoe UI Mono",
-    "Liberation Mono", Menlo, Monaco, Consolas, monospace;
-  /* --font-stack: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, */
-  /*   sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol; */
-  --mono-font-stack: ui-monospace, "Cascadia Mono", "Segoe UI Mono",
-    "Liberation Mono", Menlo, Monaco, Consolas, monospace;
+  --font-stack: "Recursive", ui-monospace, monospace;
+  --mono-font-stack: "Recursive", ui-monospace, monospace;
   --background-color: #fff;
   --page-width: 80ch;
   --font-color: #151515;
