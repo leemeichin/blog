@@ -53,12 +53,12 @@
           (org-list-to-generic
            files
            '(:raw t
-             :splice t
-             :isep "\n"
-             :istart "| "
-             :iend " |"
-             :ifmt (lambda (type file)
-                     (concat "-rw-r--r-- | lee | www | " file))))))
+                  :splice t
+                  :isep "\n"
+                  :istart "| "
+                  :iend " |"
+                  :ifmt (lambda (type file)
+                          (concat "-rw-r--r-- | lee | www | " file))))))
 
 (defun kamelasa/sitemap-function-rss (title files)
   "Format FILES as a list of top level headers, with TITLE as the title."
@@ -66,7 +66,7 @@
           (org-list-to-subtree files 1 '(:icount "" :istart ""))))
 
 (defun kamelasa/sitemap-format-entry-rss (entry style project)
-"Format ENTRY for the RSS feed.
+  "Format ENTRY for the RSS feed.
 ENTRY is a file name.  STYLE is either 'list' or 'tree'.
 PROJECT is the current project."
   (cond ((not (directory-name-p entry))
@@ -86,10 +86,10 @@ PROJECT is the current project."
         (t entry)))
 
 (defun kamelasa/publish-rss (plist filename pub-dir)
-   "Publish RSS with PLIST, only when FILENAME is 'rss.org'.
+  "Publish RSS with PLIST, only when FILENAME is 'rss.org'.
 PUB-DIR is when the output will be placed.
 This is to avoid republishing all other individual org-files."
-   (if (equal "rss.org" (file-name-nondirectory filename))
+  (if (equal "rss.org" (file-name-nondirectory filename))
       (org-rss-publish-to-rss plist filename pub-dir)))
 
 (setq org-html-htmlize-output-type 'css)
@@ -117,6 +117,7 @@ This is to avoid republishing all other individual org-files."
          :html-head ,(read-template "head")
          :html-preamble ,(read-template "preamble")
          :html-postamble ,(read-template "postamble")
+         :html-self-link-headlines t
          :publishing-directory ,(expand-relative-path "publish/posts/")
          :publish-function org-html-publish-to-html)
         ("pages"
