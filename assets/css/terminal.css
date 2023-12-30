@@ -230,6 +230,9 @@ code {
   font-weight: inherit;
   background-color: var(--code-bg-color);
   font-family: var(--mono-font-stack);
+  font-variation-settings:
+    "CASL" 1,
+    "MONO" 1;
 }
 
 code::after,
@@ -254,6 +257,9 @@ pre {
   white-space: -moz-pre-wrap;
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
+  font-variation-settings:
+    "CASL" 1,
+    "MONO" 1;
 }
 
 pre.src {
