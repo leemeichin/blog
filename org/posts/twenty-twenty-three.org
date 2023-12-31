@@ -1,0 +1,41 @@
+#+TITLE: Twenty twenty-three
+#+DATE: <2023-12-31 Sun>
+#+CATEGORY: personal
+
+Another year passes, another year to reflect upon, and as far as living in interesting times goes, once again I couldn't remotely expect where I would land. I've probably mentioned bits and pieces in previous non-technical posts throughout the year.
+
+So, where to even begin? The question about my mental health still remains unanswered. Trying to get any kind of assessment through the NHS lately is an exercise in total futility, unfortunately, through little to no fault of its own. I'd prefer not to get into politics, but safe to say that this appears to be completely by design when you look at how easy it is to choose private healthcare instead (which, ironically but not in any way amusingly, heavily relies on the resources of the NHS itself). And after 14 years now, you can only point the finger in one direction. Upwards.
+
+The choice, then, is whether you can stand to wait not just one year, but /several/ years to get a referral to assess your mental health and produce a diagnosis, or if you can afford to spend a four figure sum at a private clinic. It's Hobson's choice in some sense: go private or don't bother. Anyone reading this who has been assessed for ADHD or otherwise been diagnosed with ADHD may relate when the chance of getting this through taxpayer-funded healthcare is slim-to-none.
+
+I mean, that's what I did and I was fortunate to have the money spare. The verdict? Probable but not conclusive enough. It should generally be considered good news to /not/ be diagnosed with something, but the problem with going private is that getting to the bottom of something turns into an expensive game of whack-a-mole, especially considering how various mental health conditions have overlapping symptoms. Insurance won't cover it either, probably because it's the UK and you don't really think to pre-emptively pay for private health insurance just in case this happens. It defeats the purpose of having taxpayer-funded healthcare and creates a two-tier system.
+
+To cut a long, rambling story short...GPs will prescribe anti-depressants these days with relative ease, especially if you've had a history of using them. For me, they worked until they didn't, providing a cathartic, short-term mood and energy boost but not necessarily treating the underlying problem. After all, it's not recommended to take anti-depressants if you are suspected of suffering from bipolar disorder or ADHD.
+
+That said, it got me through a fairly tough period in my career this year, enough to keep my head above water while feeling completely burned out. It's a shame no progress was made on my mental health as a whole though, so that's an ongoing concern.
+
+Career-wise, life has been 'fun' this year too. I have to say it's a remarkably privileged position to be in when you can prioritise your own values and ethics over job security. This was a position I found myself in during a rather lengthy probation period where ultimately I felt constantly at odds with myself and the job I was getting out of bed in the morning for. This is about me, not the employer or the people I worked with, so I won't go into details, but safe to say I was in a situation I wasn't really a fit for their culture but, more importantly, didn't /want/ to be either. Sometimes something just isn't your jam.
+
+That conveniently led me to a new startup in the burgeoning AI sector. Honestly, I remain someone skeptical about AI and the relentless hype around it, but I do understand why it is so exciting to so many people. And if there was ever a paradigm shift in how we build technology or automate manual processes (as most SaaS does by automating or simplifying data entry), then I think AI is running with better odds than crypto/web3/NFTs/blockchain which, in my opinion, remains fairly niche and constrained by a lack of credibility (more on that another time I guess).
+
+It's not just AI that is the appeal though, it's realising what I /want/ in a more general sense. The impact you can have in a small startup and the potential of the business to succeed are great motivators for me. It's empowering in a way that you'll struggle to find in a sufficiently large business where decision making is abstracted over several layers of the org chart and you are often subject to organisational/cultural debt and the increasing struggle to introspect and adapt (i.e. "we do this because we've always done this").
+
+So, yeah. I'm happy with the call I made there and consider myself fortunate that I wasn't forced into acting out of a lack of options.
+
+What else? Obviously there's more to life than mental health and work, and 2023 has seen the beginnings of a more spontaneous self.
+
+It's been the first time I've travelled abroad since COVID and when Brexit 'got done' 🤮. Prague: beautiful city, not my first visit and definitely not my last. I used to travel so frequently before I returned to London, just as a matter of convenience since I was flying from Latvia to London once a month and it was convenient to make a stop elsewhere along the way.
+
+[[../../img/twenty-twenty-three/prague.jpeg]]
+
+
+Similarly, seeing Queens of the Stone Age live was never part of any plan until about two weeks before their gig at the O2. Tickets were still available and we had a /perfect/ view.
+
+No words really. Was an incredible show. Had to be there.
+
+[[../../img/twenty-twenty-three/qotsa.jpeg]]
+
+
+Finally, what's in store for '24? I'd rather not think too far ahead but I'd like to think there is more of all that to come.
+
+Happy new year, I guess! 🎉
