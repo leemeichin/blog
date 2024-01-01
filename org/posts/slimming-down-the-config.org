@@ -1,0 +1,163 @@
+#+TITLE: Slimming down the config
+#+DATE: <2024-01-01 Mon>
+#+CATEGORY: programming
+
+It wouldn't be a new year if I didn't put my editor setup on a diet, and with the release of emacs 29 last year I've been able to simplify /a lot/. So, here are a few things I've changed or replaced thanks to emacs offering baked in support.
+
+** Package management
+
+~use-package~ has been the goto library for loading and configuring packages for quite a long time now. You'd typically use it in conjunction with ~quelpa~, ~straight~, or ~elpaca~ in order to require packages that aren't published on ELPA/MELPA and have to be pulled from a version-control (VC) source like Github.
+
+Gracefully, ~use-package~ is now available right out of the box and so no longer requires bootstrapping. Come emacs 30, there will be built-in support from pulling packages from VC, but a little config does the job for emacs 29.[fn:1]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package emacs
+    :init
+    (setq use-package-always-ensure t)
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+    (unless (package-installed-p 'vc-use-package)
+      (package-vc-install "https://github.com/slotThe/vc-use-package")))
+#+END_SRC
+
+With this setup, you no longer require ~straight~ or ~quelpa~ if your only use-case for fetching packages from a git repo is to depend on them. They will be treated the same as any package you install through ~package-install~.
+
+How do you use it? Here's how I setup ~asdf~ for managing my ruby/nodejs versions now:
+
+#+BEGIN_SRC emacs-lisp
+(use-package asdf
+  :vc (:fetcher github :repo tabfugnic/asdf.el)
+  :config (asdf-enable))
+#+END_SRC
+
+This alone has meant I can drop all the bootstrapping config for ~straight~ at the top of my ~init.el~ file.
+
+** Language support, syntax highlighting and auto-completion
+
+From my own experience, there has been a high amount of churn in packages related to language support and completion, especially since LSP (Language Server Protocol) found its way outside of VS Code and into the mainstream and TreeSitter language grammars started to take the place of regular expressions.
+
+For most languages, you don't necessarily need to install individual language modes to get syntax highlighting now, but it still requires a little configuration.
+
+For example, this is enough to get syntax highlighting for a basic web-stack using ~treesit~, which is the built-in package emacs uses for treesitter-based syntax highlighting.
+
+#+BEGIN_SRC emacs-lisp
+  (defun treesit-install-all-grammars () (interactive)
+         (dolist (lang treesit-language-source-alist)
+           (unless (treesit-language-available-p (car lang))
+             (treesit-install-language-grammar (car lang)))))
+
+  (use-package treesit
+    :ensure nil
+    :init
+    (setq treesit-language-source-alist
+          '((css . ("git@github.com:tree-sitter/tree-sitter-css.git"))
+            (dockerfile . ("git@github.com:camdencheek/tree-sitter-dockerfile.git"))
+            (html . ("git@github.com:tree-sitter/tree-sitter-html.git"))
+            (javascript . ("git@github.com:tree-sitter/tree-sitter-javascript.git"))
+            (json . ("git@github.com:tree-sitter/tree-sitter-json.git"))
+            (typescript . ("git@github.com:tree-sitter/tree-sitter-typescript.git" "master" "typescript/src"))
+            (ruby . ("git@github.com:tree-sitter/tree-sitter-ruby.git"))
+            (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
+    :config
+    (treesit-install-all-grammars)
+    (setq major-mode-remap-alist
+          '((yaml-mode . yaml-ts-mode)
+            (css-mode . css-ts-mode)
+            (typescript-mode . typescript-ts-mode)
+            (dockerfile-mode . dockerfile-ts-mode)
+            (javascript-mode . js-ts-mode)
+            (json-mode . json-ts-mode)
+            (ruby-mode . ruby-ts-mode)
+            (html-mode . html-ts-mode))))
+#+END_SRC
+
+You have to map to these modes manually as they don't automatically replace any existing modes you may have. The final piece of the puzzle is to enable LSP support for these languages, provided you have the language servers installed locally.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package eglot
+    :init
+    (fset #'jsonrpc--log-event #'ignore) ;; performance boost
+    :hook
+    (typescript-ts-mode . eglot-ensure)
+    (js-ts-mode . eglot-ensure)
+    (ruby-ts-mode . eglot-ensure)
+    (json-ts-mode . eglot-ensure)
+    (yaml-ts-mode . eglot-ensure)
+    (dockerfile-ts-mode . eglot-ensure)
+    (css-mode . eglot-ensure)
+    (html-mode . eglot-ensure))
+#+END_SRC
+
+That's literally all you need to get auto-completion, code-formatting and refactoring support that is just as good as what VS Code has to offer. Particularly for Typescript I find this to be a life-saver, since I don't really need to glue together various web-based modes to achieve the same now.
+
+** Search and completion frameworks
+
+In the days of yore, one would typically install a suite of packages like ~company-mode~, ~auto-complete~, ~ivy~, ~counsel~, ~swiper~, or otherwise go the whole hog with ~helm~. These are all fantastic utilities in their own right, for their own reasons (calling ~helm~ a completion framework is underselling it, really), but I like being a minimalist.
+
+~consult~, ~cape~, ~corfu~, ~orderless~, ~marginalia~, ~kind-icon~ and ~vertico~ are all fairly new entrants into the field and their selling point is their deep integration with built-in emacs functionality, rather than rolling their own.
+
+The irony is not lost on me when I say that installing upwards of /six/ packages is minimal, but they are each modular, do one thing well, and because of their support for 'native' emacs APIs they all easily interoperate without conflicting or requiring specialist extensions.
+
+I won't share the config for those here since they're basically just copied from each project's respective readme, but I'm happy with the results.
+
+** Tabs, projects and workspaces
+
+One of my low-key favourite things with my emacs setup is how I've configured it to manage projects and workspaces, allowing for a kind of multi-tasking that isn't as convenient to achieve in other graphical editors.
+
+Each tab corresponds to a 'workspace' and each 'workspace' corresponds to a project (typically a git repo or a directory containing a special file like ~.prj~). Within that project workspace, you will only be able to open files or switch to buffers that are part of the project, and each workspace can have its own window configuration, and it's own ~eshell~, etc. Naturally, this can be saved and restored.
+
+~projectile~ is a brilliant tool for managing projects and I imagine it's the go-to for many, but the built in ~project.el~ has started to come into its own as a more minimal, built-in alternative. It's not a like-for-like swap and has some quirks, but they're tolerable for as long as you don't need the extra power ~projectile~ brings to the table.
+
+Thanks to this, my entire project workspace setup is barely a dozen lines:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package project
+    :ensure nil
+    :init
+    (setq project-vc-extra-root-markers '(".prj"))
+    (add-to-list 'project-switch-commands '(magit-project-status "Magit" ?m)))
+
+  (use-package tabspaces
+    :init
+    (setq tabspaces-use-filtered-buffers-as-default t)
+    (setq tabspaces-remove-to-default nil)
+    (setq tabspaces-include-buffers '("*scratch*"))
+    (setq tab-bar-close-button-show nil)
+    (setq tab-bar-tab-hints t)
+    (add-to-list 'tab-bar-format #'tab-bar-format-menu-bar)
+    :config
+    (tabspaces-mode))
+  #+END_SRC
+
+~tabspaces-mode~ basically integrates the built-in ~tab-bar~ and ~project~ modes to make it easy to create new workspaces and switch between them.
+
+* Themes
+
+Finally, my theme. The ~modus~ set of themes are built into emacs now too, which is great news because they are fucking /tremendous/ and the attention to detail and care for accessibility in these really sets the bar for high quality theme development.
+
+I think I'm actually pulling the latest package here and not using the built-in, but still...
+
+#+BEGIN_SRC emacs-lisp
+(use-package modus-themes
+  :init
+  (setq modus-themes-bold-constructs t)
+  (setq modus-themes-italic-constructs t)
+  (setq modus-themes-subtle-line-numbers t)
+  (setq modus-themes-fringes 'subtle)
+  (setq modus-themes-variable-pitch-ui t)
+  :config
+  (if (display-graphic-p)
+      (modus-themes-load-theme 'modus-vivendi-tinted)
+    (modus-themes-load-theme 'modus-vivendi)))
+    #+END_SRC
+
+I'm particularly fond of the tinted dark theme, which I use when running the graphical version of emacs. My terminal doesn't like it as much though so it gets the plain one.
+
+[[../../img/slimming-down-the-config/theme.png]]
+
+My ricing game isn't that strong, in fact it's basically non-existent, but this does the job for me.
+
+-----
+
+All in all, it didn't take long to refactor my config and cut down on dependencies I don't use any more, as well as switching to built-in options where possible. I think it's a testament to the work of the community in recent years that it is much more trivial to create a 'modern' emacs setup that can rival mainstays like VS Code.
+
+[fn:1] https://tony-zorman.com/posts/use-package-vc.html
