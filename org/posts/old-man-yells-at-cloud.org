@@ -1,0 +1,94 @@
+#+TITLE: Old man yells at Cloud
+#+DATE: <2024-02-08 Thu>
+#+CATEGORY: programming
+#+OPTIONS: toc:nil
+
+I'm not exactly old, but at some point in history 37 was considered old. I think.
+
+I've been doing this whole startup/engineering thing for some time. Sometimes I have a lot of patience for it, sometimes I don't. I generally prefer to focus on culture and inter-personal challenges at work rather than pure tech, but there's space for all of it. Enjoy a select few thoughts.
+
+#+TOC: headlines 2
+
+** On GraphQL
+
+I'm pretty late to the party on this, if the increased greying of my hair didn't make it clear enough, but you can now buy into tooling that automatically slaps a GraphQL server right on the top of your relational DB. It'll basically handle resolution for you and provide something akin to a schema over your tables so you can easily run queries and mutations.
+
+On the surface of it, it seems cool. In fact I think one of the first tools that did this was called GraphCool. I think it's primarily geared towards people building 'single page apps' entirely in Javascript and fits in the same slot that old 'Backend as a Service' platforms like Parse and Firebase has occupied for some time.
+
+Similar to my next point, I think jumping into this at an early stage is too much too soon. GraphQL was designed by Facebook, a global megacompany with more than /a billion/ active users. Just because they open sourced it doesn't mean you have to use it by default, same as you don't really need gRPC or Kafka like 95% of the time.
+
+** On React
+
+The best takeaway from React these days, I think, is JSX. JSX used to exist in the form of E4X in Firefox, back when IE6 was still in play and the standards bodies were arguing over HTML and XHTML. Just like JSX, E4X make HTML syntax (or XHTML in that case) a first class citizen in the code.
+
+JSX is commodity now, and React comes with a lot of baggage. There are better options in the market, more lightweight ones.
+
+(I personally don't like the trickery employed to support 'hooks' and that's probably why React is more like a rendering engine than a simple framework).
+
+If I had the chance, I would would stop setting up projects with React by default and instead see what people are dong better, ten years after React set all the expectations.
+
+** On hosting and single page apps
+
+Microservices and kubernetes are not the go-to answer, but neither is distributing all your shit over isolated lambda functions in the cloud with all kinds of mechanisms introduced to try and make it all work like a simple full stack app.
+
+Serverless has its place, especially for tiny integrations in the modern world of the web when almost every web app has an integration layer and you don't need a persistent server for it (custom github actions, zapier, IFTTT, etc.). That works out cheaper for many and lowers the barrier to entry when most of the hosting is handled for you.
+
+For a full-blown app that needs to be able to handle persistent connections or complex transactional logic, like websockets? Honestly? Full-stack in Javascript is at about the stage of PHP4 being able to run on FastCGI in the early 2000s, only this time you're not vendor-locked-in to your £7/month Linode box, you're locked in to a platform with a bespoke deployment setup that you won't be able to host by yourself. Instead, you'll be looking at stateless solutions to stateless problems like passing JWTs around, or figuring out how to deal with oAuth access tokens without cookies or sessions.
+
+You can /still/ do a hell of a lot with a traditional full stack like Rails (Ruby), Laravel (PHP), Django (Python), Phoenix (Elixir), or whatever you have in C# these days (Blazor?), with some progressive enhancement to make things feel snappy. Put it on Heroku, Fly, or Render, and you're cool.
+
+Single page apps? How many services actually need such a stateful experience on the client when 90% of startups are some variation of ecommerce, or a CMS or CRM? Yeah, I said it.
+
+** On kubernetes
+
+I wrote a guide on self-hosting Kubernetes and I do it myself, but... no. Delay that choice at all costs.
+
+** On the cloud
+
+Venture capital is providing corporate welfare to AWS, GCP and Azure, given how much money is spent hosting infrastructure on them at great expense.
+
+** On Typescript and Javascript
+
+A brilliant idea that doesn't really survive contact with most codebases, and thus becomes an annoying overhead, a chore.
+
+I think it tries too hard to infer a type, and the output can be quite intimidating or even just too long to actually comprehend, especially in React codebases when it is trying to figure out props. How do you fix it? Well, nothing more than a liberal application of ~// @ts-ignore~ or ~any~! Why not add ~?.~ wherever you can just in case?
+
+It's not all the fault of Typescript, but also the absurd complexity and immaturity of the JS ecosystem; and yes I genuinely do mean immature, given the only time I end up on a wild dependency goose chase is when I'm checking a library on NPM and it says 'deprecated: try X', and then the linked dependency X says 'deprecated: try Y' and then /that/ dependency says `deprecated: try Z'.
+
+I'll withold judgment overall as I'd like to see this work in a pure TS environment, like Deno, rather than one where you can just compile TS and ignore all the type errors because it all ends up as JS anyway.
+
+Ultimately JS has evolved a lot but it hasn't grown a lot, I think. You're at the mercy of novel architectural concepts in almost every codebase, with little alignment or cohesion. There have been reasons why the idea of MVC was rejected in the browser but given that single page apps drift further and further from traditional web standards, probably MVC has a place again. MVC is nice.
+
+** On CI/CD
+
+Back in my day (2004-2011) I used to deploy code by opening FileZilla, connecting to our server over FTP (not even SFTP, because certificates cost money back then), and dragging and dropping the files I'd changed over from my computer to the server. I knew which files I'd changed because we used Subersion (SVN) and it added a little icon on changed files. If I was worried about the change I'd duplicate the files on the server with ~.bak~ at the end, so I could just rename them back if needed. It wasn't unusual to accidentally overwrite someone else's deploy as a result.
+
+We were doing 'incremental static regeneration' before you whippersnappers even thought of the idea in single page apps, but it was more like 'incremental dynamic regeneration'.
+
+It's nice to defer to an automated pipeline these days.
+
+** On prototyping
+
+Back in my day (circa 2012) I was taught about agile methodologies, scrum, extreme programming, and all of that. The idea of the throwaway prototype was mentioned a lot but not once in my career have I ever seen a throwaway prototype that was actually thrown away.
+
+When asked to build a prototype or experiment, keep it in mind that you are more likely building a foundation than a prototype and for all the corners you will need to cut for the sake of the project, you should make sure not to cut all of them.
+
+There is time for your experiment but no expectation of time to clean it up. It'll be in prod before you know it.
+
+** On cross-functional, empowered teams
+
+The more the merrier. I think cross-functional teams are a net-benefit for knowledge sharing and self-growth. They do require a little more discipline to manage as the lines between skillsets are deliberately blended. Such a team has to be empowered and autonomos, though.
+
+I'm not really keen on teams segregated by skillset, such as having a backend team and a frontend team. I've been full-stack throughout my career and I find that setup limiting and a poor use of availability if you have the time and desire to step out of your comfort zone.
+
+** On progress
+
+As much as the work burns me out, the progress and new potential provides a more renewable source to the flame.
+
+One thing I find myself saying now, that I don't really remember saying that much before, is that with any change you have to start somewhere, and that somewhere is better than nowhere.
+
+I was asked "what are my words of wisdom" and my answer should have been "I have none, I'm not wise," but I said, try to start from somewhere and don't worry about being wrong, it's never gonna be right the first time round.
+
+Expanding on it, It's not a zero sum game and as a team a thought, an idea, a concept takes shape.
+
+Sometimes it works, sometimes it doesn't, sometimes it needs a bit more time.
