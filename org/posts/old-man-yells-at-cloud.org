@@ -35,6 +35,8 @@ Serverless has its place, especially for tiny integrations in the modern world o
 
 For a full-blown app that needs to be able to handle persistent connections or complex transactional logic, like websockets? Honestly? Full-stack in Javascript is at about the stage of PHP4 being able to run on FastCGI in the early 2000s, only this time you're not vendor-locked-in to your £7/month Linode box, you're locked in to a platform with a bespoke deployment setup that you won't be able to host by yourself. Instead, you'll be looking at stateless solutions to stateless problems like passing JWTs around, or figuring out how to deal with oAuth access tokens without cookies or sessions.
 
+[[https://github.com/leemeichin/blog/blob/main/org/posts/old-man-yells-at-cloud.org?plain=1#L38][(Or you can host by yourself, just look at how I did it)]]
+
 You can /still/ do a hell of a lot with a traditional full stack like Rails (Ruby), Laravel (PHP), Django (Python), Phoenix (Elixir), or whatever you have in C# these days (Blazor?), with some progressive enhancement to make things feel snappy. Put it on Heroku, Fly, or Render, and you're cool.
 
 Single page apps? How many services actually need such a stateful experience on the client when 90% of startups are some variation of ecommerce, or a CMS or CRM? Yeah, I said it.
