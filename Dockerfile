@@ -1,4 +1,4 @@
-FROM silex/emacs:29-ci AS emacs
+FROM silex/emacs:30-ci AS emacs
 
 WORKDIR /home/build
 
