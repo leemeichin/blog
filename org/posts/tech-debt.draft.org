@@ -1,0 +1,34 @@
+#+TITLE: Tech Debt
+#+DATE: 2024-04-09 Tue
+#+CATEGORY: programming
+
+I remember an article that hit the front page of Hacker News some time ago. It was one of those posts that are basically written as a reply to some other trending post, and in this case the debate was around the value (or burden) of owning code. In one corner there was the author saying all code is an asset, and in the other the author believed it's all a liability. By virtue of taking an absolute stance, neither were correct, and as usual the interesting conversation happened in the messy in-between.
+
+Somewhere in that middle ground lies the concept of technical debt. Tech debt is the engineering equivalent of opportunity cost; the consequence born of the choice you didn't make; the stuff not done; the trade-off. You can't avoid it, you can't build anything and state as concrete fact that there is /literally nothing/ you would have chosen to do differently. Unlike debt, however, you don't always know you are accruing debt until after the fact: what served its purpose in one moment can simply /not/ serve its purpose some time later.
+
+Now I've laid the groundwork, I believe these things to be true:
+
+1. Code /is/ a liability and it has no innate value
+2. Tech debt is the manifestation of a bottleneck
+
+#+BEGIN_ASIDE
+Call it PR spin but I often reframe the task of working on tech debt to contributing to *Engineering Excellence*. Debt has a negative connotation to it, paying off debt is not an enjoyable task, and working towards a shared goal of quality is a more positive spin on the matter.
+#+END_ASIDE
+
+* Code is a liability
+
+Not /all/ code, no. Right at the start of my career at New Bamboo, I was taught that part of the process of developing software (and a key aspect of our hybrid agile/scrum/xp approach) involved /maximising the work *not* done/, by which I mean, the code you don't write is better than the code you do.
+
+If you can solve a problem without writing code, you're golden. This often takes the shape of build vs. buy (do you build in-house or outsource it to SaaS), or descoping, or just doing shit by hand because it's not worth automating.
+
+If you choose to write code you have to maintain it, and even unused or commented-out code has a maintenance burden. Code contributes to mental overhead, meaning you need to keep more of it in context, meaning you have a harder time context switching.
+
+#+BEGIN_ASIDE
+Deleted code is debugged code
+#+END_ASIDE
+
+Simple isn't easy, as it were, and the easy way is typically to throw more code at a problem until it's solved. Imagine just deleting the problem, and putting a new solution in if required. If it's easy to delete it's easy to replace, which is a much nicer prospect than maintaining.
+
+Ultimately, the less you have to care about, the better, so I think it's important to seek excellence by only writing the code that is needed and limiting sentimentality for what already exists.
+
+This is often achieved by doing a bit of architectural work up-front, but not so much that you're planning the spec for a cathedral when you're currently building a church.
