@@ -1,4 +1,4 @@
-FROM silex/emacs:29 AS emacs
+FROM silex/emacs:latest AS emacs
 
 WORKDIR /home/build
 
