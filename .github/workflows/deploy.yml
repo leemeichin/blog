@@ -48,7 +48,7 @@ jobs:
           cache-from: ${{ env.DOCKER_IMAGE }}
           tags: ${{ steps.docker_metadata.outputs.tags }}
           platforms: linux/arm64
-        
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
