@@ -1,0 +1,61 @@
+#+TITLE: Hyperscale
+#+DATE: <2024-04-22 Mon>
+#+CATEGORY: startups
+
+It was 2020, around the time the gravity of the COVID pandemic was becoming clear. Thanks to a referral from an old colleague, I found myself interviewing for and subsequently joining a then-small startup called Hopin. I'd never heard of it at the time, and I was introduced through a recruiter.
+
+It wasn't my first time working remotely for a startup as I did that several years earlier when I moved to Latvia, but it was the first time working for a remote-/first/ startup and, thanks to COVID and roughly 18 months of on-and-off lockdowns, it was really remote-only. And would remain that way.
+
+Not the first startup to ditch the office entirely, as I remember Elastic (the company behind Elasticsearch and the cloud offering of it) and GitLab (the now integrated devops platform) both operating similarly and for longer.
+
+This wasn't really what set Hopin apart though: /that/ would kick off in full-force towards the end of 2020 and the start of the new year.
+
+I estimate there were around eighty Hopin employees at the time I joined, and I was onboarded in a cohort of perhaps half-a-dozen new hires--some software engineers, some not. The business was still fleshing out its various functions, with people ops, recruitment, and IT services ramping up, not to mention customer success and growth, and in that sense it still had the up-and-coming vibes of a nippy upstart, all full of vim, emacs, and vigour... organic org growth, taking the problems as they come.
+
+In that year, 2020, the London part of the team would get to meet up just once after I joined, before the lockdowns started. I'm adding this as if it's actually important to the point, but I suppose it sets the scene for what would follow.
+
+-----
+
+I hold Hopin and my time there in high regard. I spent three years there all-in-all, two on Hopin's Events platform and then another twelve months on their community-based offshoot, Superwave. I remember places like this fondly because of the calibre of the colleagues I work with, and the implicit values we would share, and there are few (if any) people I met at Hopin, virtually or not, that I would struggle with the idea of working with again; you go through things together, and it being work-related doesn't diminish that.
+
+Three rounds of layoffs were incredibly tough to contend with, but I don't think anybody was prepared for what would happen in Ukraine. We'd acquired a Ukrainian startup, Attendify, several months earlier and while many colleagues found refuge, some remained to fight and gave their lives. Alex Leschenko was one of those to fight back, to defend. Rest in Peace.
+
+-----
+
+Hopin was practically a darling of COVID that went from 0-to-Unicorn in 60 weeks. Money flooding in from all angles as we rode the wave towards the new remote frontier.
+
+Hiring ramped up just as quickly, with engineers conducting anywhere between five and twenty technical interviews every week, and hiring processes had become more complicated, multi-staged. A screening call and two conversations turned into a screening call, a technical test, a systems architecture test, and a culture-fit call, and I imagine that was done to try and distribute the pipeline and protect the time of the people doing the later stages.
+
+We must have gone from just shy of a hundred people when I joined, to over a thousand--a thousand!--in the space of about six months.
+
+Let's dig into the impact of this, because what we did was /hyperscale/.
+
+** Acquisitions
+
+Every now and then we'd get news about a new acquisition: Streamyard, Streamable, Attendify, Jamm...
+
+Every acquisition poses a challenge in terms of integration or assimilation, as you're buying out the other company and are therefore bringing their team and technology on board. No amount of due diligence can prepare you for how this plays out in the wider context of the organisation: are you trying to bring their tech in-house or do you still want to operate them as a separate organisational unit?
+
+Despite the growth of Hopin as a remote streaming and community suite, there was little to no overlap between each part of the suite. If you moved from Events to Streamyard or Events to Superwave then you were effectively bidding your old team farewell. When all your communication is on Slack then you no longer enjoy the serendipity of bumping into acquaintances unexpectedly in the office building or campus.
+
+To this point, it feels like higher-order silos. No matter what sense it makes in business, you realise that you are suddenly surrounded by peers you are not aware of.
+
+Going through /at least/ four acquisitions in less than two years is quite wild, in those terms.
+
+** Org structure
+
+We went through one organisational rethink during my tenure. It was another variation of the Spotify model, pods and chapters, all that. We didn't go all the way with it, so there were pods, and specialism-based guilds.
+
+I found that those are very easy to manage when the company is small, but you start to get the bystander effect at growth: you pass on calls because you think somebody else you work with is going to be there and they'll handle it themselves and then disseminate.
+
+In effect you get the crystallisation of knowledge into a few nodes and the inner-sanctum of various specialisms is difficult to breach. Frontend, Backend, SRE, Devops, Product, Growth...they stop talking to each other except through layers of management.
+
+This isn't done on purpose, it's overwhelm, and it needs good managment to keep on top of.
+
+** Technocratic Org Structure
+
+/"It would be so much easier if we switched to Kubernetes and Terraform"/
+
+Why do so many rapid-growth startups decide they need to innovate on hosting? Its always the way: it's the wild-west in the product right now so we have to stabilise it with infra.
+
+Every software startup ends up with its own novel version of a platform, built via Kubernetes, at immense cost.

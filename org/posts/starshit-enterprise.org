@@ -1,0 +1,23 @@
+#+TITLE: Starshit Enterprise
+#+DATE: <2024-04-25 Thu>
+#+CATEGORY: programming
+
+How many services have you used where Single Sign On (SSO, OIDC) are locked behind expensive enterprise plans?
+
+Maybe you needed a static IP address? Oh, that's an enterprise thing too.
+
+Could you at least add some kind of logging or telemetry? Nope, you need to pay for an integration but it's only on the enterprise plan, that's £1.5k/mo with overages.
+
+You need an attestation because you're doing SOC compliance? We'll give you the report if you sign up for an enterprise plan
+
+The industry is fucking obsessed with you being as secure as possible through compliance, and it just so happens that every aspect of the process of being compliant involves the signing of several enterprise contracts to assure it, with nothing else changing except your bills going up 10x.
+
+What does that mean? They're not secure until you go enterprise?
+
+I once said that VC funding was essentially corporate welfare for the cloud, but getting compliance is also corporate welfare for the cloud.
+
+Shouldn't it be good, for the sake of the industry, to offer this as default instead of locking it behind hefty backroom deals?
+
+That's what Cloudflare did - SSL for all, DNS for all, very recently, metrics for all via the Baselime acquisition.
+
+Monetising oauth and OIDC is a bit shit - selling open-spec security at a premium.
