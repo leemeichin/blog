@@ -1,4 +1,4 @@
-FROM silex/emacs:latest AS emacs
+FROM silex/emacs:29-ci@sha256:43e3a57e945733acbd4c38d80b09736b8b3c117f22f70f1c3b0d045276c764b8 AS emacs
 
 WORKDIR /home/build
 
