@@ -6,7 +6,7 @@ I've been thinking a lot lately about impact. It hasn't come out of nowhere, but
 
 At risk of coming across cynical, my experience of software engineering in the web/SaaS space seems like it can be boiled down to automating data entry and then rendering the result in a palatable form. Converting SQL to HTML or JSON if you will. 
 
-I'm well aware of how reductive that take is, it's not intended to be taken seriously, but that's sometimes what it feels like. Most of the time you're taking something in the shame of a CMS (content management system), CRM (customer relation management system), or an eCommerce platform, and then complicating it with novel architecture to spice things up a bit.
+I'm well aware of how reductive that take is, it's not intended to be taken seriously, but that's sometimes what it feels like. Most of the time you're taking something in the shape of a CMS (content management system), CRM (customer relation management system), or an eCommerce platform, and then complicating it with novel architecture to spice things up a bit.
 
 I kid. It's not all like that.
 
