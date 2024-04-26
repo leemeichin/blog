@@ -1,5 +1,5 @@
 #+TITLE: Deleted code is debugged code
-#+DATE: 2024-04-09 Tue
+#+DATE: <2024-04-09 Tue>
 #+CATEGORY: programming
 
 I remember an article that hit the front page of Hacker News some time ago. It was one of those posts that are basically written as a reply to some other trending post, and in this case the debate was around the value (or burden) of owning code. In one corner there was the author saying all code is an asset, and in the other the author believed it's all a liability. By virtue of taking an absolute stance, neither were correct, and as usual the interesting conversation happened in the messy in-between.
