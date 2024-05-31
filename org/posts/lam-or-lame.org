@@ -1,0 +1,35 @@
+#+TITLE: LAM, or lame?
+#+DATE: <2024-05-31 Fri>
+#+CATEGORY: tech
+
+Can you call AI part of web3? I'm not sure, I mean, it does have more mass-market appeal than crypto, blockchains and NFTs. What about AI driven hardware, which is a sort of devolution of IOT? Hold that thought.
+
+If you haven't heard of the Rabbit R1 and the Humane Pin, go and check them out. Actually, check out their hype videos and then watch the reviews of the tech.
+
+I'm going to focus on the R1, which was designed by *teenage engineering*, notable by the intense shade of orange that you could consider their signature. I have a soft spot for that because I like their style, so I pre-ordered one of the devices wondering if it would meet any of the promises delivered in the marketing hype.
+
+Spoiler warning: it did not.
+
+Here's the thing; R1 was marketed on the promise of a Large Action Model (the LAM), whatever that means. When you're hyped up you let the buzzwords do the talking and fill in the blanks with your own imagination. It's a skill, just like Steve Jobs' Reality Distortion Field, where you're being sold an aspiration. The reality will often disappoint, and nobody is going to capture the lightning in a bottle that was the iPhone again.
+
+The LAM was presented as being like an AI, but instead of taking a prompt and generating content, it would know how to navigate applications and learn how to interact on behalf of the user. Or something. 
+
+Behind the scenes it uses browser scripting tools that are commonly used for website scraping and end-to-end testing to log into a service on your behalf and basically click through the UI itself. Not an API in sight. This gives me serious heebie-jeebies security-wise because it means that Rabbit stores your actual account credentials, probably struggles with 2FA, and basically relies on passing them into a webdriver VM to run a script.
+
+In fact, that's probably the exact thing I'd do to present a prototype, but with the full awareness that it wouldn't be good to roll out in prod at scale. Not only because of security but because it's pretty damn heavy on compute.
+
+Therein lies the first problem: the web isn't really all that open any more. Each service is a walled garden and there's no expectation that they expose an API that provides all the functionality you want. Integration and workflow services akin to IFTTT and Zapier these days are ten-a-penny, all working on that same problem. The web interface to such a service is inherently unstable, so trying to automate it via a scripted browser is fraught with problems.
+
+Suppose that's solved, what next?
+
+I don't think the AI piece is particularly impressive. Like most applications of AI these days, if you're not building the models you're just wrapping them with a few prompts and slathering some UI on top. The R1 is exactly that, in hardware form, and that means it is actually less functional than the home automation devices that have been around for almost a decade.
+
+Siri, Alexa, Google Assistant - they all process human voice and perform actions based on the interpreted input. You can go shopping with your voice with Alexa, and pay. You can extend them with integrations where you define the commands you provide, or use a separate app (like Shortcuts on iOS), and there is a whole ecosystem of IOT where you can add new hardware into the loop as long as it uses one of a handful of supported protocols.
+
+Essentially, the backend isn't AI but the interface feels like it is. It's smart, and most importantly it /feels/ intelligent.
+
+Where does that leave devices like the R1 or Humane Pin, that basically call out to an LLM to do all the work? Well, worse than your HomePod in most ways. But if you want an AI powered dictaphone that can summarise your thoughts and describe images it sees (to whatever extent), then I guess you're golden because you have a wonderfully engineered LLM in a box with zero interop.
+
+What does that mean for AI in general? I have no idea. If you're not making the models, then you're trying to apply them. You haven't really escaped from engineering at that point, be it hardware or software, and you'll just be allocating your resources a little bit differently in the quest to find product-market fit.
+
+Wearable AI basically needs to do a bit more than recording voices and describing images to change the game. Will it be a flub, or is it just early days?
