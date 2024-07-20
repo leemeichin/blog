@@ -5,7 +5,7 @@
 #+BEGIN_EXPORT html
 <style>
 .nullptr {
-  cursor: url(/img/yes-i-can-create-null-pointers-in-css/nullpointer.cur), not-allowed !important
+  cursor: url(/img/yes-i-can-create-null-pointers-in-css/nullpointer.cur), not-allowed !important;
 }
 </style>
 
