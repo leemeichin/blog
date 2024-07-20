@@ -116,7 +116,7 @@
 </style>
 
 <script>
-window.setTimeout(() => document.body.classList.add('nullptr'), Math.random() * 6500)
+window.setTimeout(() => document.body.classList.add('nullptr'), 1500 + Math.random() * 6500)
 </script>
 #+END_EXPORT
 
