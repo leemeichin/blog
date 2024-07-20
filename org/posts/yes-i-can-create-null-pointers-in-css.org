@@ -5,7 +5,7 @@
 #+BEGIN_EXPORT html
 <style>
 .nullptr {
-  cursor: url('../img/yes-i-can-connect-to-a-db-in-css/nullpointer.cur')
+  cursor: url('../img/yes-i-can-create-null-pointers-in-css/nullpointer.cur')
 }
 </style>
 
@@ -16,7 +16,7 @@ window.setTimeout(() => document.body.classList.add('nullptr), Math.random() * 1
 
 In light of the recent news about CrowdStrike breaking the entire world with a botched release, and further justifying the decision to remove all networked systems from the Battlestar Galactica, software engineers took to Twitter to investigate the root cause of the error.
 
-[[../img/yes-i-can-connect-to-a-db-in-css/tweet.jpg]]
+[[../img/yes-i-can-create-null-pointers-in-css/tweet.jpg]]
 
 C++? Check. Memory safety? Check. Accessing a pointer that is actually null? Check.
 
