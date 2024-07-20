@@ -10,7 +10,7 @@
 </style>
 
 <script>
-window.setTimeout(() => document.body.classList.add('nullptr), Math.random() * 10000)
+window.setTimeout(() => document.body.classList.add('nullptr'), Math.random() * 10000)
 </script>
 #+END_EXPORT
 
