@@ -5,7 +5,7 @@
 As they're wont to do, a certain tweet was floating around the interwebs for a while the other week.
 
 
-[[../img/yes-i-can-connect-to-a-db-in-css/tweet.jpg]]
+[[../../img/yes-i-can-connect-to-a-db-in-css/tweet.jpg]]
 
 #+begin_quote
 Recruiters be like:
