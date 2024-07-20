@@ -22,4 +22,7 @@ C++? Check. Memory safety? Check. Accessing a pointer that is actually null? Che
 
 It's an issue that can happen to anyone and it can often catch you unaware.
 
-Even in CSS. Fuck.
+Even in CSS...
+
+
+Fuck.
