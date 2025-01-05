@@ -1,0 +1,53 @@
+#+TITLE: Unwrapped
+#+DATE: <2025-01-05>
+#+CATEGORY: personal
+
+For the past few years I've reflected on the months gone by and committed them to paper. Or the digital version of paper, at least. Kinda like my own year in review, which every app and its dog seems to be doing now.
+
+Rather than that, I'm going to take the last few years and then look forward to what sits in store. If I can even predict that, anyway.
+
+I suppose the main theme of the past 18 months or so has just been trying to find the right fit for myself. Back in 2020, just as COVID dropped, I joined what was then a small startup called Hopin. The timing for Hopin with the onset of the pandemic and rapid switch to remote working could not have been more perfect, and as the virus spread like wildfire, so did Hopin grow. Practically zero to a billion in perhaps 18 months, tops, and 50 employees to over 1000 in a similar timeframe.
+
+Like any startup, Hopin had its fair share of organisational flaws--many of which would come from hyperscale--but as a collective, the people were second to none. Talented engineers, fantastic managers. Passionate, empathetic, diverse. During that time most people's interface to the outside world was the internet, and in order to build software to help people connect in online spaces it definitely helps when that connection happens organically within the teams as well.
+
+I look back on it, and particularly those I worked with, quite fondly; and after I left to try something different I started to struggle with expectations. So started my goldilocks phase, hopping between jobs until I found the one that was 'just right'.
+
+To say I learned a few things from that would be an understatement. 
+
+The first thing I saw was that I had the immense privilege in a few ways and this allowed me to take some risks: I could rely on contacts and referrals to find new work, I could optimise for positions with shorter recruitment cycles (avoiding places with months-long, multi-stage gauntlets), and most important of all I could hand in my notice without already having another position in hand. This is not something I have taken for granted: rely on it too much and you'll have a reputation for getting cold feet. It has helped immeasurably when I've needed it, though.
+
+What followed from that was discovering where I would draw a line and what that meant to me, and a lot of it ties into what I consider important--having integrity, leading with empathy, etc. To that extent, I can't really sleep at night if I find myself working for a company or a leader who I don't respect, or conversely a leader who doesn't respect their people.
+
+At times I feel like I can be passionate about what I do /to a fault/, because I care about my work and want to feel good about it, and that moment where I point my stick into the sand is where I start to wonder if the energy I put into that endeavour is ever going to be worth the pay-off. And from then on I'm in the process of dragging my stick back and forth as I balance between what I can tolerate in the short term versus what I can't. In other words a psychological contract that can be damaged and repaired, but once broken is hard to come back from. 
+
+Nothing is ever going to be perfect, but over the course of, say, a four year vesting period, it's ideal when everything good you feel about the place you work totally outweighs the flaws it has and you feel invested in working through those and carving out improvements wherever you can find them - in the company, in the team, in yourself.
+
+That's pretty much where my mind has been for the past year or so, so it's nice that, after a tumultuous period post-Hopin, things have gracefully settled down some more while still remaining interesting.
+
+So what's next?
+
+** Personal development
+
+I think the applications of AI found in the mainstream aren't particularly impressive and the stuff that hits the news is practically scraping the barrel (see Meta building bot accounts in-house for increased ad revenue).
+
+To that extent I'm excited about working on an application of AI that is more than just a wrapper around ChatGPT. I think those wrappers serve a purpose, especially for rapid prototyping or building out a proof of concept that can secure the funding to go deeper, but as software engineer it doesn't feel that different from building your usual SaaS. The wider ecosystem with langchain, langgraph, self-hosting models, and such like, is far more interesting and offers a much greater opportunity to learn. Plus, I'll be glad to get to grips with Python as well. Always good to expand one's toolkit.
+
+That's all quite technical, but it's easy to track.
+
+When it comes to finding my way back to mindfulness and appreciating the moment more often, it's a little more nebulous and it'd defeat the point to try and measure it.
+
+** Personal health
+
+I've never been one for new year's resolutions but there's a first time for everything. I've myopically focussed on my mental health for many years, and it's always been important to me, but now is as good a time as any to take a holistic approach and do more on the physical and dietary side. It doesn't matter how it's done, just that it is.
+
+Nobody is getting any younger, so better to start taking that seriously now and not when it becomes a serious problem years down the line.
+
+** Powering down
+
+The thing with working in tech is that tech, in various forms, ends up consuming a lot of your time. You work in front of a screen, your phone connects you to friends but it's also in front of a screen, video games are in front of a screen, TV is in front of a screen.
+
+The environment may hate me for it, but you can't beat a book printed on the pulped remains of a dead tree. The experience of music played from vinyl is enjoyable in a way that streaming from a seemingly infinite library isn't. It's tactile. Pleasant.
+
+And, possibly now more than ever, I think it's vitally important to find those things closer to home that bring some joy. Negativity sells and the internet is increasingly overwhelmed by it, trading outrage at an inhuman scale, and I don't think you would realise just how much damage that can do to your mindset until it's too late.
+
+So... 2025 unwrapped.
