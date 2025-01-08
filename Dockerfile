@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 silex/emacs:30-ci AS emacs
+FROM --platform=linux/amd64 silex/emacs:29-ci AS emacs
 
 WORKDIR /home/build
 
