@@ -3,7 +3,7 @@
 #+CATEGORY: Tech
 
 
-Once upon a time we engineers used to argue the merits of TDD and whether or not it was dead. There's no reason to bring that conversation to bring that conversation back from the grave, though.
+Once upon a time we engineers used to argue the merits of TDD and whether or not it was dead. There's no reason to bring that conversation back from the grave, though.
 
 There isn't a good answer to a question like /"should we write tests?"/ because it's not a very good question in the first place.
 
@@ -25,12 +25,14 @@ This isn't to lay down blame on an engineering team for making a mistake or fail
 
 Unplanned work, also known as firefighting, is when stuff you deliver comes back to haunt you because there is a defect of some kind. It affects companies at any stage of growth but hits hardest when it's early because you can't really plan around it and it has a tendency to devolve into a cycle of over-promising and under-delivering.
 
-It's the spanner in your gears and if you want to get them turning again you have to invest time, money, runway, reputation, to remove enough of them to spin it all back up. And wouldn't it be more efficient if you could catch the errant spanners early?
+It's the spanner in your gears and if you want to get them turning again you have to invest time, money, runway, reputation, to remove enough of them to spin it all back up.g And wouldn't it be more efficient if you could catch the errant spanners early?
 
 What if you said they should oil the gears when fitting them instead of oiling the entire machine after?
 
 So it is with testing, QA, and other bottlenecks that sit between your development teams and production. Even in an early setup, there is a benefit to having a non-zero level of testing that simply exists to stop a trivial issue growing into something bigger than it really is.
 
-After all, the tests for all of us in the world of web dev and SaaS aren't really to prove that the code is correct, they are to confirm that we understood the requirements correctly.
+After all, the tests for all of us in the world of web dev and SaaS aren't really to prove that the code is correct, they are to confirm that we understood the requirements correctly and we don't need to bring someone else in (or rely on our customers/clients/users) to verify that.
 
-If you ship something that doesn't meet the requirements then it gets sent back.
+If you ship something that doesn't meet the requirements then it gets sent back. And then you have to work on it /again/...
+
+...only with a little less trust each time.
