@@ -15,23 +15,23 @@ I've since left that world and returned to something more familiar, or dare I sa
 
 Almost immediately you should notice I've set up a dichotomy and I'm probably going to say that stuff like testing and QA has no value in the seed stage but is imperative after you've found product market fit (PMF) or are held to account by regulation or other legal directives that sit between you and a production release. 
 
-In short I would be saying that you should only write tests when they add value to the business, which is rubbish because it presupposes that they are basically worthless until they're suddenly not.
+In short I would be saying that you should only write tests when they add value to the business, which is rubbish because it presupposes that they are basically worthless until they're suddenly not. What even is 'business value' but a thought terminating cliche?
 
 It's a half arsed argument because no matter who says it, it's always comes to a leading yes or no question. Instead, *stop focussing on shipping alone and take returns into account.*
 
 As a founder, you can paint a pretty picture if you sell on recurring revenue while playing down the numbers on retention and churn. So it is with engineering when you sell your product and engineering teams on velocity but play down the amount of work that is sent back for refinement: bug fixing, misunderstood requirements, in addition to other unplanned problems relating to system reliability.
 
-This isn't to lay down blame on an engineering team for making a mistake or failing to account for the unknown, but simply that you will have a timeline, and the most disruptive thing to that timeline at any stage of a business is *unplanned work*.
+This isn't to lay down blame on an engineering team for making a mistake or failing to account for the unknown, but simply that you will have a timeline, and the most disruptive thing to that timeline at any stage of a business is *unplanned work*. It is always in the best interest of the business to mitigate unplanned work, which you ideally do by doing your job well.
 
-Unplanned work, also known as firefighting, is when stuff you deliver comes back to haunt you because there is a defect of some kind. It affects companies at any stage of growth but hits hardest when it's early because you can't really plan around it and it has a tendency to devolve into a cycle of over-promising and under-delivering.
+Unplanned work, also known as firefighting, is when stuff you deliver comes back to haunt you because there is a defect of some kind. It affects companies at any stage of growth, you can't really plan around it, and it has a tendency to devolve into a cycle of over-promising and under-delivering. This isn't the same as tech-debt, which is the same as a cost-benefit analysis, and the same as a trade-off; it comes from carelessness, a choice that was made for you where the result isn't intentional but instead automatic. Out of your hands.
 
-It's the spanner in your gears and if you want to get them turning again you have to invest time, money, runway, reputation, to remove enough of them to spin it all back up.g And wouldn't it be more efficient if you could catch the errant spanners early?
+It's the spanner in your gears and if you want to get them turning again you have to invest time, money, runway, reputation, to remove enough of them to spin it all back up. And wouldn't it be more efficient if you could catch the errant spanners early?
 
 What if you said they should oil the gears when fitting them instead of oiling the entire machine after?
 
 So it is with testing, QA, and other bottlenecks that sit between your development teams and production. Even in an early setup, there is a benefit to having a non-zero level of testing that simply exists to stop a trivial issue growing into something bigger than it really is.
 
-After all, the tests for all of us in the world of web dev and SaaS aren't really to prove that the code is correct, they are to confirm that we understood the requirements correctly and we don't need to bring someone else in (or rely on our customers/clients/users) to verify that.
+After all, the tests for all of us in the world of web dev and SaaS aren't really to prove that the code is correct, they are to confirm that we understood the requirements correctly and we are meeting expectations.
 
 If you ship something that doesn't meet the requirements then it gets sent back. And then you have to work on it /again/...
 
