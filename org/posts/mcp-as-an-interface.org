@@ -1,0 +1,40 @@
+#+TITLE: MCP as an interface
+#+CATEGORY: AI
+#+DATE: <2025-06-10 Tue>
+
+My relationship with AI has been quite unusual over the past year or so, and despite working for startups exclusively devoted to building AI-based tech I didn't use much of it in my actual workflow. Well, not much more than a Q&A with Claude. So, if you asked me about integrating AI into a workflow then I've moved more slowly on that front compared to my efforts to integrate it into product. I think it's time to change that and have a bit of fun along the way, because there is some pretty fuckin' cool stuff out there and there's no fun yelling at all the vibe coders on my lawn to get off of it.
+
+There's been a lot of action over the past decade or so when it comes to building backend services. Suddenly it wasn't enough to communicate over HTTP using XML or JSON and RPC (particularly gRPC) became popular. Protobuf as a serialization format was lighter on the wire than XML or JSON, and it also came along with schemas that would verify the correctness of the payload.
+
+In that same period of time browsers acquired real time functionality with the introduction of the WebSocket protocol, which is a layer over HTTP that allows for long-lived, bi-directional connections. Before WebSockets you'd have to rely on some form of polling (or long polling) to achieve the same.
+
+GraphQL came along afterwards as a complete replacement of a traditional RESTful API. You could query only the exact data you need rather than plucking it out of larger responses.
+
+If that wasn't enough, the concept of event sourcing saw a boost in popularity after the release of Kafka, allowing all of your microservices to communicate asynchronously through a massively distributed event streaming platform.
+
+With all of that, it wasn't unusual to have a collection of backend services that exposed a RESTful interface, a gRPC interface, a GraphQL interface, and also a publisher and consumers for asynchronous events. I myself worked on more than one that provided all of these at once.
+
+So, it's not unusual for us software engineers to communicate data in novel ways.
+
+------
+
+That's the history lesson, now let's talk about AI's evolution within this space.
+
+It all started with 'tool' or 'function' calls, which was a mechanism an LLM could use to call out to an external service to fulfil a request. This was an incredibly useful development for Agentic AI because you no longer had to compose LLM calls in your own code but let the LLM itself decide whether to call out to that source. For the most part you could give it an OpenAPI (Swagger) spec and it would know how to call it and deal with the results. Maybe it's another API, or it's a function in your own codebase, or a RAG database that converts the input into embeddings and performs a search.
+
+Later on came the Model Context Protocol (MCP), which takes this agentic approach to the next level by making it possible to build services that exclusively communicate with an LLM. People are writing MCPs for everything, like working with GitHub or dealing with JIRA or editing code on the filesystem.
+
+Essentially this is another step towards an LLM being a natural language model for programming as you can simply expose MCP functionality from your existing product that an LLM can connect to, without installing any local software.
+
+If you can create such an MCP, you're offering all the hard parts of a conversational interface that deal with the ambiguity of human language and letting the LLM figure it out. Put your own UX over it if you want, but if someone can plug into it from ChatGPT or Claude or whatever it's still good.
+
+There's a reason why I think this is exciting, and it's because of the potential to increase accessibility and it speaks to all this mystical AI stuff people have previously hyped up with products like the Humane AI Pin and Rabbit R1.
+
+Some years ago it would have taken an extraordinary amount of effort to create a functional speech-to-text integration with your app, or even a chat bot that can do something useful beyond annoying you when your issue doesn't fit the script it runs on.
+
+You can keep your transactional, RESTful API, and your GraphQL servers, and all that, because your existing web app or SaaS isn't going anywhere. People will still use it. But you can also provide that secondary agentic interface through MCP so you can effectively talk to the product and it will arguably be a lot better than a tacked on 'Use Generative AI' button on your interface that just updates content and cannot perform any other meaningful action.
+
+In fact, these things are quite easy to write due to fast adoption within various programming languages. Ruby and Python both have FastMCP libraries, for example.
+
+It's a huge opportunity and if it's a threat to absolutely anyone, it's all of the low/no-code workflow services that are outclassed by having an LLM do the orchestration.
+
