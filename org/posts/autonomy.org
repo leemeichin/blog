@@ -1,0 +1,90 @@
+#+TITLE: Autonomy
+#+DATE: <2025-06-25 Wed>
+#+CATEGORY: Programming, AI
+
+The life of a software engineer involves more than simply writing code. As your experience grows you'll find yourself getting involved in the design of a feature before it's even ready to be developed, and the testing and deployment of it after the fact.
+
+At each stage in this delivery cycle, from ideation to design to development to testing to release, you likely spend a lot of time in between tasks simply keeping all of the things that tie it together up to date.
+
+- Reviewing the requirements or acceptance criteria
+- Estimating the development effort of a task or story
+- Moving tasks from one status to another
+- Digging designs out of Figma
+- Writing decent commit messages
+- Writing pull requests and descriptions (including the ticket ID)
+- Addressing feedback in code review (clarifying comments or changes)
+- Back and forth with your CI pipeline if it fails
+- Automating end to end tests
+- Writing release notes or documenting release dependencies
+
+You could do more or less than this depending on the way your team or organisation works, but typically the larger the company the more thorough the process, for legal or compliance reasons.
+
+As a result, it's not for me to say whether any of these steps in a workflow are valuable==it genuinely depends--but I do think I can speak for many people when I say that some of this boilerplate work gets old, fast, because it's just not as interesting or engaging as the other things you need to do.
+
+Has to be done though, doesn't it?
+
+In a previous post[fn:1] I very briefly mentioned MCP in the context of agentic AI, and also the threat that AI poses to low-code workflow software. /This/ is what I was referring to.
+
+It's always been possible, to an extent, to automate away the more bureaucratic aspects of a workflow using a platform like Zapier. At the end of the day you're simply tying together various integrations and triggers and letting the platform do the rest. These platforms, however, are quite expensive, and often an organisation will limit access as much as possible to keep costs down, meaning that only a select few will be capable of creating these workflows.
+
+OpenAI and Claude are /still/ expensive, of course, but the added versatility of an LLM-driven workflow and its easy integration with open source tooling (via function invocation or MCP) makes a stronger case for buying in to it. You can use it as much or as little as you like, in a personalised way, and in this sense you are not losing autonomy to an LLM.
+
+-----
+Before I describe an example of how I've experimented with an LLM-driven workflow, I want to explain what I mean about autonomy.
+
+As almost anything these days, the topic of AI is incredibly polarising. I personally see that the tech has promise, but I have no interest in embracing it in such a way that it diminishes personal agency. This includes using AI to put someone out of a job by, essentially, automating away their personality.
+
+I would like to wing this into a discussion about inclusivity, or accessibility, but I'm conscious of it sounding a bit clumsy. Here goes nothing!
+
+This new technology can absolutely be an enabler of things that were really difficult to support before, rather than being (for want of a better term) a disabler.
+
+To that extent, a tech startup pitching an AI employee that replaces a real person and never stops working is just... /fucking unimaginative/. This takes autonomy and puts it in the hands of a hastily slapped together product.
+
+Conversely, try buying a house in the UK. You're lucky if it takes less than two months and a lot of that time is spent digging up all of the paperwork required for due diligence before the contracts can be exchanged. There is a world where AI tooling can help perform their searches, fetch management packs, and so on, to both save time and focus more on important details rather than busywork. This frees you up to do other things and keeps the human in the loop as it were.
+
+This is more or less my angle on it. *Tech for good that provides more opportunities to more people, not fewer.*
+
+-----
+I've tried to do this myself with mixed but overall positive results. I used Claude via Cursor with the following setup:
+
+- Git MCP
+- Jira MCP
+- CircleCI MCP
+- The ~gh~ CLI (for talking to GitHub)
+
+Firstly, I wasn't interested in getting Claude to write the actual code for me, I just wanted it to do everything in between.
+
+I then wrote a prompt like this, with the expected MCP tool calls emphasised in bold.[fn:2]
+
+#+BEGIN_QUOTE
+I've written three basic rules for Cursor that are applied to all prompts.
+
+For each rule, do the following:
+  1. Improve the prompt so it's more effective as a rule
+  2. *Commit the prompt*, succinctly describing the purpose of the optimisation
+
+When you're done *open a new pull request* with the *ticket ID and title from JIRA-123* and a more detailed explanation of what you did in the description.
+
+There are no codechanges here so *CI shouldn't fail*. Keep an eye on it just in case and *report back with the failure* if there is one.
+
+Otherwise, *set JIRA-123 to 'In Review'*.
+#+END_QUOTE
+
+This is a low risk experiment since I'm just messing with markdown files, and I won't share the entire conversation because it's quite long, but it did what I asked.
+
+- Updated my rules
+- Committed in conventional-commit format (as per one of said rules)
+- Created a PR linking to the JIRA ticket and title
+- Moved the JIRA ticket to 'In Review'
+
+I'm impressed with this and see it as an opportunity to focus on other important things while all of this in-between stuff is handled by the LLM.
+
+And the other reason I say this, coming back to the topic of the post, is beacuse it still allows me to keep my brain engaged on the challenge of programming.
+
+The scary bit for me, with that, is how easy it can be to unlearn something if you don't keep it active in your mind, especially as you grow older.
+
+So, while it will be possible to let an AI take off some of that load, or simplify complex refactoring and bug fixing and the like, it's important to not give up /all/ of your agency to an AI.
+
+-----
+[fn:1] https://lee.meichin.com/posts/mcp-as-an-interface.html
+[fn:2] A more technical post is on its way 
